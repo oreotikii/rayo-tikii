@@ -1,13 +1,13 @@
 # Dependencies
 node_modules/
-rayo-next/node_modules/
+next-app/node_modules/
 
 # Gulp build output
 dist/
 
 # Next.js
 .next/
-rayo-next/.next/
+next-app/.next/
 out/
 
 # Production
@@ -45,3 +45,24 @@ next-env.d.ts
 # Cache
 .eslintcache
 .cache/
+.sass-cache/
+.gulp-cache/
+.turbo/
+.parcel-cache/
+
+# Logs
+logs/
+*.log
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Temp files
+*.tmp
+*.bak
+*.orig
+
+# Claude local settings
+.claude/settings.local.json
+.claude/memory/
