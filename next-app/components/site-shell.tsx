@@ -11,6 +11,13 @@ type NavItem = {
   children?: Array<{ label: string; href: string }>;
 };
 
+type MenuTimeline = {
+  play: () => void;
+  reverse: () => void;
+  isActive: () => boolean;
+  kill: () => void;
+};
+
 const navItems: NavItem[] = [
   {
     label: "Home",
@@ -126,7 +133,7 @@ function MenuOverlay({
   toggle: () => void;
 }) {
   const pathname = usePathname();
-  const [expanded, setExpanded] = useState<string>("Home");
+  const [expanded, setExpanded] = useState<string>("");
   const [menuReady, setMenuReady] = useState(false);
   const previousPathname = useRef(pathname);
   const hamburgerRef = useRef<HTMLButtonElement>(null);
@@ -134,7 +141,17 @@ function MenuOverlay({
   const menuWrapperRef = useRef<HTMLDivElement>(null);
   const menuBaseRef = useRef<HTMLButtonElement>(null);
   const menuContainRef = useRef<HTMLDivElement>(null);
-  const timelineRef = useRef<{ play: () => void; reverse: () => void } | null>(null);
+  const timelineRef = useRef<MenuTimeline | null>(null);
+
+  const timelineIsActive = () => timelineRef.current?.isActive() ?? false;
+  const requestToggle = () => {
+    if (timelineIsActive()) return;
+    toggle();
+  };
+  const requestClose = () => {
+    if (timelineIsActive()) return;
+    close();
+  };
 
   useLayoutEffect(() => {
     let disposed = false;
@@ -168,10 +185,7 @@ function MenuOverlay({
 
       const timeline = gsap.timeline({
         paused: true,
-        onReverseComplete: () => {
-          const tween = moveBase(false);
-          tween.eventCallback("onComplete", () => gsap.set(menuWrapper, { display: "none" }));
-        }
+        onReverseComplete: () => gsap.set(menuWrapper, { display: "none" })
       });
 
       timeline.set(menuWrapper, { display: "flex" });
@@ -192,7 +206,8 @@ function MenuOverlay({
           opacity: 0,
           yPercent: 50,
           duration: 0.2,
-          stagger: { amount: 0.2 }
+          stagger: { amount: 0.2 },
+          onReverseComplete: () => moveBase(false)
         },
         "fade-in-up"
       );
@@ -217,6 +232,7 @@ function MenuOverlay({
 
     return () => {
       disposed = true;
+      timelineRef.current?.kill();
       timelineRef.current = null;
     };
   }, []);
@@ -228,7 +244,7 @@ function MenuOverlay({
     }
   }, [close, pathname]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!menuReady || !timelineRef.current) return;
     if (open) {
       timelineRef.current.play();
@@ -237,23 +253,14 @@ function MenuOverlay({
     }
   }, [menuReady, open]);
 
-  useLayoutEffect(() => {
-    if (!open || !menuReady) return;
-    const hamburgerBase = hamburgerBaseRef.current;
-    const menuContain = menuContainRef.current;
-    if (hamburgerBase && menuContain && hamburgerBase.parentElement !== menuContain) {
-      menuContain.prepend(hamburgerBase);
-    }
-  }, [expanded, menuReady, open]);
-
   useEffect(() => {
     if (!open) return;
     const onKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") close();
+      if (event.key === "Escape") requestClose();
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [close, open]);
+  }, [open]);
 
   return (
     <nav className="mxd-nav__wrap" data-lenis-prevent="">
@@ -264,7 +271,7 @@ function MenuOverlay({
           className={`mxd-nav__hamburger${open ? " nav-open" : ""}`}
           aria-label="Menu"
           aria-expanded={open}
-          onClick={toggle}
+          onClick={requestToggle}
         >
           <div ref={hamburgerBaseRef} className="hamburger__base" />
           <div className="hamburger__line" />
@@ -273,7 +280,7 @@ function MenuOverlay({
       </div>
 
       <div ref={menuWrapperRef} className="mxd-menu__wrapper" aria-hidden={!open}>
-        <button ref={menuBaseRef} type="button" className="mxd-menu__base" aria-label="Close menu" onClick={close} />
+        <button ref={menuBaseRef} type="button" className="mxd-menu__base" aria-label="Close menu" onClick={requestClose} />
         <div ref={menuContainRef} className="mxd-menu__contain">
           <div className="mxd-menu__inner">
             <div className="mxd-menu__left">
@@ -301,7 +308,7 @@ function MenuOverlay({
                               </span>
                               <StarIcon />
                             </button>
-                            <ul className="submenu">
+                            <ul className="submenu" aria-hidden={!isOpen}>
                               {item.children.map((child) => (
                                 <li className={`submenu__item${pathname === child.href ? " active" : ""}`} key={child.href}>
                                   <Link href={child.href}>{child.label}</Link>
@@ -361,8 +368,10 @@ function MenuOverlay({
 
 export function SiteShell({ children }: { children: React.ReactNode }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [menuLayerVisible, setMenuLayerVisible] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [theme, setTheme] = useState<"light" | "dark">("dark");
+  const [toTopVisible, setToTopVisible] = useState(false);
   const closeMenu = useCallback(() => setMenuOpen(false), []);
   const toggleMenu = useCallback(() => setMenuOpen((value) => !value), []);
 
@@ -381,6 +390,23 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
   }, []);
 
   useEffect(() => {
+    const onScroll = () => setToTopVisible(window.scrollY > window.innerHeight * 0.2);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    if (menuOpen) {
+      setMenuLayerVisible(true);
+      return undefined;
+    }
+
+    const timer = window.setTimeout(() => setMenuLayerVisible(false), 1100);
+    return () => window.clearTimeout(timer);
+  }, [menuOpen]);
+
+  useEffect(() => {
     document.body.classList.toggle("overflow-hidden", menuOpen);
     return () => document.body.classList.remove("overflow-hidden");
   }, [menuOpen]);
@@ -392,11 +418,21 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
     document.documentElement.setAttribute("color-scheme", nextTheme);
   };
 
+  const scrollToTop = async () => {
+    try {
+      const [{ gsap }, { ScrollToPlugin }] = await Promise.all([import("gsap"), import("gsap/ScrollToPlugin")]);
+      gsap.registerPlugin(ScrollToPlugin);
+      gsap.to(window, { scrollTo: 0, ease: "power4.inOut", duration: 1.3 });
+    } catch {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   return (
     <>
       <Loader />
       <MenuOverlay open={menuOpen} close={closeMenu} toggle={toggleMenu} />
-      <header id="header" className={`mxd-header${hidden ? " is-hidden" : ""}${menuOpen ? " menu-is-visible" : ""}`}>
+      <header id="header" className={`mxd-header${hidden ? " is-hidden" : ""}${menuLayerVisible ? " menu-is-visible" : ""}`}>
         <div className="mxd-header__logo loading__fade">
           <Logo />
         </div>
@@ -420,8 +456,14 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
       </header>
       <ClientBehaviors />
       {children}
-      <button className="btn btn-to-top slide-up" type="button" aria-label="Back to top" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-        <i className="ph-bold ph-arrow-up" />
+      <button
+        id="to-top"
+        className={`btn btn-to-top slide-up anim-no-delay${toTopVisible ? " is-visible" : ""}`}
+        type="button"
+        aria-label="Back to top"
+        onClick={scrollToTop}
+      >
+        <i className="ph ph-arrow-up" />
       </button>
     </>
   );

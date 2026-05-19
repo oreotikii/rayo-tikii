@@ -156,7 +156,7 @@ export function ClientBehaviors() {
       }
 
       try {
-        const Lenis = (await import("@studio-freight/lenis")).default;
+        const Lenis = (await import("lenis")).default;
         lenis = new Lenis({ smoothWheel: true });
         const tick = (time: number) => {
           lenis?.raf(time);
@@ -236,11 +236,13 @@ export function ClientBehaviors() {
         document.querySelectorAll<HTMLElement>(".swiper-testimonials, .swiper-testimonials-2, .mxd-demo-swiper").forEach((element) => {
           const isPhotoTestimonials = element.classList.contains("swiper-testimonials-2");
           const isDemo = element.classList.contains("mxd-demo-swiper");
+          const initialSlide = Number.parseInt(element.dataset.initialSlide ?? "0", 10);
           const instance = new Swiper(element, {
             modules: [Navigation, Pagination, Autoplay, Parallax, EffectFade],
             slidesPerView: isDemo ? 1 : isPhotoTestimonials ? 1 : "auto",
             spaceBetween: 30,
             loop: true,
+            initialSlide: Number.isNaN(initialSlide) ? 0 : initialSlide,
             speed: isDemo ? 600 : 1000,
             effect: isPhotoTestimonials ? "fade" : "slide",
             grabCursor: true,

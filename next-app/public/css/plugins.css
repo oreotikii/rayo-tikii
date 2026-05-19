@@ -11505,7 +11505,7 @@ table {
 /* ------------------------------------------------*/
 @font-face {
   font-family: "Phosphor-Bold";
-  src: url("./Phosphor-Bold.woff2") format("woff2"), url("./Phosphor-Bold.woff") format("woff"), url("./Phosphor-Bold.ttf") format("truetype"), url("./Phosphor-Bold.svg#Phosphor-Bold") format("svg");
+  src: url("/fonts/Phosphor/Phosphor-Bold.woff2") format("woff2"), url("/fonts/Phosphor/Phosphor-Bold.woff") format("woff"), url("/fonts/Phosphor/Phosphor-Bold.ttf") format("truetype"), url("/fonts/Phosphor/Phosphor-Bold.svg#Phosphor-Bold") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -17656,7 +17656,7 @@ table {
 
 @font-face {
   font-family: "Phosphor-Duotone";
-  src: url("./Phosphor-Duotone.woff2") format("woff2"), url("./Phosphor-Duotone.woff") format("woff"), url("./Phosphor-Duotone.ttf") format("truetype"), url("./Phosphor-Duotone.svg#Phosphor-Duotone") format("svg");
+  src: url("/fonts/Phosphor/Phosphor-Duotone.woff2") format("woff2"), url("/fonts/Phosphor/Phosphor-Duotone.woff") format("woff"), url("/fonts/Phosphor/Phosphor-Duotone.ttf") format("truetype"), url("/fonts/Phosphor/Phosphor-Duotone.svg#Phosphor-Duotone") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -32787,7 +32787,7 @@ table {
 
 @font-face {
   font-family: "Phosphor-Fill";
-  src: url("./Phosphor-Fill.woff2") format("woff2"), url("./Phosphor-Fill.woff") format("woff"), url("./Phosphor-Fill.ttf") format("truetype"), url("./Phosphor-Fill.svg#Phosphor-Fill") format("svg");
+  src: url("/fonts/Phosphor/Phosphor-Fill.woff2") format("woff2"), url("/fonts/Phosphor/Phosphor-Fill.woff") format("woff"), url("/fonts/Phosphor/Phosphor-Fill.ttf") format("truetype"), url("/fonts/Phosphor/Phosphor-Fill.svg#Phosphor-Fill") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -38938,7 +38938,7 @@ table {
 
 @font-face {
   font-family: "Phosphor-Light";
-  src: url("./Phosphor-Light.woff2") format("woff2"), url("./Phosphor-Light.woff") format("woff"), url("./Phosphor-Light.ttf") format("truetype"), url("./Phosphor-Light.svg#Phosphor-Light") format("svg");
+  src: url("/fonts/Phosphor/Phosphor-Light.woff2") format("woff2"), url("/fonts/Phosphor/Phosphor-Light.woff") format("woff"), url("/fonts/Phosphor/Phosphor-Light.ttf") format("truetype"), url("/fonts/Phosphor/Phosphor-Light.svg#Phosphor-Light") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -45089,7 +45089,7 @@ table {
 
 @font-face {
   font-family: "Phosphor";
-  src: url("./Phosphor.woff2") format("woff2"), url("./Phosphor.woff") format("woff"), url("./Phosphor.ttf") format("truetype"), url("./Phosphor.svg#Phosphor") format("svg");
+  src: url("/fonts/Phosphor/Phosphor.woff2") format("woff2"), url("/fonts/Phosphor/Phosphor.woff") format("woff"), url("/fonts/Phosphor/Phosphor.ttf") format("truetype"), url("/fonts/Phosphor/Phosphor.svg#Phosphor") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -51240,7 +51240,7 @@ table {
 
 @font-face {
   font-family: "Phosphor-Thin";
-  src: url("./Phosphor-Thin.woff2") format("woff2"), url("./Phosphor-Thin.woff") format("woff"), url("./Phosphor-Thin.ttf") format("truetype"), url("./Phosphor-Thin.svg#Phosphor-Thin") format("svg");
+  src: url("/fonts/Phosphor/Phosphor-Thin.woff2") format("woff2"), url("/fonts/Phosphor/Phosphor-Thin.woff") format("woff"), url("/fonts/Phosphor/Phosphor-Thin.ttf") format("truetype"), url("/fonts/Phosphor/Phosphor-Thin.svg#Phosphor-Thin") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;

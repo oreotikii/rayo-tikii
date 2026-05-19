@@ -14,10 +14,6 @@
   color: inherit;
 }
 
-.main-menu__item.open > .submenu {
-  display: block;
-}
-
 .mxd-nav__hamburger {
   appearance: none;
   background: transparent;
@@ -25,6 +21,34 @@
   border-radius: var(--_radius-l);
   cursor: pointer;
   padding: 0;
+}
+
+.submenu {
+  display: block;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  padding-top: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition:
+    max-height 400ms var(--_animbezier),
+    opacity 240ms ease,
+    padding-top 400ms var(--_animbezier),
+    visibility 0s linear 400ms;
+}
+
+.main-menu__item.open > .submenu {
+  max-height: 48rem;
+  opacity: 1;
+  padding-top: 2rem;
+  pointer-events: auto;
+  visibility: visible;
+  transition:
+    max-height 400ms var(--_animbezier),
+    opacity 240ms ease,
+    padding-top 400ms var(--_animbezier),
+    visibility 0s;
 }
 
 .mxd-logo__image .mxd-logo__bg {
@@ -76,8 +100,21 @@
 }
 
 .btn-to-top {
-  position: fixed;
-  right: 2rem;
-  bottom: 2rem;
-  z-index: 20;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition:
+    opacity var(--_animspeed-medium) var(--_animbezier),
+    transform var(--_animspeed-medium) var(--_animbezier),
+    visibility 0s linear var(--_animspeed-medium);
+}
+
+.btn-to-top.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+  transition:
+    opacity var(--_animspeed-medium) var(--_animbezier),
+    transform var(--_animspeed-medium) var(--_animbezier),
+    visibility 0s;
 }

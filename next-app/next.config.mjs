@@ -1,6 +1,12 @@
+const projectRoot = new URL(".", import.meta.url).pathname;
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  outputFileTracingRoot: new URL(".", import.meta.url).pathname,
+  devIndicators: false,
+  outputFileTracingRoot: projectRoot,
+  turbopack: {
+    root: projectRoot
+  },
   images: {
     unoptimized: true,
     remotePatterns: [
