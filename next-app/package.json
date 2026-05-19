@@ -1,0 +1,31 @@
+{
+  "name": "rayo-next-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@studio-freight/lenis": "^1.0.42",
+    "gsap": "^3.12.7",
+    "html-react-parser": "^5.2.7",
+    "imagesloaded": "^5.0.0",
+    "masonry-layout": "^4.2.2",
+    "next": "^16.2.6",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "swiper": "^12.0.2",
+    "typed.js": "^2.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "eslint": "^9.17.0",
+    "eslint-config-next": "^16.2.6",
+    "typescript": "^5.7.2"
+  }
+}

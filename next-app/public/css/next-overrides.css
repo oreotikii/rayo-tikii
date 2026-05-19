@@ -1,0 +1,83 @@
+.mxd-menu__base {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+.main-menu__toggle {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  color: inherit;
+}
+
+.main-menu__item.open > .submenu {
+  display: block;
+}
+
+.mxd-nav__hamburger {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  border-radius: var(--_radius-l);
+  cursor: pointer;
+  padding: 0;
+}
+
+.mxd-logo__image .mxd-logo__bg {
+  fill: var(--base-opp);
+}
+
+.mxd-logo__image .mxd-logo__cat {
+  fill: var(--base);
+}
+
+.marquee-right--gsap .marquee__toright {
+  animation: mxd-marquee-right 30s linear infinite;
+}
+
+.marquee-left--gsap .marquee__toleft {
+  animation: mxd-marquee-left 30s linear infinite;
+}
+
+.marquee--gsap .marquee__top {
+  animation: mxd-marquee-left 30s linear infinite;
+}
+
+.marquee--gsap .marquee__bottom {
+  animation: mxd-marquee-right 30s linear infinite;
+}
+
+@keyframes mxd-marquee-right {
+  from {
+    transform: translate3d(-20%, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes mxd-marquee-left {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-20%, 0, 0);
+  }
+}
+
+.form-status {
+  margin-top: 1.6rem;
+  color: var(--t-bright);
+  font: normal var(--fw-regular) 1.4rem/1.4 var(--_font-default);
+}
+
+.btn-to-top {
+  position: fixed;
+  right: 2rem;
+  bottom: 2rem;
+  z-index: 20;
+}
