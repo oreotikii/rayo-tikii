@@ -1,0 +1,3145 @@
+{
+  "sourceSite": "https://tikii.in",
+  "generatedAt": "2026-05-20T06:19:22.384Z",
+  "notes": [
+    "Public unauthenticated import only. Private drafts, protected media, form submissions, and plugin data hidden from the public REST API are not included.",
+    "The importer stores raw source data first so later migration steps can remap content without scraping the live site again."
+  ],
+  "counts": {
+    "sitemapUrls": 31,
+    "sitemapFiles": 7,
+    "wordpressContentTypes": 14,
+    "wordpress.posts": 5,
+    "wordpress.pages": 9,
+    "wordpress.media": 526,
+    "wordpress.menu-items": 0,
+    "wordpress.blocks": 0,
+    "wordpress.templates": 0,
+    "wordpress.template-parts": 0,
+    "wordpress.global-styles": 0,
+    "wordpress.navigation": 1,
+    "wordpress.font-families": 0,
+    "wordpress.font-families/(-P-font_family_id-[-d]+)/font-faces": 0,
+    "wordpress.e-floating-buttons": 0,
+    "wordpress.elementor_library": 0,
+    "wordpress.elementor_snippet": 0,
+    "htmlPages": 14,
+    "mediaUrlsDiscovered": 2194,
+    "mediaFilesDownloaded": 526,
+    "currentAppRoutes": 24,
+    "currentAppTopLevelMenuItems": 5,
+    "liveMenuSources": 2,
+    "livePrimaryMenuItems": 9,
+    "mediaThumbnailFilesRemoved": 1568,
+    "mediaProxyDuplicatesRemoved": 96,
+    "mediaFilesOnDisk": 525,
+    "htmlArchivePagesRemoved": 17,
+    "htmlWorkItems": 5,
+    "htmlCorePages": 9
+  },
+  "files": [
+    {
+      "path": "live-site/sitemaps/sitemap_index.xml",
+      "kind": "file",
+      "purpose": "Raw sitemap XML fetched from https://tikii.in/sitemap_index.xml"
+    },
+    {
+      "path": "live-site/sitemaps/post-sitemap.xml",
+      "kind": "file",
+      "purpose": "Raw sitemap XML fetched from https://tikii.in/post-sitemap.xml"
+    },
+    {
+      "path": "live-site/sitemaps/page-sitemap.xml",
+      "kind": "file",
+      "purpose": "Raw sitemap XML fetched from https://tikii.in/page-sitemap.xml"
+    },
+    {
+      "path": "live-site/sitemaps/category-sitemap.xml",
+      "kind": "file",
+      "purpose": "Raw sitemap XML fetched from https://tikii.in/category-sitemap.xml"
+    },
+    {
+      "path": "live-site/sitemaps/post_tag-sitemap.xml",
+      "kind": "file",
+      "purpose": "Raw sitemap XML fetched from https://tikii.in/post_tag-sitemap.xml"
+    },
+    {
+      "path": "live-site/sitemaps/author-sitemap.xml",
+      "kind": "file",
+      "purpose": "Raw sitemap XML fetched from https://tikii.in/author-sitemap.xml"
+    },
+    {
+      "path": "live-site/sitemap/live-sitemap-urls.json",
+      "kind": "file",
+      "purpose": "Normalized list of public URLs found in live WordPress sitemaps"
+    },
+    {
+      "path": "live-site/sitemap/sitemap-files.json",
+      "kind": "file",
+      "purpose": "Index of raw sitemap XML files saved by this import"
+    },
+    {
+      "path": "live-site/wordpress/api-index.json",
+      "kind": "file",
+      "purpose": "Raw WordPress REST API index showing available routes"
+    },
+    {
+      "path": "live-site/wordpress/types.json",
+      "kind": "file",
+      "purpose": "WordPress content type registry"
+    },
+    {
+      "path": "live-site/wordpress/taxonomies.json",
+      "kind": "file",
+      "purpose": "WordPress taxonomy registry"
+    },
+    {
+      "path": "live-site/wordpress/settings-public.json",
+      "kind": "file",
+      "purpose": "Public WordPress site metadata"
+    },
+    {
+      "path": "live-site/wordpress/raw/content-types/posts/page-1.json",
+      "kind": "file",
+      "purpose": "Raw page 1 response for posts"
+    },
+    {
+      "path": "live-site/wordpress/content-types/posts.json",
+      "kind": "file",
+      "purpose": "Combined public WordPress records for content type post"
+    },
+    {
+      "path": "live-site/wordpress/raw/content-types/pages/page-1.json",
+      "kind": "file",
+      "purpose": "Raw page 1 response for pages"
+    },
+    {
+      "path": "live-site/wordpress/content-types/pages.json",
+      "kind": "file",
+      "purpose": "Combined public WordPress records for content type page"
+    },
+    {
+      "path": "live-site/wordpress/raw/content-types/media/page-1.json",
+      "kind": "file",
+      "purpose": "Raw page 1 response for media"
+    },
+    {
+      "path": "live-site/wordpress/raw/content-types/media/page-2.json",
+      "kind": "file",
+      "purpose": "Raw page 2 response for media"
+    },
+    {
+      "path": "live-site/wordpress/raw/content-types/media/page-3.json",
+      "kind": "file",
+      "purpose": "Raw page 3 response for media"
+    },
+    {
+      "path": "live-site/wordpress/raw/content-types/media/page-4.json",
+      "kind": "file",
+      "purpose": "Raw page 4 response for media"
+    },
+    {
+      "path": "live-site/wordpress/raw/content-types/media/page-5.json",
+      "kind": "file",
+      "purpose": "Raw page 5 response for media"
+    },
+    {
+      "path": "live-site/wordpress/raw/content-types/media/page-6.json",
+      "kind": "file",
+      "purpose": "Raw page 6 response for media"
+    },
+    {
+      "path": "live-site/wordpress/content-types/media.json",
+      "kind": "file",
+      "purpose": "Combined public WordPress records for content type attachment"
+    },
+    {
+      "path": "live-site/wordpress/content-types/menu-items.json",
+      "kind": "file",
+      "purpose": "Combined public WordPress records for content type nav_menu_item"
+    },
+    {
+      "path": "live-site/wordpress/raw/content-types/blocks/page-1.json",
+      "kind": "file",
+      "purpose": "Raw page 1 response for blocks"
+    },
+    {
+      "path": "live-site/wordpress/content-types/blocks.json",
+      "kind": "file",
+      "purpose": "Combined public WordPress records for content type wp_block"
+    },
+    {
+      "path": "live-site/wordpress/content-types/templates.json",
+      "kind": "file",
+      "purpose": "Combined public WordPress records for content type wp_template"
+    },
+    {
+      "path": "live-site/wordpress/content-types/template-parts.json",
+      "kind": "file",
+      "purpose": "Combined public WordPress records for content type wp_template_part"
+    },
+    {
+      "path": "live-site/wordpress/content-types/global-styles.json",
+      "kind": "file",
+      "purpose": "Combined public WordPress records for content type wp_global_styles"
+    },
+    {
+      "path": "live-site/wordpress/raw/content-types/navigation/page-1.json",
+      "kind": "file",
+      "purpose": "Raw page 1 response for navigation"
+    },
+    {
+      "path": "live-site/wordpress/content-types/navigation.json",
+      "kind": "file",
+      "purpose": "Combined public WordPress records for content type wp_navigation"
+    },
+    {
+      "path": "live-site/wordpress/content-types/font-families.json",
+      "kind": "file",
+      "purpose": "Combined public WordPress records for content type wp_font_family"
+    },
+    {
+      "path": "live-site/wordpress/content-types/font-families/(-P-font_family_id-[-d]+)/font-faces.json",
+      "kind": "file",
+      "purpose": "Combined public WordPress records for content type wp_font_face"
+    },
+    {
+      "path": "live-site/wordpress/raw/content-types/e-floating-buttons/page-1.json",
+      "kind": "file",
+      "purpose": "Raw page 1 response for e-floating-buttons"
+    },
+    {
+      "path": "live-site/wordpress/content-types/e-floating-buttons.json",
+      "kind": "file",
+      "purpose": "Combined public WordPress records for content type e-floating-buttons"
+    },
+    {
+      "path": "live-site/wordpress/content-types/elementor_library.json",
+      "kind": "file",
+      "purpose": "Combined public WordPress records for content type elementor_library"
+    },
+    {
+      "path": "live-site/wordpress/raw/content-types/elementor_snippet/page-1.json",
+      "kind": "file",
+      "purpose": "Raw page 1 response for elementor_snippet"
+    },
+    {
+      "path": "live-site/wordpress/content-types/elementor_snippet.json",
+      "kind": "file",
+      "purpose": "Combined public WordPress records for content type elementor_snippet"
+    },
+    {
+      "path": "live-site/wordpress/raw/taxonomies/categories/page-1.json",
+      "kind": "file",
+      "purpose": "Raw page 1 response for categories"
+    },
+    {
+      "path": "live-site/wordpress/taxonomies/categories.json",
+      "kind": "file",
+      "purpose": "Combined public WordPress terms for taxonomy category"
+    },
+    {
+      "path": "live-site/wordpress/raw/taxonomies/tags/page-1.json",
+      "kind": "file",
+      "purpose": "Raw page 1 response for tags"
+    },
+    {
+      "path": "live-site/wordpress/taxonomies/tags.json",
+      "kind": "file",
+      "purpose": "Combined public WordPress terms for taxonomy post_tag"
+    },
+    {
+      "path": "live-site/wordpress/taxonomies/menus.json",
+      "kind": "file",
+      "purpose": "Combined public WordPress terms for taxonomy nav_menu"
+    },
+    {
+      "path": "live-site/wordpress/raw/taxonomies/wp_pattern_category/page-1.json",
+      "kind": "file",
+      "purpose": "Raw page 1 response for wp_pattern_category"
+    },
+    {
+      "path": "live-site/wordpress/taxonomies/wp_pattern_category.json",
+      "kind": "file",
+      "purpose": "Combined public WordPress terms for taxonomy wp_pattern_category"
+    },
+    {
+      "path": "live-site/menu/wordpress-routes/wp__v2__navigation.json",
+      "kind": "file",
+      "purpose": "Public WordPress menu/navigation route /wp/v2/navigation"
+    },
+    {
+      "path": "live-site/menu/wordpress-menu-routes-index.json",
+      "kind": "file",
+      "purpose": "Index of public WordPress menu/navigation REST routes attempted"
+    },
+    {
+      "path": "live-site/pages-html/index.html",
+      "kind": "file",
+      "purpose": "Raw public HTML for https://tikii.in/"
+    },
+    {
+      "path": "live-site/pages-html/about/index.html",
+      "kind": "file",
+      "purpose": "Raw public HTML for https://tikii.in/about/"
+    },
+    {
+      "path": "live-site/pages-html/babylon/index.html",
+      "kind": "file",
+      "purpose": "Raw public HTML for https://tikii.in/babylon/"
+    },
+    {
+      "path": "live-site/pages-html/blog/index.html",
+      "kind": "file",
+      "purpose": "Raw public HTML for https://tikii.in/blog/"
+    },
+    {
+      "path": "live-site/pages-html/chandrani-pearls-marketing/index.html",
+      "kind": "file",
+      "purpose": "Raw public HTML for https://tikii.in/chandrani-pearls-marketing/"
+    },
+    {
+      "path": "live-site/pages-html/chandrani-pearls-shopify-switch/index.html",
+      "kind": "file",
+      "purpose": "Raw public HTML for https://tikii.in/chandrani-pearls-shopify-switch/"
+    },
+    {
+      "path": "live-site/pages-html/contact/index.html",
+      "kind": "file",
+      "purpose": "Raw public HTML for https://tikii.in/contact/"
+    },
+    {
+      "path": "live-site/pages-html/privacy-policy/index.html",
+      "kind": "file",
+      "purpose": "Raw public HTML for https://tikii.in/privacy-policy/"
+    },
+    {
+      "path": "live-site/pages-html/services/index.html",
+      "kind": "file",
+      "purpose": "Raw public HTML for https://tikii.in/services/"
+    },
+    {
+      "path": "live-site/pages-html/shipping-returns/index.html",
+      "kind": "file",
+      "purpose": "Raw public HTML for https://tikii.in/shipping-returns/"
+    },
+    {
+      "path": "live-site/pages-html/terms-conditions/index.html",
+      "kind": "file",
+      "purpose": "Raw public HTML for https://tikii.in/terms-conditions/"
+    },
+    {
+      "path": "live-site/pages-html/vedamorph/index.html",
+      "kind": "file",
+      "purpose": "Raw public HTML for https://tikii.in/vedamorph/"
+    },
+    {
+      "path": "live-site/pages-html/work/index.html",
+      "kind": "file",
+      "purpose": "Raw public HTML for https://tikii.in/work/"
+    },
+    {
+      "path": "live-site/pages-html/young-learners-montessori-house/index.html",
+      "kind": "file",
+      "purpose": "Raw public HTML for https://tikii.in/young-learners-montessori-house/"
+    },
+    {
+      "path": "live-site/pages-html/page-index.json",
+      "kind": "file",
+      "purpose": "Index of retained migration-relevant rendered HTML pages"
+    },
+    {
+      "path": "live-site/menu/live-homepage-links.json",
+      "kind": "file",
+      "purpose": "Anchor/link snapshot from the live homepage, useful when WordPress menu endpoints are incomplete"
+    },
+    {
+      "path": "live-site/media/tikii.in/storage/2024/08/Deepas-20x10_SKin1_Compressed.webp",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/storage/2024/08/Deepas-20x10_SKin1_Compressed.webp"
+    },
+    {
+      "path": "live-site/media/tikii.in/storage/2024/08/Untitled.mp4",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/storage/2024/08/Untitled.mp4"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2013/04/large-2.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2013/04/large-2.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2013/04/large.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2013/04/large.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/1-1-1-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/1-1-1-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/1-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/1-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/2.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/2.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/3-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/3-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/4-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/4-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/5-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/5-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/6-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/6-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/GettyImages-1098257020.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/GettyImages-1098257020.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/GettyImages-1174091858.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/GettyImages-1174091858.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/GettyImages-1207574548.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/GettyImages-1207574548.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/GettyImages-1244351613.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/GettyImages-1244351613.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/GettyImages-1327495670.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/GettyImages-1327495670.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/GettyImages-1340430896-1-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/GettyImages-1340430896-1-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/GettyImages-1403883358-square.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/GettyImages-1403883358-square.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/GettyImages-1403883358.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/GettyImages-1403883358.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/GettyImages-1437209113.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/GettyImages-1437209113.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/GettyImages-1444653136.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/GettyImages-1444653136.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/GettyImages-1456747446-1.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/GettyImages-1456747446-1.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/GettyImages-1456747446-2-1.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/GettyImages-1456747446-2-1.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/GettyImages-1522039485.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/GettyImages-1522039485.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/GettyImages-82617372.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/GettyImages-82617372.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/Group-2466-1-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/Group-2466-1-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/Papaya-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/Papaya-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/PlusJakartaSans-Light.ttf",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/PlusJakartaSans-Light.ttf"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/PlusJakartaSans-Medium.ttf",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/PlusJakartaSans-Medium.ttf"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/PlusJakartaSans-Regular.ttf",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/PlusJakartaSans-Regular.ttf"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/PlusJakartaSans-SemiBold.ttf",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/PlusJakartaSans-SemiBold.ttf"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/Quote.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/Quote.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/arrow-link.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/arrow-link.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/blur-spot.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/blur-spot.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/brando-makes-branding-8bvlWmX4qOs-unsplash.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/brando-makes-branding-8bvlWmX4qOs-unsplash.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/cat-han-PfSGnSeBK4E-unsplash.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/cat-han-PfSGnSeBK4E-unsplash.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/curology-29wToZsX0Is-unsplash-1-1-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/curology-29wToZsX0Is-unsplash-1-1-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/curology-29wToZsX0Is-unsplash-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/curology-29wToZsX0Is-unsplash-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/curology-7TlWZkpxCb0-unsplash-1-1.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/curology-7TlWZkpxCb0-unsplash-1-1.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/curology-7TlWZkpxCb0-unsplash.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/curology-7TlWZkpxCb0-unsplash.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/curology-DGH1u80sZik-unsplash.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/curology-DGH1u80sZik-unsplash.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/curology-VItxz6u036U-unsplash.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/curology-VItxz6u036U-unsplash.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/curology-iKoH1gNON70-unsplash.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/curology-iKoH1gNON70-unsplash.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/customerbox-zep5axcGd5s-unsplash.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/customerbox-zep5axcGd5s-unsplash.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/dylann-hendricks-x0GwymmyqNk-unsplash.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/dylann-hendricks-x0GwymmyqNk-unsplash.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/elevate-nYgy58eb9aw-unsplash-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/elevate-nYgy58eb9aw-unsplash-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/free-photo-of-coke.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/free-photo-of-coke.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/logo-1-1.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/logo-1-1.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/logo-2-1.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/logo-2-1.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/logo-3.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/logo-3.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/logo-4.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/logo-4.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/logo-5.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/logo-5.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/logo-light.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/logo-light.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/logo-symbol-1.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/logo-symbol-1.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/logo.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/logo.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/mk-2-6MMaCjfY_u0-unsplash-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/mk-2-6MMaCjfY_u0-unsplash-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/mk-2-7R1eUOlI24M-unsplash.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/mk-2-7R1eUOlI24M-unsplash.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/mk-2-E6XStmd5wfk-unsplash-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/mk-2-E6XStmd5wfk-unsplash-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/mk-2-EAjjG-BVOms-unsplash-e1702546400987.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/mk-2-EAjjG-BVOms-unsplash-e1702546400987.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/mk-2-LjCoyaMWKvo-unsplash.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/mk-2-LjCoyaMWKvo-unsplash.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/mk-2-XjzrL-hp96g-unsplash.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/mk-2-XjzrL-hp96g-unsplash.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/mk-2-XoiBIpYkPJA-unsplash.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/mk-2-XoiBIpYkPJA-unsplash.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/mk-2-YGAcYJAs6Zc-unsplash.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/mk-2-YGAcYJAs6Zc-unsplash.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/mk-2-biKeArOcXXo-unsplash-1.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/mk-2-biKeArOcXXo-unsplash-1.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/mk-2-eQNNZq9yaS0-unsplash.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/mk-2-eQNNZq9yaS0-unsplash.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/mk-2-gwNAgJqeAUo-unsplash-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/mk-2-gwNAgJqeAUo-unsplash-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/mk-2-oxSg2k-g43I-unsplash.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/mk-2-oxSg2k-g43I-unsplash.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/mk-2-qG0ZWwd53Jk-unsplash-1.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/mk-2-qG0ZWwd53Jk-unsplash-1.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/mk-2-qvemLCiGaWM-unsplash-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/mk-2-qvemLCiGaWM-unsplash-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/mk-2-wG6qTlEBMM8-unsplash-1-1.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/mk-2-wG6qTlEBMM8-unsplash-1-1.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/mk-2-wG6qTlEBMM8-unsplash.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/mk-2-wG6qTlEBMM8-unsplash.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/mk-2-yeQfucZ-g2I-unsplash.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/mk-2-yeQfucZ-g2I-unsplash.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/mk-2-ypeZtZBUW6E-unsplash.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/mk-2-ypeZtZBUW6E-unsplash.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/mk-2-yxe9ZSoksI0-unsplash-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/mk-2-yxe9ZSoksI0-unsplash-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/mk-2-zzHJ3VSKrZg-unsplash.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/mk-2-zzHJ3VSKrZg-unsplash.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/monica-di-loxley-36RXyUGq_fU-unsplash.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/monica-di-loxley-36RXyUGq_fU-unsplash.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/pexels-anete-lusina-4793174.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/pexels-anete-lusina-4793174.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/pexels-cottonbro-studio-3952248-2-1.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/pexels-cottonbro-studio-3952248-2-1.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/pexels-ingrid-santana-1878687.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/pexels-ingrid-santana-1878687.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/pexels-karolina-grabowska-4202469.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/pexels-karolina-grabowska-4202469.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/pexels-ketut-subiyanto-5056090-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/pexels-ketut-subiyanto-5056090-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/pexels-marlene-leppanen-6748261.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/pexels-marlene-leppanen-6748261.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/pexels-mathilde-langevin-13878208-2.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/pexels-mathilde-langevin-13878208-2.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/pexels-photo-12096621.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/pexels-photo-12096621.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/pexels-photo-13986019.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/pexels-photo-13986019.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/pexels-photo-14650666-1.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/pexels-photo-14650666-1.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/pexels-photo-14650701-2.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/pexels-photo-14650701-2.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/pexels-photo-14650701.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/pexels-photo-14650701.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/pexels-photo-14650708.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/pexels-photo-14650708.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/pexels-photo-728414-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/pexels-photo-728414-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/pexels-photo-9970303-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/pexels-photo-9970303-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/pexels-steve-johnson-1774986.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/pexels-steve-johnson-1774986.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/pexels-tima-miroshnichenko-6914344.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/pexels-tima-miroshnichenko-6914344.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/pexels-vie-studio-7006194-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/pexels-vie-studio-7006194-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/pexels-yaroslav-shuraev-7956375.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/pexels-yaroslav-shuraev-7956375.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/photo-1549546641-74ce8f344f55.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/photo-1549546641-74ce8f344f55.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/photo-1556227702-5ec9eb8df3ff-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/photo-1556227702-5ec9eb8df3ff-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/photo-1556228578-6b39aba552d5.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/photo-1556228578-6b39aba552d5.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/photo-1556228578-d3984a1f7e71-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/photo-1556228578-d3984a1f7e71-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/photo-1556228720-74787810a501-1.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/photo-1556228720-74787810a501-1.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/photo-1556228841-7c69921649bb-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/photo-1556228841-7c69921649bb-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/photo-1556228841-7db5b6786a34.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/photo-1556228841-7db5b6786a34.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/photo-1570554886111-e80fcca6a029.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/photo-1570554886111-e80fcca6a029.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/photo-1583305727488-61f82c7eae4b.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/photo-1583305727488-61f82c7eae4b.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/photo-1583781884006-cfb2e4813c0a.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/photo-1583781884006-cfb2e4813c0a.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/photo-1585945037805-5fd82c2e60b1.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/photo-1585945037805-5fd82c2e60b1.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/photo-1590845947676-fa2576f401b2.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/photo-1590845947676-fa2576f401b2.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/photo-1593697724892-0f9fcc7ed24e.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/photo-1593697724892-0f9fcc7ed24e.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/photo-1594434533760-02e0f3faaa68-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/photo-1594434533760-02e0f3faaa68-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/photo-1599669454699-248893623440-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/photo-1599669454699-248893623440-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/photo-1616750819287-955503f65d42.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/photo-1616750819287-955503f65d42.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/photo-1618366712010-f4ae9c647dcb-1.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/photo-1618366712010-f4ae9c647dcb-1.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/photo-1633533448522-26ee3eab7961-1.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/photo-1633533448522-26ee3eab7961-1.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/photo-1633533450371-4d3562ca227f-1.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/photo-1633533450371-4d3562ca227f-1.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/photo-1633533451976-992e226e32d0-1-1.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/photo-1633533451976-992e226e32d0-1-1.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/photo-1633533451976-992e226e32d0.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/photo-1633533451976-992e226e32d0.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/photo-1636247498840-693054bb4bcc-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/photo-1636247498840-693054bb4bcc-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/photo-1656457537704-11f3bcaee2fd.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/photo-1656457537704-11f3bcaee2fd.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/photo-1675589052003-d8099ff51a6e-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/photo-1675589052003-d8099ff51a6e-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/photo-1693841114632-bc1c2760bbfd.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/photo-1693841114632-bc1c2760bbfd.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/photo-1693841114664-fe9ef878f28a.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/photo-1693841114664-fe9ef878f28a.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/print.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/print.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/project.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/project.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/redd-f-rt1R5wtY31Q-unsplash-1.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/redd-f-rt1R5wtY31Q-unsplash-1.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/steve-cancel-ybxexK6umlM-unsplash.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/steve-cancel-ybxexK6umlM-unsplash.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/studio-blackthorns-6Ono6vc6_i4-unsplash-1-1-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/studio-blackthorns-6Ono6vc6_i4-unsplash-1-1-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/studio-blackthorns-6Ono6vc6_i4-unsplash-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/studio-blackthorns-6Ono6vc6_i4-unsplash-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/studio-blackthorns-6VCtB0wdgM0-unsplash.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/studio-blackthorns-6VCtB0wdgM0-unsplash.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/studio-blackthorns-9jJhIfbEQtU-unsplash-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/studio-blackthorns-9jJhIfbEQtU-unsplash-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/studio-blackthorns-Om6SV-Pg31k-unsplash-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/studio-blackthorns-Om6SV-Pg31k-unsplash-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/studio-blackthorns-XpPNzr_ZeRk-unsplash-1-1.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/studio-blackthorns-XpPNzr_ZeRk-unsplash-1-1.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/studio-blackthorns-XpPNzr_ZeRk-unsplash.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/studio-blackthorns-XpPNzr_ZeRk-unsplash.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/studio-blackthorns-YsFtudfV-w0-unsplash.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/studio-blackthorns-YsFtudfV-w0-unsplash.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/studio-blackthorns-m6sUTVAjl5o-unsplash-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/studio-blackthorns-m6sUTVAjl5o-unsplash-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/10/studio-blackthorns-oAR63IbWHZk-unsplash-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/10/studio-blackthorns-oAR63IbWHZk-unsplash-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/11/1-1-1.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/11/1-1-1.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/11/1-1.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/11/1-1.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/11/2-1-1.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/11/2-1-1.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/11/2-1.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/11/2-1.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/11/Elementor-post-screenshot_5636_2023-11-29-23-10-08_25af5e36.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/11/Elementor-post-screenshot_5636_2023-11-29-23-10-08_25af5e36.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/11/GettyImages-1193048894.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/11/GettyImages-1193048894.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/11/GettyImages-1360057946-1-1-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/11/GettyImages-1360057946-1-1-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/11/GettyImages-1409965331.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/11/GettyImages-1409965331.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/11/GettyImages-1471690759.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/11/GettyImages-1471690759.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/11/GettyImages-1487864067-edit.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/11/GettyImages-1487864067-edit.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/11/GettyImages-1487864067-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/11/GettyImages-1487864067-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/11/Project-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/11/Project-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/11/Salute.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/11/Salute.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/11/ativo.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/11/ativo.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/11/caridad-1.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/11/caridad-1.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/11/cherrydeck-D5bISElmYZQ-unsplash.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/11/cherrydeck-D5bISElmYZQ-unsplash.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/11/debebe.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/11/debebe.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/11/fiore-1.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/11/fiore-1.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/11/headway-jfR5wu2hMI0-unsplash.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/11/headway-jfR5wu2hMI0-unsplash.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/11/jason-goodman-nF0nQuqBsrI-unsplash.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/11/jason-goodman-nF0nQuqBsrI-unsplash.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/11/jolie-1.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/11/jolie-1.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/11/jud-mackrill-Of_m3hMsoAA-unsplash.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/11/jud-mackrill-Of_m3hMsoAA-unsplash.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/11/konstruktion-1.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/11/konstruktion-1.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/11/logo-4.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/11/logo-4.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/11/mika-baumeister-K47xNClfpyg-unsplash.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/11/mika-baumeister-K47xNClfpyg-unsplash.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/11/pexels-anastasia-shuraeva-9442066.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/11/pexels-anastasia-shuraeva-9442066.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/11/pexels-andrea-piacquadio-774909-2.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/11/pexels-andrea-piacquadio-774909-2.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/11/pexels-christina-morillo-1181279.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/11/pexels-christina-morillo-1181279.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/11/pexels-created-stories-11464383.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/11/pexels-created-stories-11464383.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/11/pexels-created-stories-11464428-1.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/11/pexels-created-stories-11464428-1.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/11/pexels-daniel-xavier-1239288.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/11/pexels-daniel-xavier-1239288.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/11/pexels-fauxels-3182829.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/11/pexels-fauxels-3182829.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/11/pexels-google-deepmind-17485013.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/11/pexels-google-deepmind-17485013.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/11/pexels-google-deepmind-17485709.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/11/pexels-google-deepmind-17485709.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/11/pexels-italo-melo-2379005.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/11/pexels-italo-melo-2379005.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/11/pexels-jess-loiterton-5232686-1.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/11/pexels-jess-loiterton-5232686-1.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/11/pexels-karina-zhukovskaya-6446709-2-1.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/11/pexels-karina-zhukovskaya-6446709-2-1.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/11/pexels-karolina-grabowska-4397898.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/11/pexels-karolina-grabowska-4397898.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/11/pexels-mathilde-langevin-10897656.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/11/pexels-mathilde-langevin-10897656.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/11/pexels-pixabay-220453-2.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/11/pexels-pixabay-220453-2.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/11/pexels-rdne-stock-project-7005190.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/11/pexels-rdne-stock-project-7005190.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/11/pexels-tony-schnagl-5588213.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/11/pexels-tony-schnagl-5588213.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/11/tech-device-with-nature-background-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/11/tech-device-with-nature-background-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/11/volodymyr-kozhevnikov-106coBynOtc-unsplash.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/11/volodymyr-kozhevnikov-106coBynOtc-unsplash.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/11/volodymyr-kozhevnikov-VwZuLjeTqqo-unsplash.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/11/volodymyr-kozhevnikov-VwZuLjeTqqo-unsplash.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/1-click-demo-1-1.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/1-click-demo-1-1.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/1-click-demo-1-2.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/1-click-demo-1-2.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/1-click-demo-1.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/1-click-demo-1.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/2.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/2.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/240_resume_1-2.pdf",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/240_resume_1-2.pdf"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/240_resume_1.pdf",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/240_resume_1.pdf"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/99-free-1-1-1.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/99-free-1-1-1.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/99-free-1-1-2.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/99-free-1-1-2.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/99-free-1-1.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/99-free-1-1.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Combined-Shape-1-1-1.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Combined-Shape-1-1-1.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Combined-Shape-1-1-2.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Combined-Shape-1-1-2.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Combined-Shape-1-1.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Combined-Shape-1-1.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Design-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Design-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Details-1-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Details-1-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Elementor-1.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Elementor-1.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Elementor-Logo-Full-Red-1.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Elementor-Logo-Full-Red-1.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Elementor-Logo-Full-Red-2.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Elementor-Logo-Full-Red-2.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Elementor-Logo-Full-Red.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Elementor-Logo-Full-Red.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Elementor-Logo-Symbol-White-1.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Elementor-Logo-Symbol-White-1.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Elementor-Logo-Symbol-White-2.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Elementor-Logo-Symbol-White-2.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Elementor-Logo-Symbol-White.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Elementor-Logo-Symbol-White.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Elementor-Logo-Symbol-White2-1.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Elementor-Logo-Symbol-White2-1.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Elementor-Logo-Symbol-White2-2.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Elementor-Logo-Symbol-White2-2.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Elementor-Logo-Symbol-White2.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Elementor-Logo-Symbol-White2.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Elementor-post-screenshot_1037_2023-12-11-07-29-10_12779a57-1.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Elementor-post-screenshot_1037_2023-12-11-07-29-10_12779a57-1.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Elementor-post-screenshot_13279_2023-12-08-20-43-59_4b3e3340.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Elementor-post-screenshot_13279_2023-12-08-20-43-59_4b3e3340.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Elementor-post-screenshot_15502_2023-12-08-21-14-21_92c0e98-1.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Elementor-post-screenshot_15502_2023-12-08-21-14-21_92c0e98-1.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Elementor-post-screenshot_15502_2023-12-08-21-14-21_92c0e98-2.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Elementor-post-screenshot_15502_2023-12-08-21-14-21_92c0e98-2.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Elementor-post-screenshot_15502_2023-12-08-21-14-21_92c0e98.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Elementor-post-screenshot_15502_2023-12-08-21-14-21_92c0e98.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Elementor-post-screenshot_168_2023-12-07-16-39-36_780fa471-1.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Elementor-post-screenshot_168_2023-12-07-16-39-36_780fa471-1.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Elementor-post-screenshot_168_2023-12-07-16-39-36_780fa471-2.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Elementor-post-screenshot_168_2023-12-07-16-39-36_780fa471-2.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Elementor-post-screenshot_6588_2023-12-11-07-29-14_15f57926.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Elementor-post-screenshot_6588_2023-12-11-07-29-14_15f57926.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Elementor-post-screenshot_6663_2023-12-11-07-29-18_719d4223.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Elementor-post-screenshot_6663_2023-12-11-07-29-18_719d4223.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Elementor-post-screenshot_8701_2023-12-08-20-43-55_66dce640.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Elementor-post-screenshot_8701_2023-12-08-20-43-55_66dce640.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Elementor-post-screenshot_876_2023-12-04-10-05-02_702bba7e.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Elementor-post-screenshot_876_2023-12-04-10-05-02_702bba7e.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Elementor-post-screenshot_9696_2023-12-08-20-43-56_217a2e90.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Elementor-post-screenshot_9696_2023-12-08-20-43-56_217a2e90.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Fabrik.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Fabrik.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/GettyImages-91605946.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/GettyImages-91605946.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Getty_Images_Logo-1.webp",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Getty_Images_Logo-1.webp"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Getty_Images_Logo-2.webp",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Getty_Images_Logo-2.webp"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Getty_Images_Logo.webp",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Getty_Images_Logo.webp"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Group-6-1.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Group-6-1.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Group-6-2.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Group-6-2.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Group-6.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Group-6.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Home-4-1.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Home-4-1.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Homes.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Homes.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Icons.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Icons.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Intro.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Intro.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Limit-Login-Copy-1.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Limit-Login-Copy-1.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Limit-Login-Copy-2.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Limit-Login-Copy-2.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Limit-Login-Copy.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Limit-Login-Copy.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Monsterlights-Copy-1-1.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Monsterlights-Copy-1-1.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Monsterlights-Copy-1-2.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Monsterlights-Copy-1-2.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Monsterlights-Copy-1.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Monsterlights-Copy-1.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Pages-1.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Pages-1.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Phone-2.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Phone-2.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Promo.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Promo.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Proven-Marketing-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Proven-Marketing-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Rectangle-4-1.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Rectangle-4-1.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Rectangle-4-2.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Rectangle-4-2.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Rectangle-4.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Rectangle-4.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Support-1-1-1-1.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Support-1-1-1-1.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Support-1-1-1-2.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Support-1-1-1-2.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Support-1-1-1.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Support-1-1-1.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Tablets-2.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Tablets-2.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/Thumb.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/Thumb.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/WPForms-icon-1-1-1.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/WPForms-icon-1-1-1.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/WPForms-icon-1-1-2.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/WPForms-icon-1-1-2.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/WPForms-icon-1-1.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/WPForms-icon-1-1.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/acf-logo-2-1.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/acf-logo-2-1.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/acf-logo-2-2.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/acf-logo-2-2.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/acf-logo-2.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/acf-logo-2.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/alexandre-debieve-xbeKrAgzGhQ-unsplash-2.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/alexandre-debieve-xbeKrAgzGhQ-unsplash-2.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/almas-salakhov-dIGLbp5P8eg-unsplash.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/almas-salakhov-dIGLbp5P8eg-unsplash.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/annie-spratt-MChSQHxGZrQ-unsplash-1.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/annie-spratt-MChSQHxGZrQ-unsplash-1.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/birmingham-museums-trust-5ruS8plfbvM-unsplash-e1702086643474.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/birmingham-museums-trust-5ruS8plfbvM-unsplash-e1702086643474.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/birmingham-museums-trust-BqaF65lS6E4-unsplash.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/birmingham-museums-trust-BqaF65lS6E4-unsplash.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/blur-spot.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/blur-spot.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/christian-buehner-XiWX754jx0s-unsplash.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/christian-buehner-XiWX754jx0s-unsplash.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/clients-trust-charitify-1-2-1-1.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/clients-trust-charitify-1-2-1-1.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/clients-trust-charitify-1-2-1-2.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/clients-trust-charitify-1-2-1-2.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/clients-trust-charitify-1-2-1.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/clients-trust-charitify-1-2-1.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/coiffure.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/coiffure.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/curve_intro_overlay.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/curve_intro_overlay.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/dan-farrell-fT49QnFucQ8-unsplash.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/dan-farrell-fT49QnFucQ8-unsplash.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/elementor-2-1.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/elementor-2-1.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/elementor-2-2.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/elementor-2-2.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/elementor-2.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/elementor-2.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/elementor-pro-1-1.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/elementor-pro-1-1.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/elementor-pro-1-2.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/elementor-pro-1-2.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/elementor-pro-1.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/elementor-pro-1.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/filipp-romanovski-CGKYNN3uuVo-unsplash.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/filipp-romanovski-CGKYNN3uuVo-unsplash.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/free-image-1.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/free-image-1.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/free-image-2.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/free-image-2.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/free-image.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/free-image.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/free-photo-of-gallery-interior-with-photography-and-modern-sculpture.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/free-photo-of-gallery-interior-with-photography-and-modern-sculpture.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/free-photo-of-red-statue-of-thinking-person-copy-1.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/free-photo-of-red-statue-of-thinking-person-copy-1.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/fuu-j-Lo7venJ_ywM-unsplash.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/fuu-j-Lo7venJ_ywM-unsplash.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/gettyimages-200154762-004-1024x1024-1.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/gettyimages-200154762-004-1024x1024-1.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/help-articles-1-1-1.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/help-articles-1-1-1.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/help-articles-1-1-2.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/help-articles-1-1-2.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/help-articles-1-1.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/help-articles-1-1.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/home-1-1-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/home-1-1-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/home-2-1-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/home-2-1-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/home-3-1.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/home-3-1.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/homes-all-2.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/homes-all-2.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/icon-256x256-1-1-1.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/icon-256x256-1-1-1.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/icon-256x256-1-1-2.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/icon-256x256-1-1-2.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/icon-256x256-1-1.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/icon-256x256-1-1.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/icon-256x256-1-1.webp",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/icon-256x256-1-1.webp"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/icon-256x256-1-2.webp",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/icon-256x256-1-2.webp"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/icon-256x256-1.webp",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/icon-256x256-1.webp"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/janko-ferlic-mIs_QHS1ht8-unsplash.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/janko-ferlic-mIs_QHS1ht8-unsplash.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/liftime-updates-charitify-1-1-1-1.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/liftime-updates-charitify-1-1-1-1.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/liftime-updates-charitify-1-1-1-2.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/liftime-updates-charitify-1-1-1-2.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/liftime-updates-charitify-1-1-1.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/liftime-updates-charitify-1-1-1.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/lina-verovaya-GK_GIx87E58-unsplash.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/lina-verovaya-GK_GIx87E58-unsplash.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/line.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/line.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/line2-9.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/line2-9.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/loco-1-1-1.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/loco-1-1-1.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/loco-1-1-2.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/loco-1-1-2.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/loco-1-1.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/loco-1-1.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/logo-gallery-1-1.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/logo-gallery-1-1.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/logo-gallery.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/logo-gallery.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/machina.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/machina.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/michael-matloka-4a7K9tI_XFs-unsplash-1024x681-1.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/michael-matloka-4a7K9tI_XFs-unsplash-1024x681-1.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/mk-2-4yaSDaYqfTo-unsplash.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/mk-2-4yaSDaYqfTo-unsplash.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/mk-2-7R1eUOlI24M-unsplash.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/mk-2-7R1eUOlI24M-unsplash.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/niche-design-1-1-1.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/niche-design-1-1-1.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/niche-design-1-1-2.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/niche-design-1-1-2.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/niche-design-1-1.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/niche-design-1-1.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/nikhil-JmTQJ6cOsqQ-unsplash.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/nikhil-JmTQJ6cOsqQ-unsplash.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/no-code-new-1-1-1.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/no-code-new-1-1-1.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/no-code-new-1-1-2.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/no-code-new-1-1-2.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/no-code-new-1-1.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/no-code-new-1-1.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/on-click-demo-1-1-1.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/on-click-demo-1-1-1.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/on-click-demo-1-1-2.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/on-click-demo-1-1-2.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/on-click-demo-1-1.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/on-click-demo-1-1.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/option-panel-1-1-1.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/option-panel-1-1-1.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/option-panel-1-1-2.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/option-panel-1-1-2.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/option-panel-1-1.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/option-panel-1-1.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/orfeas-green-G5A5ZNjS2tE-unsplash.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/orfeas-green-G5A5ZNjS2tE-unsplash.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/parabol-the-agile-meeting-toolbox-qSv1gwYEfa8-unsplash.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/parabol-the-agile-meeting-toolbox-qSv1gwYEfa8-unsplash.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/paul-blenkhorn-84767CQrS8-unsplash.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/paul-blenkhorn-84767CQrS8-unsplash.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/perrformance-1-1-1.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/perrformance-1-1-1.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/perrformance-1-1-2.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/perrformance-1-1-2.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/perrformance-1-1.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/perrformance-1-1.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/pexels-anna-shvets-5682085.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/pexels-anna-shvets-5682085.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/pexels-antoni-shkraba-4348405.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/pexels-antoni-shkraba-4348405.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/pexels-cottonbro-studio-3778853.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/pexels-cottonbro-studio-3778853.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/pexels-cottonbro-studio-5083396.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/pexels-cottonbro-studio-5083396.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/pexels-cottonbro-studio-8091626.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/pexels-cottonbro-studio-8091626.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/pexels-cottonbro-studio-9121185.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/pexels-cottonbro-studio-9121185.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/pexels-ivan-samkov-5428649.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/pexels-ivan-samkov-5428649.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/pexels-ivan-samkov-5428662.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/pexels-ivan-samkov-5428662.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/pexels-karina-zhukovskaya-6446709-2.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/pexels-karina-zhukovskaya-6446709-2.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/pexels-ketut-subiyanto-4349753-cut-1.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/pexels-ketut-subiyanto-4349753-cut-1.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/pexels-ketut-subiyanto-4349753-cut-2.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/pexels-ketut-subiyanto-4349753-cut-2.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/pexels-ketut-subiyanto-4349753-cut.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/pexels-ketut-subiyanto-4349753-cut.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/pexels-ketut-subiyanto-4349939.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/pexels-ketut-subiyanto-4349939.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/pexels-lil-artsy-5541019-1.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/pexels-lil-artsy-5541019-1.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/pexels-mart-production-7550298-3.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/pexels-mart-production-7550298-3.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/pexels-mike-bird-143967-1.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/pexels-mike-bird-143967-1.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/pexels-photo-10559088-2.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/pexels-photo-10559088-2.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/pexels-photo-10559088.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/pexels-photo-10559088.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/pexels-photo-3692056.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/pexels-photo-3692056.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/pexels-photo-3778577.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/pexels-photo-3778577.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/pexels-photo-3778684.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/pexels-photo-3778684.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/pexels-photo-3778853-2.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/pexels-photo-3778853-2.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/pexels-photo-3778867.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/pexels-photo-3778867.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/pexels-photo-3778902.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/pexels-photo-3778902.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/pexels-photo-4098277.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/pexels-photo-4098277.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/pexels-photo-6598660-1-1.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/pexels-photo-6598660-1-1.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/pexels-photo-6598660-1.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/pexels-photo-6598660-1.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/pexels-photo-6598662.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/pexels-photo-6598662.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/pexels-photo-6598664-3.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/pexels-photo-6598664-3.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/pexels-photo-7561225.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/pexels-photo-7561225.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/pexels-rfstudio-3810792-2.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/pexels-rfstudio-3810792-2.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/pexels-zack-jarosz-1727658-1.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/pexels-zack-jarosz-1727658-1.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/photo-1622368277376-584eb4da230c.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/photo-1622368277376-584eb4da230c.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/placeholder-1-1.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/placeholder-1-1.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/placeholder-1-2.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/placeholder-1-2.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/placeholder-1-3.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/placeholder-1-3.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/placeholder-1.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/placeholder-1.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/placeholder-2-1.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/placeholder-2-1.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/placeholder-2-2.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/placeholder-2-2.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/placeholder-2-3.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/placeholder-2-3.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/placeholder-2.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/placeholder-2.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/placeholder.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/placeholder.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/plugins-icon-1-1-1.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/plugins-icon-1-1-1.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/plugins-icon-1-1-2.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/plugins-icon-1-1-2.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/plugins-icon-1-1.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/plugins-icon-1-1.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/pmv-chamara-mTFzk87Lt_w-unsplash-2.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/pmv-chamara-mTFzk87Lt_w-unsplash-2.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/rahul-chakraborty-3lYooa_fYTk-unsplash.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/rahul-chakraborty-3lYooa_fYTk-unsplash.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/really-simple-sll-logo-1-1-1.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/really-simple-sll-logo-1-1-1.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/really-simple-sll-logo-1-1-2.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/really-simple-sll-logo-1-1-2.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/really-simple-sll-logo-1-1.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/really-simple-sll-logo-1-1.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/sale-1.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/sale-1.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/sale-2.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/sale-2.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/sale.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/sale.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/sheldon-liu-FrQKfzoTgsw-unsplash.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/sheldon-liu-FrQKfzoTgsw-unsplash.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/steel-anime-new-1.json",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/steel-anime-new-1.json"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/steel-anime-new-2.json",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/steel-anime-new-2.json"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/steel-anime-new.json",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/steel-anime-new.json"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/steve-johnson-b5HMwgoU2h4-unsplash.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/steve-johnson-b5HMwgoU2h4-unsplash.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/supply-6dfYAFmdoY4-unsplash.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/supply-6dfYAFmdoY4-unsplash.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/tech-device-with-nature-background-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/tech-device-with-nature-background-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/technologia.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/technologia.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/theme-icons/demo-files/demo-1.css",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/theme-icons/demo-files/demo-1.css"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/theme-icons/demo-files/demo-2.css",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/theme-icons/demo-files/demo-2.css"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/theme-icons/demo-files/demo.css",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/theme-icons/demo-files/demo.css"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/theme-icons/fonts/theme-icons-1.eot",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/theme-icons/fonts/theme-icons-1.eot"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/theme-icons/fonts/theme-icons-1.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/theme-icons/fonts/theme-icons-1.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/theme-icons/fonts/theme-icons-1.ttf",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/theme-icons/fonts/theme-icons-1.ttf"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/theme-icons/fonts/theme-icons-1.woff",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/theme-icons/fonts/theme-icons-1.woff"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/theme-icons/fonts/theme-icons-2.eot",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/theme-icons/fonts/theme-icons-2.eot"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/theme-icons/fonts/theme-icons-2.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/theme-icons/fonts/theme-icons-2.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/theme-icons/fonts/theme-icons-2.ttf",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/theme-icons/fonts/theme-icons-2.ttf"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/theme-icons/fonts/theme-icons-2.woff",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/theme-icons/fonts/theme-icons-2.woff"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/theme-icons/fonts/theme-icons.eot",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/theme-icons/fonts/theme-icons.eot"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/theme-icons/fonts/theme-icons.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/theme-icons/fonts/theme-icons.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/theme-icons/fonts/theme-icons.ttf",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/theme-icons/fonts/theme-icons.ttf"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/theme-icons/fonts/theme-icons.woff",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/theme-icons/fonts/theme-icons.woff"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/theme-icons/selection-1.json",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/theme-icons/selection-1.json"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/theme-icons/selection-2.json",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/theme-icons/selection-2.json"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/theme-icons/selection.json",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/theme-icons/selection.json"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/theme-icons/style-1.css",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/theme-icons/style-1.css"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/theme-icons/style-2.css",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/theme-icons/style-2.css"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/theme-icons/style.css",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/theme-icons/style.css"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/translation-1-1-1.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/translation-1-1-1.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/translation-1-1-2.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/translation-1-1-2.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/translation-1-1.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/translation-1-1.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/tutorials-1-1-1.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/tutorials-1-1-1.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/tutorials-1-1-2.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/tutorials-1-1-2.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/tutorials-1-1.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/tutorials-1-1.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/udp-logo-1-1-1.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/udp-logo-1-1-1.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/udp-logo-1-1-2.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/udp-logo-1-1-2.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/udp-logo-1-1.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/udp-logo-1-1.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/vamtam-elite-1-1-1.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/vamtam-elite-1-1-1.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/vamtam-elite-1-1-2.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/vamtam-elite-1-1-2.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/vamtam-elite-1-1.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/vamtam-elite-1-1.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/volodymyr-kozhevnikov-106coBynOtc-unsplash.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/volodymyr-kozhevnikov-106coBynOtc-unsplash.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/woocommerce-logo-1.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/woocommerce-logo-1.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/woocommerce-logo-2.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/woocommerce-logo-2.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/woocommerce-logo.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/woocommerce-logo.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/wordfence-security-logo-1-1-1.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/wordfence-security-logo-1-1-1.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/wordfence-security-logo-1-1-2.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/wordfence-security-logo-1-1-2.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/wordfence-security-logo-1-1.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/wordfence-security-logo-1-1.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/yoast_icon_rgb_optm-1.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/yoast_icon_rgb_optm-1.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/yoast_icon_rgb_optm-2.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/yoast_icon_rgb_optm-2.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2023/12/yoast_icon_rgb_optm.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2023/12/yoast_icon_rgb_optm.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/01/Plugins-with-WooCommerce.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/01/Plugins-with-WooCommerce.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/01/Plugins_No-WooCommerce.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/01/Plugins_No-WooCommerce.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/04/Tikii-White-Logo-Only.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/04/Tikii-White-Logo-Only.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/04/Tikii-favicon.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/04/Tikii-favicon.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/06/new_file-1.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/06/new_file-1.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/06/new_file-2.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/06/new_file-2.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/06/new_file.svg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/06/new_file.svg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/06/uxie-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/06/uxie-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/06/uxie.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/06/uxie.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/08/Deepas-20x10_SKin1_Compressed.webp",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/08/Deepas-20x10_SKin1_Compressed.webp"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/08/IMG_20240817_173218-edit-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/08/IMG_20240817_173218-edit-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/08/IMG_20240817_173243-edit-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/08/IMG_20240817_173243-edit-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/08/IMG_20240817_173323-edit-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/08/IMG_20240817_173323-edit-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/08/IMG_20240817_173337-edit-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/08/IMG_20240817_173337-edit-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/08/IMG_20240817_173345-edit-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/08/IMG_20240817_173345-edit-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/08/IMG_20240817_173407-edit-1-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/08/IMG_20240817_173407-edit-1-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/08/IMG_20240817_173407-edit-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/08/IMG_20240817_173407-edit-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/08/IMG_20240817_173426-edit-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/08/IMG_20240817_173426-edit-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/08/IMG_20240817_173455-edit-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/08/IMG_20240817_173455-edit-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/08/IMG_20240817_173500-edit-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/08/IMG_20240817_173500-edit-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/08/IMG_20240817_173509-edit-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/08/IMG_20240817_173509-edit-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/08/TikiiClients-Absorbia.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/08/TikiiClients-Absorbia.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/08/TikiiClients-Anuschka.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/08/TikiiClients-Anuschka.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/08/TikiiClients-Anvil.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/08/TikiiClients-Anvil.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/08/TikiiClients-BNI.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/08/TikiiClients-BNI.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/08/TikiiClients-Bipin.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/08/TikiiClients-Bipin.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/08/TikiiClients-ChandraniPearls.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/08/TikiiClients-ChandraniPearls.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/08/TikiiClients-Fanatic.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/08/TikiiClients-Fanatic.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/08/TikiiClients-NMC.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/08/TikiiClients-NMC.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/08/TikiiClients-PremiereRealty.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/08/TikiiClients-PremiereRealty.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/08/TikiiClients-Samilton.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/08/TikiiClients-Samilton.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/08/Untitled.mp4",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/08/Untitled.mp4"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/10/Banner-2-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/10/Banner-2-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/10/Chandrani-Pearls-20240829-Durga-Puja-Collection-NP4101969-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/10/Chandrani-Pearls-20240829-Durga-Puja-Collection-NP4101969-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/10/Chandrani-Pearls-Campaign2075_edit_hue_2_NL_Compressed-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/10/Chandrani-Pearls-Campaign2075_edit_hue_2_NL_Compressed-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/10/Face-of-CP-Hoarding-Banner-2-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/10/Face-of-CP-Hoarding-Banner-2-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/10/Face-of-CP-Hoarding-Banner-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/10/Face-of-CP-Hoarding-Banner-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/10/Face-of-CP_Insta-Timeline-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/10/Face-of-CP_Insta-Timeline-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/10/Face-of-CP_Website-Banner.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/10/Face-of-CP_Website-Banner.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/10/S23961_SM-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/10/S23961_SM-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/10/S24942_SM2-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/10/S24942_SM2-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/10/S25240_SM1-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/10/S25240_SM1-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/10/S25275.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/10/S25275.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/10/T24788A.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/10/T24788A.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/10/freepik__candid-image-photography-natural-textures-hi-scaled.jpeg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/10/freepik__candid-image-photography-natural-textures-hi-scaled.jpeg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/11/Babulon-Visiting-cardjpg-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/11/Babulon-Visiting-cardjpg-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/11/Babylon-Challenge-Img-2.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/11/Babylon-Challenge-Img-2.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/11/Babylon-Goal-Img-1-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/11/Babylon-Goal-Img-1-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/11/Babylon-Goal-Img-2.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/11/Babylon-Goal-Img-2.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/11/Babylon-Menu-Mockup-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/11/Babylon-Menu-Mockup-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/11/Babylon-Pic-3.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/11/Babylon-Pic-3.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/11/Babylon-Pic-scaled-e1732791359101.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/11/Babylon-Pic-scaled-e1732791359101.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/11/Babylon-Pic2-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/11/Babylon-Pic2-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/11/Babylon-Result-Img-1.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/11/Babylon-Result-Img-1.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/11/Babylon-Result-Img-2.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/11/Babylon-Result-Img-2.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/11/Babylon-Result-Img-3.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/11/Babylon-Result-Img-3.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/11/Babylon-Result-Img-4.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/11/Babylon-Result-Img-4.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/11/Babylon-Result-Img-5.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/11/Babylon-Result-Img-5.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/11/Babylon-menu-2-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/11/Babylon-menu-2-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/11/Banner-Image-All-Desktop-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/11/Banner-Image-All-Desktop-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/11/Body-Care_Our-Collection-scaled-e1733252599745.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/11/Body-Care_Our-Collection-scaled-e1733252599745.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/11/Body-Wash-3-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/11/Body-Wash-3-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/11/DSF0273-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/11/DSF0273-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/11/DSF0338-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/11/DSF0338-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/11/Design-Option-1.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/11/Design-Option-1.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/11/Face-Gel-2-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/11/Face-Gel-2-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/11/LetterHead-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/11/LetterHead-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/11/MG_7796-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/11/MG_7796-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/11/MG_7870-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/11/MG_7870-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/11/MG_9679-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/11/MG_9679-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/11/Revitalizing-a-Legacy-Hero-Banner.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/11/Revitalizing-a-Legacy-Hero-Banner.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/11/Shampoo-1-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/11/Shampoo-1-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/11/VM-Bag-Mockup-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/11/VM-Bag-Mockup-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/11/VM-Banner-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/11/VM-Banner-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/11/VM-SM-Mockup-copy-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/11/VM-SM-Mockup-copy-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/11/VM-Standee-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/11/VM-Standee-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/11/VM-V-Card-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/11/VM-V-Card-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/11/YL-Bag-Mockup-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/11/YL-Bag-Mockup-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/11/YL-Fees-Book--scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/11/YL-Fees-Book--scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/11/YL-Fees-Book-Inside--scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/11/YL-Fees-Book-Inside--scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/11/YL-Visiting-Card-Mockup-copy.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/11/YL-Visiting-Card-Mockup-copy.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2024/11/babylon-Mood-board-Hero-img-Sec-2-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2024/11/babylon-Mood-board-Hero-img-Sec-2-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2025/01/40-1.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2025/01/40-1.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2025/01/40.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2025/01/40.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2025/01/Group-Picture-1-1-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2025/01/Group-Picture-1-1-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2025/01/Group-Picture-1-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2025/01/Group-Picture-1-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2025/01/IMG_1432_edit-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2025/01/IMG_1432_edit-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2025/01/IMG_1438-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2025/01/IMG_1438-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2025/01/IMG_1438_Edit-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2025/01/IMG_1438_Edit-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/2025/01/WhatsApp-Image-2024-09-12-at-13.35.11-scaled.jpg",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/2025/01/WhatsApp-Image-2024-09-12-at-13.35.11-scaled.jpg"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/elementor/screenshots/Elementor-post-screenshot_11079_2024-11-18-18-43-29_6a3b32f0.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/elementor/screenshots/Elementor-post-screenshot_11079_2024-11-18-18-43-29_6a3b32f0.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/elementor/screenshots/Elementor-post-screenshot_168_2024-08-13-12-53-39_371f2836.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/elementor/screenshots/Elementor-post-screenshot_168_2024-08-13-12-53-39_371f2836.png"
+    },
+    {
+      "path": "live-site/media/tikii.in/wp-content/uploads/elementor/screenshots/Elementor-post-screenshot_349_2024-11-18-18-28-11_7e4fd7ec.png",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://tikii.in/wp-content/uploads/elementor/screenshots/Elementor-post-screenshot_349_2024-11-18-18-28-11_7e4fd7ec.png"
+    },
+    {
+      "path": "live-site/media/websiteswordpresst85f37.zapwp.com/q-l/r-0/wp-1/w-1/u-https-/tikii.in/core/views/pixelpiernyc/vamtam/assets/images/loader-ring.gif",
+      "kind": "media",
+      "purpose": "Downloaded media asset from https://websiteswordpresst85f37.zapwp.com/q:l/r:0/wp:1/w:1/u:https://tikii.in/core/views/pixelpiernyc/vamtam/assets/images/loader-ring.gif"
+    },
+    {
+      "path": "live-site/media/media-index.json",
+      "kind": "file",
+      "purpose": "Index of retained downloaded media assets after thumbnail/proxy cleanup"
+    },
+    {
+      "path": "current-app/sitemap-routes.json",
+      "kind": "file",
+      "purpose": "Route sitemap snapshot for the current Next app"
+    },
+    {
+      "path": "current-app/menu-structure.json",
+      "kind": "file",
+      "purpose": "Menu structure snapshot parsed from next-app/components/site-shell.tsx"
+    },
+    {
+      "path": "import-manifest.json",
+      "kind": "file",
+      "purpose": "Machine-readable import inventory, counts, errors, and generated file list"
+    },
+    {
+      "path": "PROJECT.md",
+      "kind": "file",
+      "purpose": "Human-readable map of the Tikii import folder and purpose of each generated file"
+    },
+    {
+      "path": "import-live-site.mjs",
+      "kind": "file",
+      "purpose": "Reproducible importer script used to fetch the live site and refresh local snapshots"
+    },
+    {
+      "path": "live-site/menu/live-menu-structure.json",
+      "kind": "file",
+      "purpose": "Derived live-site menu structure from WordPress navigation and homepage links"
+    },
+    {
+      "path": "cleanup-media.mjs",
+      "kind": "file",
+      "purpose": "Reproducible cleanup script that removes WordPress thumbnails and duplicate ZapWP proxy media"
+    },
+    {
+      "path": "live-site/media/media-cleanup-report.json",
+      "kind": "file",
+      "purpose": "Report of media files removed as WordPress thumbnails or duplicate ZapWP proxy copies"
+    },
+    {
+      "path": "cleanup-pages-html.mjs",
+      "kind": "file",
+      "purpose": "Reproducible cleanup script that removes unneeded rendered archive pages and classifies portfolio posts"
+    },
+    {
+      "path": "live-site/pages-html/content-inventory.json",
+      "kind": "file",
+      "purpose": "Content classification for retained pages and portfolio/work items"
+    },
+    {
+      "path": "live-site/pages-html/excluded-archive-pages.json",
+      "kind": "file",
+      "purpose": "Record of tag/category/writer archive HTML pages removed from pages-html"
+    }
+  ],
+  "errors": [
+    {
+      "phase": "wordpress-pagination",
+      "endpoint": "https://tikii.in/wp-json/wp/v2/menu-items",
+      "label": "menu-items",
+      "page": 1,
+      "error": "menu-items page 1 failed with HTTP 401 for https://tikii.in/wp-json/wp/v2/menu-items?per_page=100&page=1&_embed=1: {\"code\":\"rest_cannot_view\",\"message\":\"Sorry, you are not allowed to view menu items.\",\"data\":{\"status\":401}}"
+    },
+    {
+      "phase": "wordpress-pagination",
+      "endpoint": "https://tikii.in/wp-json/wp/v2/templates",
+      "label": "templates",
+      "page": 1,
+      "error": "templates page 1 failed with HTTP 401 for https://tikii.in/wp-json/wp/v2/templates?per_page=100&page=1&_embed=1: {\"code\":\"rest_cannot_manage_templates\",\"message\":\"Sorry, you are not allowed to access the templates on this site.\",\"data\":{\"status\":401}}"
+    },
+    {
+      "phase": "wordpress-pagination",
+      "endpoint": "https://tikii.in/wp-json/wp/v2/template-parts",
+      "label": "template-parts",
+      "page": 1,
+      "error": "template-parts page 1 failed with HTTP 401 for https://tikii.in/wp-json/wp/v2/template-parts?per_page=100&page=1&_embed=1: {\"code\":\"rest_cannot_manage_templates\",\"message\":\"Sorry, you are not allowed to access the templates on this site.\",\"data\":{\"status\":401}}"
+    },
+    {
+      "phase": "wordpress-pagination",
+      "endpoint": "https://tikii.in/wp-json/wp/v2/global-styles",
+      "label": "global-styles",
+      "page": 1,
+      "error": "global-styles page 1 failed with HTTP 404 for https://tikii.in/wp-json/wp/v2/global-styles?per_page=100&page=1&_embed=1: {\"code\":\"rest_no_route\",\"message\":\"No route was found matching the URL and request method.\",\"data\":{\"status\":404}}"
+    },
+    {
+      "phase": "wordpress-pagination",
+      "endpoint": "https://tikii.in/wp-json/wp/v2/font-families",
+      "label": "font-families",
+      "page": 1,
+      "error": "font-families page 1 failed with HTTP 401 for https://tikii.in/wp-json/wp/v2/font-families?per_page=100&page=1&_embed=1: {\"code\":\"rest_cannot_read\",\"message\":\"Sorry, you are not allowed to access font families.\",\"data\":{\"status\":401}}"
+    },
+    {
+      "phase": "wordpress-pagination",
+      "endpoint": "https://tikii.in/wp-json/wp/v2/font-families/(?P<font_family_id>[\\d]+)/font-faces",
+      "label": "font-families/(-P-font_family_id-[-d]+)/font-faces",
+      "page": 1,
+      "error": "font-families/(-P-font_family_id-[-d]+)/font-faces page 1 failed with HTTP 404 for https://tikii.in/wp-json/wp/v2/font-families/(?P%3Cfont_family_id%3E%5B%5Cd%5D+%29%2Ffont-faces=&per_page=100&page=1&_embed=1: {\"code\":\"rest_no_route\",\"message\":\"No route was found matching the URL and request method.\",\"data\":{\"status\":404}}"
+    },
+    {
+      "phase": "wordpress-pagination",
+      "endpoint": "https://tikii.in/wp-json/wp/v2/elementor_library",
+      "label": "elementor_library",
+      "page": 1,
+      "error": "elementor_library page 1 failed with HTTP 401 for https://tikii.in/wp-json/wp/v2/elementor_library?per_page=100&page=1&_embed=1: {\"code\":\"rest_forbidden\",\"message\":\"Sorry, you are not allowed to do that.\",\"data\":{\"status\":401}}"
+    },
+    {
+      "phase": "wordpress-pagination",
+      "endpoint": "https://tikii.in/wp-json/wp/v2/menus",
+      "label": "menus",
+      "page": 1,
+      "error": "menus page 1 failed with HTTP 401 for https://tikii.in/wp-json/wp/v2/menus?per_page=100&page=1: {\"code\":\"rest_cannot_view\",\"message\":\"Sorry, you are not allowed to view menus.\",\"data\":{\"status\":401}}"
+    },
+    {
+      "phase": "wordpress-menu-route",
+      "route": "/elementor/v1/site-navigation/recent-posts",
+      "error": "menu/navigation route /elementor/v1/site-navigation/recent-posts failed with HTTP 400 for https://tikii.in/wp-json/elementor/v1/site-navigation/recent-posts: {\"code\":\"rest_missing_callback_param\",\"message\":\"Missing parameter(s): posts_per_page\",\"data\":{\"status\":400,\"params\":[\"posts_per_page\"]}}"
+    },
+    {
+      "phase": "wordpress-menu-route",
+      "route": "/wp/v2/menu-items",
+      "error": "menu/navigation route /wp/v2/menu-items failed with HTTP 401 for https://tikii.in/wp-json/wp/v2/menu-items: {\"code\":\"rest_cannot_view\",\"message\":\"Sorry, you are not allowed to view menu items.\",\"data\":{\"status\":401}}"
+    },
+    {
+      "phase": "wordpress-menu-route",
+      "route": "/wp/v2/menus",
+      "error": "menu/navigation route /wp/v2/menus failed with HTTP 401 for https://tikii.in/wp-json/wp/v2/menus: {\"code\":\"rest_cannot_view\",\"message\":\"Sorry, you are not allowed to view menus.\",\"data\":{\"status\":401}}"
+    },
+    {
+      "phase": "wordpress-menu-route",
+      "route": "/wp/v2/menu-locations",
+      "error": "menu/navigation route /wp/v2/menu-locations failed with HTTP 401 for https://tikii.in/wp-json/wp/v2/menu-locations: {\"code\":\"rest_cannot_view\",\"message\":\"Sorry, you are not allowed to view menu locations.\",\"data\":{\"status\":401}}"
+    },
+    {
+      "phase": "wordpress-menu-route",
+      "route": "/wp-block-editor/v1/navigation-fallback",
+      "error": "menu/navigation route /wp-block-editor/v1/navigation-fallback failed with HTTP 401 for https://tikii.in/wp-json/wp-block-editor/v1/navigation-fallback: {\"code\":\"rest_cannot_create\",\"message\":\"Sorry, you are not allowed to create Navigation Menus as this user.\",\"data\":{\"status\":401}}"
+    },
+    {
+      "phase": "media-download",
+      "url": "https://tikii.in/wp-content/uploads/2023/12/theme-icons/Read-Me-1.txt",
+      "error": "HTTP 404"
+    },
+    {
+      "phase": "media-download",
+      "url": "https://tikii.in/wp-content/uploads/2023/12/theme-icons/Read-Me-2.txt",
+      "error": "HTTP 404"
+    },
+    {
+      "phase": "media-download",
+      "url": "https://tikii.in/wp-content/uploads/2023/12/theme-icons/Read-Me.txt",
+      "error": "HTTP 404"
+    },
+    {
+      "phase": "media-download",
+      "url": "https://tikii.in/wp-content/uploads/2023/12/theme-icons/demo.html",
+      "error": "HTTP 404"
+    }
+  ]
+}

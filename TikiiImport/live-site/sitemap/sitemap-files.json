@@ -1,0 +1,37 @@
+[
+  {
+    "url": "https://tikii.in/sitemap.xml",
+    "finalUrl": "https://tikii.in/sitemap_index.xml",
+    "file": "live-site/sitemaps/sitemap_index.xml"
+  },
+  {
+    "url": "https://tikii.in/sitemap_index.xml",
+    "finalUrl": "https://tikii.in/sitemap_index.xml",
+    "file": "live-site/sitemaps/sitemap_index.xml"
+  },
+  {
+    "url": "https://tikii.in/post-sitemap.xml",
+    "finalUrl": "https://tikii.in/post-sitemap.xml",
+    "file": "live-site/sitemaps/post-sitemap.xml"
+  },
+  {
+    "url": "https://tikii.in/page-sitemap.xml",
+    "finalUrl": "https://tikii.in/page-sitemap.xml",
+    "file": "live-site/sitemaps/page-sitemap.xml"
+  },
+  {
+    "url": "https://tikii.in/category-sitemap.xml",
+    "finalUrl": "https://tikii.in/category-sitemap.xml",
+    "file": "live-site/sitemaps/category-sitemap.xml"
+  },
+  {
+    "url": "https://tikii.in/post_tag-sitemap.xml",
+    "finalUrl": "https://tikii.in/post_tag-sitemap.xml",
+    "file": "live-site/sitemaps/post_tag-sitemap.xml"
+  },
+  {
+    "url": "https://tikii.in/author-sitemap.xml",
+    "finalUrl": "https://tikii.in/author-sitemap.xml",
+    "file": "live-site/sitemaps/author-sitemap.xml"
+  }
+]

@@ -261,6 +261,7 @@ export function ClientBehaviors() {
               type: "fraction"
             },
             navigation: {
+              addIcons: false,
               nextEl: element.querySelector<HTMLElement>(".swiper-button-next") ?? undefined,
               prevEl: element.querySelector<HTMLElement>(".swiper-button-prev") ?? undefined
             }

@@ -1,0 +1,64 @@
+[
+  {
+    "id": 4,
+    "date": "2024-04-05T19:53:39",
+    "date_gmt": "2024-04-05T19:53:39",
+    "guid": {
+      "rendered": "https://websites-wordpress-tikii-pixelpier.vwuade.easypanel.host/2024/04/05/navigation/"
+    },
+    "modified": "2024-04-05T19:53:39",
+    "modified_gmt": "2024-04-05T19:53:39",
+    "slug": "navigation",
+    "status": "publish",
+    "type": "wp_navigation",
+    "link": "https://tikii.in/navigation/",
+    "title": {
+      "rendered": "Navigation"
+    },
+    "content": {
+      "rendered": "<div class=\"vgblk-rw-wrapper limit-wrapper\"><ul class=\"wp-block-page-list\"><li class=\"wp-block-pages-list__item\"><a class=\"wp-block-pages-list__item__link\" href=\"https://tikii.in/about/\">About</a></li><li class=\"wp-block-pages-list__item\"><a class=\"wp-block-pages-list__item__link\" href=\"https://tikii.in/blog/\">Blog</a></li><li class=\"wp-block-pages-list__item\"><a class=\"wp-block-pages-list__item__link\" href=\"https://tikii.in/contact/\">Contact</a></li><li class=\"wp-block-pages-list__item menu-item-home\"><a class=\"wp-block-pages-list__item__link\" href=\"https://tikii.in/\">Home</a></li><li class=\"wp-block-pages-list__item\"><a class=\"wp-block-pages-list__item__link\" href=\"https://tikii.in/privacy-policy/\">Privacy Policy</a></li><li class=\"wp-block-pages-list__item\"><a class=\"wp-block-pages-list__item__link\" href=\"https://tikii.in/services/\">Services</a></li><li class=\"wp-block-pages-list__item\"><a class=\"wp-block-pages-list__item__link\" href=\"https://tikii.in/shipping-returns/\">Shipping &amp; Returns</a></li><li class=\"wp-block-pages-list__item\"><a class=\"wp-block-pages-list__item__link\" href=\"https://tikii.in/terms-conditions/\">Terms &amp; Conditions</a></li><li class=\"wp-block-pages-list__item\"><a class=\"wp-block-pages-list__item__link\" href=\"https://tikii.in/work/\">Work</a></li></ul></div><!-- .vgblk-rw-wrapper -->",
+      "protected": false
+    },
+    "template": "",
+    "_links": {
+      "self": [
+        {
+          "href": "https://tikii.in/wp-json/wp/v2/navigation/4",
+          "targetHints": {
+            "allow": [
+              "GET"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://tikii.in/wp-json/wp/v2/navigation"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://tikii.in/wp-json/wp/v2/types/wp_navigation"
+        }
+      ],
+      "version-history": [
+        {
+          "count": 0,
+          "href": "https://tikii.in/wp-json/wp/v2/navigation/4/revisions"
+        }
+      ],
+      "wp:attachment": [
+        {
+          "href": "https://tikii.in/wp-json/wp/v2/media?parent=4"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  }
+]

@@ -76,25 +76,126 @@ function StarIcon() {
 function Loader() {
   const [count, setCount] = useState(0);
   const [loaded, setLoaded] = useState(false);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const countRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    let current = 0;
-    const timer = window.setInterval(() => {
-      current += 5;
-      setCount(Math.min(current, 100));
-      if (current >= 100) {
-        window.clearInterval(timer);
-        window.setTimeout(() => setLoaded(true), 250);
+  useLayoutEffect(() => {
+    let disposed = false;
+    let currentCount = 0;
+    let introStarted = false;
+    const timers: number[] = [];
+    const cleanups: Array<() => void> = [];
+    const loaderLockClass = "mxd-loader-lock";
+
+    document.documentElement.classList.add(loaderLockClass);
+    document.body.classList.add(loaderLockClass);
+
+    const unlockPageScroll = () => {
+      document.documentElement.classList.remove(loaderLockClass);
+      document.body.classList.remove(loaderLockClass);
+    };
+
+    const schedule = (callback: () => void, delay: number) => {
+      const timer = window.setTimeout(callback, delay);
+      timers.push(timer);
+      return timer;
+    };
+
+    const completeCounter = () => {
+      currentCount = 100;
+      setCount(100);
+    };
+
+    const showContentImmediately = () => {
+      completeCounter();
+      document.querySelectorAll<HTMLElement>(".loading__item, .loading__fade").forEach((element) => {
+        element.style.opacity = "1";
+        element.style.transform = "";
+      });
+      setLoaded(true);
+      unlockPageScroll();
+    };
+
+    const tickCounter = () => {
+      if (disposed || currentCount >= 100) return;
+      currentCount = Math.min(currentCount + Math.floor(Math.random() * 10) + 1, 100);
+      setCount(currentCount);
+      if (currentCount < 100) {
+        schedule(tickCounter, Math.floor(Math.random() * 120) + 25);
       }
-    }, 15);
-    return () => window.clearInterval(timer);
+    };
+
+    const run = async () => {
+      tickCounter();
+
+      try {
+        const [{ gsap }, imagesLoadedModule] = await Promise.all([import("gsap"), import("imagesloaded")]);
+        if (disposed) return;
+
+        const wrapper = wrapperRef.current;
+        const counter = countRef.current;
+        const loadingWrap = document.querySelector<HTMLElement>(".loading-wrap");
+        const loadingItems = loadingWrap ? Array.from(loadingWrap.querySelectorAll<HTMLElement>(".loading__item")) : [];
+        const fadeInItems = Array.from(document.querySelectorAll<HTMLElement>(".loading__fade"));
+        if (!wrapper || !counter) {
+          showContentImmediately();
+          return;
+        }
+
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          showContentImmediately();
+          return;
+        }
+
+        const ctx = gsap.context(() => {
+          gsap.set(loadingItems, { opacity: 0, y: 120 });
+          gsap.set(fadeInItems, { opacity: 0 });
+        }, document.body);
+        cleanups.push(() => ctx.revert());
+
+        const playIntro = () => {
+          if (disposed || introStarted) return;
+          introStarted = true;
+          completeCounter();
+
+          const timeline = gsap.timeline();
+          cleanups.push(() => timeline.kill());
+          timeline
+            .to(counter, { duration: 0.8, ease: "power2.in", y: "100%" }, 1.8)
+            .to(wrapper, { duration: 0.8, ease: "power4.in", y: "-100%" }, 2.2)
+            .to(loadingItems, { duration: 1.1, ease: "power4", y: 0, opacity: 1, stagger: 0.08 }, 0.8)
+            .to(fadeInItems, { duration: 0.8, ease: "none", opacity: 1 }, 3.2)
+            .add(() => {
+              if (!disposed) {
+                setLoaded(true);
+                unlockPageScroll();
+              }
+            }, 3.2);
+        };
+
+        const imagesLoaded = imagesLoadedModule.default as (element: Element, callback: () => void) => void;
+        imagesLoaded(document.body, playIntro);
+        schedule(playIntro, 2400);
+      } catch {
+        if (!disposed) showContentImmediately();
+      }
+    };
+
+    void run();
+
+    return () => {
+      disposed = true;
+      timers.forEach((timer) => window.clearTimeout(timer));
+      cleanups.forEach((cleanup) => cleanup());
+      unlockPageScroll();
+    };
   }, []);
 
   return (
     <div id="loader" className={`loader${loaded ? " loaded" : ""}`} aria-hidden={loaded}>
-      <div className="loader__wrapper">
+      <div ref={wrapperRef} className="loader__wrapper">
         <div className="loader__content">
-          <div className="loader__count">
+          <div ref={countRef} className="loader__count">
             <span className="count__text">{count}</span>
             <span className="count__percent">%</span>
           </div>
@@ -143,15 +244,8 @@ function MenuOverlay({
   const menuContainRef = useRef<HTMLDivElement>(null);
   const timelineRef = useRef<MenuTimeline | null>(null);
 
-  const timelineIsActive = () => timelineRef.current?.isActive() ?? false;
-  const requestToggle = () => {
-    if (timelineIsActive()) return;
-    toggle();
-  };
-  const requestClose = () => {
-    if (timelineIsActive()) return;
-    close();
-  };
+  const requestToggle = () => toggle();
+  const requestClose = () => close();
 
   useLayoutEffect(() => {
     let disposed = false;
@@ -404,11 +498,6 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
 
     const timer = window.setTimeout(() => setMenuLayerVisible(false), 1100);
     return () => window.clearTimeout(timer);
-  }, [menuOpen]);
-
-  useEffect(() => {
-    document.body.classList.toggle("overflow-hidden", menuOpen);
-    return () => document.body.classList.remove("overflow-hidden");
   }, [menuOpen]);
 
   const toggleTheme = () => {

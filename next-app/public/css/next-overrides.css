@@ -23,6 +23,47 @@
   padding: 0;
 }
 
+html.mxd-loader-lock,
+html.mxd-loader-lock body,
+html:has(#loader:not(.loaded)),
+body:has(#loader:not(.loaded)) {
+  height: 100%;
+  overflow: hidden !important;
+  scrollbar-width: none;
+}
+
+html.mxd-loader-lock::-webkit-scrollbar,
+html:has(#loader:not(.loaded))::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+.swiper-testimonials.swiper-horizontal .mxd-slider-btn {
+  top: auto;
+  right: auto;
+  bottom: 0.2rem;
+  left: auto;
+  width: auto;
+  height: auto;
+  margin: 0;
+  color: inherit;
+}
+
+.swiper-testimonials.swiper-horizontal .mxd-slider-btn-round-prev {
+  left: 0;
+  right: auto;
+}
+
+.swiper-testimonials.swiper-horizontal .mxd-slider-btn-round-next {
+  left: 5.4rem;
+  right: auto;
+}
+
+.mxd-slider-btn > .swiper-navigation-icon {
+  display: none;
+}
+
 .submenu {
   display: block;
   max-height: 0;

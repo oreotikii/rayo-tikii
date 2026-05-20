@@ -4,16 +4,42 @@ This file is for LLM agents working in this repository. Read it before making ch
 
 ## Project Intent
 
-This repo is converting the Rayo HTML agency/portfolio template into a maintainable Next.js app.
+This repo started as a conversion of the downloaded Rayo HTML agency/portfolio
+theme into a maintainable Next.js app. The first migration target was to keep
+the original Rayo template looking and behaving the same in `next-app/`.
+
+The current product goal is to turn that preserved Next.js version into the
+website for `tikii.in`, which is currently a WordPress site. The expected
+direction is to move most Tikii content and media into the Next app while
+keeping the Rayo motion system, page shell, and agency/portfolio feel unless the
+user explicitly asks for a redesign.
 
 The important mental model:
 
-- `app/` is the original static template source and reference.
-- `next-app/` is the active Next.js application.
+- `app/` is the original downloaded Rayo static template source and reference.
+- `next-app/` is the active Next.js application and future Tikii site.
 - Generated route content in `next-app/lib/content.ts` comes from `app/*.html`.
 - The React shell in `next-app/components/` replaces the static template's shared chrome and browser behaviors.
+- WordPress content from `tikii.in` should be treated as the main content source for the Tikii rebuild.
 
-Preserve the look and motion of the original template unless the user explicitly asks for a redesign.
+Preserve the look and motion of the original template while replacing template
+copy, imagery, project details, links, and contact information with Tikii
+content. Prefer automation where it saves manual migration work, but the current
+preference is a one-time import rather than a permanent WordPress sync.
+
+## Tikii Migration Direction
+
+- Preferred content source: WordPress export/API access for `tikii.in`.
+- Preferred implementation direction: Tikii content inside the existing Rayo/Next shell and motion system.
+- Preferred migration style: one-time import with enough scripting to avoid repetitive manual work.
+- Keep Tikii pages, services, work/case studies, testimonials, contact details, and media as first-class content.
+- Replace placeholder and demo template content with real Tikii content wherever available.
+- Ask for required WordPress/export inputs early if they are missing:
+  - WordPress XML export or REST/API access.
+  - Media library export or permission to download media from the live site.
+  - Brand assets such as logo files, color/type guidance, and approved imagery.
+  - Priority page list and any content that should not be migrated.
+  - Contact form destination and social/profile links.
 
 ## High-Value Files
 
@@ -55,6 +81,23 @@ npx gulp build
 ```
 
 Do not use the root `npm test`; it is the default placeholder script and exits with an error.
+
+## WordPress Content Migration
+
+For Tikii content work, prefer the most reproducible source available:
+
+1. Use WordPress export/API data if provided.
+2. Use public `tikii.in` scraping only when export/API access is unavailable.
+3. Use manual copy/assets only when the user provides them or automation would create more cleanup than value.
+
+For a one-time import, it is acceptable to create migration scripts that extract
+WordPress pages, posts/work entries, media URLs, SEO metadata, and contact/social
+data, then map them into the current Next content model or source HTML. Keep
+those scripts scoped and explain how to rerun them.
+
+Do not assume permanent synchronization with WordPress unless the user asks for
+it. If the implementation needs a CMS-like content structure, prefer local,
+versioned content in the repo over a live WordPress dependency.
 
 ## Editing Rules
 
@@ -106,6 +149,7 @@ For visual changes, start the dev server and inspect the affected route in a bro
 - Some original static-template behavior has been recreated in `client-behaviors.tsx`; not every original jQuery/plugin interaction may exist yet.
 - `next-app/public/` is a mirrored asset surface, not automatically synchronized by the generator.
 - The root static template and the Next app each have their own `package-lock.json`.
+- The current Tikii migration source of truth may be external WordPress content until it is imported into this repo.
 
 ## Collaboration Notes
 

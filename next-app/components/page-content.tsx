@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import parse, { attributesToProps, domToReact, type DOMNode, type Element, type HTMLReactParserOptions } from "html-react-parser";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ElementType } from "react";
+import BorderGlow from "@/components/border-glow";
 import type { PageRecord } from "@/lib/content";
 
 const htmlRouteMap: Record<string, string> = {
@@ -40,6 +41,52 @@ function cleanHref(href: string | undefined) {
   const [path, hash = ""] = href.split("#");
   const mapped = htmlRouteMap[path] ?? path;
   return hash ? `${mapped}#${hash}` : mapped;
+}
+
+const landingCardGlowClasses = new Set([
+  "mxd-stats-cards__inner",
+  "mxd-services-stack__inner",
+  "mxd-testimonials-card",
+  "mxd-partners-cards__inner",
+  "mxd-blog-preview__media",
+  "footer-blocks__card"
+]);
+
+function getClassNames(className: unknown) {
+  return typeof className === "string" ? className.split(/\s+/).filter(Boolean) : [];
+}
+
+function hasClass(classNames: string[], className: string) {
+  return classNames.includes(className);
+}
+
+function shouldApplyBorderGlow(source: string, nodeName: string, classNames: string[]) {
+  return source === "index-main.html" && (nodeName === "div" || nodeName === "a") && classNames.some((className) => landingCardGlowClasses.has(className));
+}
+
+function getBorderGlowProps(classNames: string[]) {
+  const backgroundColor = hasClass(classNames, "bg-accent")
+    ? "var(--accent)"
+    : hasClass(classNames, "bg-base-opp")
+      ? "var(--base-opp)"
+      : hasClass(classNames, "bg-additional")
+        ? "var(--additional)"
+        : "var(--base-tint)";
+  const borderRadius = hasClass(classNames, "radius-l") || hasClass(classNames, "mxd-services-stack__inner")
+    ? "var(--_radius-l)"
+    : "var(--_radius-m)";
+
+  return {
+    edgeSensitivity: 24,
+    glowColor: hasClass(classNames, "bg-accent") ? "265 72 72" : "72 85 66",
+    backgroundColor,
+    borderRadius,
+    glowRadius: 34,
+    glowIntensity: 0.85,
+    coneSpread: 24,
+    fillOpacity: hasClass(classNames, "bg-base-opp") ? 0.18 : 0.26,
+    colors: ["#ddf160", "#9f8be7", "#38bdf8"]
+  };
 }
 
 function FormWithMessage({
@@ -94,6 +141,23 @@ export function PageContent({ record }: { record: PageRecord }) {
       if (node.type !== "tag") return undefined;
       const props = attributesToProps(node.attribs ?? {}) as Record<string, unknown>;
       const children = domToReact(node.children as DOMNode[], options);
+      const classNames = getClassNames(props.className);
+
+      if (shouldApplyBorderGlow(record.source, node.name, classNames)) {
+        const href = node.name === "a" ? cleanHref(typeof node.attribs?.href === "string" ? node.attribs.href : undefined) : undefined;
+        const Component = (node.name === "a" && href?.startsWith("/") && !href.startsWith("//") ? Link : node.name) as ElementType;
+        const glowElementProps: Record<string, unknown> = {
+          ...props,
+          ...getBorderGlowProps(classNames),
+          as: Component
+        };
+
+        if (node.name === "a") {
+          glowElementProps.href = href;
+        }
+
+        return <BorderGlow {...glowElementProps}>{children}</BorderGlow>;
+      }
 
       if (node.name === "a") {
         const originalHref = typeof node.attribs?.href === "string" ? node.attribs.href : undefined;
