@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { flushSync } from "react-dom";
 import { ClientBehaviors } from "@/components/client-behaviors";
 
 type NavItem = {
@@ -15,8 +16,11 @@ type MenuTimeline = {
   play: () => void;
   reverse: () => void;
   isActive: () => boolean;
+  progress: () => number;
   kill: () => void;
 };
+
+type MenuNavigationHandler = (href: string) => Promise<void>;
 
 const navItems: NavItem[] = [
   {
@@ -64,6 +68,174 @@ const navItems: NavItem[] = [
   },
   { label: "Contact", href: "/contact" }
 ];
+
+const routeTransitionRootSelector = "#mxd-page-content, #mxd-footer, .mxd-floating-img";
+const minimumRouteLoaderTime = 420;
+
+function prefersReducedMotion() {
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
+function getRouteTransitionRoots() {
+  return Array.from(document.querySelectorAll<HTMLElement>(routeTransitionRootSelector));
+}
+
+function waitForPaint() {
+  return new Promise<void>((resolve) => {
+    requestAnimationFrame(() => requestAnimationFrame(() => resolve()));
+  });
+}
+
+function wait(duration: number) {
+  return new Promise<void>((resolve) => {
+    window.setTimeout(resolve, duration);
+  });
+}
+
+async function runPageOutro() {
+  if (prefersReducedMotion()) return;
+
+  try {
+    const { gsap } = await import("gsap");
+    const targets = getRouteTransitionRoots();
+    if (!targets.length) return;
+
+    await new Promise<void>((resolve) => {
+      gsap.to(targets, {
+        opacity: 0,
+        y: -80,
+        duration: 0.55,
+        ease: "power3.inOut",
+        stagger: 0.03,
+        overwrite: true,
+        onComplete: resolve
+      });
+    });
+  } catch {
+    // Navigation should continue even if the animation library is unavailable.
+  }
+}
+
+async function runPageIntro(onReady?: () => void | Promise<void>) {
+  if (prefersReducedMotion()) {
+    await onReady?.();
+    return;
+  }
+
+  try {
+    const { gsap } = await import("gsap");
+    const loadingWrap = document.querySelector<HTMLElement>(".loading-wrap");
+    const loadingItems = loadingWrap ? Array.from(loadingWrap.querySelectorAll<HTMLElement>(".loading__item")) : [];
+    const fadeInItems = Array.from(document.querySelectorAll<HTMLElement>("#mxd-page-content .loading__fade, .mxd-floating-img .loading__fade"));
+    const transitionItems = [...loadingItems, ...fadeInItems];
+
+    if (!transitionItems.length) {
+      const roots = getRouteTransitionRoots();
+      if (!roots.length) {
+        await onReady?.();
+        return;
+      }
+      gsap.set(roots, { opacity: 0, y: 80 });
+      await onReady?.();
+      await new Promise<void>((resolve) => {
+        gsap.to(roots, { opacity: 1, y: 0, duration: 0.65, ease: "power4.out", stagger: 0.03, onComplete: resolve });
+      });
+      gsap.set(roots, { clearProps: "opacity,transform,visibility" });
+      return;
+    }
+
+    gsap.set(loadingItems, { opacity: 0, y: 120 });
+    gsap.set(fadeInItems, { opacity: 0 });
+    await onReady?.();
+
+    await new Promise<void>((resolve) => {
+      gsap
+        .timeline({ onComplete: resolve })
+        .to(loadingItems, { duration: 1.1, ease: "power4", y: 0, opacity: 1, stagger: 0.08 }, 0)
+        .to(fadeInItems, { duration: 0.8, ease: "none", opacity: 1 }, 0.45);
+    });
+
+    gsap.set(transitionItems, { clearProps: "opacity,transform,visibility" });
+  } catch {
+    await onReady?.();
+    document.querySelectorAll<HTMLElement>(".loading__item, .loading__fade").forEach((element) => {
+      element.style.opacity = "1";
+      element.style.transform = "";
+    });
+  }
+}
+
+function RouteTransitionLoader({ visible }: { visible: boolean }) {
+  return (
+    <>
+      <div className={`route-transition-loader${visible ? " is-visible" : ""}`} aria-hidden={!visible}>
+        <div className="route-transition-loader__mark">
+          <StarIcon />
+        </div>
+      </div>
+      <style>{`
+        .route-transition-loader {
+          position: fixed;
+          inset: 0;
+          z-index: 2147483200;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          pointer-events: none;
+          background: var(--base);
+          opacity: 0;
+          visibility: hidden;
+          transition: opacity 180ms ease, visibility 0s linear 180ms;
+        }
+
+        .route-transition-loader.is-visible {
+          opacity: 1;
+          visibility: visible;
+          transition: opacity 180ms ease, visibility 0s;
+        }
+
+        .route-transition-loader__mark {
+          width: 6.8rem;
+          height: 6.8rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 1.4rem;
+          color: var(--base);
+          background: var(--accent);
+          border-radius: 50%;
+          box-shadow:
+            0 0 0 0.8rem rgba(var(--accent-rgb), 0.18),
+            0 0 4rem rgba(var(--accent-rgb), 0.65);
+          animation: route-transition-spin 1s linear infinite;
+        }
+
+        .route-transition-loader__mark svg {
+          width: 100%;
+          height: 100%;
+          display: block;
+        }
+
+        @keyframes route-transition-spin {
+          to {
+            transform: rotate(360deg);
+          }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .route-transition-loader,
+          .route-transition-loader.is-visible {
+            transition: none;
+          }
+
+          .route-transition-loader__mark {
+            animation: none;
+          }
+        }
+      `}</style>
+    </>
+  );
+}
 
 function StarIcon() {
   return (
@@ -227,11 +399,13 @@ function Logo() {
 function MenuOverlay({
   open,
   close,
-  toggle
+  toggle,
+  onNavigate
 }: {
   open: boolean;
   close: () => void;
   toggle: () => void;
+  onNavigate: MenuNavigationHandler;
 }) {
   const pathname = usePathname();
   const [expanded, setExpanded] = useState<string>("");
@@ -243,9 +417,39 @@ function MenuOverlay({
   const menuBaseRef = useRef<HTMLButtonElement>(null);
   const menuContainRef = useRef<HTMLDivElement>(null);
   const timelineRef = useRef<MenuTimeline | null>(null);
+  const menuCloseResolversRef = useRef<Array<() => void>>([]);
 
   const requestToggle = () => toggle();
   const requestClose = () => close();
+
+  const closeMenuWithAnimation = useCallback(() => {
+    close();
+
+    const timeline = timelineRef.current;
+    if (!open || !menuReady || !timeline || timeline.progress() === 0) {
+      setExpanded("");
+      return Promise.resolve();
+    }
+
+    return new Promise<void>((resolve) => {
+      menuCloseResolversRef.current.push(() => {
+        setExpanded("");
+        resolve();
+      });
+      timeline.reverse();
+    });
+  }, [close, menuReady, open]);
+
+  const requestMenuLinkNavigation = async (event: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
+    event.preventDefault();
+    await closeMenuWithAnimation();
+
+    if (href !== pathname) {
+      await onNavigate(href);
+    }
+  };
 
   useLayoutEffect(() => {
     let disposed = false;
@@ -279,7 +483,10 @@ function MenuOverlay({
 
       const timeline = gsap.timeline({
         paused: true,
-        onReverseComplete: () => gsap.set(menuWrapper, { display: "none" })
+        onReverseComplete: () => {
+          gsap.set(menuWrapper, { display: "none" });
+          menuCloseResolversRef.current.splice(0).forEach((resolve) => resolve());
+        }
       });
 
       timeline.set(menuWrapper, { display: "flex" });
@@ -326,6 +533,7 @@ function MenuOverlay({
 
     return () => {
       disposed = true;
+      menuCloseResolversRef.current.splice(0).forEach((resolve) => resolve());
       timelineRef.current?.kill();
       timelineRef.current = null;
     };
@@ -405,7 +613,9 @@ function MenuOverlay({
                             <ul className="submenu" aria-hidden={!isOpen}>
                               {item.children.map((child) => (
                                 <li className={`submenu__item${pathname === child.href ? " active" : ""}`} key={child.href}>
-                                  <Link href={child.href}>{child.label}</Link>
+                                  <Link href={child.href} onClick={(event) => requestMenuLinkNavigation(event, child.href)}>
+                                    {child.label}
+                                  </Link>
                                 </li>
                               ))}
                             </ul>
@@ -414,7 +624,7 @@ function MenuOverlay({
                       }
                       return (
                         <li className="main-menu__item" key={item.label}>
-                          <Link className="main-menu__link btn btn-anim" href={item.href ?? "/"}>
+                          <Link className="main-menu__link btn btn-anim" href={item.href ?? "/"} onClick={(event) => requestMenuLinkNavigation(event, item.href ?? "/")}>
                             <span className="btn-caption">{item.label}</span>
                           </Link>
                         </li>
@@ -461,13 +671,51 @@ function MenuOverlay({
 }
 
 export function SiteShell({ children }: { children: React.ReactNode }) {
+  const router = useRouter();
+  const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuLayerVisible, setMenuLayerVisible] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [theme, setTheme] = useState<"light" | "dark">("dark");
   const [toTopVisible, setToTopVisible] = useState(false);
+  const [routeTransitionLoading, setRouteTransitionLoading] = useState(false);
+  const routeIntroPendingRef = useRef(false);
+  const routeNavigationPendingRef = useRef(false);
+  const routeLoaderShownAtRef = useRef(0);
   const closeMenu = useCallback(() => setMenuOpen(false), []);
   const toggleMenu = useCallback(() => setMenuOpen((value) => !value), []);
+
+  const navigateWithPageTransition = useCallback(
+    async (href: string) => {
+      if (routeNavigationPendingRef.current || href === pathname) return;
+
+      routeNavigationPendingRef.current = true;
+      await runPageOutro();
+      flushSync(() => {
+        routeLoaderShownAtRef.current = performance.now();
+        setRouteTransitionLoading(true);
+      });
+      await waitForPaint();
+      routeIntroPendingRef.current = true;
+      router.push(href);
+    },
+    [pathname, router]
+  );
+
+  useEffect(() => {
+    if (!routeIntroPendingRef.current) return;
+
+    routeIntroPendingRef.current = false;
+    void runPageIntro(async () => {
+      const elapsed = performance.now() - routeLoaderShownAtRef.current;
+      await wait(Math.max(0, minimumRouteLoaderTime - elapsed));
+      setRouteTransitionLoading(false);
+      await waitForPaint();
+      await wait(180);
+    }).finally(() => {
+      routeNavigationPendingRef.current = false;
+    });
+  }, [pathname]);
 
   useEffect(() => {
     const stored = window.localStorage.getItem("template.theme") as "light" | "dark" | null;
@@ -520,7 +768,8 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
   return (
     <>
       <Loader />
-      <MenuOverlay open={menuOpen} close={closeMenu} toggle={toggleMenu} />
+      <RouteTransitionLoader visible={routeTransitionLoading} />
+      <MenuOverlay open={menuOpen} close={closeMenu} toggle={toggleMenu} onNavigate={navigateWithPageTransition} />
       <header id="header" className={`mxd-header${hidden ? " is-hidden" : ""}${menuLayerVisible ? " menu-is-visible" : ""}`}>
         <div className="mxd-header__logo loading__fade">
           <Logo />

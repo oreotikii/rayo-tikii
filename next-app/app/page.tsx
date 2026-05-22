@@ -1,5 +1,2097 @@
-import { RayoPage } from "@/components/rayo-page";
+"use client";
+
+import dynamic from "next/dynamic";
+import Link from "next/link";
+import { useEffect, useState, type ComponentPropsWithoutRef, type ElementType, type ReactNode } from "react";
+import BorderGlow from "@/components/border-glow";
+
+const ThreeModelStage = dynamic(() => import("@/components/three-model-stage").then((mod) => mod.ThreeModelStage), {
+  ssr: false,
+  loading: () => <div className="hero-3d-placeholder" aria-hidden="true" />
+});
+
+const homeCounters = {
+  "stats-counter-1": {
+    value: 50,
+    suffix: "+"
+  },
+  "stats-counter-2": {
+    value: 80,
+    suffix: "%"
+  },
+  "stats-counter-3": {
+    value: 5,
+    suffix: "+"
+  },
+  "stats-counter-4": {
+    value: 70,
+    suffix: "+"
+  }
+} as const;
+
+const landingCardGlowClasses = new Set([
+  "mxd-stats-cards__inner",
+  "mxd-services-stack__inner",
+  "mxd-testimonials-card",
+  "mxd-partners-cards__inner",
+  "mxd-blog-preview__media",
+  "footer-blocks__card"
+]);
+
+type RayoLinkProps = ComponentPropsWithoutRef<"a">;
+
+function RayoLink({ href, children, ...props }: RayoLinkProps) {
+  const hrefValue = typeof href === "string" ? href : "";
+
+  if (hrefValue.startsWith("/") && !hrefValue.startsWith("//")) {
+    return (
+      <Link {...props} href={hrefValue}>
+        {children}
+      </Link>
+    );
+  }
+
+  return (
+    <a {...props} href={href}>
+      {children}
+    </a>
+  );
+}
+
+type DemoFormProps = ComponentPropsWithoutRef<"form">;
+
+function DemoForm({ children, ...props }: DemoFormProps) {
+  const [message, setMessage] = useState("");
+
+  return (
+    <form
+      {...props}
+      method="post"
+      onSubmit={(event) => {
+        event.preventDefault();
+        setMessage("This demo form is disabled in the Next.js rebuild.");
+      }}
+    >
+      {children}
+      {message ? <p className="form-status" role="status">{message}</p> : null}
+    </form>
+  );
+}
+
+function getClassNames(className: unknown) {
+  return typeof className === "string" ? className.split(/\s+/).filter(Boolean) : [];
+}
+
+function hasClass(classNames: string[], className: string) {
+  return classNames.includes(className);
+}
+
+function getBorderGlowProps(classNames: string[]) {
+  const backgroundColor = hasClass(classNames, "bg-accent")
+    ? "var(--accent)"
+    : hasClass(classNames, "bg-base-opp")
+      ? "var(--base-opp)"
+      : hasClass(classNames, "bg-additional")
+        ? "var(--additional)"
+        : "var(--base-tint)";
+  const borderRadius = hasClass(classNames, "radius-l") || hasClass(classNames, "mxd-services-stack__inner")
+    ? "var(--_radius-l)"
+    : "var(--_radius-m)";
+
+  return {
+    edgeSensitivity: 24,
+    glowColor: hasClass(classNames, "bg-accent") ? "265 72 72" : "72 85 66",
+    backgroundColor,
+    borderRadius,
+    glowRadius: 34,
+    glowIntensity: 0.85,
+    coneSpread: 24,
+    fillOpacity: hasClass(classNames, "bg-base-opp") ? 0.18 : 0.26,
+    colors: ["#ddf160", "#9f8be7", "#38bdf8"]
+  };
+}
+
+type HomeBorderGlowProps = {
+  as?: ElementType;
+  className?: string;
+  children: ReactNode;
+} & Record<string, unknown>;
+
+function HomeBorderGlow({ as = "div", className = "", children, ...props }: HomeBorderGlowProps) {
+  const classNames = getClassNames(className);
+  const shouldApplyGlow = classNames.some((className) => landingCardGlowClasses.has(className));
+
+  if (!shouldApplyGlow) {
+    const Component = as as ElementType<{ className?: string; children?: ReactNode } & Record<string, unknown>>;
+    return <Component className={className} {...props}>{children}</Component>;
+  }
+
+  return (
+    <BorderGlow {...props} {...getBorderGlowProps(classNames)} as={as} className={className}>
+      {children}
+    </BorderGlow>
+  );
+}
+
+function useHomeCounters() {
+  useEffect(() => {
+    const frames: number[] = [];
+
+    Object.entries(homeCounters).forEach(([id, counter]) => {
+      const element = document.getElementById(id);
+      if (!element) return;
+
+      const duration = 900;
+      const startedAt = performance.now();
+      const tick = (time: number) => {
+        const progress = Math.min((time - startedAt) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        element.textContent = `${Math.round(counter.value * eased)}${counter.suffix}`;
+        if (progress < 1) {
+          frames.push(requestAnimationFrame(tick));
+        }
+      };
+
+      frames.push(requestAnimationFrame(tick));
+    });
+
+    return () => frames.forEach((frame) => cancelAnimationFrame(frame));
+  }, []);
+}
 
 export default function Page() {
-  return <RayoPage pageKey="home" />;
+  useHomeCounters();
+
+  return (
+    <>
+    <main id="mxd-page-content" className="mxd-page-content">
+      <div className="mxd-section mxd-hero-section mxd-hero-fullheight">
+        <div className="mxd-hero-01">
+          <div className="mxd-hero-01__wrap loading-wrap">
+            <div className="mxd-hero-01__top">
+              <div className="mxd-hero-01__title-wrap">
+                <div className="mxd-hero-01__images mxd-floating-img">
+                  <div className="hero-01-image image-01 mxd-floating-img__item loading__fade">
+                    <img className="mxd-pulse" src="/img/tikii/hero-product-strategy.png" alt="Tikii product strategy interface illustration" />
+                  </div>
+                  <div className="hero-01-image image-02 hero-3d-item mxd-floating-img__item loading__fade" aria-hidden="true">
+                    <ThreeModelStage
+                      src="/models/62.glb"
+                      className="hero-3d-model mxd-move"
+                      scale={1}
+                      cameraPosition={[0, 0.45, 4.4]}
+                      backgroundColor={null}
+                      transparent
+                      materialFinish="chrome"
+                      rotationSpeed={0.28}
+                      controls={false}
+                      shadows={false}
+                      ambientLightIntensity={1.75}
+                      keyLightColor="#ffffff"
+                      fillLightColor="#bfc7d2"
+                      keyLightIntensity={9}
+                      fillLightIntensity={1.6}
+                    />
+                  </div>
+                  <div className="hero-01-image image-03 mxd-floating-img__item loading__fade">
+                    <img className="mxd-rotate" src="/img/tikii/hero-growth-systems.png" alt="Tikii growth and analytics systems illustration" />
+                  </div>
+                </div>
+                <div className="mxd-hero-01__marquee loading__item">
+                  <div className="marquee marquee-right--gsap">
+                    <div className="marquee__toright marquee-flex">
+                      <div className="marquee__item item-regular text">
+                        <p>
+                          tech
+                        </p>
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="currentColor">
+                          <path fill="currentColor" d="M78.4,38.4c0,0-11.8,0-15.8,0c-1.6,0-4.8-0.2-7.1-0.8c-2.3-0.6-4.3-0.8-6.3-2.4c-2-1.2-3.5-3.2-4.7-4.8                             c-1.2-1.6-1.6-3.6-2-5.5c-0.3-1.5-0.7-4.3-0.8-5.9c-0.2-4.3,0-17.4,0-17.4C41.8,0.8,41,0,40.2,0s-1.6,0.8-1.6,1.6c0,0,0,13.1,0,17.4                             c0,1.6-0.6,4.3-0.8,5.9c-0.3,2-0.8,4-2,5.5c-1.2,2-2.8,3.6-4.7,4.8s-4,1.8-6.3,2.4c-1.9,0.5-4.7,0.6-6.7,0.8c-3.9,0.4-16.6,0-16.6,0                             C0.8,38.4,0,39.2,0,40c0,0.8,0.8,1.6,1.6,1.6c0,0,12.2,0,16.6,0c1.6,0,4.8,0.3,6.7,0.8c2.3,0.6,4.3,0.8,6.3,2.4                             c1.6,1.2,3.2,2.8,4.3,4.4c1.2,2,2.1,3.9,2.4,6.3c0.2,1.7,0.7,4.7,0.8,6.7c0.2,4,0,16.2,0,16.2c0,0.8,0.8,1.6,1.6,1.6                             s1.6-0.8,1.6-1.6c0,0,0-12.3,0-16.2c0-1.6,0.5-5.1,0.8-6.7c0.5-2.3,0.8-4.4,2.4-6.3c1.2-1.6,2.8-3.2,4.3-4.4c2-1.2,3.9-2,6.3-2.4                             c1.8-0.3,5.1-0.7,7.1-0.8c3.5-0.2,15.8,0,15.8,0c0.8,0,1.6-0.8,1.6-1.6C80,39.2,79.2,38.4,78.4,38.4C78.4,38.4,78.4,38.4,78.4,38.4z                             "></path>
+                        </svg>
+                      </div>
+                      <div className="marquee__item item-regular text">
+                        <p>
+                          tech
+                        </p>
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="currentColor">
+                          <path fill="currentColor" d="M78.4,38.4c0,0-11.8,0-15.8,0c-1.6,0-4.8-0.2-7.1-0.8c-2.3-0.6-4.3-0.8-6.3-2.4c-2-1.2-3.5-3.2-4.7-4.8                             c-1.2-1.6-1.6-3.6-2-5.5c-0.3-1.5-0.7-4.3-0.8-5.9c-0.2-4.3,0-17.4,0-17.4C41.8,0.8,41,0,40.2,0s-1.6,0.8-1.6,1.6c0,0,0,13.1,0,17.4                             c0,1.6-0.6,4.3-0.8,5.9c-0.3,2-0.8,4-2,5.5c-1.2,2-2.8,3.6-4.7,4.8s-4,1.8-6.3,2.4c-1.9,0.5-4.7,0.6-6.7,0.8c-3.9,0.4-16.6,0-16.6,0                             C0.8,38.4,0,39.2,0,40c0,0.8,0.8,1.6,1.6,1.6c0,0,12.2,0,16.6,0c1.6,0,4.8,0.3,6.7,0.8c2.3,0.6,4.3,0.8,6.3,2.4                             c1.6,1.2,3.2,2.8,4.3,4.4c1.2,2,2.1,3.9,2.4,6.3c0.2,1.7,0.7,4.7,0.8,6.7c0.2,4,0,16.2,0,16.2c0,0.8,0.8,1.6,1.6,1.6                             s1.6-0.8,1.6-1.6c0,0,0-12.3,0-16.2c0-1.6,0.5-5.1,0.8-6.7c0.5-2.3,0.8-4.4,2.4-6.3c1.2-1.6,2.8-3.2,4.3-4.4c2-1.2,3.9-2,6.3-2.4                             c1.8-0.3,5.1-0.7,7.1-0.8c3.5-0.2,15.8,0,15.8,0c0.8,0,1.6-0.8,1.6-1.6C80,39.2,79.2,38.4,78.4,38.4C78.4,38.4,78.4,38.4,78.4,38.4z                             "></path>
+                        </svg>
+                      </div>
+                      <div className="marquee__item item-regular text">
+                        <p>
+                          tech
+                        </p>
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="currentColor">
+                          <path fill="currentColor" d="M78.4,38.4c0,0-11.8,0-15.8,0c-1.6,0-4.8-0.2-7.1-0.8c-2.3-0.6-4.3-0.8-6.3-2.4c-2-1.2-3.5-3.2-4.7-4.8                             c-1.2-1.6-1.6-3.6-2-5.5c-0.3-1.5-0.7-4.3-0.8-5.9c-0.2-4.3,0-17.4,0-17.4C41.8,0.8,41,0,40.2,0s-1.6,0.8-1.6,1.6c0,0,0,13.1,0,17.4                             c0,1.6-0.6,4.3-0.8,5.9c-0.3,2-0.8,4-2,5.5c-1.2,2-2.8,3.6-4.7,4.8s-4,1.8-6.3,2.4c-1.9,0.5-4.7,0.6-6.7,0.8c-3.9,0.4-16.6,0-16.6,0                             C0.8,38.4,0,39.2,0,40c0,0.8,0.8,1.6,1.6,1.6c0,0,12.2,0,16.6,0c1.6,0,4.8,0.3,6.7,0.8c2.3,0.6,4.3,0.8,6.3,2.4                             c1.6,1.2,3.2,2.8,4.3,4.4c1.2,2,2.1,3.9,2.4,6.3c0.2,1.7,0.7,4.7,0.8,6.7c0.2,4,0,16.2,0,16.2c0,0.8,0.8,1.6,1.6,1.6                             s1.6-0.8,1.6-1.6c0,0,0-12.3,0-16.2c0-1.6,0.5-5.1,0.8-6.7c0.5-2.3,0.8-4.4,2.4-6.3c1.2-1.6,2.8-3.2,4.3-4.4c2-1.2,3.9-2,6.3-2.4                             c1.8-0.3,5.1-0.7,7.1-0.8c3.5-0.2,15.8,0,15.8,0c0.8,0,1.6-0.8,1.6-1.6C80,39.2,79.2,38.4,78.4,38.4C78.4,38.4,78.4,38.4,78.4,38.4z                             "></path>
+                        </svg>
+                      </div>
+                      <div className="marquee__item item-regular text">
+                        <p>
+                          tech
+                        </p>
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="currentColor">
+                          <path fill="currentColor" d="M78.4,38.4c0,0-11.8,0-15.8,0c-1.6,0-4.8-0.2-7.1-0.8c-2.3-0.6-4.3-0.8-6.3-2.4c-2-1.2-3.5-3.2-4.7-4.8                             c-1.2-1.6-1.6-3.6-2-5.5c-0.3-1.5-0.7-4.3-0.8-5.9c-0.2-4.3,0-17.4,0-17.4C41.8,0.8,41,0,40.2,0s-1.6,0.8-1.6,1.6c0,0,0,13.1,0,17.4                             c0,1.6-0.6,4.3-0.8,5.9c-0.3,2-0.8,4-2,5.5c-1.2,2-2.8,3.6-4.7,4.8s-4,1.8-6.3,2.4c-1.9,0.5-4.7,0.6-6.7,0.8c-3.9,0.4-16.6,0-16.6,0                             C0.8,38.4,0,39.2,0,40c0,0.8,0.8,1.6,1.6,1.6c0,0,12.2,0,16.6,0c1.6,0,4.8,0.3,6.7,0.8c2.3,0.6,4.3,0.8,6.3,2.4                             c1.6,1.2,3.2,2.8,4.3,4.4c1.2,2,2.1,3.9,2.4,6.3c0.2,1.7,0.7,4.7,0.8,6.7c0.2,4,0,16.2,0,16.2c0,0.8,0.8,1.6,1.6,1.6                             s1.6-0.8,1.6-1.6c0,0,0-12.3,0-16.2c0-1.6,0.5-5.1,0.8-6.7c0.5-2.3,0.8-4.4,2.4-6.3c1.2-1.6,2.8-3.2,4.3-4.4c2-1.2,3.9-2,6.3-2.4                             c1.8-0.3,5.1-0.7,7.1-0.8c3.5-0.2,15.8,0,15.8,0c0.8,0,1.6-0.8,1.6-1.6C80,39.2,79.2,38.4,78.4,38.4C78.4,38.4,78.4,38.4,78.4,38.4z                             "></path>
+                        </svg>
+                      </div>
+                      <div className="marquee__item item-regular text">
+                        <p>
+                          tech
+                        </p>
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="currentColor">
+                          <path fill="currentColor" d="M78.4,38.4c0,0-11.8,0-15.8,0c-1.6,0-4.8-0.2-7.1-0.8c-2.3-0.6-4.3-0.8-6.3-2.4c-2-1.2-3.5-3.2-4.7-4.8                             c-1.2-1.6-1.6-3.6-2-5.5c-0.3-1.5-0.7-4.3-0.8-5.9c-0.2-4.3,0-17.4,0-17.4C41.8,0.8,41,0,40.2,0s-1.6,0.8-1.6,1.6c0,0,0,13.1,0,17.4                             c0,1.6-0.6,4.3-0.8,5.9c-0.3,2-0.8,4-2,5.5c-1.2,2-2.8,3.6-4.7,4.8s-4,1.8-6.3,2.4c-1.9,0.5-4.7,0.6-6.7,0.8c-3.9,0.4-16.6,0-16.6,0                             C0.8,38.4,0,39.2,0,40c0,0.8,0.8,1.6,1.6,1.6c0,0,12.2,0,16.6,0c1.6,0,4.8,0.3,6.7,0.8c2.3,0.6,4.3,0.8,6.3,2.4                             c1.6,1.2,3.2,2.8,4.3,4.4c1.2,2,2.1,3.9,2.4,6.3c0.2,1.7,0.7,4.7,0.8,6.7c0.2,4,0,16.2,0,16.2c0,0.8,0.8,1.6,1.6,1.6                             s1.6-0.8,1.6-1.6c0,0,0-12.3,0-16.2c0-1.6,0.5-5.1,0.8-6.7c0.5-2.3,0.8-4.4,2.4-6.3c1.2-1.6,2.8-3.2,4.3-4.4c2-1.2,3.9-2,6.3-2.4                             c1.8-0.3,5.1-0.7,7.1-0.8c3.5-0.2,15.8,0,15.8,0c0.8,0,1.6-0.8,1.6-1.6C80,39.2,79.2,38.4,78.4,38.4C78.4,38.4,78.4,38.4,78.4,38.4z                             "></path>
+                        </svg>
+                      </div>
+                      <div className="marquee__item item-regular text">
+                        <p>
+                          tech
+                        </p>
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="currentColor">
+                          <path fill="currentColor" d="M78.4,38.4c0,0-11.8,0-15.8,0c-1.6,0-4.8-0.2-7.1-0.8c-2.3-0.6-4.3-0.8-6.3-2.4c-2-1.2-3.5-3.2-4.7-4.8                             c-1.2-1.6-1.6-3.6-2-5.5c-0.3-1.5-0.7-4.3-0.8-5.9c-0.2-4.3,0-17.4,0-17.4C41.8,0.8,41,0,40.2,0s-1.6,0.8-1.6,1.6c0,0,0,13.1,0,17.4                             c0,1.6-0.6,4.3-0.8,5.9c-0.3,2-0.8,4-2,5.5c-1.2,2-2.8,3.6-4.7,4.8s-4,1.8-6.3,2.4c-1.9,0.5-4.7,0.6-6.7,0.8c-3.9,0.4-16.6,0-16.6,0                             C0.8,38.4,0,39.2,0,40c0,0.8,0.8,1.6,1.6,1.6c0,0,12.2,0,16.6,0c1.6,0,4.8,0.3,6.7,0.8c2.3,0.6,4.3,0.8,6.3,2.4                             c1.6,1.2,3.2,2.8,4.3,4.4c1.2,2,2.1,3.9,2.4,6.3c0.2,1.7,0.7,4.7,0.8,6.7c0.2,4,0,16.2,0,16.2c0,0.8,0.8,1.6,1.6,1.6                             s1.6-0.8,1.6-1.6c0,0,0-12.3,0-16.2c0-1.6,0.5-5.1,0.8-6.7c0.5-2.3,0.8-4.4,2.4-6.3c1.2-1.6,2.8-3.2,4.3-4.4c2-1.2,3.9-2,6.3-2.4                             c1.8-0.3,5.1-0.7,7.1-0.8c3.5-0.2,15.8,0,15.8,0c0.8,0,1.6-0.8,1.6-1.6C80,39.2,79.2,38.4,78.4,38.4C78.4,38.4,78.4,38.4,78.4,38.4z                             "></path>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <h1 className="hero-01-title hero-01-title--left">
+                  <span className="hero-01-title__row loading__item">
+                    <em className="hero-01-title__item">
+                      Design,
+                    </em>
+                    <em className="hero-01-title__item title-item-transparent">
+                      tech
+                    </em>
+                  </span>
+                  <span className="hero-01-title__row loading__item">
+                    <em className="hero-01-title__item title-item-image">
+                      <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 20 20">
+                        <path d="M19.6,9.6h-3.9c-.4,0-1.8-.2-1.8-.2-.6,0-1.1-.2-1.6-.6-.5-.3-.9-.8-1.2-1.2-.3-.4-.4-.9-.5-1.4,0,0,0-1.1-.2-1.5V.4c0-.2-.2-.4-.4-.4s-.4.2-.4.4v4.4c0,.4-.2,1.5-.2,1.5,0,.5-.2,1-.5,1.4-.3.5-.7.9-1.2,1.2s-1,.5-1.6.6c0,0-1.2,0-1.7.2H.4c-.2,0-.4.2-.4.4s.2.4.4.4h4.1c.4,0,1.7.2,1.7.2.6,0,1.1.2,1.6.6.4.3.8.7,1.1,1.1.3.5.5,1,.6,1.6,0,0,0,1.3.2,1.7v4.1c0,.2.2.4.4.4s.4-.2.4-.4v-4.1c0-.4.2-1.7.2-1.7,0-.6.2-1.1.6-1.6.3-.4.7-.8,1.1-1.1.5-.3,1-.5,1.6-.6,0,0,1.3,0,1.8-.2h3.9c.2,0,.4-.2.4-.4s-.2-.4-.4-.4h0Z"></path>
+                      </svg>
+                    </em>
+                    <em className="hero-01-title__item">
+                      and some magic
+                    </em>
+                  </span>
+                </h1>
+              </div>
+            </div>
+            <div className="mxd-hero-01__bottom">
+              <div className="mxd-hero-01__data-wrap">
+                <div className="mxd-hero-01__dash-line dash-line loading__fade"></div>
+                <div className="mxd-hero-01__data-btn loading__fade">
+                  <RayoLink href="#projects" className="btn-rotating btn-rotating-120-160">
+                    <svg version="1.1" id="scrollDown" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 160 160" xmlSpace="preserve" className="btn-rotating__text animate-rotation" data-value="360">
+                      <defs>
+                        <path id="textPath" d="M149.7,80c0,38.5-31.2,69.7-69.7,69.7S10.3,118.5,10.3,80S41.5,10.3,80,10.3S149.7,41.5,149.7,80z"></path>
+                      </defs>
+                      <g>
+                        <use xlinkHref="#textPath" fill="none"></use>
+                        <text>
+                          <textPath xlinkHref="#textPath">
+                            {"Scroll for More * Scroll for More * Scroll for More * "}
+                          </textPath>
+                        </text>
+                      </g>
+                    </svg>
+                    <img className="btn-rotating__image" src="/img/tikii/hero-orbit-token.png" alt="Tikii orbit token" />
+                  </RayoLink>
+                </div>
+                <div className="mxd-hero-01__data-descr loading__fade">
+                  <p className="t-bright">
+                    {"We are a creative digital agency specializing in innovative                      design and cutting-edge development."}
+                  </p>
+                </div>
+                <div className="mxd-hero-01__data-socials loading__fade">
+                  <ul>
+                    <li>
+                      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="currentColor">
+                        <path fill="currentColor" d="M78.4,38.4c0,0-11.8,0-15.8,0c-1.6,0-4.8-0.2-7.1-0.8c-2.3-0.6-4.3-0.8-6.3-2.4c-2-1.2-3.5-3.2-4.7-4.8                           c-1.2-1.6-1.6-3.6-2-5.5c-0.3-1.5-0.7-4.3-0.8-5.9c-0.2-4.3,0-17.4,0-17.4C41.8,0.8,41,0,40.2,0s-1.6,0.8-1.6,1.6c0,0,0,13.1,0,17.4                           c0,1.6-0.6,4.3-0.8,5.9c-0.3,2-0.8,4-2,5.5c-1.2,2-2.8,3.6-4.7,4.8s-4,1.8-6.3,2.4c-1.9,0.5-4.7,0.6-6.7,0.8c-3.9,0.4-16.6,0-16.6,0                           C0.8,38.4,0,39.2,0,40c0,0.8,0.8,1.6,1.6,1.6c0,0,12.2,0,16.6,0c1.6,0,4.8,0.3,6.7,0.8c2.3,0.6,4.3,0.8,6.3,2.4                           c1.6,1.2,3.2,2.8,4.3,4.4c1.2,2,2.1,3.9,2.4,6.3c0.2,1.7,0.7,4.7,0.8,6.7c0.2,4,0,16.2,0,16.2c0,0.8,0.8,1.6,1.6,1.6                           s1.6-0.8,1.6-1.6c0,0,0-12.3,0-16.2c0-1.6,0.5-5.1,0.8-6.7c0.5-2.3,0.8-4.4,2.4-6.3c1.2-1.6,2.8-3.2,4.3-4.4c2-1.2,3.9-2,6.3-2.4                           c1.8-0.3,5.1-0.7,7.1-0.8c3.5-0.2,15.8,0,15.8,0c0.8,0,1.6-0.8,1.6-1.6C80,39.2,79.2,38.4,78.4,38.4C78.4,38.4,78.4,38.4,78.4,38.4z                           "></path>
+                      </svg>
+                      <RayoLink href="https://dribbble.com/" target="_blank">
+                        Dribbble
+                      </RayoLink>
+                    </li>
+                    <li>
+                      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="currentColor">
+                        <path fill="currentColor" d="M78.4,38.4c0,0-11.8,0-15.8,0c-1.6,0-4.8-0.2-7.1-0.8c-2.3-0.6-4.3-0.8-6.3-2.4c-2-1.2-3.5-3.2-4.7-4.8                           c-1.2-1.6-1.6-3.6-2-5.5c-0.3-1.5-0.7-4.3-0.8-5.9c-0.2-4.3,0-17.4,0-17.4C41.8,0.8,41,0,40.2,0s-1.6,0.8-1.6,1.6c0,0,0,13.1,0,17.4                           c0,1.6-0.6,4.3-0.8,5.9c-0.3,2-0.8,4-2,5.5c-1.2,2-2.8,3.6-4.7,4.8s-4,1.8-6.3,2.4c-1.9,0.5-4.7,0.6-6.7,0.8c-3.9,0.4-16.6,0-16.6,0                           C0.8,38.4,0,39.2,0,40c0,0.8,0.8,1.6,1.6,1.6c0,0,12.2,0,16.6,0c1.6,0,4.8,0.3,6.7,0.8c2.3,0.6,4.3,0.8,6.3,2.4                           c1.6,1.2,3.2,2.8,4.3,4.4c1.2,2,2.1,3.9,2.4,6.3c0.2,1.7,0.7,4.7,0.8,6.7c0.2,4,0,16.2,0,16.2c0,0.8,0.8,1.6,1.6,1.6                           s1.6-0.8,1.6-1.6c0,0,0-12.3,0-16.2c0-1.6,0.5-5.1,0.8-6.7c0.5-2.3,0.8-4.4,2.4-6.3c1.2-1.6,2.8-3.2,4.3-4.4c2-1.2,3.9-2,6.3-2.4                           c1.8-0.3,5.1-0.7,7.1-0.8c3.5-0.2,15.8,0,15.8,0c0.8,0,1.6-0.8,1.6-1.6C80,39.2,79.2,38.4,78.4,38.4C78.4,38.4,78.4,38.4,78.4,38.4z                           "></path>
+                      </svg>
+                      <RayoLink href="https://www.behance.net/" target="_blank">
+                        Behance
+                      </RayoLink>
+                    </li>
+                    <li>
+                      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="currentColor">
+                        <path fill="currentColor" d="M78.4,38.4c0,0-11.8,0-15.8,0c-1.6,0-4.8-0.2-7.1-0.8c-2.3-0.6-4.3-0.8-6.3-2.4c-2-1.2-3.5-3.2-4.7-4.8                           c-1.2-1.6-1.6-3.6-2-5.5c-0.3-1.5-0.7-4.3-0.8-5.9c-0.2-4.3,0-17.4,0-17.4C41.8,0.8,41,0,40.2,0s-1.6,0.8-1.6,1.6c0,0,0,13.1,0,17.4                           c0,1.6-0.6,4.3-0.8,5.9c-0.3,2-0.8,4-2,5.5c-1.2,2-2.8,3.6-4.7,4.8s-4,1.8-6.3,2.4c-1.9,0.5-4.7,0.6-6.7,0.8c-3.9,0.4-16.6,0-16.6,0                           C0.8,38.4,0,39.2,0,40c0,0.8,0.8,1.6,1.6,1.6c0,0,12.2,0,16.6,0c1.6,0,4.8,0.3,6.7,0.8c2.3,0.6,4.3,0.8,6.3,2.4                           c1.6,1.2,3.2,2.8,4.3,4.4c1.2,2,2.1,3.9,2.4,6.3c0.2,1.7,0.7,4.7,0.8,6.7c0.2,4,0,16.2,0,16.2c0,0.8,0.8,1.6,1.6,1.6                           s1.6-0.8,1.6-1.6c0,0,0-12.3,0-16.2c0-1.6,0.5-5.1,0.8-6.7c0.5-2.3,0.8-4.4,2.4-6.3c1.2-1.6,2.8-3.2,4.3-4.4c2-1.2,3.9-2,6.3-2.4                           c1.8-0.3,5.1-0.7,7.1-0.8c3.5-0.2,15.8,0,15.8,0c0.8,0,1.6-0.8,1.6-1.6C80,39.2,79.2,38.4,78.4,38.4C78.4,38.4,78.4,38.4,78.4,38.4z                           "></path>
+                      </svg>
+                      <RayoLink href="https://www.instagram.com/" target="_blank">
+                        Instagram
+                      </RayoLink>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div className="mxd-hero-01__video-wrap loading__item">
+                <video className="mxd-hero-01__video" preload="auto" autoPlay loop muted poster="https://dummyimage.com/540x310/5d5d5d/737373">
+                  <source type="video/mp4" src="/video/540x310_video.mp4" />
+                  <source type="video/webm" src="/video/540x310_video.webm" />
+                  <source type="video/ogv" src="/video/540x310_video.ogv" />
+                </video>
+                <div className="mxd-hero-01__video-btn">
+                  <RayoLink id="showreel-trigger" className="btn btn-round btn-round-medium btn-accent slide-right anim-no-delay showreel-trigger" href="https://vimeo.com/65036292" aria-label="Play">
+                    <i className="ph-fill ph-play"></i>
+                  </RayoLink>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="mxd-section padding-hero-01 padding-pre-manifest mobile-point-subtitle">
+        <div className="mxd-container">
+          <div className="mxd-divider">
+            <div className="mxd-divider__image divider-image-1 parallax-img"></div>
+          </div>
+        </div>
+      </div>
+      <div className="mxd-section padding-pre-grid">
+        <div className="mxd-container grid-container">
+          <div className="mxd-block">
+            <div className="container-fluid px-0">
+              <div className="row gx-0">
+                <div className="col-12 col-xl-5 mxd-grid-item no-margin">
+                  <div className="mxd-block__name name-manifest">
+                    <p className="mxd-point-subtitle anim-uni-in-up">
+                      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill="currentColor" d="M19.6,9.6c0,0-3,0-4,0c-0.4,0-1.8-0.2-1.8-0.2c-0.6-0.1-1.1-0.2-1.6-0.6c-0.5-0.3-0.9-0.8-1.2-1.2                           c-0.3-0.4-0.4-0.9-0.5-1.4c0,0-0.1-1.1-0.2-1.5c-0.1-1.1,0-4.4,0-4.4C10.4,0.2,10.2,0,10,0S9.6,0.2,9.6,0.4c0,0,0.1,3.3,0,4.4                           c0,0.4-0.2,1.5-0.2,1.5C9.4,6.7,9.2,7.2,9,7.6C8.7,8.1,8.2,8.5,7.8,8.9c-0.5,0.3-1,0.5-1.6,0.6c0,0-1.2,0.1-1.7,0.2                           c-1,0.1-4.2,0-4.2,0C0.2,9.6,0,9.8,0,10c0,0.2,0.2,0.4,0.4,0.4c0,0,3.1-0.1,4.2,0c0.4,0,1.7,0.2,1.7,0.2c0.6,0.1,1.1,0.2,1.6,0.6                           c0.4,0.3,0.8,0.7,1.1,1.1c0.3,0.5,0.5,1,0.6,1.6c0,0,0.1,1.3,0.2,1.7c0,1,0,4.1,0,4.1c0,0.2,0.2,0.4,0.4,0.4s0.4-0.2,0.4-0.4                           c0,0,0-3.1,0-4.1c0-0.4,0.2-1.7,0.2-1.7c0.1-0.6,0.2-1.1,0.6-1.6c0.3-0.4,0.7-0.8,1.1-1.1c0.5-0.3,1-0.5,1.6-0.6                           c0,0,1.3-0.1,1.8-0.2c1,0,4,0,4,0c0.2,0,0.4-0.2,0.4-0.4C20,9.8,19.8,9.6,19.6,9.6L19.6,9.6z"></path>
+                      </svg>
+                      <span>
+                        Who we are
+                      </span>
+                    </p>
+                  </div>
+                </div>
+                <div className="col-12 col-xl-7 mxd-grid-item no-margin">
+                  <div className="mxd-block__content">
+                    <div className="mxd-block__manifest">
+                      <p className="mxd-manifest reveal-type anim-uni-in-up">
+                        {"We are a creative digital agency specializing in innovative design                          and cutting-edge development."}
+                      </p>
+                      <div className="mxd-manifest__controls anim-uni-in-up">
+                        <RayoLink className="btn btn-anim btn-default btn-outline slide-right-up anim-uni-in-up" href="/contact">
+                          <span className="btn-caption">
+                            Say Hello
+                          </span>
+                          <i className="ph-bold ph-arrow-up-right"></i>
+                        </RayoLink>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="mxd-section padding-grid-pre-mtext overflow-hidden">
+        <div className="mxd-container grid-container">
+          <div className="mxd-block">
+            <div className="mxd-stats-cards">
+              <div className="container-fluid px-0">
+                <div className="row gx-0">
+                  <div className="col-12 col-xl-5 mxd-stats-cards__item mxd-grid-item anim-uni-scale-in-right">
+                    <HomeBorderGlow className="mxd-stats-cards__inner align-end bg-accent radius-m padding-4">
+                      <div className="mxd-counter align-end">
+                        <p id="stats-counter-1" className="mxd-counter__number mxd-stats-number opposite">
+                          0
+                        </p>
+                        <p className="mxd-counter__descr t-140 t-bright opposite">
+                          Happy clients who
+                          <br />
+                          trust my work
+                        </p>
+                      </div>
+                      <div className="mxd-stats-cards__btngroup">
+                        <RayoLink className="btn btn-anim btn-default btn-outline opposite slide-right-up" href="/about-us">
+                          <span className="btn-caption">
+                            Studio
+                          </span>
+                          <i className="ph-bold ph-arrow-up-right"></i>
+                        </RayoLink>
+                      </div>
+                      <div className="mxd-stats-cards__image mxd-stats-cards-image-1">
+                        <img src="https://dummyimage.com/800x800/5d5d5d/737373" alt="Illustration" />
+                      </div>
+                    </HomeBorderGlow>
+                  </div>
+                  <div className="col-12 col-xl-7 mxd-stats-cards__item mxd-grid-item anim-uni-scale-in-left">
+                    <HomeBorderGlow className="mxd-stats-cards__inner align-end bg-base-tint radius-m padding-4">
+                      <div className="mxd-stats-cards__btngroup">
+                        <div className="mxd-avatars">
+                          <div className="mxd-avatars__item">
+                            <img src="https://dummyimage.com/300x300/5d5d5d/737373" alt="Avatar" />
+                          </div>
+                          <div className="mxd-avatars__item bg-base-opp">
+                            <svg className="mxd-avatars__icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="60px" height="60px" viewBox="0 0 60 60" xmlSpace="preserve">
+                              <style>{`
+                                .icon-star {
+                                  fill:var(--additional);
+                                }
+                              `}</style>
+                              <path className="icon-star" d="M58.9,28.9c0,0-9.1,0.1-12.1,0c-1.3,0-5.3-0.5-5.3-0.5c-1.7-0.2-3.4-0.7-4.8-1.7c-1.4-1-2.7-2.3-3.6-3.7                                 c-0.8-1.3-1.3-2.7-1.5-4.2c0,0-0.4-3.3-0.5-4.4c-0.2-3.3,0-13.1,0-13.1c0-0.6-0.5-1.1-1.1-1.1s-1.1,0.5-1.1,1.1                                 c0,0,0.2,9.8,0,13.1c0,1.1-0.5,4.4-0.5,4.4c-0.2,1.5-0.6,3-1.5,4.2c-0.9,1.5-2.2,2.7-3.6,3.7s-3,1.5-4.7,1.7c0,0-3.7,0.4-5,0.5                                 c-3.1,0.2-12.5,0-12.5,0C0.5,28.9,0,29.4,0,30s0.5,1.1,1.1,1.1c0,0,9.4-0.2,12.5,0c1.2,0,5,0.5,5,0.5c1.7,0.2,3.3,0.7,4.7,1.7                                 c1.3,0.9,2.4,2,3.3,3.3c1,1.4,1.5,3.1,1.7,4.8c0,0,0.4,3.9,0.5,5.2c0.1,3,0,12.2,0,12.2c0,0.6,0.5,1.1,1.1,1.1s1.1-0.5,1.1-1.1                                 c0,0-0.1-9.2,0-12.2c0-1.3,0.5-5.2,0.5-5.2c0.2-1.7,0.7-3.4,1.7-4.8c0.9-1.3,2-2.4,3.3-3.3c1.4-1,3.1-1.5,4.8-1.7                                 c0,0,3.9-0.4,5.3-0.5c3-0.1,12.1,0,12.1,0c0.6,0,1.1-0.5,1.1-1.1s-0.5-1.1-1.1-1.1l0,0L58.9,28.9z"></path>
+                            </svg>
+                          </div>
+                          <div className="mxd-avatars__item">
+                            <img src="https://dummyimage.com/300x300/5d5d5d/737373" alt="Avatar" />
+                          </div>
+                        </div>
+                      </div>
+                      <div className="mxd-counter align-end">
+                        <p id="stats-counter-2" className="mxd-counter__number mxd-stats-number">
+                          0
+                        </p>
+                        <p className="mxd-counter__descr t-140 t-bright">
+                          Clients come back for
+                          <br />
+                          a new projects
+                        </p>
+                      </div>
+                      <div className="mxd-stats-cards__image mxd-stats-cards-image-2">
+                        <img src="https://dummyimage.com/800x800/5d5d5d/737373" alt="Illustration" />
+                      </div>
+                    </HomeBorderGlow>
+                  </div>
+                  <div className="col-12 col-xl-7 mxd-stats-cards__item mxd-grid-item anim-uni-scale-in-right">
+                    <HomeBorderGlow className="mxd-stats-cards__inner bg-base-tint radius-m padding-4">
+                      <div className="mxd-counter">
+                        <p id="stats-counter-3" className="mxd-counter__number mxd-stats-number">
+                          0
+                        </p>
+                        <p className="mxd-counter__descr t-140 t-bright">
+                          Years of professional experience in designing digital products
+                        </p>
+                      </div>
+                      <div className="mxd-stats-cards__btngroup">
+                        <RayoLink className="btn btn-anim btn-default btn-outline slide-right-down" href="/contact">
+                          <span className="btn-caption">
+                            Start New Project
+                          </span>
+                          <i className="ph-bold ph-arrow-down-right"></i>
+                        </RayoLink>
+                      </div>
+                      <div className="mxd-stats-cards__image mxd-stats-cards-image-3">
+                        <img src="https://dummyimage.com/800x800/5d5d5d/737373" alt="Illustration" />
+                      </div>
+                    </HomeBorderGlow>
+                  </div>
+                  <div className="col-12 col-xl-5 mxd-stats-cards__item mxd-grid-item anim-uni-scale-in-left">
+                    <HomeBorderGlow className="mxd-stats-cards__inner bg-base-tint radius-m padding-4">
+                      <div className="mxd-counter">
+                        <p id="stats-counter-4" className="mxd-counter__number mxd-stats-number">
+                          0
+                        </p>
+                        <p className="mxd-counter__descr t-140 t-bright">
+                          Successfully
+                          <br />
+                          completed projects
+                        </p>
+                      </div>
+                      <div className="mxd-stats-cards__btngroup">
+                        <RayoLink className="btn btn-anim btn-default btn-outline slide-right-up" href="/works">
+                          <span className="btn-caption">
+                            Works
+                          </span>
+                          <i className="ph-bold ph-arrow-up-right"></i>
+                        </RayoLink>
+                      </div>
+                      <div className="mxd-stats-cards__image mxd-stats-cards-image-4">
+                        <img src="https://dummyimage.com/800x800/5d5d5d/737373" alt="Illustration" />
+                      </div>
+                    </HomeBorderGlow>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="mxd-section padding-mtext-pre-pinned">
+        <div className="mxd-container fullwidth-container">
+          <div className="mxd-block">
+            <div className="marquee marquee-right--gsap muted-extra">
+              <div className="marquee__toright">
+                <div className="marquee__item one-line item-regular text">
+                  <p className="marquee__text">
+                    Design
+                  </p>
+                  <div className="marquee__image">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="currentColor">
+                      <path fill="currentColor" d="M78.4,38.4c0,0-11.8,0-15.8,0c-1.6,0-4.8-0.2-7.1-0.8c-2.3-0.6-4.3-0.8-6.3-2.4c-2-1.2-3.5-3.2-4.7-4.8                         c-1.2-1.6-1.6-3.6-2-5.5c-0.3-1.5-0.7-4.3-0.8-5.9c-0.2-4.3,0-17.4,0-17.4C41.8,0.8,41,0,40.2,0s-1.6,0.8-1.6,1.6c0,0,0,13.1,0,17.4                         c0,1.6-0.6,4.3-0.8,5.9c-0.3,2-0.8,4-2,5.5c-1.2,2-2.8,3.6-4.7,4.8s-4,1.8-6.3,2.4c-1.9,0.5-4.7,0.6-6.7,0.8c-3.9,0.4-16.6,0-16.6,0                         C0.8,38.4,0,39.2,0,40c0,0.8,0.8,1.6,1.6,1.6c0,0,12.2,0,16.6,0c1.6,0,4.8,0.3,6.7,0.8c2.3,0.6,4.3,0.8,6.3,2.4                         c1.6,1.2,3.2,2.8,4.3,4.4c1.2,2,2.1,3.9,2.4,6.3c0.2,1.7,0.7,4.7,0.8,6.7c0.2,4,0,16.2,0,16.2c0,0.8,0.8,1.6,1.6,1.6                         s1.6-0.8,1.6-1.6c0,0,0-12.3,0-16.2c0-1.6,0.5-5.1,0.8-6.7c0.5-2.3,0.8-4.4,2.4-6.3c1.2-1.6,2.8-3.2,4.3-4.4c2-1.2,3.9-2,6.3-2.4                         c1.8-0.3,5.1-0.7,7.1-0.8c3.5-0.2,15.8,0,15.8,0c0.8,0,1.6-0.8,1.6-1.6C80,39.2,79.2,38.4,78.4,38.4C78.4,38.4,78.4,38.4,78.4,38.4z                         "></path>
+                    </svg>
+                  </div>
+                </div>
+                <div className="marquee__item one-line item-regular text">
+                  <p className="marquee__text">
+                    Development
+                  </p>
+                  <div className="marquee__image">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="currentColor">
+                      <path fill="currentColor" d="M78.4,38.4c0,0-11.8,0-15.8,0c-1.6,0-4.8-0.2-7.1-0.8c-2.3-0.6-4.3-0.8-6.3-2.4c-2-1.2-3.5-3.2-4.7-4.8                         c-1.2-1.6-1.6-3.6-2-5.5c-0.3-1.5-0.7-4.3-0.8-5.9c-0.2-4.3,0-17.4,0-17.4C41.8,0.8,41,0,40.2,0s-1.6,0.8-1.6,1.6c0,0,0,13.1,0,17.4                         c0,1.6-0.6,4.3-0.8,5.9c-0.3,2-0.8,4-2,5.5c-1.2,2-2.8,3.6-4.7,4.8s-4,1.8-6.3,2.4c-1.9,0.5-4.7,0.6-6.7,0.8c-3.9,0.4-16.6,0-16.6,0                         C0.8,38.4,0,39.2,0,40c0,0.8,0.8,1.6,1.6,1.6c0,0,12.2,0,16.6,0c1.6,0,4.8,0.3,6.7,0.8c2.3,0.6,4.3,0.8,6.3,2.4                         c1.6,1.2,3.2,2.8,4.3,4.4c1.2,2,2.1,3.9,2.4,6.3c0.2,1.7,0.7,4.7,0.8,6.7c0.2,4,0,16.2,0,16.2c0,0.8,0.8,1.6,1.6,1.6                         s1.6-0.8,1.6-1.6c0,0,0-12.3,0-16.2c0-1.6,0.5-5.1,0.8-6.7c0.5-2.3,0.8-4.4,2.4-6.3c1.2-1.6,2.8-3.2,4.3-4.4c2-1.2,3.9-2,6.3-2.4                         c1.8-0.3,5.1-0.7,7.1-0.8c3.5-0.2,15.8,0,15.8,0c0.8,0,1.6-0.8,1.6-1.6C80,39.2,79.2,38.4,78.4,38.4C78.4,38.4,78.4,38.4,78.4,38.4z                         "></path>
+                    </svg>
+                  </div>
+                </div>
+                <div className="marquee__item one-line item-regular text">
+                  <p className="marquee__text">
+                    Branding
+                  </p>
+                  <div className="marquee__image">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="currentColor">
+                      <path fill="currentColor" d="M78.4,38.4c0,0-11.8,0-15.8,0c-1.6,0-4.8-0.2-7.1-0.8c-2.3-0.6-4.3-0.8-6.3-2.4c-2-1.2-3.5-3.2-4.7-4.8                         c-1.2-1.6-1.6-3.6-2-5.5c-0.3-1.5-0.7-4.3-0.8-5.9c-0.2-4.3,0-17.4,0-17.4C41.8,0.8,41,0,40.2,0s-1.6,0.8-1.6,1.6c0,0,0,13.1,0,17.4                         c0,1.6-0.6,4.3-0.8,5.9c-0.3,2-0.8,4-2,5.5c-1.2,2-2.8,3.6-4.7,4.8s-4,1.8-6.3,2.4c-1.9,0.5-4.7,0.6-6.7,0.8c-3.9,0.4-16.6,0-16.6,0                         C0.8,38.4,0,39.2,0,40c0,0.8,0.8,1.6,1.6,1.6c0,0,12.2,0,16.6,0c1.6,0,4.8,0.3,6.7,0.8c2.3,0.6,4.3,0.8,6.3,2.4                         c1.6,1.2,3.2,2.8,4.3,4.4c1.2,2,2.1,3.9,2.4,6.3c0.2,1.7,0.7,4.7,0.8,6.7c0.2,4,0,16.2,0,16.2c0,0.8,0.8,1.6,1.6,1.6                         s1.6-0.8,1.6-1.6c0,0,0-12.3,0-16.2c0-1.6,0.5-5.1,0.8-6.7c0.5-2.3,0.8-4.4,2.4-6.3c1.2-1.6,2.8-3.2,4.3-4.4c2-1.2,3.9-2,6.3-2.4                         c1.8-0.3,5.1-0.7,7.1-0.8c3.5-0.2,15.8,0,15.8,0c0.8,0,1.6-0.8,1.6-1.6C80,39.2,79.2,38.4,78.4,38.4C78.4,38.4,78.4,38.4,78.4,38.4z                         "></path>
+                    </svg>
+                  </div>
+                </div>
+                <div className="marquee__item one-line item-regular text">
+                  <p className="marquee__text">
+                    eCommerce
+                  </p>
+                  <div className="marquee__image">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="currentColor">
+                      <path fill="currentColor" d="M78.4,38.4c0,0-11.8,0-15.8,0c-1.6,0-4.8-0.2-7.1-0.8c-2.3-0.6-4.3-0.8-6.3-2.4c-2-1.2-3.5-3.2-4.7-4.8                         c-1.2-1.6-1.6-3.6-2-5.5c-0.3-1.5-0.7-4.3-0.8-5.9c-0.2-4.3,0-17.4,0-17.4C41.8,0.8,41,0,40.2,0s-1.6,0.8-1.6,1.6c0,0,0,13.1,0,17.4                         c0,1.6-0.6,4.3-0.8,5.9c-0.3,2-0.8,4-2,5.5c-1.2,2-2.8,3.6-4.7,4.8s-4,1.8-6.3,2.4c-1.9,0.5-4.7,0.6-6.7,0.8c-3.9,0.4-16.6,0-16.6,0                         C0.8,38.4,0,39.2,0,40c0,0.8,0.8,1.6,1.6,1.6c0,0,12.2,0,16.6,0c1.6,0,4.8,0.3,6.7,0.8c2.3,0.6,4.3,0.8,6.3,2.4                         c1.6,1.2,3.2,2.8,4.3,4.4c1.2,2,2.1,3.9,2.4,6.3c0.2,1.7,0.7,4.7,0.8,6.7c0.2,4,0,16.2,0,16.2c0,0.8,0.8,1.6,1.6,1.6                         s1.6-0.8,1.6-1.6c0,0,0-12.3,0-16.2c0-1.6,0.5-5.1,0.8-6.7c0.5-2.3,0.8-4.4,2.4-6.3c1.2-1.6,2.8-3.2,4.3-4.4c2-1.2,3.9-2,6.3-2.4                         c1.8-0.3,5.1-0.7,7.1-0.8c3.5-0.2,15.8,0,15.8,0c0.8,0,1.6-0.8,1.6-1.6C80,39.2,79.2,38.4,78.4,38.4C78.4,38.4,78.4,38.4,78.4,38.4z                         "></path>
+                    </svg>
+                  </div>
+                </div>
+                <div className="marquee__item one-line item-regular text">
+                  <p className="marquee__text">
+                    Mobile Apps
+                  </p>
+                  <div className="marquee__image">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="currentColor">
+                      <path fill="currentColor" d="M78.4,38.4c0,0-11.8,0-15.8,0c-1.6,0-4.8-0.2-7.1-0.8c-2.3-0.6-4.3-0.8-6.3-2.4c-2-1.2-3.5-3.2-4.7-4.8                         c-1.2-1.6-1.6-3.6-2-5.5c-0.3-1.5-0.7-4.3-0.8-5.9c-0.2-4.3,0-17.4,0-17.4C41.8,0.8,41,0,40.2,0s-1.6,0.8-1.6,1.6c0,0,0,13.1,0,17.4                         c0,1.6-0.6,4.3-0.8,5.9c-0.3,2-0.8,4-2,5.5c-1.2,2-2.8,3.6-4.7,4.8s-4,1.8-6.3,2.4c-1.9,0.5-4.7,0.6-6.7,0.8c-3.9,0.4-16.6,0-16.6,0                         C0.8,38.4,0,39.2,0,40c0,0.8,0.8,1.6,1.6,1.6c0,0,12.2,0,16.6,0c1.6,0,4.8,0.3,6.7,0.8c2.3,0.6,4.3,0.8,6.3,2.4                         c1.6,1.2,3.2,2.8,4.3,4.4c1.2,2,2.1,3.9,2.4,6.3c0.2,1.7,0.7,4.7,0.8,6.7c0.2,4,0,16.2,0,16.2c0,0.8,0.8,1.6,1.6,1.6                         s1.6-0.8,1.6-1.6c0,0,0-12.3,0-16.2c0-1.6,0.5-5.1,0.8-6.7c0.5-2.3,0.8-4.4,2.4-6.3c1.2-1.6,2.8-3.2,4.3-4.4c2-1.2,3.9-2,6.3-2.4                         c1.8-0.3,5.1-0.7,7.1-0.8c3.5-0.2,15.8,0,15.8,0c0.8,0,1.6-0.8,1.6-1.6C80,39.2,79.2,38.4,78.4,38.4C78.4,38.4,78.4,38.4,78.4,38.4z                         "></path>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="projects" className="mxd-section padding-pre-stack">
+        <div className="mxd-container grid-container">
+          <div className="mxd-block">
+            <div className="mxd-pinned-projects">
+              <div className="container-fluid px-0">
+                <div className="row gx-0">
+                  <div className="col-12 col-xl-5 mxd-pinned-projects__static">
+                    <div className="mxd-pinned-projects__static-inner no-margin">
+                      <div className="mxd-section-title no-margin-desktop">
+                        <div className="container-fluid p-0">
+                          <div className="row g-0">
+                            <div className="col-12 mxd-grid-item no-margin">
+                              <div className="mxd-section-title__title anim-uni-in-up">
+                                <h2 className="reveal-type">
+                                  Featured
+                                  <br />
+                                  projects
+                                </h2>
+                              </div>
+                            </div>
+                            <div className="col-12 mxd-grid-item no-margin">
+                              <div className="mxd-section-title__descr anim-uni-in-up">
+                                <p>
+                                  Explore a selection of projects blending
+                                  <br />
+                                  creativity with practical design
+                                </p>
+                              </div>
+                            </div>
+                            <div className="col-12 mxd-grid-item no-margin">
+                              <div className="mxd-section-title__controls anim-uni-in-up">
+                                <RayoLink className="btn btn-anim btn-default btn-outline slide-right-up" href="/works">
+                                  <span className="btn-caption">
+                                    All Works
+                                  </span>
+                                  <i className="ph-bold ph-arrow-up-right"></i>
+                                </RayoLink>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-12 col-xl-7 mxd-pinned-projects__scroll">
+                    <div className="mxd-pinned-projects__scroll-inner mxd-grid-item no-margin">
+                      <div className="mxd-project-item">
+                        <RayoLink className="mxd-project-item__media anim-uni-in-up" href="/project-details">
+                          <div className="mxd-project-item__preview preview-image-1 parallax-img-small"></div>
+                          <div className="mxd-project-item__tags">
+                            <span className="tag tag-default tag-permanent">
+                              UI/UX
+                            </span>
+                            <span className="tag tag-default tag-permanent">
+                              Web design
+                            </span>
+                            <span className="tag tag-default tag-permanent">
+                              Illustrations
+                            </span>
+                          </div>
+                        </RayoLink>
+                        <div className="mxd-project-item__promo">
+                          <div className="mxd-project-item__name">
+                            <RayoLink className="anim-uni-in-up" href="/project-details">
+                              <span>
+                                Creative studio
+                              </span>
+                              {" template for modern agencies"}
+                            </RayoLink>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="mxd-project-item">
+                        <RayoLink className="mxd-project-item__media anim-uni-in-up" href="/project-details">
+                          <div className="mxd-project-item__preview preview-image-2 parallax-img-small"></div>
+                          <div className="mxd-project-item__tags">
+                            <span className="tag tag-default tag-permanent">
+                              Sora
+                            </span>
+                            <span className="tag tag-default tag-permanent">
+                              AI
+                            </span>
+                            <span className="tag tag-default tag-permanent">
+                              Editorial
+                            </span>
+                          </div>
+                        </RayoLink>
+                        <div className="mxd-project-item__promo">
+                          <div className="mxd-project-item__name">
+                            <RayoLink className="anim-uni-in-up" href="/project-details">
+                              <span>
+                                Interactive concept
+                              </span>
+                              {" powered by AI"}
+                            </RayoLink>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="mxd-project-item">
+                        <RayoLink className="mxd-project-item__media" href="/project-details">
+                          <div className="mxd-project-item__preview preview-image-3 parallax-img-small"></div>
+                          <div className="mxd-project-item__tags">
+                            <span className="tag tag-default tag-permanent">
+                              UI/UX
+                            </span>
+                            <span className="tag tag-default tag-permanent">
+                              Design
+                            </span>
+                            <span className="tag tag-default tag-permanent">
+                              Android
+                            </span>
+                          </div>
+                        </RayoLink>
+                        <div className="mxd-project-item__promo">
+                          <div className="mxd-project-item__name">
+                            <RayoLink href="/project-details">
+                              <span>
+                                Mobile app design
+                              </span>
+                              {" for a cross-platform solution"}
+                            </RayoLink>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="mxd-project-item">
+                        <RayoLink className="mxd-project-item__media anim-uni-in-up" href="/project-details">
+                          <div className="mxd-project-item__preview preview-image-4 parallax-img-small"></div>
+                          <div className="mxd-project-item__tags">
+                            <span className="tag tag-default tag-permanent">
+                              Brand identity
+                            </span>
+                            <span className="tag tag-default tag-permanent">
+                              Style guides
+                            </span>
+                          </div>
+                        </RayoLink>
+                        <div className="mxd-project-item__promo">
+                          <div className="mxd-project-item__name">
+                            <RayoLink className="anim-uni-in-up" href="/project-details">
+                              <span>
+                                NFT project
+                              </span>
+                              {" branding"}
+                            </RayoLink>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="mxd-project-item">
+                        <RayoLink className="mxd-project-item__media anim-uni-in-up" href="/project-details">
+                          <div className="mxd-project-item__preview preview-image-5 parallax-img-small"></div>
+                          <div className="mxd-project-item__tags">
+                            <span className="tag tag-default tag-permanent">
+                              Illustrations
+                            </span>
+                            <span className="tag tag-default tag-permanent">
+                              Design
+                            </span>
+                            <span className="tag tag-default tag-permanent">
+                              Packaging
+                            </span>
+                          </div>
+                        </RayoLink>
+                        <div className="mxd-project-item__promo">
+                          <div className="mxd-project-item__name">
+                            <RayoLink className="anim-uni-in-up" href="/project-details">
+                              <span>
+                                Illustrations set
+                              </span>
+                              {" developed for digital and print use."}
+                            </RayoLink>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="mxd-section padding-stacked-section">
+        <div className="mxd-container grid-container">
+          <div className="mxd-block mxd-grid-item no-margin">
+            <div className="content__block">
+              <div className="stack-wrapper in-content-stack">
+                <div className="stack-offset"></div>
+                <div className="services-stack">
+                  <div className="stack-item">
+                    <HomeBorderGlow className="mxd-services-stack__inner justify-between bg-base-opp">
+                      <div className="mxd-services-stack__controls">
+                        <RayoLink className="btn btn-round btn-round-large btn-additional slide-right-up anim-no-delay" href="/services" aria-label="Services Page Link">
+                          <i className="ph ph-arrow-up-right"></i>
+                        </RayoLink>
+                      </div>
+                      <div className="mxd-services-stack__title width-60">
+                        <h3 className="opposite">
+                          Digital art and graphic design
+                        </h3>
+                      </div>
+                      <div className="mxd-services-stack__info width-60">
+                        <div className="mxd-services-cards__tags">
+                          <span className="tag tag-default tag-outline-opposite">
+                            UI/UX
+                          </span>
+                          <span className="tag tag-default tag-outline-opposite">
+                            Web design
+                          </span>
+                          <span className="tag tag-default tag-outline-opposite">
+                            Packaging
+                          </span>
+                          <span className="tag tag-default tag-outline-opposite">
+                            Motion
+                          </span>
+                          <span className="tag tag-default tag-outline-opposite">
+                            3D models
+                          </span>
+                        </div>
+                        <p className="t-small-mobile t-opposite">
+                          {"We create visually compelling designs that enhance user experience.                            We make sure your brand's visuals resonate with your audience."}
+                        </p>
+                      </div>
+                      <div className="services-stack__image">
+                        <img className="service-img service-img-s" src="https://dummyimage.com/800x800/5d5d5d/737373" alt="Service/Feature Image" />
+                        <img className="service-img service-img-m" src="https://dummyimage.com/1000x1000/5d5d5d/737373" alt="Service/Feature Image" />
+                      </div>
+                    </HomeBorderGlow>
+                  </div>
+                  <div className="stack-item">
+                    <HomeBorderGlow className="mxd-services-stack__inner justify-between bg-accent">
+                      <div className="mxd-services-stack__controls">
+                        <RayoLink className="btn btn-round btn-round-large btn-base slide-right-up anim-no-delay" href="/services" aria-label="Services Page Link">
+                          <i className="ph ph-arrow-up-right"></i>
+                        </RayoLink>
+                      </div>
+                      <div className="mxd-services-stack__title width-60">
+                        <h3 className="opposite">
+                          Creative
+                          <br />
+                          development
+                        </h3>
+                      </div>
+                      <div className="mxd-services-stack__info width-60">
+                        <div className="mxd-services-cards__tags">
+                          <span className="tag tag-default tag-outline-opposite">
+                            Frontend
+                          </span>
+                          <span className="tag tag-default tag-outline-opposite">
+                            Interactions
+                          </span>
+                          <span className="tag tag-default tag-outline-opposite">
+                            Backend
+                          </span>
+                          <span className="tag tag-default tag-outline-opposite">
+                            Mobile Apps
+                          </span>
+                        </div>
+                        <p className="t-small-mobile t-opposite">
+                          {"We build high-performance websites and applications using                            modern technologies. Our solutions are designed to be scalable and functional for optimal performance."}
+                        </p>
+                      </div>
+                      <div className="services-stack__image">
+                        <img className="service-img service-img-s" src="https://dummyimage.com/800x800/5d5d5d/737373" alt="Service/Feature Image" />
+                        <img className="service-img service-img-m" src="https://dummyimage.com/1000x1000/5d5d5d/737373" alt="Service/Feature Image" />
+                      </div>
+                    </HomeBorderGlow>
+                  </div>
+                  <div className="stack-item">
+                    <HomeBorderGlow className="mxd-services-stack__inner radius-dark justify-between bg-base-tint">
+                      <div className="mxd-services-stack__controls">
+                        <RayoLink className="btn btn-round btn-round-large btn-opposite slide-right-up anim-no-delay" href="/services" aria-label="Services Page Link">
+                          <i className="ph ph-arrow-up-right"></i>
+                        </RayoLink>
+                      </div>
+                      <div className="mxd-services-stack__title width-60">
+                        <h3>
+                          Brand
+                          <br />
+                          identity
+                        </h3>
+                      </div>
+                      <div className="mxd-services-stack__info width-60">
+                        <div className="mxd-services-cards__tags">
+                          <span className="tag tag-default tag-outline">
+                            Brand strategy
+                          </span>
+                          <span className="tag tag-default tag-outline">
+                            Logo design
+                          </span>
+                          <span className="tag tag-default tag-outline">
+                            Guidelines
+                          </span>
+                          <span className="tag tag-default tag-outline">
+                            Rebranding
+                          </span>
+                        </div>
+                        <p className="t-small-mobile">
+                          {"From logo design to comprehensive brand strategies, we ensure your business stands                            out with a unique visual identity and consistent messaging across all touchpoints."}
+                        </p>
+                      </div>
+                      <div className="services-stack__image">
+                        <img className="service-img service-img-s" src="https://dummyimage.com/800x800/5d5d5d/737373" alt="Service/Feature Image" />
+                        <img className="service-img service-img-m" src="https://dummyimage.com/1000x1000/5d5d5d/737373" alt="Service/Feature Image" />
+                      </div>
+                    </HomeBorderGlow>
+                  </div>
+                  <div className="stack-item">
+                    <HomeBorderGlow className="mxd-services-stack__inner justify-between bg-base-opp">
+                      <div className="mxd-services-stack__controls">
+                        <RayoLink className="btn btn-round btn-round-large btn-additional slide-right-up anim-no-delay" href="/services" aria-label="Services Page Link">
+                          <i className="ph ph-arrow-up-right"></i>
+                        </RayoLink>
+                      </div>
+                      <div className="mxd-services-stack__title width-60">
+                        <h3 className="opposite">
+                          Digital marketing
+                          <br />
+                          solutions
+                        </h3>
+                      </div>
+                      <div className="mxd-services-stack__info width-60">
+                        <div className="mxd-services-cards__tags">
+                          <span className="tag tag-default tag-outline-opposite">
+                            Strategy
+                          </span>
+                          <span className="tag tag-default tag-outline-opposite">
+                            Social media
+                          </span>
+                          <span className="tag tag-default tag-outline-opposite">
+                            SEO
+                          </span>
+                          <span className="tag tag-default tag-outline-opposite">
+                            Optimization
+                          </span>
+                          <span className="tag tag-default tag-outline-opposite">
+                            Campaigns
+                          </span>
+                        </div>
+                        <p className="t-small-mobile t-opposite">
+                          {"SEO and content marketing, social media management and paid                            campaigns - we help you reach and engage your target audience effectively."}
+                        </p>
+                      </div>
+                      <div className="services-stack__image">
+                        <img className="service-img service-img-s" src="https://dummyimage.com/800x800/5d5d5d/737373" alt="Service/Feature Image" />
+                        <img className="service-img service-img-m" src="https://dummyimage.com/1000x1000/5d5d5d/737373" alt="Service/Feature Image" />
+                      </div>
+                    </HomeBorderGlow>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="mxd-section padding-pre-grid mobile-grid-s">
+        <div className="mxd-container grid-container">
+          <div className="mxd-block">
+            <div className="mxd-section-title">
+              <div className="container-fluid p-0">
+                <div className="row g-0">
+                  <div className="col-12 col-xl-6 mxd-grid-item no-margin">
+                    <div className="mxd-section-title__hrtitle anim-uni-in-up">
+                      <h2 className="reveal-type">
+                        Approach and philosophy
+                      </h2>
+                    </div>
+                  </div>
+                  <div className="col-12 col-xl-3 mxd-grid-item no-margin">
+                    <div className="mxd-section-title__hrdescr">
+                      <p className="anim-uni-in-up">
+                        Design
+                      </p>
+                      <p className="anim-uni-in-up">
+                        Development
+                      </p>
+                      <p className="anim-uni-in-up">
+                        Mastership
+                      </p>
+                    </div>
+                  </div>
+                  <div className="col-12 col-xl-3 mxd-grid-item no-margin">
+                    <div className="mxd-section-title__hrcontrols anim-uni-in-up">
+                      <RayoLink className="btn btn-anim btn-default btn-outline slide-right-up" href="/contact">
+                        <span className="btn-caption">
+                          Let's Chat
+                        </span>
+                        <i className="ph-bold ph-arrow-up-right"></i>
+                      </RayoLink>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="mxd-block">
+            <div className="mxd-approach-list">
+              <div className="mxd-approach-list__item">
+                <div className="mxd-approach-list__border anim-uni-in-up"></div>
+                <div className="mxd-approach-list__inner">
+                  <div className="container-fluid px-0">
+                    <div className="row gx-0">
+                      <div className="col-12 col-xl-2 mxd-grid-item no-margin">
+                        <div className="mxd-approach-list__image anim-uni-in-up">
+                          <img src="https://dummyimage.com/200x200/5d5d5d/737373" alt="Icon" />
+                        </div>
+                      </div>
+                      <div className="col-12 col-xl-4 mxd-grid-item no-margin">
+                        <div className="mxd-approach-list__title anim-uni-in-up">
+                          <p>
+                            Perfection
+                          </p>
+                        </div>
+                      </div>
+                      <div className="col-12 col-xl-6 mxd-grid-item no-margin">
+                        <div className="mxd-approach-list__descr anim-uni-in-up">
+                          <p>
+                            {"From pixel-perfect designs to flawless code, every aspect of our projects                              is crafted with care to ensure the highest standards of quality."}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="mxd-approach-list__border anim-uni-in-up"></div>
+              </div>
+              <div className="mxd-approach-list__item">
+                <div className="mxd-approach-list__border anim-uni-in-up"></div>
+                <div className="mxd-approach-list__inner">
+                  <div className="container-fluid px-0">
+                    <div className="row gx-0">
+                      <div className="col-12 col-xl-2 mxd-grid-item no-margin">
+                        <div className="mxd-approach-list__image anim-uni-in-up">
+                          <img src="https://dummyimage.com/200x200/5d5d5d/737373" alt="Icon" />
+                        </div>
+                      </div>
+                      <div className="col-12 col-xl-4 mxd-grid-item no-margin">
+                        <div className="mxd-approach-list__title anim-uni-in-up">
+                          <p>
+                            Innovative
+                          </p>
+                        </div>
+                      </div>
+                      <div className="col-12 col-xl-6 mxd-grid-item no-margin">
+                        <div className="mxd-approach-list__descr anim-uni-in-up">
+                          <p>
+                            {"We stay ahead of design trends, offering modern and visually impactful                              solutions that set your brand apart."}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="mxd-approach-list__border anim-uni-in-up"></div>
+              </div>
+              <div className="mxd-approach-list__item">
+                <div className="mxd-approach-list__border anim-uni-in-up"></div>
+                <div className="mxd-approach-list__inner">
+                  <div className="container-fluid px-0">
+                    <div className="row gx-0">
+                      <div className="col-12 col-xl-2 mxd-grid-item no-margin">
+                        <div className="mxd-approach-list__image anim-uni-in-up">
+                          <img src="https://dummyimage.com/200x200/5d5d5d/737373" alt="Icon" />
+                        </div>
+                      </div>
+                      <div className="col-12 col-xl-4 mxd-grid-item no-margin">
+                        <div className="mxd-approach-list__title anim-uni-in-up">
+                          <p>
+                            Expertise
+                          </p>
+                        </div>
+                      </div>
+                      <div className="col-12 col-xl-6 mxd-grid-item no-margin">
+                        <div className="mxd-approach-list__descr anim-uni-in-up">
+                          <p>
+                            {"We are passionate about integrating the latest technologies and trends,                              including interactive animations and mobile-first strategies."}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="mxd-approach-list__border anim-uni-in-up"></div>
+              </div>
+              <div className="mxd-approach-list__item">
+                <div className="mxd-approach-list__border anim-uni-in-up"></div>
+                <div className="mxd-approach-list__inner">
+                  <div className="container-fluid px-0">
+                    <div className="row gx-0">
+                      <div className="col-12 col-xl-2 mxd-grid-item no-margin">
+                        <div className="mxd-approach-list__image anim-uni-in-up">
+                          <img src="https://dummyimage.com/200x200/5d5d5d/737373" alt="Icon" />
+                        </div>
+                      </div>
+                      <div className="col-12 col-xl-4 mxd-grid-item no-margin">
+                        <div className="mxd-approach-list__title anim-uni-in-up">
+                          <p>
+                            Full-Cycle services
+                          </p>
+                        </div>
+                      </div>
+                      <div className="col-12 col-xl-6 mxd-grid-item no-margin">
+                        <div className="mxd-approach-list__descr anim-uni-in-up">
+                          <p>
+                            {"From web design to development, branding, SEO, and UX/UI, we provide a                              full range of services that cover all your digital needs."}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="mxd-approach-list__border anim-uni-in-up"></div>
+              </div>
+              <div className="mxd-approach-list__item">
+                <div className="mxd-approach-list__border anim-uni-in-up"></div>
+                <div className="mxd-approach-list__inner">
+                  <div className="container-fluid px-0">
+                    <div className="row gx-0">
+                      <div className="col-12 col-xl-2 mxd-grid-item no-margin">
+                        <div className="mxd-approach-list__image anim-uni-in-up">
+                          <img src="https://dummyimage.com/200x200/5d5d5d/737373" alt="Icon" />
+                        </div>
+                      </div>
+                      <div className="col-12 col-xl-4 mxd-grid-item no-margin">
+                        <div className="mxd-approach-list__title anim-uni-in-up">
+                          <p>
+                            Client Success
+                          </p>
+                        </div>
+                      </div>
+                      <div className="col-12 col-xl-6 mxd-grid-item no-margin">
+                        <div className="mxd-approach-list__descr anim-uni-in-up">
+                          <p>
+                            Our clients consistently see improved engagement, conversion rates, and business growth.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="mxd-approach-list__border anim-uni-in-up"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="mxd-section padding-pre-title">
+        <div className="mxd-container fullwidth-container">
+          <div className="mxd-block">
+            <div className="marquee marquee--gsap">
+              <div className="marquee__top">
+                <div className="marquee__item image">
+                  <RayoLink className="marquee__link" href="/project-details">
+                    <img src="https://dummyimage.com/1200x1200/5d5d5d/737373" alt="Image" />
+                  </RayoLink>
+                </div>
+                <div className="marquee__item has-caption padding-4">
+                  <p>
+                    Inspiring
+                    <br />
+                    ideas
+                  </p>
+                </div>
+                <div className="marquee__item">
+                  <RayoLink className="marquee__link" href="/project-details">
+                    <img src="https://dummyimage.com/1200x1200/5d5d5d/737373" alt="Image" />
+                  </RayoLink>
+                </div>
+                <div className="marquee__item">
+                  <RayoLink className="marquee__link" href="/project-details">
+                    <img src="https://dummyimage.com/1200x1200/5d5d5d/737373" alt="Image" />
+                  </RayoLink>
+                </div>
+                <div className="marquee__item has-caption padding-4">
+                  <p>
+                    Creative
+                    <br />
+                    minds
+                  </p>
+                </div>
+                <div className="marquee__item">
+                  <RayoLink className="marquee__link" href="/project-details">
+                    <img src="https://dummyimage.com/1200x1200/5d5d5d/737373" alt="Image" />
+                  </RayoLink>
+                </div>
+              </div>
+              <div className="marquee__bottom">
+                <div className="marquee__item has-caption padding-4">
+                  <p>
+                    Inspiring
+                    <br />
+                    ideas
+                  </p>
+                </div>
+                <div className="marquee__item">
+                  <RayoLink className="marquee__link" href="/project-details">
+                    <img src="https://dummyimage.com/1200x1200/5d5d5d/737373" alt="Image" />
+                  </RayoLink>
+                </div>
+                <div className="marquee__item">
+                  <RayoLink className="marquee__link" href="/project-details">
+                    <img src="https://dummyimage.com/1200x1200/5d5d5d/737373" alt="Image" />
+                  </RayoLink>
+                </div>
+                <div className="marquee__item has-caption padding-4">
+                  <p>
+                    Creative
+                    <br />
+                    minds
+                  </p>
+                </div>
+                <div className="marquee__item">
+                  <RayoLink className="marquee__link" href="/project-details">
+                    <img src="https://dummyimage.com/1200x1200/5d5d5d/737373" alt="Image" />
+                  </RayoLink>
+                </div>
+                <div className="marquee__item">
+                  <RayoLink className="marquee__link" href="/project-details">
+                    <img src="https://dummyimage.com/1200x1200/5d5d5d/737373" alt="Image" />
+                  </RayoLink>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="mxd-section overflow-hidden padding-default mobile-title">
+        <div className="mxd-container grid-container">
+          <div className="mxd-block">
+            <div className="mxd-section-title">
+              <div className="container-fluid p-0">
+                <div className="row g-0">
+                  <div className="col-12 col-xl-6 mxd-grid-item no-margin">
+                    <div className="mxd-section-title__hrtitle anim-uni-in-up">
+                      <h2 className="reveal-type">
+                        Awards &
+                        <br />
+                        publications
+                      </h2>
+                    </div>
+                  </div>
+                  <div className="col-12 col-xl-3 mxd-grid-item no-margin"></div>
+                  <div className="col-12 col-xl-3 mxd-grid-item no-margin">
+                    <div className="mxd-section-title__hrcontrols pre-title anim-uni-in-up">
+                      <RayoLink className="btn btn-anim btn-default btn-outline slide-right-up" href="/about-us">
+                        <span className="btn-caption">
+                          View More
+                        </span>
+                        <i className="ph-bold ph-arrow-up-right"></i>
+                      </RayoLink>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="mxd-block">
+            <div className="mxd-awards-list hover-reveal">
+              <RayoLink className="mxd-awards-list__item hover-reveal__item" href="https://medium.com/" target="_blank">
+                <div className="mxd-awards-list__border anim-uni-in-up"></div>
+                <div className="hover-reveal__content overflow-visible hover-reveal-260x260">
+                  <img className="hover-reveal__image" src="https://dummyimage.com/500x500/5d5d5d/737373" alt="Project Preview" />
+                </div>
+                <div className="mxd-awards-list__inner">
+                  <div className="container-fluid px-0">
+                    <div className="row gx-0">
+                      <div className="col-12 col-xl-8 mxd-grid-item no-margin">
+                        <div className="mxd-awards-list__title anim-uni-in-up">
+                          <div className="mxd-awards-list__icon">
+                            <i className="ph ph-arrow-right"></i>
+                          </div>
+                          <p>
+                            Some article on Medium
+                          </p>
+                        </div>
+                      </div>
+                      <div className="col-6 col-md-6 col-xl-2 mxd-grid-item no-margin">
+                        <div className="mxd-awards-list__tagslist">
+                          <ul>
+                            <li className="anim-uni-in-up">
+                              <p className="t-small">
+                                UI/UX design
+                              </p>
+                            </li>
+                            <li className="anim-uni-in-up">
+                              <p className="t-small">
+                                Development
+                              </p>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div className="col-6 col-md-6 col-xl-2 mxd-grid-item no-margin">
+                        <div className="mxd-awards-list__date anim-uni-in-up">
+                          <p className="t-small">
+                            2025
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="mxd-awards-list__border anim-uni-in-up"></div>
+              </RayoLink>
+              <RayoLink className="mxd-awards-list__item hover-reveal__item" href="https://www.awwwards.com/" target="_blank">
+                <div className="mxd-awards-list__border anim-uni-in-up"></div>
+                <div className="hover-reveal__content overflow-visible hover-reveal-260x260">
+                  <img className="hover-reveal__image" src="https://dummyimage.com/500x500/5d5d5d/737373" alt="Project Preview" />
+                </div>
+                <div className="mxd-awards-list__inner">
+                  <div className="container-fluid px-0">
+                    <div className="row gx-0">
+                      <div className="col-12 col-xl-8 mxd-grid-item no-margin">
+                        <div className="mxd-awards-list__title anim-uni-in-up">
+                          <div className="mxd-awards-list__icon">
+                            <i className="ph ph-arrow-right"></i>
+                          </div>
+                          <p>
+                            Awwwards nomination
+                          </p>
+                        </div>
+                      </div>
+                      <div className="col-6 col-md-6 col-xl-2 mxd-grid-item no-margin">
+                        <div className="mxd-awards-list__tagslist">
+                          <ul>
+                            <li className="anim-uni-in-up">
+                              <p className="t-small">
+                                UI/UX
+                              </p>
+                            </li>
+                            <li className="anim-uni-in-up">
+                              <p className="t-small">
+                                Frontend
+                              </p>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div className="col-6 col-md-6 col-xl-2 mxd-grid-item no-margin">
+                        <div className="mxd-awards-list__date anim-uni-in-up">
+                          <p className="t-small">
+                            2024
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="mxd-awards-list__border anim-uni-in-up"></div>
+              </RayoLink>
+              <RayoLink className="mxd-awards-list__item hover-reveal__item" href="https://www.behance.net/" target="_blank">
+                <div className="mxd-awards-list__border anim-uni-in-up"></div>
+                <div className="hover-reveal__content overflow-visible hover-reveal-260x260">
+                  <img className="hover-reveal__image" src="https://dummyimage.com/500x500/5d5d5d/737373" alt="Project Preview" />
+                </div>
+                <div className="mxd-awards-list__inner">
+                  <div className="container-fluid px-0">
+                    <div className="row gx-0">
+                      <div className="col-12 col-xl-8 mxd-grid-item no-margin">
+                        <div className="mxd-awards-list__title anim-uni-in-up">
+                          <div className="mxd-awards-list__icon">
+                            <i className="ph ph-arrow-right"></i>
+                          </div>
+                          <p>
+                            Behance curated work
+                          </p>
+                        </div>
+                      </div>
+                      <div className="col-6 col-md-6 col-xl-2 mxd-grid-item no-margin">
+                        <div className="mxd-awards-list__tagslist">
+                          <ul>
+                            <li className="anim-uni-in-up">
+                              <p className="t-small">
+                                Illustrations
+                              </p>
+                            </li>
+                            <li className="anim-uni-in-up">
+                              <p className="t-small">
+                                Graphic design
+                              </p>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div className="col-6 col-md-6 col-xl-2 mxd-grid-item no-margin">
+                        <div className="mxd-awards-list__date anim-uni-in-up">
+                          <p className="t-small">
+                            2024
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="mxd-awards-list__border anim-uni-in-up"></div>
+              </RayoLink>
+              <RayoLink className="mxd-awards-list__item hover-reveal__item" href="https://medium.com/" target="_blank">
+                <div className="mxd-awards-list__border anim-uni-in-up"></div>
+                <div className="hover-reveal__content overflow-visible hover-reveal-260x260">
+                  <img className="hover-reveal__image" src="https://dummyimage.com/500x500/5d5d5d/737373" alt="Project Preview" />
+                </div>
+                <div className="mxd-awards-list__inner">
+                  <div className="container-fluid px-0">
+                    <div className="row gx-0">
+                      <div className="col-12 col-xl-8 mxd-grid-item no-margin">
+                        <div className="mxd-awards-list__title anim-uni-in-up">
+                          <div className="mxd-awards-list__icon">
+                            <i className="ph ph-arrow-right"></i>
+                          </div>
+                          <p>
+                            Article on Medium
+                          </p>
+                        </div>
+                      </div>
+                      <div className="col-6 col-md-6 col-xl-2 mxd-grid-item no-margin">
+                        <div className="mxd-awards-list__tagslist">
+                          <ul>
+                            <li className="anim-uni-in-up">
+                              <p className="t-small">
+                                UI/UX
+                              </p>
+                            </li>
+                            <li className="anim-uni-in-up">
+                              <p className="t-small">
+                                Frontend
+                              </p>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div className="col-6 col-md-6 col-xl-2 mxd-grid-item no-margin">
+                        <div className="mxd-awards-list__date anim-uni-in-up">
+                          <p className="t-small">
+                            2024
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="mxd-awards-list__border anim-uni-in-up"></div>
+              </RayoLink>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="mxd-section padding-grid-pre-mtext">
+        <div className="mxd-container no-padding-container">
+          <div className="mxd-block">
+            <div className="container-fluid px-0">
+              <div className="row gx-0">
+                <div className="col-12 col-xl-5">
+                  <div className="mxd-container grid-container">
+                    <div className="mxd-block">
+                      <div className="mxd-section-title no-margin-desktop">
+                        <div className="container-fluid p-0">
+                          <div className="row g-0">
+                            <div className="col-12 mxd-grid-item no-margin">
+                              <div className="mxd-section-title__title anim-uni-in-up">
+                                <h2 className="reveal-type">
+                                  What our clients say
+                                </h2>
+                              </div>
+                            </div>
+                            <div className="col-12 mxd-grid-item no-margin">
+                              <div className="mxd-section-title__descr">
+                                <p className="anim-uni-in-up">
+                                  {"We're more than just executors — we're your creative partners. Don't just take our word for it,                                    see what clients have to say about working with us."}
+                                </p>
+                              </div>
+                            </div>
+                            <div className="col-12 mxd-grid-item no-margin">
+                              <div className="mxd-section-title__controls anim-uni-in-up">
+                                <RayoLink className="mxd-section-title__image-link" href="https://clutch.co/" target="_blank" aria-label="Clutch Link">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="200" height="97" version="1.1" viewBox="0 0 200 97">
+                                    <style>{`
+                                      .cls-1 { fill: var(--t-bright); }
+                                      .cls-2 { fill: #e52421; }
+                                    `}</style>
+                                    <g>
+                                      <path className="cls-1" d="M52.1,0h9.2v56.7h-9.2V0ZM93.1,56.7h9.2V18.3h-9.2v20.3h.2c0,8.5-7.3,9.3-9.3,9.3-5.3,0-6.5-5.2-6.5-8.3v-21.3h-9.2v21.6c0,5.3,1.8,9.6,4.5,12.8,2.5,2.5,6.5,4,11,4s7.3-.8,9.3-3.2v3.2h0ZM111.1,56.7h9.2v-29.3h6.7v-9.2h-6.7V4.7h-9.2v13.6h-6.8v9.2h6.8v29.3ZM148.4,56.6c5.2,0,10-1.8,13.7-5.2l1.3-1.3-6.3-6.3-1.3,1.7c-2,1.8-4.5,2.8-7.3,2.8-6.3,0-11-4.5-11-11.1s4.5-11,11-11,5.3.8,7.3,2.8l1.3,1.2,6-6-1.3-1.3c-3.8-3.2-8.3-5.2-13.4-5.2-11.3-.2-19.7,8-19.7,19.5,0,10.8,8.5,19.5,19.7,19.5ZM176.9,35.3c0-8.5,6.3-9.3,8.3-9.3,5.3,0,5.3,5.2,5.3,8.3v22.5h9.2v-22.6c.2-5-1-9.5-4-12.5-2.5-2.5-5.8-4-10-4s-6.5.8-9,3.2V0h-9.2v56.7h9.2v-21.5h.2ZM26.2,56.6c7.3,0,14.4-2.8,19-8l1.3-1.3-6-6.3-1.2,1.7c-3.3,3.3-8.3,5.3-13.2,5.3-10.3,0-17.7-8-17.7-18.8S15.9,10.3,26,10.3s9.3,2,13.2,5.3l1.3,1.3,6-6-1.3-1.3c-5-5.3-11.8-8-19-8C11.2,1.8,0,13.5,0,29.1s11.2,27.5,26.2,27.5ZM14.9,85.7h-3.3v3h-4.2l6.7-9.3h-3.7l-7.3,9.8v2.3h8.3v3.3h3.5v-3.3h2.5v-2.8h-2.5v-3ZM20.9,90.7c-.7,0-1.2.2-1.5.7-.3.3-.7.8-.7,1.5s.2,1.2.7,1.5c.3.3,1,.7,1.5.7s1.2-.2,1.5-.7c.3-.3.7-1,.7-1.5s-.2-1.2-.7-1.5c-.3-.5-.8-.7-1.5-.7ZM35.2,81c-1.2-1.3-3-2-5.2-2s-2,.2-3,.7c-.8.5-1.7,1-2.2,1.8s-.8,1.7-.8,2.7.2,1.8.7,2.5,1.2,1.3,2,1.7c.8.3,1.7.7,2.7.7,1.7,0,3-.5,3.8-1.3,0,1.5-.5,2.5-1.2,3.3-.8.8-1.8,1.2-3.2,1.2s-2.2-.3-2.8-.8l-1.3,2.7c.5.3,1.2.7,2,.8.8.2,1.5.3,2.3.3,1.5,0,3-.3,4.2-1,1.2-.7,2.2-1.7,2.8-2.8.7-1.3,1-2.8,1-4.5,0-2.7-.7-4.5-1.8-5.8ZM32.4,85.7c-.5.5-1.2.7-1.8.7s-1.5-.2-1.8-.7c-.5-.5-.7-1-.7-1.7s.2-1.3.7-1.7c.5-.3,1.2-.7,1.8-.7s1.5.2,2,.7.7,1,.7,1.7c-.2.7-.3,1.2-.8,1.7ZM44.1,76.2l-7.3,20.8h3.2l7.2-20.8h-3ZM52.4,85.2h-1.3l.2-3h6.5v-2.8h-9.5l-.8,8.7h4c1.3,0,2.3.2,2.8.5.5.3.8.8.8,1.5s-.3,1.2-.8,1.5c-.5.3-1.2.5-2.2.5s-1.7-.2-2.3-.3c-.8-.2-1.5-.7-2-1l-1.3,2.7c.7.5,1.7,1,2.7,1.2,1,.3,2.2.5,3.2.5s2.7-.2,3.5-.7c1-.5,1.7-1,2.2-1.8.5-.8.7-1.7.7-2.5,0-1.5-.5-2.7-1.5-3.5-1-1-2.5-1.3-4.7-1.3ZM62.2,90.7c-.7,0-1.2.2-1.5.7-.3.3-.7.8-.7,1.5s.2,1.2.7,1.5c.3.3,1,.7,1.5.7s1.2-.2,1.5-.7c.3-.3.7-1,.7-1.5s-.2-1.2-.7-1.5c-.3-.5-.8-.7-1.5-.7ZM75.8,80c-1-.7-2.2-1-3.5-1s-2.5.3-3.5,1-1.8,1.5-2.3,2.8c-.5,1.2-.8,2.7-.8,4.3s.3,3.2.8,4.3,1.3,2.2,2.3,2.8,2.2,1,3.5,1,2.5-.3,3.5-1,1.8-1.5,2.3-2.8c.5-1.2.8-2.7.8-4.3s-.3-3.2-.8-4.3c-.5-1.3-1.3-2.2-2.3-2.8ZM74.6,90.8c-.5.8-1.3,1.2-2.2,1.2s-1.7-.3-2.2-1.2c-.5-.8-.8-2-.8-3.8s.3-3,.8-3.8,1.3-1.2,2.2-1.2,1.7.3,2.2,1.2.8,2,.8,3.8c0,1.8-.3,3-.8,3.8Z"></path>
+                                      <path className="cls-2" d="M141.3,37.1c0,3.7,3,6.5,6.5,6.5s6.5-3,6.5-6.5-3-6.5-6.5-6.5-6.5,2.8-6.5,6.5ZM108.6,82.5h-7c-.2,0-.5-.2-.5-.3l-2.2-6.7c-.2-.5-1-.5-1.2,0l-2.2,6.7c0,.2-.3.3-.5.3h-7c-.5,0-.8.7-.3,1l5.7,4.2c.2.2.3.3.2.7l-2.2,6.7c-.2.5.5,1,.8.7l5.7-4.2c.2-.2.5-.2.7,0l5.7,4.2c.5.3,1-.2.8-.7l-2.2-6.7c0-.2,0-.5.2-.7l5.7-4.2c.7-.3.5-1-.2-1ZM131.2,82.5h-7c-.2,0-.5-.2-.5-.3l-2.2-6.7c-.2-.5-1-.5-1.2,0l-2.2,6.7c0,.2-.3.3-.5.3h-7c-.5,0-.8.7-.3,1l5.7,4.2c.2.2.3.3.2.7l-2.2,6.7c-.2.5.5,1,.8.7l5.7-4.2c.2-.2.5-.2.7,0l5.7,4.2c.5.3,1-.2.8-.7l-2.2-6.7c0-.2,0-.5.2-.7l5.7-4.2c.5-.3.3-1-.2-1ZM154.2,82.5h-7c-.2,0-.5-.2-.5-.3l-2.2-6.7c-.2-.5-1-.5-1.2,0l-2.2,6.7c0,.2-.3.3-.5.3h-7c-.5,0-.8.7-.3,1l5.7,4.2c.2.2.3.3.2.7l-2.2,6.7c-.2.5.5,1,.8.7l5.7-4.2c.2-.2.5-.2.7,0l5.7,4.2c.5.3,1-.2.8-.7l-2.2-6.7c0-.2,0-.5.2-.7l5.7-4.2c.5-.3.3-1-.2-1ZM177.1,82.5h-7c-.2,0-.5-.2-.5-.3l-2.2-6.7c-.2-.5-1-.5-1.2,0l-2.2,6.7c0,.2-.3.3-.5.3h-7c-.5,0-.8.7-.3,1l5.7,4.2c.2.2.3.3.2.7l-2.2,6.7c-.2.5.5,1,.8.7l5.7-4.2c.2-.2.5-.2.7,0l5.7,4.2c.5.3,1-.2.8-.7l-2.2-6.7c0-.2,0-.5.2-.7l5.7-4.2c.5-.3.3-1-.2-1ZM199.8,83.5c.5-.3.2-1-.3-1h-7c-.2,0-.5-.2-.5-.3l-2.2-6.7c-.2-.5-1-.5-1.2,0l-2.2,6.7c0,.2-.3.3-.5.3h-7c-.5,0-.8.7-.3,1l5.7,4.2c.2.2.3.3.2.7l-2.2,6.7c-.2.5.5,1,.8.7l5.7-4.2c.2-.2.5-.2.7,0l5.7,4.2c.5.3,1-.2.8-.7l-2.2-6.7c0-.2,0-.5.2-.7l5.8-4.2Z"></path>
+                                    </g>
+                                  </svg>
+                                </RayoLink>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-12 col-xl-7">
+                  <div className="testimonials-slider overflow-hidden anim-uni-in-up">
+                    <div className="swiper-testimonials" data-initial-slide="2">
+                      <div className="swiper-wrapper">
+                        <div className="swiper-slide">
+                          <HomeBorderGlow className="mxd-testimonials-card bg-base-tint radius-m">
+                            <div className="mxd-testimonials-card__content">
+                              <div className="mxd-testimonials-card__media anim-uni-in-up">
+                                <div className="mxd-testimonials-card__photo">
+                                  <img src="https://dummyimage.com/300x300/5d5d5d/737373" alt="Author Photo" />
+                                </div>
+                                <div className="mxd-testimonials-card__company">
+                                  <img src="/img/brands/envato.svg" alt="Company Logo" />
+                                </div>
+                              </div>
+                              <div className="mxd-testimonials-card__text">
+                                <p className="anim-uni-in-up">
+                                  {"The Rayo team nailed it! They understood our vision and delivered a sleek,                                    intuitive site that our clients love."}
+                                </p>
+                                <RayoLink className="btn btn-anim btn-default btn-small btn-outline slide-right-up anim-uni-in-up" href="#0">
+                                  <span className="btn-caption">
+                                    Project Page
+                                  </span>
+                                  <i className="ph ph-arrow-up-right"></i>
+                                </RayoLink>
+                              </div>
+                            </div>
+                            <div className="mxd-testimonials-card__author">
+                              <p className="mxd-testimonials-card__name anim-uni-in-up">
+                                Lea Tomato
+                              </p>
+                              <p className="mxd-testimonials-card__position t-small anim-uni-in-up">
+                                {"Senior designer in                                  "}
+                                <RayoLink className="" href="#">
+                                  The Way
+                                </RayoLink>
+                              </p>
+                            </div>
+                          </HomeBorderGlow>
+                        </div>
+                        <div className="swiper-slide">
+                          <HomeBorderGlow className="mxd-testimonials-card bg-base-tint radius-m">
+                            <div className="mxd-testimonials-card__content">
+                              <div className="mxd-testimonials-card__media anim-uni-in-up">
+                                <div className="mxd-testimonials-card__photo">
+                                  <img src="https://dummyimage.com/300x300/5d5d5d/737373" alt="Author Photo" />
+                                </div>
+                                <div className="mxd-testimonials-card__company">
+                                  <img src="/img/brands/envato.svg" alt="Company Logo" />
+                                </div>
+                              </div>
+                              <div className="mxd-testimonials-card__text">
+                                <p className="anim-uni-in-up">
+                                  {"The team's attention to detail, creativity, and technical expertise exceeded our                                    expectations. We've received so much positive feedback from our customers already."}
+                                </p>
+                                <RayoLink className="btn btn-anim btn-default btn-small btn-outline slide-right-up anim-uni-in-up" href="#0">
+                                  <span className="btn-caption">
+                                    Project Page
+                                  </span>
+                                  <i className="ph ph-arrow-up-right"></i>
+                                </RayoLink>
+                              </div>
+                            </div>
+                            <div className="mxd-testimonials-card__author">
+                              <p className="mxd-testimonials-card__name anim-uni-in-up">
+                                Ashley Cherry
+                              </p>
+                              <p className="mxd-testimonials-card__position t-small anim-uni-in-up">
+                                {"SEO in                                  "}
+                                <RayoLink className="" href="#">
+                                  Eye Candy
+                                </RayoLink>
+                              </p>
+                            </div>
+                          </HomeBorderGlow>
+                        </div>
+                        <div className="swiper-slide">
+                          <HomeBorderGlow className="mxd-testimonials-card bg-base-tint radius-m">
+                            <div className="mxd-testimonials-card__content">
+                              <div className="mxd-testimonials-card__media anim-uni-in-up">
+                                <div className="mxd-testimonials-card__photo">
+                                  <img src="https://dummyimage.com/300x300/5d5d5d/737373" alt="Author Photo" />
+                                </div>
+                                <div className="mxd-testimonials-card__company">
+                                  <img src="/img/brands/envato.svg" alt="Company Logo" />
+                                </div>
+                              </div>
+                              <div className="mxd-testimonials-card__text">
+                                <p className="anim-uni-in-up">
+                                  {"Amazing experience working with Rayo! They made the process smooth and gave                                    us a website that truly reflects our brand."}
+                                </p>
+                                <RayoLink className="btn btn-anim btn-default btn-small btn-outline slide-right-up anim-uni-in-up" href="#0">
+                                  <span className="btn-caption">
+                                    Project Page
+                                  </span>
+                                  <i className="ph ph-arrow-up-right"></i>
+                                </RayoLink>
+                              </div>
+                            </div>
+                            <div className="mxd-testimonials-card__author">
+                              <p className="mxd-testimonials-card__name anim-uni-in-up">
+                                Patrick Pineapple
+                              </p>
+                              <p className="mxd-testimonials-card__position t-small anim-uni-in-up">
+                                {"SEO in                                  "}
+                                <RayoLink className="" href="#">
+                                  Instant Design
+                                </RayoLink>
+                              </p>
+                            </div>
+                          </HomeBorderGlow>
+                        </div>
+                        <div className="swiper-slide">
+                          <HomeBorderGlow className="mxd-testimonials-card bg-base-tint radius-m">
+                            <div className="mxd-testimonials-card__content">
+                              <div className="mxd-testimonials-card__media anim-uni-in-up">
+                                <div className="mxd-testimonials-card__photo">
+                                  <img src="https://dummyimage.com/300x300/5d5d5d/737373" alt="Author Photo" />
+                                </div>
+                                <div className="mxd-testimonials-card__company">
+                                  <img src="/img/brands/envato.svg" alt="Company Logo" />
+                                </div>
+                              </div>
+                              <div className="mxd-testimonials-card__text">
+                                <p className="anim-uni-in-up">
+                                  {"Working with Rayo team was an absolute pleasure! They took the time to understand our business                                    needs and translated them into a beautifully designed, user-friendly website."}
+                                </p>
+                                <RayoLink className="btn btn-anim btn-default btn-small btn-outline slide-right-up anim-uni-in-up" href="#0">
+                                  <span className="btn-caption">
+                                    Project Page
+                                  </span>
+                                  <i className="ph ph-arrow-up-right"></i>
+                                </RayoLink>
+                              </div>
+                            </div>
+                            <div className="mxd-testimonials-card__author">
+                              <p className="mxd-testimonials-card__name anim-uni-in-up">
+                                John Lemon
+                              </p>
+                              <p className="mxd-testimonials-card__position t-small anim-uni-in-up">
+                                {"Brand Manager in                                  "}
+                                <RayoLink className="" href="#">
+                                  Instant Design
+                                </RayoLink>
+                              </p>
+                            </div>
+                          </HomeBorderGlow>
+                        </div>
+                      </div>
+                      <div className="swiper-button-prev mxd-slider-btn mxd-slider-btn-round-prev animate-card-2">
+                        <RayoLink className="btn btn-round btn-round-small btn-outline slide-left anim-no-delay" href="#0" aria-label="Previous Slide">
+                          <i className="ph ph-arrow-left"></i>
+                        </RayoLink>
+                      </div>
+                      <div className="swiper-button-next mxd-slider-btn mxd-slider-btn-round-next animate-card-2">
+                        <RayoLink className="btn btn-round btn-round-small btn-outline slide-right anim-no-delay" href="#0" aria-label="Next Slide">
+                          <i className="ph ph-arrow-right"></i>
+                        </RayoLink>
+                      </div>
+                    </div>
+                    <div className="testimonials-slider__shadow"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="mxd-section padding-mtext-pre-grid">
+        <div className="mxd-container fullwidth-container">
+          <div className="mxd-block">
+            <div className="marquee marquee-right--gsap muted-extra">
+              <div className="marquee__toright">
+                <div className="marquee__item one-line item-regular text">
+                  <p className="marquee__text">
+                    Our Partners
+                  </p>
+                  <div className="marquee__image">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="currentColor">
+                      <path fill="currentColor" d="M78.4,38.4c0,0-11.8,0-15.8,0c-1.6,0-4.8-0.2-7.1-0.8c-2.3-0.6-4.3-0.8-6.3-2.4c-2-1.2-3.5-3.2-4.7-4.8                         c-1.2-1.6-1.6-3.6-2-5.5c-0.3-1.5-0.7-4.3-0.8-5.9c-0.2-4.3,0-17.4,0-17.4C41.8,0.8,41,0,40.2,0s-1.6,0.8-1.6,1.6c0,0,0,13.1,0,17.4                         c0,1.6-0.6,4.3-0.8,5.9c-0.3,2-0.8,4-2,5.5c-1.2,2-2.8,3.6-4.7,4.8s-4,1.8-6.3,2.4c-1.9,0.5-4.7,0.6-6.7,0.8c-3.9,0.4-16.6,0-16.6,0                         C0.8,38.4,0,39.2,0,40c0,0.8,0.8,1.6,1.6,1.6c0,0,12.2,0,16.6,0c1.6,0,4.8,0.3,6.7,0.8c2.3,0.6,4.3,0.8,6.3,2.4                         c1.6,1.2,3.2,2.8,4.3,4.4c1.2,2,2.1,3.9,2.4,6.3c0.2,1.7,0.7,4.7,0.8,6.7c0.2,4,0,16.2,0,16.2c0,0.8,0.8,1.6,1.6,1.6                         s1.6-0.8,1.6-1.6c0,0,0-12.3,0-16.2c0-1.6,0.5-5.1,0.8-6.7c0.5-2.3,0.8-4.4,2.4-6.3c1.2-1.6,2.8-3.2,4.3-4.4c2-1.2,3.9-2,6.3-2.4                         c1.8-0.3,5.1-0.7,7.1-0.8c3.5-0.2,15.8,0,15.8,0c0.8,0,1.6-0.8,1.6-1.6C80,39.2,79.2,38.4,78.4,38.4C78.4,38.4,78.4,38.4,78.4,38.4z                         "></path>
+                    </svg>
+                  </div>
+                </div>
+                <div className="marquee__item one-line item-regular text">
+                  <p className="marquee__text">
+                    Our Partners
+                  </p>
+                  <div className="marquee__image">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="currentColor">
+                      <path fill="currentColor" d="M78.4,38.4c0,0-11.8,0-15.8,0c-1.6,0-4.8-0.2-7.1-0.8c-2.3-0.6-4.3-0.8-6.3-2.4c-2-1.2-3.5-3.2-4.7-4.8                         c-1.2-1.6-1.6-3.6-2-5.5c-0.3-1.5-0.7-4.3-0.8-5.9c-0.2-4.3,0-17.4,0-17.4C41.8,0.8,41,0,40.2,0s-1.6,0.8-1.6,1.6c0,0,0,13.1,0,17.4                         c0,1.6-0.6,4.3-0.8,5.9c-0.3,2-0.8,4-2,5.5c-1.2,2-2.8,3.6-4.7,4.8s-4,1.8-6.3,2.4c-1.9,0.5-4.7,0.6-6.7,0.8c-3.9,0.4-16.6,0-16.6,0                         C0.8,38.4,0,39.2,0,40c0,0.8,0.8,1.6,1.6,1.6c0,0,12.2,0,16.6,0c1.6,0,4.8,0.3,6.7,0.8c2.3,0.6,4.3,0.8,6.3,2.4                         c1.6,1.2,3.2,2.8,4.3,4.4c1.2,2,2.1,3.9,2.4,6.3c0.2,1.7,0.7,4.7,0.8,6.7c0.2,4,0,16.2,0,16.2c0,0.8,0.8,1.6,1.6,1.6                         s1.6-0.8,1.6-1.6c0,0,0-12.3,0-16.2c0-1.6,0.5-5.1,0.8-6.7c0.5-2.3,0.8-4.4,2.4-6.3c1.2-1.6,2.8-3.2,4.3-4.4c2-1.2,3.9-2,6.3-2.4                         c1.8-0.3,5.1-0.7,7.1-0.8c3.5-0.2,15.8,0,15.8,0c0.8,0,1.6-0.8,1.6-1.6C80,39.2,79.2,38.4,78.4,38.4C78.4,38.4,78.4,38.4,78.4,38.4z                         "></path>
+                    </svg>
+                  </div>
+                </div>
+                <div className="marquee__item one-line item-regular text">
+                  <p className="marquee__text">
+                    Our Partners
+                  </p>
+                  <div className="marquee__image">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="currentColor">
+                      <path fill="currentColor" d="M78.4,38.4c0,0-11.8,0-15.8,0c-1.6,0-4.8-0.2-7.1-0.8c-2.3-0.6-4.3-0.8-6.3-2.4c-2-1.2-3.5-3.2-4.7-4.8                         c-1.2-1.6-1.6-3.6-2-5.5c-0.3-1.5-0.7-4.3-0.8-5.9c-0.2-4.3,0-17.4,0-17.4C41.8,0.8,41,0,40.2,0s-1.6,0.8-1.6,1.6c0,0,0,13.1,0,17.4                         c0,1.6-0.6,4.3-0.8,5.9c-0.3,2-0.8,4-2,5.5c-1.2,2-2.8,3.6-4.7,4.8s-4,1.8-6.3,2.4c-1.9,0.5-4.7,0.6-6.7,0.8c-3.9,0.4-16.6,0-16.6,0                         C0.8,38.4,0,39.2,0,40c0,0.8,0.8,1.6,1.6,1.6c0,0,12.2,0,16.6,0c1.6,0,4.8,0.3,6.7,0.8c2.3,0.6,4.3,0.8,6.3,2.4                         c1.6,1.2,3.2,2.8,4.3,4.4c1.2,2,2.1,3.9,2.4,6.3c0.2,1.7,0.7,4.7,0.8,6.7c0.2,4,0,16.2,0,16.2c0,0.8,0.8,1.6,1.6,1.6                         s1.6-0.8,1.6-1.6c0,0,0-12.3,0-16.2c0-1.6,0.5-5.1,0.8-6.7c0.5-2.3,0.8-4.4,2.4-6.3c1.2-1.6,2.8-3.2,4.3-4.4c2-1.2,3.9-2,6.3-2.4                         c1.8-0.3,5.1-0.7,7.1-0.8c3.5-0.2,15.8,0,15.8,0c0.8,0,1.6-0.8,1.6-1.6C80,39.2,79.2,38.4,78.4,38.4C78.4,38.4,78.4,38.4,78.4,38.4z                         "></path>
+                    </svg>
+                  </div>
+                </div>
+                <div className="marquee__item one-line item-regular text">
+                  <p className="marquee__text">
+                    Our Partners
+                  </p>
+                  <div className="marquee__image">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="currentColor">
+                      <path fill="currentColor" d="M78.4,38.4c0,0-11.8,0-15.8,0c-1.6,0-4.8-0.2-7.1-0.8c-2.3-0.6-4.3-0.8-6.3-2.4c-2-1.2-3.5-3.2-4.7-4.8                         c-1.2-1.6-1.6-3.6-2-5.5c-0.3-1.5-0.7-4.3-0.8-5.9c-0.2-4.3,0-17.4,0-17.4C41.8,0.8,41,0,40.2,0s-1.6,0.8-1.6,1.6c0,0,0,13.1,0,17.4                         c0,1.6-0.6,4.3-0.8,5.9c-0.3,2-0.8,4-2,5.5c-1.2,2-2.8,3.6-4.7,4.8s-4,1.8-6.3,2.4c-1.9,0.5-4.7,0.6-6.7,0.8c-3.9,0.4-16.6,0-16.6,0                         C0.8,38.4,0,39.2,0,40c0,0.8,0.8,1.6,1.6,1.6c0,0,12.2,0,16.6,0c1.6,0,4.8,0.3,6.7,0.8c2.3,0.6,4.3,0.8,6.3,2.4                         c1.6,1.2,3.2,2.8,4.3,4.4c1.2,2,2.1,3.9,2.4,6.3c0.2,1.7,0.7,4.7,0.8,6.7c0.2,4,0,16.2,0,16.2c0,0.8,0.8,1.6,1.6,1.6                         s1.6-0.8,1.6-1.6c0,0,0-12.3,0-16.2c0-1.6,0.5-5.1,0.8-6.7c0.5-2.3,0.8-4.4,2.4-6.3c1.2-1.6,2.8-3.2,4.3-4.4c2-1.2,3.9-2,6.3-2.4                         c1.8-0.3,5.1-0.7,7.1-0.8c3.5-0.2,15.8,0,15.8,0c0.8,0,1.6-0.8,1.6-1.6C80,39.2,79.2,38.4,78.4,38.4C78.4,38.4,78.4,38.4,78.4,38.4z                         "></path>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="mxd-section padding-pre-title">
+        <div className="mxd-container grid-container">
+          <div className="mxd-block">
+            <div className="mxd-partners-cards">
+              <div className="container-fluid p-0">
+                <div className="row g-0">
+                  <div className="col-12 col-md-6 col-xl-3 mxd-partners-cards__item mxd-grid-item animate-card-4">
+                    <HomeBorderGlow as={RayoLink} className="mxd-partners-cards__inner" href="#0">
+                      <div className="mxd-partners-cards__logo">
+                        <img src="/img/brands/mozilla.svg" alt="Partner Logo" />
+                      </div>
+                    </HomeBorderGlow>
+                  </div>
+                  <div className="col-12 col-md-6 col-xl-3 mxd-partners-cards__item mxd-grid-item animate-card-4">
+                    <HomeBorderGlow as={RayoLink} className="mxd-partners-cards__inner" href="#0">
+                      <div className="mxd-partners-cards__logo">
+                        <img src="/img/brands/envato.svg" alt="Partner Logo" />
+                      </div>
+                    </HomeBorderGlow>
+                  </div>
+                  <div className="col-12 col-md-6 col-xl-3 mxd-partners-cards__item mxd-grid-item animate-card-4">
+                    <HomeBorderGlow as={RayoLink} className="mxd-partners-cards__inner" href="#0">
+                      <div className="mxd-partners-cards__logo">
+                        <img src="/img/brands/behance.svg" alt="Partner Logo" />
+                      </div>
+                    </HomeBorderGlow>
+                  </div>
+                  <div className="col-12 col-md-6 col-xl-3 mxd-partners-cards__item mxd-grid-item animate-card-4">
+                    <HomeBorderGlow as={RayoLink} className="mxd-partners-cards__inner" href="#0">
+                      <div className="mxd-partners-cards__logo">
+                        <img src="/img/brands/dribbble.svg" alt="Partner Logo" />
+                      </div>
+                    </HomeBorderGlow>
+                  </div>
+                  <div className="col-12 col-md-6 col-xl-3 mxd-partners-cards__item mxd-grid-item animate-card-4">
+                    <HomeBorderGlow as={RayoLink} className="mxd-partners-cards__inner" href="#0">
+                      <div className="mxd-partners-cards__logo">
+                        <img src="/img/brands/codeninja.svg" alt="Partner Logo" />
+                      </div>
+                    </HomeBorderGlow>
+                  </div>
+                  <div className="col-12 col-md-6 col-xl-3 mxd-partners-cards__item mxd-grid-item animate-card-4">
+                    <HomeBorderGlow as={RayoLink} className="mxd-partners-cards__inner" href="#0">
+                      <div className="mxd-partners-cards__logo">
+                        <img src="/img/brands/udemy.svg" alt="Partner Logo" />
+                      </div>
+                    </HomeBorderGlow>
+                  </div>
+                  <div className="col-12 col-md-6 col-xl-3 mxd-partners-cards__item mxd-grid-item animate-card-4">
+                    <HomeBorderGlow as={RayoLink} className="mxd-partners-cards__inner" href="#0">
+                      <div className="mxd-partners-cards__logo">
+                        <img src="/img/brands/angular.svg" alt="Partner Logo" />
+                      </div>
+                    </HomeBorderGlow>
+                  </div>
+                  <div className="col-12 col-md-6 col-xl-3 mxd-partners-cards__item mxd-grid-item animate-card-4">
+                    <HomeBorderGlow as={RayoLink} className="mxd-partners-cards__inner" href="#0">
+                      <div className="mxd-partners-cards__logo">
+                        <img src="/img/brands/ghostgaming.svg" alt="Partner Logo" />
+                      </div>
+                    </HomeBorderGlow>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="mxd-section padding-blog">
+        <div className="mxd-container grid-container">
+          <div className="mxd-block">
+            <div className="mxd-section-title pre-grid">
+              <div className="container-fluid p-0">
+                <div className="row g-0">
+                  <div className="col-12 col-xl-5 mxd-grid-item no-margin">
+                    <div className="mxd-section-title__hrtitle">
+                      <h2 className="reveal-type anim-uni-in-up">
+                        Recent insights
+                      </h2>
+                    </div>
+                  </div>
+                  <div className="col-12 col-xl-4 mxd-grid-item no-margin">
+                    <div className="mxd-section-title__hrdescr">
+                      <p className="anim-uni-in-up">
+                        {"Inspiring ideas, creative insights, and the latest                          in design and tech. Fueling innovation for your digital journey."}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="col-12 col-xl-3 mxd-grid-item no-margin">
+                    <div className="mxd-section-title__hrcontrols anim-uni-in-up">
+                      <RayoLink className="btn btn-anim btn-default btn-outline slide-right-up" href="/blog">
+                        <span className="btn-caption">
+                          All Articles
+                        </span>
+                        <i className="ph-bold ph-arrow-up-right"></i>
+                      </RayoLink>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="mxd-block">
+            <div className="mxd-blog-preview">
+              <div className="container-fluid p-0">
+                <div className="row g-0">
+                  <div className="col-12 col-xl-4 mxd-blog-preview__item mxd-grid-item animate-card-3">
+                    <HomeBorderGlow as={RayoLink} className="mxd-blog-preview__media" href="/blog/article">
+                      <div className="mxd-blog-preview__image blog-preview-image-1 parallax-img-small"></div>
+                      <div className="mxd-preview-hover">
+                        <i className="mxd-preview-hover__icon">
+                          <img src="/img/icons/icon-eye.svg" alt="Eye Icon" />
+                        </i>
+                      </div>
+                      <div className="mxd-blog-preview__tags">
+                        <span className="tag tag-default tag-permanent">
+                          Concept
+                        </span>
+                        <span className="tag tag-default tag-permanent">
+                          Editorial
+                        </span>
+                      </div>
+                    </HomeBorderGlow>
+                    <div className="mxd-blog-preview__data">
+                      <RayoLink className="anim-uni-in-up" href="/blog/article">
+                        <span>
+                          Frontend innovations
+                        </span>
+                        {" and user journeys"}
+                      </RayoLink>
+                    </div>
+                  </div>
+                  <div className="col-12 col-xl-4 mxd-blog-preview__item mxd-grid-item animate-card-3">
+                    <HomeBorderGlow as={RayoLink} className="mxd-blog-preview__media" href="/blog/article">
+                      <div className="mxd-blog-preview__image blog-preview-image-2 parallax-img-small"></div>
+                      <div className="mxd-preview-hover">
+                        <i className="mxd-preview-hover__icon">
+                          <img src="/img/icons/icon-eye.svg" alt="Eye Icon" />
+                        </i>
+                      </div>
+                      <div className="mxd-blog-preview__tags">
+                        <span className="tag tag-default tag-permanent">
+                          UI/UX
+                        </span>
+                        <span className="tag tag-default tag-permanent">
+                          Development
+                        </span>
+                      </div>
+                    </HomeBorderGlow>
+                    <div className="mxd-blog-preview__data">
+                      <RayoLink className="anim-uni-in-up" href="/blog/article">
+                        {"Branding in creating "}
+                        <span>
+                          digital experiences
+                        </span>
+                      </RayoLink>
+                    </div>
+                  </div>
+                  <div className="col-12 col-xl-4 mxd-blog-preview__item mxd-grid-item animate-card-3">
+                    <HomeBorderGlow as={RayoLink} className="mxd-blog-preview__media" href="/blog/article">
+                      <div className="mxd-blog-preview__image blog-preview-image-3 parallax-img-small"></div>
+                      <div className="mxd-preview-hover">
+                        <i className="mxd-preview-hover__icon">
+                          <img src="/img/icons/icon-eye.svg" alt="Eye Icon" />
+                        </i>
+                      </div>
+                      <div className="mxd-blog-preview__tags">
+                        <span className="tag tag-default tag-permanent">
+                          News
+                        </span>
+                        <span className="tag tag-default tag-permanent">
+                          AI
+                        </span>
+                      </div>
+                    </HomeBorderGlow>
+                    <div className="mxd-blog-preview__data">
+                      <RayoLink className="anim-uni-in-up" href="/blog/article">
+                        {"Elevating "}
+                        <span>
+                          digital workshops
+                        </span>
+                        {" with engaging design"}
+                      </RayoLink>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="mxd-section overflow-hidden">
+        <div className="mxd-container">
+          <div className="mxd-block">
+            <div className="mxd-promo">
+              <div className="mxd-promo__inner anim-zoom-out-container">
+                <div className="mxd-promo__bg"></div>
+                <div className="mxd-promo__content">
+                  <p className="mxd-promo__title anim-uni-in-up">
+                    <span className="mxd-promo__icon">
+                      <img src="https://dummyimage.com/100x100/838383/5d5d5d" alt="Icon" />
+                    </span>
+                    <span className="mxd-promo__caption reveal-type">
+                      Let's talk about your project!
+                    </span>
+                  </p>
+                  <div className="mxd-promo__controls anim-uni-in-up">
+                    <RayoLink className="btn btn-anim btn-default btn-large btn-additional slide-right-up" href="/contact">
+                      <span className="btn-caption">
+                        Contact Us
+                      </span>
+                      <i className="ph-bold ph-arrow-up-right"></i>
+                    </RayoLink>
+                  </div>
+                </div>
+                <div className="mxd-promo__images">
+                  <img className="promo-image promo-image-1" src="https://dummyimage.com/600x600/5d5d5d/838383" alt="Image" />
+                  <img className="promo-image promo-image-2" src="https://dummyimage.com/300x300/5d5d5d/838383" alt="Image" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer id="mxd-footer" className="mxd-footer">
+      <div className="mxd-footer__text-wrap">
+        <div className="fullwidth-text__tl-trigger"></div>
+        <div className="mxd-footer__fullwidth-text anim-top-to-bottom">
+          <svg className="mxd-footer__svg-v2" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 400.26 72" xmlSpace="preserve">
+            <path d="M4.93,56V25.93H0V16h10.13v7.73h2.8c1.11-2.67,2.82-4.69,5.13-6.07c2.31-1.38,4.96-2.07,7.93-2.07h3.33v8.53h-3.8             c-3.65,0-6.36,1.04-8.13,3.13c-1.78,2.09-2.67,4.87-2.67,8.33V56H4.93z M46.53,56.73c-4.67,0-8.32-1.13-10.97-3.4             c-2.65-2.27-3.97-5.27-3.97-9c0-3.91,1.34-6.93,4.03-9.07c2.69-2.13,6.57-3.2,11.63-3.2h12.2v-1.6c0-4.89-2.84-7.33-8.53-7.33             c-4.84,0-7.76,1.73-8.73,5.2h-9.93c0.84-4.27,2.87-7.52,6.07-9.77c3.2-2.24,7.4-3.37,12.6-3.37c5.87,0,10.33,1.32,13.4,3.97             c3.07,2.64,4.6,6.5,4.6,11.57v15.33h4.73V56h-10.2v-6.4h-2.8c-1.38,2.27-3.23,4.02-5.57,5.27C52.77,56.11,49.91,56.73,46.53,56.73z             M48,49.07c2.18,0,4.13-0.41,5.87-1.23c1.73-0.82,3.1-1.93,4.1-3.33s1.5-2.97,1.5-4.7v-0.93H47.8c-4.49,0-6.73,1.67-6.73,5             c0,1.65,0.61,2.92,1.83,3.83C44.12,48.61,45.82,49.07,48,49.07z M78.93,72v-7.93H88l3.4-8.27L73.93,16H84.4l12,28.33h0.33L108.33,16             h10.07l-17.13,40l-3.47,8.27c-1.07,2.44-2.23,4.34-3.5,5.7C93.03,71.32,91.02,72,88.27,72H78.93z M140.8,56.8             c-4.31,0-8.06-0.86-11.23-2.57c-3.18-1.71-5.64-4.12-7.4-7.23c-1.76-3.11-2.63-6.78-2.63-11c0-4.27,0.88-7.96,2.63-11.07             c1.76-3.11,4.23-5.51,7.43-7.2c3.2-1.69,6.93-2.53,11.2-2.53c4.36,0,8.1,0.84,11.23,2.53c3.13,1.69,5.57,4.09,7.3,7.2             c1.73,3.11,2.6,6.8,2.6,11.07c0,4.22-0.87,7.9-2.6,11.03c-1.73,3.13-4.18,5.54-7.33,7.23C148.84,55.96,145.11,56.8,140.8,56.8z             M140.8,48.13c3.55,0,6.31-1.08,8.27-3.23c1.96-2.16,2.93-5.12,2.93-8.9c0-3.82-0.98-6.8-2.93-8.93c-1.96-2.13-4.71-3.2-8.27-3.2             c-3.6,0-6.39,1.07-8.37,3.2c-1.98,2.13-2.97,5.09-2.97,8.87c0,3.82,0.99,6.81,2.97,8.97C134.41,47.06,137.2,48.13,140.8,48.13z             M185.6,56.8c-5.78,0-10.33-1.21-13.67-3.63c-3.33-2.42-5.13-5.81-5.4-10.17h9.67c0.31,2.09,1.27,3.63,2.87,4.63             c1.6,1,3.91,1.5,6.93,1.5c5.11,0,7.67-1.47,7.67-4.4c0-1.24-0.39-2.2-1.17-2.87c-0.78-0.67-2.08-1.18-3.9-1.53l-8.87-1.67             c-7.78-1.51-11.67-5.2-11.67-11.07c0-3.78,1.49-6.79,4.47-9.03c2.98-2.24,7.07-3.37,12.27-3.37c5.29,0,9.48,1.14,12.57,3.43             s4.81,5.52,5.17,9.7h-9.6c-0.49-2-1.41-3.46-2.77-4.37c-1.36-0.91-3.3-1.37-5.83-1.37c-2.27,0-4,0.36-5.2,1.07             c-1.2,0.71-1.8,1.76-1.8,3.13c0,1.02,0.38,1.84,1.13,2.47c0.75,0.62,1.96,1.09,3.6,1.4l9,1.73c4.09,0.8,7.09,2.13,9,4             c1.91,1.87,2.87,4.38,2.87,7.53c0,4.04-1.49,7.2-4.47,9.47C195.49,55.67,191.2,56.8,185.6,56.8z M221.06,56c-2.62,0-4.66-0.67-6.1-2             c-1.45-1.33-2.17-3.36-2.17-6.07v-24.2h-7.07V16h7.13V4h9.73v12h9.67v7.73h-9.53V48.2h10.47V56H221.06z M255.86,56.73             c-5.47,0-9.68-1.46-12.63-4.37c-2.96-2.91-4.43-6.85-4.43-11.83V16h9.93v22.53c0,3.11,0.8,5.46,2.4,7.03             c1.6,1.58,3.98,2.37,7.13,2.37c3.33,0,5.89-0.84,7.67-2.53c1.78-1.69,2.67-4.07,2.67-7.13V16h9.93v30.07h5V56h-10.2v-6.4h-2.8             c-1.56,2.31-3.5,4.08-5.83,5.3C262.36,56.12,259.42,56.73,255.86,56.73z M307,56.8c-4.09,0-7.56-0.86-10.4-2.57             c-2.84-1.71-5.01-4.13-6.5-7.27c-1.49-3.13-2.23-6.79-2.23-10.97c0-4.22,0.72-7.89,2.17-11c1.44-3.11,3.53-5.52,6.27-7.23             c2.73-1.71,6.01-2.57,9.83-2.57c3.02,0,5.62,0.57,7.8,1.7c2.18,1.13,3.84,2.77,5,4.9h0.27V0h9.93v46.07h4.93V56h-10.13v-6.4h-2.8             c-1.42,2.31-3.31,4.09-5.67,5.33C313.11,56.18,310.28,56.8,307,56.8z M308.73,48.2c3.2,0,5.74-0.9,7.63-2.7             c1.89-1.8,2.83-4.23,2.83-7.3v-4.4c0-3.07-0.94-5.5-2.83-7.3c-1.89-1.8-4.43-2.7-7.63-2.7c-3.56,0-6.27,1.08-8.13,3.23             c-1.87,2.16-2.8,5.14-2.8,8.97c0,3.82,0.93,6.81,2.8,8.97C302.46,47.12,305.17,48.2,308.73,48.2z M345.86,11.6             c-1.56,0-2.88-0.54-3.97-1.63c-1.09-1.09-1.63-2.41-1.63-3.97c0-1.56,0.54-2.88,1.63-3.97c1.09-1.09,2.41-1.63,3.97-1.63             c1.55,0,2.88,0.54,3.97,1.63c1.09,1.09,1.63,2.41,1.63,3.97c0,1.56-0.54,2.88-1.63,3.97C348.74,11.06,347.42,11.6,345.86,11.6z             M340.93,56V16h9.93v40H340.93z M379.13,56.8c-4.31,0-8.06-0.86-11.23-2.57c-3.18-1.71-5.64-4.12-7.4-7.23             c-1.76-3.11-2.63-6.78-2.63-11c0-4.27,0.88-7.96,2.63-11.07c1.76-3.11,4.23-5.51,7.43-7.2c3.2-1.69,6.93-2.53,11.2-2.53             c4.36,0,8.1,0.84,11.23,2.53c3.13,1.69,5.57,4.09,7.3,7.2c1.73,3.11,2.6,6.8,2.6,11.07c0,4.22-0.87,7.9-2.6,11.03             c-1.73,3.13-4.18,5.54-7.33,7.23C387.17,55.96,383.44,56.8,379.13,56.8z M379.13,48.13c3.55,0,6.31-1.08,8.27-3.23             c1.96-2.16,2.93-5.12,2.93-8.9c0-3.82-0.98-6.8-2.93-8.93c-1.96-2.13-4.71-3.2-8.27-3.2c-3.6,0-6.39,1.07-8.37,3.2             c-1.98,2.13-2.97,5.09-2.97,8.87c0,3.82,0.99,6.81,2.97,8.97C372.74,47.06,375.53,48.13,379.13,48.13z"></path>
+          </svg>
+        </div>
+      </div>
+      <div className="mxd-footer__footer-blocks">
+        <div className="footer-blocks__column animate-card-3">
+          <HomeBorderGlow className="footer-blocks__card fullheight-card">
+            <div className="footer-blocks__nav">
+              <ul className="footer-nav">
+                <li className="footer-nav__item anim-uni-in-up">
+                  <RayoLink href="/" className="footer-nav__link btn-anim">
+                    <span className="btn-caption">
+                      Home
+                    </span>
+                  </RayoLink>
+                </li>
+                <li className="footer-nav__item anim-uni-in-up">
+                  <RayoLink href="/about-us" className="footer-nav__link btn-anim">
+                    <span className="btn-caption">
+                      About us
+                    </span>
+                  </RayoLink>
+                </li>
+                <li className="footer-nav__item anim-uni-in-up">
+                  <RayoLink href="/works" className="footer-nav__link btn-anim">
+                    <span className="btn-caption">
+                      Works
+                    </span>
+                  </RayoLink>
+                  <p className="footer-nav__counter">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill="currentColor" d="M19.6,9.6c0,0-3,0-4,0c-0.4,0-1.8-0.2-1.8-0.2c-0.6-0.1-1.1-0.2-1.6-0.6c-0.5-0.3-0.9-0.8-1.2-1.2                         c-0.3-0.4-0.4-0.9-0.5-1.4c0,0-0.1-1.1-0.2-1.5c-0.1-1.1,0-4.4,0-4.4C10.4,0.2,10.2,0,10,0S9.6,0.2,9.6,0.4c0,0,0.1,3.3,0,4.4                         c0,0.4-0.2,1.5-0.2,1.5C9.4,6.7,9.2,7.2,9,7.6C8.7,8.1,8.2,8.5,7.8,8.9c-0.5,0.3-1,0.5-1.6,0.6c0,0-1.2,0.1-1.7,0.2                         c-1,0.1-4.2,0-4.2,0C0.2,9.6,0,9.8,0,10c0,0.2,0.2,0.4,0.4,0.4c0,0,3.1-0.1,4.2,0c0.4,0,1.7,0.2,1.7,0.2c0.6,0.1,1.1,0.2,1.6,0.6                         c0.4,0.3,0.8,0.7,1.1,1.1c0.3,0.5,0.5,1,0.6,1.6c0,0,0.1,1.3,0.2,1.7c0,1,0,4.1,0,4.1c0,0.2,0.2,0.4,0.4,0.4s0.4-0.2,0.4-0.4                         c0,0,0-3.1,0-4.1c0-0.4,0.2-1.7,0.2-1.7c0.1-0.6,0.2-1.1,0.6-1.6c0.3-0.4,0.7-0.8,1.1-1.1c0.5-0.3,1-0.5,1.6-0.6                         c0,0,1.3-0.1,1.8-0.2c1,0,4,0,4,0c0.2,0,0.4-0.2,0.4-0.4C20,9.8,19.8,9.6,19.6,9.6L19.6,9.6z"></path>
+                    </svg>
+                    <span>
+                      10
+                    </span>
+                  </p>
+                </li>
+                <li className="footer-nav__item anim-uni-in-up">
+                  <RayoLink href="/services" className="footer-nav__link btn-anim">
+                    <span className="btn-caption">
+                      Services
+                    </span>
+                  </RayoLink>
+                </li>
+                <li className="footer-nav__item anim-uni-in-up">
+                  <RayoLink href="/blog" className="footer-nav__link btn-anim">
+                    <span className="btn-caption">
+                      Insights
+                    </span>
+                  </RayoLink>
+                </li>
+                <li className="footer-nav__item anim-uni-in-up">
+                  <RayoLink href="/contact" className="footer-nav__link btn-anim">
+                    <span className="btn-caption">
+                      Contact
+                    </span>
+                  </RayoLink>
+                </li>
+              </ul>
+            </div>
+            <div className="footer-blocks__links anim-uni-in-up">
+              <RayoLink className="btn btn-line-xsmall btn-muted slide-right anim-no-delay" href="#0">
+                <span className="btn-caption">
+                  Privacy Policy
+                </span>
+                <i className="ph ph-arrow-right"></i>
+              </RayoLink>
+              <RayoLink className="btn btn-line-xsmall btn-muted slide-right anim-no-delay" href="#0">
+                <span className="btn-caption">
+                  Terms & conditions
+                </span>
+                <i className="ph ph-arrow-right"></i>
+              </RayoLink>
+            </div>
+          </HomeBorderGlow>
+        </div>
+        <div className="footer-blocks__column animate-card-3">
+          <HomeBorderGlow className="footer-blocks__card">
+            <p className="mxd-point-subtitle anim-uni-in-up">
+              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 20 20" fill="currentColor">
+                <path fill="currentColor" d="M19.6,9.6c0,0-3,0-4,0c-0.4,0-1.8-0.2-1.8-0.2c-0.6-0.1-1.1-0.2-1.6-0.6c-0.5-0.3-0.9-0.8-1.2-1.2                   c-0.3-0.4-0.4-0.9-0.5-1.4c0,0-0.1-1.1-0.2-1.5c-0.1-1.1,0-4.4,0-4.4C10.4,0.2,10.2,0,10,0S9.6,0.2,9.6,0.4c0,0,0.1,3.3,0,4.4                   c0,0.4-0.2,1.5-0.2,1.5C9.4,6.7,9.2,7.2,9,7.6C8.7,8.1,8.2,8.5,7.8,8.9c-0.5,0.3-1,0.5-1.6,0.6c0,0-1.2,0.1-1.7,0.2                   c-1,0.1-4.2,0-4.2,0C0.2,9.6,0,9.8,0,10c0,0.2,0.2,0.4,0.4,0.4c0,0,3.1-0.1,4.2,0c0.4,0,1.7,0.2,1.7,0.2c0.6,0.1,1.1,0.2,1.6,0.6                   c0.4,0.3,0.8,0.7,1.1,1.1c0.3,0.5,0.5,1,0.6,1.6c0,0,0.1,1.3,0.2,1.7c0,1,0,4.1,0,4.1c0,0.2,0.2,0.4,0.4,0.4s0.4-0.2,0.4-0.4                   c0,0,0-3.1,0-4.1c0-0.4,0.2-1.7,0.2-1.7c0.1-0.6,0.2-1.1,0.6-1.6c0.3-0.4,0.7-0.8,1.1-1.1c0.5-0.3,1-0.5,1.6-0.6                   c0,0,1.3-0.1,1.8-0.2c1,0,4,0,4,0c0.2,0,0.4-0.2,0.4-0.4C20,9.8,19.8,9.6,19.6,9.6L19.6,9.6z"></path>
+              </svg>
+              <RayoLink href="mailto:example@example.com?subject=Message%20from%20your%20site">
+                hello@rayostudio.com
+              </RayoLink>
+            </p>
+          </HomeBorderGlow>
+          <HomeBorderGlow className="footer-blocks__card">
+            <p className="mxd-point-subtitle anim-uni-in-up">
+              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 20 20" fill="currentColor">
+                <path fill="currentColor" d="M19.6,9.6c0,0-3,0-4,0c-0.4,0-1.8-0.2-1.8-0.2c-0.6-0.1-1.1-0.2-1.6-0.6c-0.5-0.3-0.9-0.8-1.2-1.2                   c-0.3-0.4-0.4-0.9-0.5-1.4c0,0-0.1-1.1-0.2-1.5c-0.1-1.1,0-4.4,0-4.4C10.4,0.2,10.2,0,10,0S9.6,0.2,9.6,0.4c0,0,0.1,3.3,0,4.4                   c0,0.4-0.2,1.5-0.2,1.5C9.4,6.7,9.2,7.2,9,7.6C8.7,8.1,8.2,8.5,7.8,8.9c-0.5,0.3-1,0.5-1.6,0.6c0,0-1.2,0.1-1.7,0.2                   c-1,0.1-4.2,0-4.2,0C0.2,9.6,0,9.8,0,10c0,0.2,0.2,0.4,0.4,0.4c0,0,3.1-0.1,4.2,0c0.4,0,1.7,0.2,1.7,0.2c0.6,0.1,1.1,0.2,1.6,0.6                   c0.4,0.3,0.8,0.7,1.1,1.1c0.3,0.5,0.5,1,0.6,1.6c0,0,0.1,1.3,0.2,1.7c0,1,0,4.1,0,4.1c0,0.2,0.2,0.4,0.4,0.4s0.4-0.2,0.4-0.4                   c0,0,0-3.1,0-4.1c0-0.4,0.2-1.7,0.2-1.7c0.1-0.6,0.2-1.1,0.6-1.6c0.3-0.4,0.7-0.8,1.1-1.1c0.5-0.3,1-0.5,1.6-0.6                   c0,0,1.3-0.1,1.8-0.2c1,0,4,0,4,0c0.2,0,0.4-0.2,0.4-0.4C20,9.8,19.8,9.6,19.6,9.6L19.6,9.6z"></path>
+              </svg>
+              <RayoLink href="tel:+12127089400">
+                +1 212-708-9400
+              </RayoLink>
+            </p>
+          </HomeBorderGlow>
+          <HomeBorderGlow className="footer-blocks__card fill-card notify">
+            <div className="footer-blocks__title anim-uni-in-up">
+              <p className="footer-blocks__title-m">
+                Subscribe to our insights:
+              </p>
+            </div>
+            <div className="form-container anim-uni-in-up">
+              <div className="form__reply subscription-ok">
+                <span className="reply__text">
+                  Done! Thanks for subscribing.
+                </span>
+              </div>
+              <div className="form__reply subscription-error">
+                <span className="reply__text">
+                  Ooops! Something went wrong. Please try again later.
+                </span>
+              </div>
+              <DemoForm className="form notify-form form-light">
+                <input type="email" placeholder="Your Email" required />
+                <button className="btn btn-form btn-absolute-right btn-muted slide-right-up anim-no-delay" type="submit" aria-label="Submit">
+                  <i className="ph ph-arrow-up-right"></i>
+                </button>
+              </DemoForm>
+            </div>
+          </HomeBorderGlow>
+        </div>
+        <div className="footer-blocks__column animate-card-3">
+          <HomeBorderGlow className="footer-blocks__card fullheight-card">
+            <div className="footer-blocks__block">
+              <div className="footer-blocks__title anim-uni-in-up">
+                <p className="footer-blocks__title-l">
+                  Ecosystem
+                </p>
+              </div>
+              <div className="footer-blocks__socials">
+                <ul className="footer-socials">
+                  <li className="footer-socials__item anim-uni-in-up">
+                    <RayoLink href="https://dribbble.com/" className="footer-socials__link" target="_blank">
+                      Dribbble
+                    </RayoLink>
+                  </li>
+                  <li className="footer-socials__item anim-uni-in-up">
+                    <RayoLink href="https://www.behance.net/" className="footer-socials__link" target="_blank">
+                      Behance
+                    </RayoLink>
+                  </li>
+                  <li className="footer-socials__item anim-uni-in-up">
+                    <RayoLink href="https://www.instagram.com/" className="footer-socials__link" target="_blank">
+                      Instagram
+                    </RayoLink>
+                  </li>
+                  <li className="footer-socials__item anim-uni-in-up">
+                    <RayoLink href="https://github.com/" className="footer-socials__link" target="_blank">
+                      Github
+                    </RayoLink>
+                  </li>
+                  <li className="footer-socials__item anim-uni-in-up">
+                    <RayoLink href="https://codepen.io/" className="footer-socials__link" target="_blank">
+                      Codepen
+                    </RayoLink>
+                  </li>
+                  <li className="footer-socials__item anim-uni-in-up">
+                    <RayoLink href="https://www.figma.com/community" className="footer-socials__link" target="_blank">
+                      Figma Community
+                    </RayoLink>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className="footer-blocks__links anim-uni-in-up">
+              <p className="t-xsmall t-muted">
+                <RayoLink className="no-effect" href="https://1.envato.market/EKA9WD" target="_blank">
+                  Mix_Design
+                </RayoLink>
+                <i className="ph-bold ph-copyright"></i>
+                {"                 2025               "}
+              </p>
+            </div>
+          </HomeBorderGlow>
+        </div>
+      </div>
+    </footer>
+    </>
+  );
 }

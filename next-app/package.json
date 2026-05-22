@@ -9,6 +9,8 @@
     "lint": "tsc --noEmit"
   },
   "dependencies": {
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.6.1",
     "gsap": "^3.12.7",
     "html-react-parser": "^5.2.7",
     "imagesloaded": "^5.0.0",
@@ -18,6 +20,7 @@
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
     "swiper": "^12.0.2",
+    "three": "^0.184.0",
     "typed.js": "^2.1.0"
   },
   "devDependencies": {

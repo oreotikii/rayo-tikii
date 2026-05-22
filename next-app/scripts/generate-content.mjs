@@ -33,6 +33,8 @@ const pages = [
   ["notFound", "404.html", "not-found"]
 ];
 
+const manualRoutes = new Set([""]);
+
 const routeMap = new Map([
   ["index-main.html", "/"],
   ["index.html", "/landing"],
@@ -131,6 +133,8 @@ export type PageKey = keyof typeof pages;
 fs.writeFileSync(path.join(libDir, "content.ts"), content);
 
 for (const [key, _file, route] of pages) {
+  if (manualRoutes.has(route)) continue;
+
   const dir = route ? path.join(appDir, route) : appDir;
   fs.mkdirSync(dir, { recursive: true });
   const page = `import { RayoPage } from "@/components/rayo-page";

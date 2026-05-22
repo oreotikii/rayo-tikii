@@ -1,0 +1,35 @@
+.stage {
+  position: relative;
+  width: 100%;
+  min-height: clamp(32rem, 54vw, 68rem);
+  overflow: hidden;
+  border-radius: var(--_radius-l);
+  background:
+    radial-gradient(circle at 20% 20%, rgba(221, 241, 96, 0.18), transparent 32%),
+    radial-gradient(circle at 78% 12%, rgba(159, 139, 231, 0.22), transparent 34%),
+    color-mix(in srgb, var(--base-tint) 86%, transparent);
+}
+
+.stage[data-transparent="true"] {
+  overflow: visible;
+  border-radius: 0;
+  background: transparent;
+}
+
+.canvas {
+  position: absolute;
+  inset: 0;
+}
+
+.loader,
+.error {
+  position: absolute;
+  inset: auto 2rem 2rem 2rem;
+  z-index: 2;
+  color: var(--t-muted);
+  font: normal var(--fw-regular) 1.4rem/1.4 var(--_font-default);
+}
+
+.error {
+  color: var(--t-bright);
+}

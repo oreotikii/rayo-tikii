@@ -1,10 +1,17 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import parse, { attributesToProps, domToReact, type DOMNode, type Element, type HTMLReactParserOptions } from "html-react-parser";
 import { useEffect, useState, type ElementType } from "react";
 import BorderGlow from "@/components/border-glow";
-import type { PageRecord } from "@/lib/content";
+
+export type CounterRecord = { value: number; suffix: string };
+export type PageRecord = { source: string; html: string; counters: Record<string, CounterRecord> };
+
+const ThreeModelStage = dynamic(() => import("@/components/three-model-stage").then((mod) => mod.ThreeModelStage), {
+  ssr: false
+});
 
 const htmlRouteMap: Record<string, string> = {
   "index-main.html": "/",
@@ -89,6 +96,17 @@ function getBorderGlowProps(classNames: string[]) {
   };
 }
 
+function numberFromAttribute(value: string | undefined, fallback: number) {
+  if (!value) return fallback;
+  const parsed = Number(value);
+  return Number.isFinite(parsed) ? parsed : fallback;
+}
+
+function booleanFromAttribute(value: string | undefined, fallback: boolean) {
+  if (value === undefined) return fallback;
+  return value !== "false";
+}
+
 function FormWithMessage({
   children,
   props
@@ -142,6 +160,28 @@ export function PageContent({ record }: { record: PageRecord }) {
       const props = attributesToProps(node.attribs ?? {}) as Record<string, unknown>;
       const children = domToReact(node.children as DOMNode[], options);
       const classNames = getClassNames(props.className);
+
+      if (node.name === "div" && node.attribs?.["data-three-model"] !== undefined) {
+        return (
+          <ThreeModelStage
+            src={node.attribs["data-three-model"] || undefined}
+            scale={numberFromAttribute(node.attribs["data-three-scale"], 1)}
+            rotationSpeed={numberFromAttribute(node.attribs["data-three-rotation-speed"], 0.22)}
+            autoRotate={booleanFromAttribute(node.attribs["data-three-auto-rotate"], true)}
+            controls={booleanFromAttribute(node.attribs["data-three-controls"], true)}
+            float={booleanFromAttribute(node.attribs["data-three-float"], true)}
+            shadows={booleanFromAttribute(node.attribs["data-three-shadows"], true)}
+            animateLights={booleanFromAttribute(node.attribs["data-three-animate-lights"], true)}
+            materialFinish={node.attribs["data-three-material"] === "chrome" ? "chrome" : "original"}
+            backgroundColor={node.attribs["data-three-transparent"] === "true" ? null : undefined}
+            transparent={node.attribs["data-three-transparent"] === "true"}
+            ambientLightIntensity={numberFromAttribute(node.attribs["data-three-ambient-light-intensity"], 0.72)}
+            keyLightIntensity={numberFromAttribute(node.attribs["data-three-key-light-intensity"], 5.2)}
+            fillLightIntensity={numberFromAttribute(node.attribs["data-three-fill-light-intensity"], 2.1)}
+            className={typeof props.className === "string" ? props.className : undefined}
+          />
+        );
+      }
 
       if (shouldApplyBorderGlow(record.source, node.name, classNames)) {
         const href = node.name === "a" ? cleanHref(typeof node.attribs?.href === "string" ? node.attribs.href : undefined) : undefined;
