@@ -44,8 +44,8 @@ function MovingLights({
   keyLightIntensity: number;
   fillLightIntensity: number;
 }) {
-  const key = useRef<Object3D>(null);
-  const fill = useRef<Object3D>(null);
+  const key = useRef < Object3D > (null);
+  const fill = useRef < Object3D > (null);
   const keyColor = useMemo(() => new Color(keyLightColor), [keyLightColor]);
   const fillColor = useMemo(() => new Color(fillLightColor), [fillLightColor]);
 
@@ -73,7 +73,7 @@ function MovingLights({
 }
 
 function DemoMesh({ rotationSpeed }: { rotationSpeed: number }) {
-  const group = useRef<Group>(null);
+  const group = useRef < Group > (null);
 
   useFrame((_, delta) => {
     if (!group.current) return;
@@ -106,21 +106,19 @@ function AnimatedModel({
   rotationSpeed: number;
   materialFinish: ThreeModelStageProps["materialFinish"];
 }) {
-  const root = useRef<Group>(null);
+  const root = useRef < Group > (null);
   const gltf = useGLTF(src);
   const scene = useMemo(() => gltf.scene.clone(true), [gltf.scene]);
   const { actions } = useAnimations(gltf.animations, root);
   const chromeMaterial = useMemo(
     () =>
       new MeshPhysicalMaterial({
-        color: "#f1f4f7",
-        metalness: 0.82,
-        roughness: 0.18,
-        clearcoat: 1,
-        clearcoatRoughness: 0.08,
-        envMapIntensity: 3.2,
-        emissive: "#262a30",
-        emissiveIntensity: 0.08
+        color: "#d8dde2",
+        metalness: .99,
+        roughness: 0.3,
+        clearcoat: .99,
+        clearcoatRoughness: 0.01,
+        envMapIntensity: 3.2
       }),
     []
   );
