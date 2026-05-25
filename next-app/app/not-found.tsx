@@ -1,5 +1,5 @@
-import { RayoPage } from "@/components/rayo-page";
+import NotFoundPage from "@/app/404/page";
 
 export default function NotFound() {
-  return <RayoPage pageKey="notFound" />;
+  return <NotFoundPage />;
 }

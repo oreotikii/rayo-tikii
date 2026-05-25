@@ -2,7 +2,13 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import { flushSync } from "react-dom";
 import { ClientBehaviors } from "@/components/client-behaviors";
 
@@ -23,53 +29,16 @@ type MenuTimeline = {
 type MenuNavigationHandler = (href: string) => Promise<void>;
 
 const navItems: NavItem[] = [
-  {
-    label: "Home",
-    children: [
-      { label: "Main home", href: "/" },
-      { label: "Software development company", href: "/software-development-company" },
-      { label: "Freelancer portfolio", href: "/freelancer-portfolio" },
-      { label: "Digital agency", href: "/digital-agency" },
-      { label: "Creative design studio", href: "/creative-design-studio" },
-      { label: "Personal portfolio", href: "/personal-portfolio" },
-      { label: "Web agency", href: "/web-agency" },
-      { label: "Creative developer", href: "/creative-developer" },
-      { label: "Designer", href: "/designer" }
-    ]
-  },
-  {
-    label: "Works",
-    children: [
-      { label: "Portfolio", href: "/works" },
-      { label: "Works masonry", href: "/works/masonry" },
-      { label: "Project details", href: "/project-details" }
-    ]
-  },
-  {
-    label: "Pages",
-    children: [
-      { label: "About me", href: "/about-me" },
-      { label: "About us", href: "/about-us" },
-      { label: "Services", href: "/services" },
-      { label: "Our team", href: "/team" },
-      { label: "Pricing", href: "/pricing" },
-      { label: "FAQ page", href: "/faq" },
-      { label: "404 error page", href: "/not-found" },
-      { label: "Landing page", href: "/landing" }
-    ]
-  },
-  {
-    label: "Insights",
-    children: [
-      { label: "Blog standard", href: "/blog" },
-      { label: "Blog creative", href: "/blog/creative" },
-      { label: "Single post", href: "/blog/article" }
-    ]
-  },
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Work", href: "/works" },
+  { label: "Services", href: "/services" },
+  { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" }
 ];
 
-const routeTransitionRootSelector = "#mxd-page-content, #mxd-footer, .mxd-floating-img";
+const routeTransitionRootSelector =
+  "#mxd-page-content, #mxd-footer, .mxd-floating-img";
 const minimumRouteLoaderTime = 420;
 
 function prefersReducedMotion() {
@@ -77,7 +46,9 @@ function prefersReducedMotion() {
 }
 
 function getRouteTransitionRoots() {
-  return Array.from(document.querySelectorAll<HTMLElement>(routeTransitionRootSelector));
+  return Array.from(
+    document.querySelectorAll<HTMLElement>(routeTransitionRootSelector),
+  );
 }
 
 function waitForPaint() {
@@ -108,7 +79,7 @@ async function runPageOutro() {
         ease: "power3.inOut",
         stagger: 0.03,
         overwrite: true,
-        onComplete: resolve
+        onComplete: resolve,
       });
     });
   } catch {
@@ -125,8 +96,14 @@ async function runPageIntro(onReady?: () => void | Promise<void>) {
   try {
     const { gsap } = await import("gsap");
     const loadingWrap = document.querySelector<HTMLElement>(".loading-wrap");
-    const loadingItems = loadingWrap ? Array.from(loadingWrap.querySelectorAll<HTMLElement>(".loading__item")) : [];
-    const fadeInItems = Array.from(document.querySelectorAll<HTMLElement>("#mxd-page-content .loading__fade, .mxd-floating-img .loading__fade"));
+    const loadingItems = loadingWrap
+      ? Array.from(loadingWrap.querySelectorAll<HTMLElement>(".loading__item"))
+      : [];
+    const fadeInItems = Array.from(
+      document.querySelectorAll<HTMLElement>(
+        "#mxd-page-content .loading__fade, .mxd-floating-img .loading__fade",
+      ),
+    );
     const transitionItems = [...loadingItems, ...fadeInItems];
 
     if (!transitionItems.length) {
@@ -138,7 +115,14 @@ async function runPageIntro(onReady?: () => void | Promise<void>) {
       gsap.set(roots, { opacity: 0, y: 80 });
       await onReady?.();
       await new Promise<void>((resolve) => {
-        gsap.to(roots, { opacity: 1, y: 0, duration: 0.65, ease: "power4.out", stagger: 0.03, onComplete: resolve });
+        gsap.to(roots, {
+          opacity: 1,
+          y: 0,
+          duration: 0.65,
+          ease: "power4.out",
+          stagger: 0.03,
+          onComplete: resolve,
+        });
       });
       gsap.set(roots, { clearProps: "opacity,transform,visibility" });
       return;
@@ -151,24 +135,33 @@ async function runPageIntro(onReady?: () => void | Promise<void>) {
     await new Promise<void>((resolve) => {
       gsap
         .timeline({ onComplete: resolve })
-        .to(loadingItems, { duration: 1.1, ease: "power4", y: 0, opacity: 1, stagger: 0.08 }, 0)
+        .to(
+          loadingItems,
+          { duration: 1.1, ease: "power4", y: 0, opacity: 1, stagger: 0.08 },
+          0,
+        )
         .to(fadeInItems, { duration: 0.8, ease: "none", opacity: 1 }, 0.45);
     });
 
     gsap.set(transitionItems, { clearProps: "opacity,transform,visibility" });
   } catch {
     await onReady?.();
-    document.querySelectorAll<HTMLElement>(".loading__item, .loading__fade").forEach((element) => {
-      element.style.opacity = "1";
-      element.style.transform = "";
-    });
+    document
+      .querySelectorAll<HTMLElement>(".loading__item, .loading__fade")
+      .forEach((element) => {
+        element.style.opacity = "1";
+        element.style.transform = "";
+      });
   }
 }
 
 function RouteTransitionLoader({ visible }: { visible: boolean }) {
   return (
     <>
-      <div className={`route-transition-loader${visible ? " is-visible" : ""}`} aria-hidden={!visible}>
+      <div
+        className={`route-transition-loader${visible ? " is-visible" : ""}`}
+        aria-hidden={!visible}
+      >
         <div className="route-transition-loader__mark">
           <StarIcon />
         </div>
@@ -239,9 +232,32 @@ function RouteTransitionLoader({ visible }: { visible: boolean }) {
 
 function StarIcon() {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      aria-hidden="true"
+    >
       <path d="M19.6,9.6h-3.9c-.4,0-1.8-.2-1.8-.2-.6,0-1.1-.2-1.6-.6-.5-.3-.9-.8-1.2-1.2-.3-.4-.4-.9-.5-1.4,0,0,0-1.1-.2-1.5V.4c0-.2-.2-.4-.4-.4s-.4.2-.4.4v4.4c0,.4-.2,1.5-.2,1.5,0,.5-.2,1-.5,1.4-.3.5-.7.9-1.2,1.2s-1,.5-1.6.6c0,0-1.2,0-1.7.2H.4c-.2,0-.4.2-.4.4s.2.4.4.4h4.1c.4,0,1.7.2,1.7.2.6,0,1.1.2,1.6.6.4.3.8.7,1.1,1.1.3.5.5,1,.6,1.6,0,0,0,1.3.2,1.7v4.1c0,.2.2.4.4.4s.4-.2.4-.4v-4.1c0-.4.2-1.7.2-1.7,0-.6.2-1.1.6-1.6.3-.4.7-.8,1.1-1.1.5-.3,1-.5,1.6-.6,0,0,1.3,0,1.8-.2h3.9c.2,0,.4-.2.4-.4s-.2-.4-.4-.4h0Z" />
     </svg>
+  );
+}
+
+function AnimatedCaption({ children }: { children: string }) {
+  const letters = Array.from(children);
+  const renderLetters = (block: string) =>
+    letters.map((letter, index) => (
+      <span className="btn-anim__letter" key={`${block}-${index}`}>
+        {letter.trim() === "" ? "\u00a0" : letter}
+      </span>
+    ));
+
+  return (
+    <span className="btn-caption">
+      <span className="btn-anim__block">{renderLetters("top")}</span>
+      <span className="btn-anim__block">{renderLetters("bottom")}</span>
+    </span>
   );
 }
 
@@ -280,17 +296,22 @@ function Loader() {
 
     const showContentImmediately = () => {
       completeCounter();
-      document.querySelectorAll<HTMLElement>(".loading__item, .loading__fade").forEach((element) => {
-        element.style.opacity = "1";
-        element.style.transform = "";
-      });
+      document
+        .querySelectorAll<HTMLElement>(".loading__item, .loading__fade")
+        .forEach((element) => {
+          element.style.opacity = "1";
+          element.style.transform = "";
+        });
       setLoaded(true);
       unlockPageScroll();
     };
 
     const tickCounter = () => {
       if (disposed || currentCount >= 100) return;
-      currentCount = Math.min(currentCount + Math.floor(Math.random() * 10) + 1, 100);
+      currentCount = Math.min(
+        currentCount + Math.floor(Math.random() * 10) + 1,
+        100,
+      );
       setCount(currentCount);
       if (currentCount < 100) {
         schedule(tickCounter, Math.floor(Math.random() * 120) + 25);
@@ -301,14 +322,24 @@ function Loader() {
       tickCounter();
 
       try {
-        const [{ gsap }, imagesLoadedModule] = await Promise.all([import("gsap"), import("imagesloaded")]);
+        const [{ gsap }, imagesLoadedModule] = await Promise.all([
+          import("gsap"),
+          import("imagesloaded"),
+        ]);
         if (disposed) return;
 
         const wrapper = wrapperRef.current;
         const counter = countRef.current;
-        const loadingWrap = document.querySelector<HTMLElement>(".loading-wrap");
-        const loadingItems = loadingWrap ? Array.from(loadingWrap.querySelectorAll<HTMLElement>(".loading__item")) : [];
-        const fadeInItems = Array.from(document.querySelectorAll<HTMLElement>(".loading__fade"));
+        const loadingWrap =
+          document.querySelector<HTMLElement>(".loading-wrap");
+        const loadingItems = loadingWrap
+          ? Array.from(
+              loadingWrap.querySelectorAll<HTMLElement>(".loading__item"),
+            )
+          : [];
+        const fadeInItems = Array.from(
+          document.querySelectorAll<HTMLElement>(".loading__fade"),
+        );
         if (!wrapper || !counter) {
           showContentImmediately();
           return;
@@ -335,7 +366,17 @@ function Loader() {
           timeline
             .to(counter, { duration: 0.8, ease: "power2.in", y: "100%" }, 1.8)
             .to(wrapper, { duration: 0.8, ease: "power4.in", y: "-100%" }, 2.2)
-            .to(loadingItems, { duration: 1.1, ease: "power4", y: 0, opacity: 1, stagger: 0.08 }, 0.8)
+            .to(
+              loadingItems,
+              {
+                duration: 1.1,
+                ease: "power4",
+                y: 0,
+                opacity: 1,
+                stagger: 0.08,
+              },
+              0.8,
+            )
             .to(fadeInItems, { duration: 0.8, ease: "none", opacity: 1 }, 3.2)
             .add(() => {
               if (!disposed) {
@@ -345,7 +386,10 @@ function Loader() {
             }, 3.2);
         };
 
-        const imagesLoaded = imagesLoadedModule.default as (element: Element, callback: () => void) => void;
+        const imagesLoaded = imagesLoadedModule.default as (
+          element: Element,
+          callback: () => void,
+        ) => void;
         imagesLoaded(document.body, playIntro);
         schedule(playIntro, 2400);
       } catch {
@@ -364,7 +408,11 @@ function Loader() {
   }, []);
 
   return (
-    <div id="loader" className={`loader${loaded ? " loaded" : ""}`} aria-hidden={loaded}>
+    <div
+      id="loader"
+      className={`loader${loaded ? " loaded" : ""}`}
+      aria-hidden={loaded}
+    >
       <div ref={wrapperRef} className="loader__wrapper">
         <div className="loader__content">
           <div ref={countRef} className="loader__count">
@@ -379,18 +427,17 @@ function Loader() {
 
 function Logo() {
   return (
-    <Link href="/" className="mxd-logo" aria-label="Rayo home">
-      <svg className="mxd-logo__image" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 56" aria-hidden="true">
-        <path className="mxd-logo__bg" d="M56,28c0,11.1-2.9,28-28,28S0,39.1,0,28S2.9,0,28,0S56,16.9,56,28z" />
-        <path
-          className="mxd-logo__cat"
-          d="M33.6,34.5h0.9c0.5,0,0.9,0.4,0.9,0.9v3.7c0,0.5-0.4,0.9-0.9,0.9h-0.9c-0.5,0-0.9-0.4-0.9-0.9v-3.7C32.7,34.9,33.1,34.5,33.6,34.5z M20.5,37.3v1.9c0,0.5,0.4,0.9,0.9,0.9h0.9c0.5,0,0.9-0.4,0.9-0.9v-3.7c0-0.5-0.4-0.9-0.9-0.9h-0.9c-0.5,0-0.9,0.4-0.9,0.9V37.3z M39.2,21.5v0.9c0,0.5-0.4,0.9-0.9,0.9h-0.9c-0.5,0-0.9-0.4-0.9-0.9v-0.9c0-0.5,0.4-0.9,0.9-0.9h0.9C38.8,20.5,39.2,21,39.2,21.5z M34.5,26.1h0.9c0.5,0,0.9-0.4,0.9-0.9v-0.9c0-0.5-0.4-0.9-0.9-0.9h-0.9c-0.5,0-0.9,0.4-0.9,0.9v0.9C33.6,25.7,34,26.1,34.5,26.1z M28,26.1h-4.7c-0.5,0-0.9,0.4-0.9,0.9V28c0,0.5,0.4,0.9,0.9,0.9h9.3c0.5,0,0.9-0.4,0.9-0.9v-0.9c0-0.5-0.4-0.9-0.9-0.9H28z M19.6,24.3v0.9c0,0.5,0.4,0.9,0.9,0.9h0.9c0.5,0,0.9-0.4,0.9-0.9v-0.9c0-0.5-0.4-0.9-0.9-0.9h-0.9C20,23.3,19.6,23.8,19.6,24.3z M16.8,21.5v0.9c0,0.5,0.4,0.9,0.9,0.9h0.9c0.5,0,0.9-0.4,0.9-0.9v-0.9c0-0.5-0.4-0.9-0.9-0.9h-0.9C17.2,20.5,16.8,21,16.8,21.5z M14,26.1v4.7c0,0.5,0.4,0.9,0.9,0.9h0.9c0.5,0,0.9-0.4,0.9-0.9v-6.5c0-0.5-0.4-0.9-0.9-0.9h-0.9c-0.5,0-0.9,0.4-0.9,0.9V26.1z M42,26.1v-1.9c0-0.5-0.4-0.9-0.9-0.9h-0.9c-0.5,0-0.9,0.4-0.9,0.9v6.5c0,0.5,0.4,0.9,0.9,0.9h0.9c0.5,0,0.9-0.4,0.9-0.9V26.1z"
-        />
-      </svg>
+    <Link href="/" className="mxd-logo" aria-label="Tikii Marketing home">
+      <img
+        className="mxd-logo__image"
+        src="/img/tikii/tikii-favicon.svg"
+        alt=""
+        aria-hidden="true"
+      />
       <span className="mxd-logo__text">
-        rayo
+        tikii
         <br />
-        template
+        marketing
       </span>
     </Link>
   );
@@ -400,7 +447,7 @@ function MenuOverlay({
   open,
   close,
   toggle,
-  onNavigate
+  onNavigate,
 }: {
   open: boolean;
   close: () => void;
@@ -440,8 +487,18 @@ function MenuOverlay({
     });
   }, [close, menuReady, open]);
 
-  const requestMenuLinkNavigation = async (event: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+  const requestMenuLinkNavigation = async (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) => {
+    if (
+      event.button !== 0 ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey
+    )
+      return;
 
     event.preventDefault();
     await closeMenuWithAnimation();
@@ -455,7 +512,10 @@ function MenuOverlay({
     let disposed = false;
 
     const setupMenuTimeline = async () => {
-      const [{ gsap }, { Flip }] = await Promise.all([import("gsap"), import("gsap/Flip")]);
+      const [{ gsap }, { Flip }] = await Promise.all([
+        import("gsap"),
+        import("gsap/Flip"),
+      ]);
       if (disposed) return;
       gsap.registerPlugin(Flip);
 
@@ -464,12 +524,26 @@ function MenuOverlay({
       const menuWrapper = menuWrapperRef.current;
       const menuBase = menuBaseRef.current;
       const menuContain = menuContainRef.current;
-      if (!hamburger || !hamburgerBase || !menuWrapper || !menuBase || !menuContain) return;
+      if (
+        !hamburger ||
+        !hamburgerBase ||
+        !menuWrapper ||
+        !menuBase ||
+        !menuContain
+      )
+        return;
 
-      const navLines = Array.from(hamburger.querySelectorAll<HTMLElement>(".hamburger__line"));
-      const menuItems = Array.from(menuWrapper.querySelectorAll<HTMLElement>(".main-menu__item"));
-      const video = menuWrapper.querySelector<HTMLElement>(".menu-promo__video");
-      const fadeItems = Array.from(menuWrapper.querySelectorAll<HTMLElement>(".menu-fade-in"));
+      const navLines = Array.from(
+        hamburger.querySelectorAll<HTMLElement>(".hamburger__line"),
+      );
+      const menuItems = Array.from(
+        menuWrapper.querySelectorAll<HTMLElement>(".main-menu__item"),
+      );
+      const video =
+        menuWrapper.querySelector<HTMLElement>(".menu-promo__video");
+      const fadeItems = Array.from(
+        menuWrapper.querySelectorAll<HTMLElement>(".menu-fade-in"),
+      );
 
       const moveBase = (forwards: boolean) => {
         const state = Flip.getState(hamburgerBase);
@@ -485,8 +559,10 @@ function MenuOverlay({
         paused: true,
         onReverseComplete: () => {
           gsap.set(menuWrapper, { display: "none" });
-          menuCloseResolversRef.current.splice(0).forEach((resolve) => resolve());
-        }
+          menuCloseResolversRef.current
+            .splice(0)
+            .forEach((resolve) => resolve());
+        },
       });
 
       timeline.set(menuWrapper, { display: "flex" });
@@ -494,7 +570,7 @@ function MenuOverlay({
         opacity: 0,
         duration: 0.6,
         ease: "none",
-        onStart: () => moveBase(true)
+        onStart: () => moveBase(true),
       });
       timeline.to(navLines[0], { y: 5, duration: 0.16 }, "<");
       timeline.to(navLines[1], { y: -5, duration: 0.16 }, "<");
@@ -508,9 +584,9 @@ function MenuOverlay({
           yPercent: 50,
           duration: 0.2,
           stagger: { amount: 0.2 },
-          onReverseComplete: () => moveBase(false)
+          onReverseComplete: () => moveBase(false),
         },
-        "fade-in-up"
+        "fade-in-up",
       );
       if (video) {
         timeline.from(
@@ -518,9 +594,9 @@ function MenuOverlay({
           {
             opacity: 0,
             yPercent: 20,
-            duration: 0.2
+            duration: 0.2,
           },
-          "fade-in-up"
+          "fade-in-up",
         );
       }
       timeline.from(fadeItems, { opacity: 0, duration: 0.3 });
@@ -581,39 +657,68 @@ function MenuOverlay({
         </button>
       </div>
 
-      <div ref={menuWrapperRef} className="mxd-menu__wrapper" aria-hidden={!open}>
-        <button ref={menuBaseRef} type="button" className="mxd-menu__base" aria-label="Close menu" onClick={requestClose} />
+      <div
+        ref={menuWrapperRef}
+        className="mxd-menu__wrapper"
+        aria-hidden={!open}
+      >
+        <button
+          ref={menuBaseRef}
+          type="button"
+          className="mxd-menu__base"
+          aria-label="Close menu"
+          onClick={requestClose}
+        />
         <div ref={menuContainRef} className="mxd-menu__contain">
           <div className="mxd-menu__inner">
             <div className="mxd-menu__left">
               <p className="mxd-menu__caption menu-fade-in">
-                Innovative design
+                Branding, content,
                 <br />
-                and cutting-edge development
+                performance. Less fog, more work.
               </p>
               <div className="main-menu">
-                <nav className="main-menu__content" aria-label="Main navigation">
+                <nav
+                  className="main-menu__content"
+                  aria-label="Main navigation"
+                >
                   <ul id="main-menu" className="main-menu__accordion">
                     {navItems.map((item) => {
                       const isOpen = expanded === item.label;
                       if (item.children) {
                         return (
-                          <li className={`main-menu__item${isOpen ? " open" : ""}`} key={item.label}>
+                          <li
+                            className={`main-menu__item${isOpen ? " open" : ""}`}
+                            key={item.label}
+                          >
                             <button
                               type="button"
                               className="main-menu__toggle"
-                              onClick={() => setExpanded(isOpen ? "" : item.label)}
+                              onClick={() =>
+                                setExpanded(isOpen ? "" : item.label)
+                              }
                               aria-expanded={isOpen}
                             >
                               <span className="main-menu__link btn btn-anim">
-                                <span className="btn-caption">{item.label}</span>
+                                <AnimatedCaption>{item.label}</AnimatedCaption>
                               </span>
                               <StarIcon />
                             </button>
                             <ul className="submenu" aria-hidden={!isOpen}>
                               {item.children.map((child) => (
-                                <li className={`submenu__item${pathname === child.href ? " active" : ""}`} key={child.href}>
-                                  <Link href={child.href} onClick={(event) => requestMenuLinkNavigation(event, child.href)}>
+                                <li
+                                  className={`submenu__item${pathname === child.href ? " active" : ""}`}
+                                  key={`${child.href}:${child.label}`}
+                                >
+                                  <Link
+                                    href={child.href}
+                                    onClick={(event) =>
+                                      requestMenuLinkNavigation(
+                                        event,
+                                        child.href,
+                                      )
+                                    }
+                                  >
                                     {child.label}
                                   </Link>
                                 </li>
@@ -624,8 +729,14 @@ function MenuOverlay({
                       }
                       return (
                         <li className="main-menu__item" key={item.label}>
-                          <Link className="main-menu__link btn btn-anim" href={item.href ?? "/"} onClick={(event) => requestMenuLinkNavigation(event, item.href ?? "/")}>
-                            <span className="btn-caption">{item.label}</span>
+                          <Link
+                            className="main-menu__link btn btn-anim"
+                            href={item.href ?? "/"}
+                            onClick={(event) =>
+                              requestMenuLinkNavigation(event, item.href ?? "/")
+                            }
+                          >
+                            <AnimatedCaption>{item.label}</AnimatedCaption>
                           </Link>
                         </li>
                       );
@@ -638,14 +749,26 @@ function MenuOverlay({
               <div className="menu-promo">
                 <div className="menu-promo__content">
                   <p className="menu-promo__caption menu-fade-in">
-                    Nice to see you!
+                    Tikii Marketing Services LLP
                     <br />
-                    I&apos;m Alex Walker, digital designer and illustrator based in Odesa, Ukraine
+                    Kolkata-built brand systems, campaigns, websites, and enough
+                    strategy to keep guesswork unemployed.
                   </p>
                   <div className="menu-promo__video">
-                    <video className="menu-video" preload="auto" autoPlay loop muted playsInline poster="https://dummyimage.com/540x310/5d5d5d/737373">
+                    <video
+                      className="menu-video"
+                      preload="auto"
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      poster="https://dummyimage.com/540x310/5d5d5d/737373"
+                    >
                       <source type="video/mp4" src="/video/540x310_video.mp4" />
-                      <source type="video/webm" src="/video/540x310_video.webm" />
+                      <source
+                        type="video/webm"
+                        src="/video/540x310_video.webm"
+                      />
                       <source type="video/ogv" src="/video/540x310_video.ogv" />
                     </video>
                   </div>
@@ -654,13 +777,21 @@ function MenuOverlay({
             </div>
             <div className="mxd-menu__data menu-fade-in">
               <p className="t-xsmall">
-                Made with <i className="ph-fill ph-heart t-additional" /> by{" "}
-                <a className="no-effect" href="https://1.envato.market/EKA9WD" target="_blank" rel="noreferrer">
-                  Mix_Design
+                <a className="no-effect" href="tel:+919007376927">
+                  +91-900-737-6927
+                </a>{" "}
+                /{" "}
+                <a
+                  className="no-effect"
+                  href="https://www.instagram.com/tikii.in"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Instagram
                 </a>
               </p>
               <p className="t-xsmall">
-                <i className="ph ph-copyright" /> 2025
+                <i className="ph ph-copyright" /> 2026 Tikii
               </p>
             </div>
           </div>
@@ -699,7 +830,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
       routeIntroPendingRef.current = true;
       router.push(href);
     },
-    [pathname, router]
+    [pathname, router],
   );
 
   useEffect(() => {
@@ -718,8 +849,15 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
   }, [pathname]);
 
   useEffect(() => {
-    const stored = window.localStorage.getItem("template.theme") as "light" | "dark" | null;
-    const initial = stored ?? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    const stored = window.localStorage.getItem("template.theme") as
+      | "light"
+      | "dark"
+      | null;
+    const initial =
+      stored ??
+      (window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light");
     setTheme(initial);
     document.documentElement.setAttribute("color-scheme", initial);
   }, []);
@@ -732,7 +870,8 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
   }, []);
 
   useEffect(() => {
-    const onScroll = () => setToTopVisible(window.scrollY > window.innerHeight * 0.2);
+    const onScroll = () =>
+      setToTopVisible(window.scrollY > window.innerHeight * 0.2);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -757,7 +896,10 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
 
   const scrollToTop = async () => {
     try {
-      const [{ gsap }, { ScrollToPlugin }] = await Promise.all([import("gsap"), import("gsap/ScrollToPlugin")]);
+      const [{ gsap }, { ScrollToPlugin }] = await Promise.all([
+        import("gsap"),
+        import("gsap/ScrollToPlugin"),
+      ]);
       gsap.registerPlugin(ScrollToPlugin);
       gsap.to(window, { scrollTo: 0, ease: "power4.inOut", duration: 1.3 });
     } catch {
@@ -769,8 +911,16 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
     <>
       <Loader />
       <RouteTransitionLoader visible={routeTransitionLoading} />
-      <MenuOverlay open={menuOpen} close={closeMenu} toggle={toggleMenu} onNavigate={navigateWithPageTransition} />
-      <header id="header" className={`mxd-header${hidden ? " is-hidden" : ""}${menuLayerVisible ? " menu-is-visible" : ""}`}>
+      <MenuOverlay
+        open={menuOpen}
+        close={closeMenu}
+        toggle={toggleMenu}
+        onNavigate={navigateWithPageTransition}
+      />
+      <header
+        id="header"
+        className={`mxd-header${hidden ? " is-hidden" : ""}${menuLayerVisible ? " menu-is-visible" : ""}`}
+      >
         <div className="mxd-header__logo loading__fade">
           <Logo />
         </div>
@@ -784,9 +934,19 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
             aria-checked={theme === "dark"}
             onClick={toggleTheme}
           >
-            <i className={theme === "dark" ? "ph-bold ph-sun-horizon" : "ph-bold ph-moon-stars"} />
+            <i
+              className={
+                theme === "dark"
+                  ? "ph-bold ph-sun-horizon"
+                  : "ph-bold ph-moon-stars"
+              }
+            />
           </button>
-          <Link className="btn btn-anim btn-default btn-mobile-icon btn-outline slide-right-up" href="/contact" aria-label="Say Hello">
+          <Link
+            className="btn btn-anim btn-default btn-mobile-icon btn-outline slide-right-up"
+            href="/contact"
+            aria-label="Say Hello"
+          >
             <span className="btn-caption">Say Hello</span>
             <i className="ph-bold ph-arrow-up-right" />
           </Link>

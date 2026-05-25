@@ -1,14 +1,8 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useEffect, useState, type ComponentPropsWithoutRef, type ElementType, type ReactNode } from "react";
 import BorderGlow from "@/components/border-glow";
-
-const ThreeModelStage = dynamic(() => import("@/components/three-model-stage").then((mod) => mod.ThreeModelStage), {
-  ssr: false,
-  loading: () => <div className="hero-3d-placeholder" aria-hidden="true" />
-});
 
 const homeCounters = {
   "stats-counter-1": {
@@ -172,29 +166,10 @@ export default function Page() {
               <div className="mxd-hero-01__title-wrap w-100">
                 <div className="mxd-hero-01__images mxd-floating-img">
                   <div className="hero-01-image image-01 mxd-floating-img__item loading__fade">
-                    <img className="mxd-pulse" src="/img/tikii/hero-product-strategy.png" alt="Tikii product strategy interface illustration" />
+                    <img className="mxd-pulse" src="/img/tikii/hero-metal-bloom.png" alt="Tikii metallic bloom illustration" />
                   </div>
-                  <div className="hero-01-image image-02 hero-3d-item mxd-floating-img__item loading__fade" aria-hidden="true">
-                    <ThreeModelStage
-                      src="/models/62.glb"
-                      className="hero-3d-model mxd-move"
-                      scale={1}
-                      cameraPosition={[0, 0.45, 4.4]}
-                      backgroundColor={null}
-                      transparent
-                      materialFinish="chrome"
-                      rotationSpeed={0.28}
-                      controls={false}
-                      shadows={false}
-                      ambientLightIntensity={1.75}
-                      keyLightColor="#ffffff"
-                      fillLightColor="#bfc7d2"
-                      keyLightIntensity={9}
-                      fillLightIntensity={1.6}
-                    />
-                  </div>
-                  <div className="hero-01-image image-03 mxd-floating-img__item loading__fade">
-                    <img className="mxd-rotate" src="/img/tikii/hero-growth-systems.png" alt="Tikii growth and analytics systems illustration" />
+                  <div className="hero-01-image image-02 hero-creative-image mxd-floating-img__item loading__fade">
+                    <img className="mxd-move" src="/img/tikii/hero-creative-systems.png" alt="Tikii creative systems illustration" />
                   </div>
                 </div>
                 <div className="mxd-hero-01__marquee loading__item">
@@ -291,7 +266,7 @@ export default function Page() {
                         </text>
                       </g>
                     </svg>
-                    <img className="btn-rotating__image" src="/img/tikii/hero-orbit-token.png" alt="Tikii orbit token" />
+                    <img className="btn-rotating__image" src="/img/tikii/hero-scroll-token.png" alt="Tikii scroll token" />
                   </RayoLink>
                 </div>
                 <div className="mxd-hero-01__data-descr loading__fade">
@@ -409,7 +384,7 @@ export default function Page() {
                         </p>
                       </div>
                       <div className="mxd-stats-cards__btngroup">
-                        <RayoLink className="btn btn-anim btn-default btn-outline opposite slide-right-up" href="/about-us">
+                        <RayoLink className="btn btn-anim btn-default btn-outline opposite slide-right-up" href="/about">
                           <span className="btn-caption">
                             Studio
                           </span>
@@ -619,7 +594,7 @@ export default function Page() {
                   <div className="col-12 col-xl-7 mxd-pinned-projects__scroll">
                     <div className="mxd-pinned-projects__scroll-inner mxd-grid-item no-margin">
                       <div className="mxd-project-item">
-                        <RayoLink className="mxd-project-item__media anim-uni-in-up" href="/project-details">
+                        <RayoLink className="mxd-project-item__media anim-uni-in-up" href="/works/project-details">
                           <div className="mxd-project-item__preview preview-image-1 parallax-img-small"></div>
                           <div className="mxd-project-item__tags">
                             <span className="tag tag-default tag-permanent">
@@ -635,7 +610,7 @@ export default function Page() {
                         </RayoLink>
                         <div className="mxd-project-item__promo">
                           <div className="mxd-project-item__name">
-                            <RayoLink className="anim-uni-in-up" href="/project-details">
+                            <RayoLink className="anim-uni-in-up" href="/works/project-details">
                               <span>
                                 Creative studio
                               </span>
@@ -645,7 +620,7 @@ export default function Page() {
                         </div>
                       </div>
                       <div className="mxd-project-item">
-                        <RayoLink className="mxd-project-item__media anim-uni-in-up" href="/project-details">
+                        <RayoLink className="mxd-project-item__media anim-uni-in-up" href="/works/project-details">
                           <div className="mxd-project-item__preview preview-image-2 parallax-img-small"></div>
                           <div className="mxd-project-item__tags">
                             <span className="tag tag-default tag-permanent">
@@ -661,7 +636,7 @@ export default function Page() {
                         </RayoLink>
                         <div className="mxd-project-item__promo">
                           <div className="mxd-project-item__name">
-                            <RayoLink className="anim-uni-in-up" href="/project-details">
+                            <RayoLink className="anim-uni-in-up" href="/works/project-details">
                               <span>
                                 Interactive concept
                               </span>
@@ -671,7 +646,7 @@ export default function Page() {
                         </div>
                       </div>
                       <div className="mxd-project-item">
-                        <RayoLink className="mxd-project-item__media" href="/project-details">
+                        <RayoLink className="mxd-project-item__media" href="/works/project-details">
                           <div className="mxd-project-item__preview preview-image-3 parallax-img-small"></div>
                           <div className="mxd-project-item__tags">
                             <span className="tag tag-default tag-permanent">
@@ -687,7 +662,7 @@ export default function Page() {
                         </RayoLink>
                         <div className="mxd-project-item__promo">
                           <div className="mxd-project-item__name">
-                            <RayoLink href="/project-details">
+                            <RayoLink href="/works/project-details">
                               <span>
                                 Mobile app design
                               </span>
@@ -697,7 +672,7 @@ export default function Page() {
                         </div>
                       </div>
                       <div className="mxd-project-item">
-                        <RayoLink className="mxd-project-item__media anim-uni-in-up" href="/project-details">
+                        <RayoLink className="mxd-project-item__media anim-uni-in-up" href="/works/project-details">
                           <div className="mxd-project-item__preview preview-image-4 parallax-img-small"></div>
                           <div className="mxd-project-item__tags">
                             <span className="tag tag-default tag-permanent">
@@ -710,7 +685,7 @@ export default function Page() {
                         </RayoLink>
                         <div className="mxd-project-item__promo">
                           <div className="mxd-project-item__name">
-                            <RayoLink className="anim-uni-in-up" href="/project-details">
+                            <RayoLink className="anim-uni-in-up" href="/works/project-details">
                               <span>
                                 NFT project
                               </span>
@@ -720,7 +695,7 @@ export default function Page() {
                         </div>
                       </div>
                       <div className="mxd-project-item">
-                        <RayoLink className="mxd-project-item__media anim-uni-in-up" href="/project-details">
+                        <RayoLink className="mxd-project-item__media anim-uni-in-up" href="/works/project-details">
                           <div className="mxd-project-item__preview preview-image-5 parallax-img-small"></div>
                           <div className="mxd-project-item__tags">
                             <span className="tag tag-default tag-permanent">
@@ -736,7 +711,7 @@ export default function Page() {
                         </RayoLink>
                         <div className="mxd-project-item__promo">
                           <div className="mxd-project-item__name">
-                            <RayoLink className="anim-uni-in-up" href="/project-details">
+                            <RayoLink className="anim-uni-in-up" href="/works/project-details">
                               <span>
                                 Illustrations set
                               </span>
@@ -1123,7 +1098,7 @@ export default function Page() {
             <div className="marquee marquee--gsap">
               <div className="marquee__top">
                 <div className="marquee__item image">
-                  <RayoLink className="marquee__link" href="/project-details">
+                  <RayoLink className="marquee__link" href="/works/project-details">
                     <img src="https://dummyimage.com/1200x1200/5d5d5d/737373" alt="Image" />
                   </RayoLink>
                 </div>
@@ -1135,12 +1110,12 @@ export default function Page() {
                   </p>
                 </div>
                 <div className="marquee__item">
-                  <RayoLink className="marquee__link" href="/project-details">
+                  <RayoLink className="marquee__link" href="/works/project-details">
                     <img src="https://dummyimage.com/1200x1200/5d5d5d/737373" alt="Image" />
                   </RayoLink>
                 </div>
                 <div className="marquee__item">
-                  <RayoLink className="marquee__link" href="/project-details">
+                  <RayoLink className="marquee__link" href="/works/project-details">
                     <img src="https://dummyimage.com/1200x1200/5d5d5d/737373" alt="Image" />
                   </RayoLink>
                 </div>
@@ -1152,7 +1127,7 @@ export default function Page() {
                   </p>
                 </div>
                 <div className="marquee__item">
-                  <RayoLink className="marquee__link" href="/project-details">
+                  <RayoLink className="marquee__link" href="/works/project-details">
                     <img src="https://dummyimage.com/1200x1200/5d5d5d/737373" alt="Image" />
                   </RayoLink>
                 </div>
@@ -1166,12 +1141,12 @@ export default function Page() {
                   </p>
                 </div>
                 <div className="marquee__item">
-                  <RayoLink className="marquee__link" href="/project-details">
+                  <RayoLink className="marquee__link" href="/works/project-details">
                     <img src="https://dummyimage.com/1200x1200/5d5d5d/737373" alt="Image" />
                   </RayoLink>
                 </div>
                 <div className="marquee__item">
-                  <RayoLink className="marquee__link" href="/project-details">
+                  <RayoLink className="marquee__link" href="/works/project-details">
                     <img src="https://dummyimage.com/1200x1200/5d5d5d/737373" alt="Image" />
                   </RayoLink>
                 </div>
@@ -1183,12 +1158,12 @@ export default function Page() {
                   </p>
                 </div>
                 <div className="marquee__item">
-                  <RayoLink className="marquee__link" href="/project-details">
+                  <RayoLink className="marquee__link" href="/works/project-details">
                     <img src="https://dummyimage.com/1200x1200/5d5d5d/737373" alt="Image" />
                   </RayoLink>
                 </div>
                 <div className="marquee__item">
-                  <RayoLink className="marquee__link" href="/project-details">
+                  <RayoLink className="marquee__link" href="/works/project-details">
                     <img src="https://dummyimage.com/1200x1200/5d5d5d/737373" alt="Image" />
                   </RayoLink>
                 </div>
@@ -1215,7 +1190,7 @@ export default function Page() {
                   <div className="col-12 col-xl-3 mxd-grid-item no-margin"></div>
                   <div className="col-12 col-xl-3 mxd-grid-item no-margin">
                     <div className="mxd-section-title__hrcontrols pre-title anim-uni-in-up">
-                      <RayoLink className="btn btn-anim btn-default btn-outline slide-right-up" href="/about-us">
+                      <RayoLink className="btn btn-anim btn-default btn-outline slide-right-up" href="/about">
                         <span className="btn-caption">
                           View More
                         </span>
@@ -1929,7 +1904,7 @@ export default function Page() {
                   </RayoLink>
                 </li>
                 <li className="footer-nav__item anim-uni-in-up">
-                  <RayoLink href="/about-us" className="footer-nav__link btn-anim">
+                  <RayoLink href="/about" className="footer-nav__link btn-anim">
                     <span className="btn-caption">
                       About us
                     </span>

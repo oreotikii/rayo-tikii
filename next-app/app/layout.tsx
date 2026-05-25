@@ -2,21 +2,22 @@ import type { Metadata } from "next";
 import { SiteShell } from "@/components/site-shell";
 
 export const metadata: Metadata = {
-  title: "Rayo - Digital Agency & Personal Portfolio",
+  metadataBase: new URL("https://tikii.in"),
+  title: "Tikii - Trusted Digital Agency in Kolkata",
   description:
-    "A Next.js rebuild of the Rayo digital agency and personal portfolio template.",
+    "Tikii Marketing Services LLP is a Kolkata-based branding, marketing, website, and digital strategy agency.",
   icons: {
     icon: [
-      { url: "/img/favicon/favicon.ico", sizes: "any" },
-      { url: "/img/favicon/icon.svg", type: "image/svg+xml" }
+      { url: "/img/tikii/tikii-favicon.svg", type: "image/svg+xml" },
+      { url: "/img/favicon/favicon.ico", sizes: "any" }
     ],
-    apple: "/img/favicon/apple-touch-icon.png"
+    apple: "/img/tikii/tikii-favicon.svg"
   },
   manifest: "/img/favicon/manifest.webmanifest",
   openGraph: {
-    title: "Rayo - Digital Agency & Personal Portfolio",
+    title: "Tikii - Trusted Digital Agency in Kolkata",
     description:
-      "Dynamic and stylish creative agency and portfolio experience rebuilt in Next.js.",
+      "Branding, marketing, websites, performance, content, and digital experiences from Tikii.",
     images: ["/img/og-image.jpg"]
   }
 };
