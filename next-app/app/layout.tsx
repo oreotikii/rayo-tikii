@@ -41,7 +41,7 @@ export default function RootLayout({
     <html lang="en" dir="ltr" suppressHydrationWarning>
       <head>
         <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FAF7F6" />
-        <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#161616" />
+        <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000000" />
         <link rel="stylesheet" href="/css/loaders/loader.css" />
         <link rel="stylesheet" href="/css/plugins.css" />
         <link rel="stylesheet" href="/css/main.css" />

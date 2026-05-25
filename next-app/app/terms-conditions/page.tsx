@@ -2,6 +2,7 @@
 
 // Source: ../../app/terms-conditions.html
 
+import { TikiiFooter } from "@/components/tikii-footer";
 import type { CSSProperties } from "react";
 import { DemoForm, usePageCounters, type CounterRecords } from "@/components/rayo-direct-helpers";
 
@@ -86,6 +87,7 @@ export default function Page() {
           </div>
         </div>
       </main>
+      <TikiiFooter />
     </>
   );
 }

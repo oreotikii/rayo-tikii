@@ -11,6 +11,7 @@ import {
 } from "react";
 import { flushSync } from "react-dom";
 import { ClientBehaviors } from "@/components/client-behaviors";
+import Noise from "@/components/noise";
 
 type NavItem = {
   label: string;
@@ -39,6 +40,7 @@ const navItems: NavItem[] = [
 
 const routeTransitionRootSelector =
   "#mxd-page-content, #mxd-footer, .mxd-floating-img";
+const routeLoaderEnterTime = 180;
 const minimumRouteLoaderTime = 420;
 
 function prefersReducedMotion() {
@@ -425,9 +427,33 @@ function Loader() {
   );
 }
 
-function Logo() {
+function Logo({ onNavigate }: { onNavigate: MenuNavigationHandler }) {
+  const pathname = usePathname();
+
+  const requestHomeNavigation = async (
+    event: React.MouseEvent<HTMLAnchorElement>,
+  ) => {
+    if (
+      event.button !== 0 ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey ||
+      pathname === "/"
+    )
+      return;
+
+    event.preventDefault();
+    await onNavigate("/");
+  };
+
   return (
-    <Link href="/" className="mxd-logo" aria-label="Tikii Marketing home">
+    <Link
+      href="/"
+      className="mxd-logo"
+      aria-label="Tikii Digital home"
+      onClick={requestHomeNavigation}
+    >
       <img
         className="mxd-logo__image"
         src="/img/tikii/tikii-favicon.svg"
@@ -437,7 +463,7 @@ function Logo() {
       <span className="mxd-logo__text">
         tikii
         <br />
-        marketing
+        digital
       </span>
     </Link>
   );
@@ -827,6 +853,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
         setRouteTransitionLoading(true);
       });
       await waitForPaint();
+      await wait(routeLoaderEnterTime);
       routeIntroPendingRef.current = true;
       router.push(href);
     },
@@ -910,6 +937,15 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
   return (
     <>
       <Loader />
+      <div className="tikii-noise-layer" aria-hidden="true">
+        <Noise
+          patternSize={500}
+          patternScaleX={1}
+          patternScaleY={1}
+          patternRefreshInterval={2}
+          patternAlpha={15}
+        />
+      </div>
       <RouteTransitionLoader visible={routeTransitionLoading} />
       <MenuOverlay
         open={menuOpen}
@@ -922,7 +958,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
         className={`mxd-header${hidden ? " is-hidden" : ""}${menuLayerVisible ? " menu-is-visible" : ""}`}
       >
         <div className="mxd-header__logo loading__fade">
-          <Logo />
+          <Logo onNavigate={navigateWithPageTransition} />
         </div>
         <div className="mxd-header__controls loading__fade">
           <button
