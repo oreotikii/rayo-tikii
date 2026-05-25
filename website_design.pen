@@ -8,7 +8,7 @@
       "y": 0,
       "name": "Home Page Wireframe - current next-app rendered",
       "width": 1440,
-      "fill": "#f7f5ef",
+      "fill": "$halftone-paper",
       "layout": "vertical",
       "children": [
         {
@@ -17,7 +17,7 @@
           "name": "Hero - rendered light Rayo composition",
           "width": "fill_container",
           "height": 1200,
-          "fill": "#f7f5ef",
+          "fill": "$halftone-paper-soft",
           "layout": "none",
           "children": [
             {
@@ -26,9 +26,13 @@
               "x": 190,
               "y": 138,
               "name": "soft green hero arc",
-              "fill": "#e5efdc",
+              "fill": "$halftone-paper-warm",
               "width": 1220,
-              "height": 930
+              "height": 930,
+              "stroke": {
+                "thickness": 2,
+                "fill": "$halftone-ink"
+              }
             },
             {
               "type": "ellipse",
@@ -36,10 +40,232 @@
               "x": 190,
               "y": 480,
               "name": "soft blue overlap",
-              "opacity": 0.72,
-              "fill": "#e8f0ee",
+              "fill": "$halftone-paper-warm",
               "width": 720,
-              "height": 680
+              "height": 680,
+              "stroke": {
+                "thickness": 2,
+                "fill": "$halftone-ink"
+              }
+            },
+            {
+              "type": "text",
+              "id": "VlAq7",
+              "x": -112,
+              "y": 548,
+              "enabled": false,
+              "fill": "#ffffff",
+              "textGrowth": "fixed-width",
+              "width": 180,
+              "content": "hero-metal-bloom.png",
+              "lineHeight": 1.08,
+              "fontFamily": "\\$halftone-font-body",
+              "fontSize": 12,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "CvAhW",
+              "x": 1168,
+              "y": 382,
+              "enabled": false,
+              "fill": "\\$halftone-paper-soft",
+              "textGrowth": "fixed-width",
+              "width": 160,
+              "content": "hero-creative-systems.png",
+              "lineHeight": 1.08,
+              "fontFamily": "\\$halftone-font-body",
+              "fontSize": 13,
+              "fontWeight": "500"
+            },
+            {
+              "type": "frame",
+              "id": "a0lpi",
+              "x": -130,
+              "y": 390,
+              "name": "floating art / hero-metal-bloom.png",
+              "clip": true,
+              "width": 210,
+              "height": 360,
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "next-app/public/img/tikii/hero-metal-bloom.png",
+                "mode": "fill"
+              },
+              "cornerRadius": 70,
+              "stroke": {
+                "thickness": 3,
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 6,
+                  "y": 6
+                }
+              },
+              "layout": "none",
+              "children": [
+                {
+                  "type": "script",
+                  "id": "MUynq",
+                  "x": 0,
+                  "y": 0,
+                  "width": 210,
+                  "height": 360,
+                  "scriptUri": "halftone-dots.js",
+                  "inputs": {
+                    "step": 28,
+                    "dot": 4,
+                    "opacity": "#00000022"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "sSXE4",
+              "x": 1165,
+              "y": 310,
+              "name": "floating art / hero-creative-systems.png",
+              "clip": true,
+              "width": 170,
+              "height": 170,
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "next-app/public/img/tikii/hero-creative-systems.png",
+                "mode": "fill"
+              },
+              "cornerRadius": 18,
+              "stroke": {
+                "thickness": 3,
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 6,
+                  "y": 6
+                }
+              },
+              "layout": "none",
+              "children": [
+                {
+                  "type": "script",
+                  "id": "wP1oB",
+                  "x": 0,
+                  "y": 0,
+                  "width": 170,
+                  "height": 170,
+                  "scriptUri": "halftone-dots.js",
+                  "inputs": {
+                    "step": 28,
+                    "dot": 4,
+                    "opacity": "#00000022"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "X20gcB",
+              "x": 1194,
+              "y": 1000,
+              "name": "showreel video",
+              "clip": true,
+              "width": 246,
+              "height": 158,
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "next-app/public/img/tikii/hero-growth-systems.png",
+                "mode": "fill"
+              },
+              "cornerRadius": 22,
+              "stroke": {
+                "thickness": 3,
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 6,
+                  "y": 6
+                }
+              },
+              "layout": "none",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "w54wQR",
+                  "x": 0,
+                  "y": 61,
+                  "fill": "#000000",
+                  "textGrowth": "fixed-width",
+                  "width": 246,
+                  "content": "MIX\nDESIGN",
+                  "lineHeight": 1.08,
+                  "fontFamily": "\\$halftone-font-body",
+                  "fontSize": 40,
+                  "fontWeight": "300"
+                },
+                {
+                  "type": "ellipse",
+                  "id": "bAacT",
+                  "x": 180,
+                  "y": 95,
+                  "fill": "$halftone-paper",
+                  "width": 58,
+                  "height": 58,
+                  "stroke": {
+                    "thickness": 2,
+                    "fill": "$halftone-ink"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "$halftone-ink",
+                    "offset": {
+                      "x": 4,
+                      "y": 4
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "id": "szeFP",
+                  "x": 202,
+                  "y": 111,
+                  "fill": "#ffffff",
+                  "content": "▶",
+                  "lineHeight": 1.08,
+                  "fontFamily": "\\$halftone-font-body",
+                  "fontSize": 22,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "script",
+                  "id": "TDEnh",
+                  "x": 0,
+                  "y": 0,
+                  "width": 246,
+                  "height": 158,
+                  "scriptUri": "halftone-dots.js",
+                  "inputs": {
+                    "step": 28,
+                    "dot": 4,
+                    "opacity": "#00000022"
+                  }
+                }
+              ]
             },
             {
               "type": "frame",
@@ -56,7 +282,7 @@
                   "id": "AF7Mo",
                   "x": 0,
                   "y": 8,
-                  "fill": "#85df25",
+                  "fill": "\\$halftone-ink",
                   "width": 34,
                   "height": 34
                 },
@@ -65,7 +291,7 @@
                   "id": "XQsH8",
                   "x": 22,
                   "y": 8,
-                  "fill": "#85df25",
+                  "fill": "\\$halftone-ink",
                   "width": 34,
                   "height": 34
                 },
@@ -74,7 +300,7 @@
                   "id": "kqvG2",
                   "x": 0,
                   "y": 34,
-                  "fill": "#85df25",
+                  "fill": "\\$halftone-ink",
                   "width": 34,
                   "height": 34
                 },
@@ -83,12 +309,12 @@
                   "id": "eKVgm",
                   "x": 70,
                   "y": 7,
-                  "fill": "#121210",
+                  "fill": "#000000",
                   "textGrowth": "fixed-width",
                   "width": 130,
                   "content": "tikii\nmarketing",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 24,
                   "fontWeight": "800"
                 }
@@ -99,10 +325,10 @@
               "id": "vRDlQ",
               "x": 1058,
               "y": 58,
-              "fill": "#121210",
+              "fill": "#000000",
               "content": "☀",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "\\$halftone-font-body",
               "fontSize": 30,
               "fontWeight": "700"
             },
@@ -114,11 +340,20 @@
               "name": "button / Say Hello",
               "width": 184,
               "height": 56,
-              "fill": "#00000000",
+              "fill": "$halftone-paper",
               "cornerRadius": 28,
               "stroke": {
                 "thickness": 2,
-                "fill": "#121210"
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 4,
+                  "y": 4
+                }
               },
               "layout": "none",
               "children": [
@@ -127,12 +362,12 @@
                   "id": "A9EkIe",
                   "x": 24,
                   "y": 17,
-                  "fill": "#121210",
+                  "fill": "#000000",
                   "textGrowth": "fixed-width",
                   "width": 126,
                   "content": "Say Hello",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 20,
                   "fontWeight": "700"
                 },
@@ -141,10 +376,10 @@
                   "id": "jvxgD",
                   "x": 148,
                   "y": 15,
-                  "fill": "#121210",
+                  "fill": "#000000",
                   "content": "↗",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 22,
                   "fontWeight": "700"
                 }
@@ -158,8 +393,21 @@
               "name": "floating hamburger marker",
               "width": 56,
               "height": 56,
-              "fill": "#171717",
+              "fill": "$halftone-ink",
               "cornerRadius": 28,
+              "stroke": {
+                "thickness": 2,
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 4,
+                  "y": 4
+                }
+              },
               "layout": "vertical",
               "gap": 6,
               "justifyContent": "center",
@@ -188,12 +436,12 @@
               "id": "FdzWr",
               "x": 64,
               "y": 400,
-              "fill": "#121210",
+              "fill": "#000000",
               "content": "Design,",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "Anybody",
               "fontSize": 116,
-              "fontWeight": "800"
+              "fontWeight": "900"
             },
             {
               "type": "frame",
@@ -204,8 +452,21 @@
               "clip": true,
               "width": 390,
               "height": 132,
-              "fill": "#a58be8",
+              "fill": "$halftone-ink",
               "cornerRadius": 66,
+              "stroke": {
+                "thickness": 3,
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 6,
+                  "y": 6
+                }
+              },
               "layout": "none",
               "children": [
                 {
@@ -216,9 +477,9 @@
                   "fill": "#ffffff",
                   "content": "tech ✦ tech",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "$halftone-font-display",
                   "fontSize": 72,
-                  "fontWeight": "800"
+                  "fontWeight": "900"
                 }
               ]
             },
@@ -227,72 +488,12 @@
               "id": "k9ReeR",
               "x": 68,
               "y": 580,
-              "fill": "#121210",
+              "fill": "#000000",
               "content": "and some magic",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "Anybody",
               "fontSize": 94,
-              "fontWeight": "800"
-            },
-            {
-              "type": "frame",
-              "id": "a0lpi",
-              "x": -130,
-              "y": 390,
-              "name": "floating art / hero-metal-bloom.png",
-              "width": 210,
-              "height": 360,
-              "fill": "#111111",
-              "cornerRadius": 70,
-              "stroke": {
-                "thickness": 1,
-                "fill": "#d8d5cc"
-              },
-              "layout": "none"
-            },
-            {
-              "type": "text",
-              "id": "VlAq7",
-              "x": -112,
-              "y": 548,
-              "fill": "#ffffff",
-              "textGrowth": "fixed-width",
-              "width": 180,
-              "content": "hero-metal-bloom.png",
-              "lineHeight": 1.08,
-              "fontFamily": "Geist",
-              "fontSize": 12,
-              "fontWeight": "500"
-            },
-            {
-              "type": "frame",
-              "id": "sSXE4",
-              "x": 1165,
-              "y": 310,
-              "name": "floating art / hero-creative-systems.png",
-              "width": 170,
-              "height": 170,
-              "fill": "#3f4542",
-              "cornerRadius": 18,
-              "stroke": {
-                "thickness": 1,
-                "fill": "#d8d5cc"
-              },
-              "layout": "none"
-            },
-            {
-              "type": "text",
-              "id": "CvAhW",
-              "x": 1168,
-              "y": 382,
-              "fill": "#d7d7d7",
-              "textGrowth": "fixed-width",
-              "width": 160,
-              "content": "hero-creative-systems.png",
-              "lineHeight": 1.08,
-              "fontFamily": "Geist",
-              "fontSize": 13,
-              "fontWeight": "500"
+              "fontWeight": "900"
             },
             {
               "type": "rectangle",
@@ -300,7 +501,7 @@
               "x": 0,
               "y": 1000,
               "name": "dashed rule proxy",
-              "fill": "#d7d3cc",
+              "fill": "$halftone-ink",
               "width": 1132,
               "height": 2
             },
@@ -310,12 +511,21 @@
               "x": 24,
               "y": 1018,
               "name": "rotating scroll token",
-              "fill": "#fffdf8",
+              "fill": "$halftone-paper",
               "width": 104,
               "height": 104,
               "stroke": {
-                "thickness": 1,
-                "fill": "#d8d5cc"
+                "thickness": 2,
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 4,
+                  "y": 4
+                }
               }
             },
             {
@@ -323,12 +533,12 @@
               "id": "Dv9za",
               "x": 375,
               "y": 1030,
-              "fill": "#121210",
+              "fill": "#000000",
               "textGrowth": "fixed-width",
               "width": 410,
               "content": "We are a creative digital agency specializing\nin innovative design and cutting-edge\ndevelopment.",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "\\$halftone-font-body",
               "fontSize": 20,
               "fontWeight": "500"
             },
@@ -337,23 +547,24 @@
               "id": "u8tem",
               "x": 1015,
               "y": 1038,
-              "fill": "#121210",
+              "fill": "#000000",
               "content": "✦",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
-              "fontSize": 22
+              "fontFamily": "\\$halftone-font-body",
+              "fontSize": 22,
+              "fontWeight": "normal"
             },
             {
               "type": "text",
               "id": "Cv2d7",
               "x": 1048,
               "y": 1038,
-              "fill": "#121210",
+              "fill": "#000000",
               "textGrowth": "fixed-width",
               "width": 150,
               "content": "Dribbble",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "\\$halftone-font-body",
               "fontSize": 19,
               "fontWeight": "500"
             },
@@ -362,23 +573,24 @@
               "id": "T8G6L",
               "x": 1015,
               "y": 1068,
-              "fill": "#121210",
+              "fill": "#000000",
               "content": "✦",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
-              "fontSize": 22
+              "fontFamily": "\\$halftone-font-body",
+              "fontSize": 22,
+              "fontWeight": "normal"
             },
             {
               "type": "text",
               "id": "J737y",
               "x": 1048,
               "y": 1068,
-              "fill": "#121210",
+              "fill": "#000000",
               "textGrowth": "fixed-width",
               "width": 150,
               "content": "Behance",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "\\$halftone-font-body",
               "fontSize": 19,
               "fontWeight": "500"
             },
@@ -387,78 +599,26 @@
               "id": "mCv0G",
               "x": 1015,
               "y": 1098,
-              "fill": "#121210",
+              "fill": "#000000",
               "content": "✦",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
-              "fontSize": 22
+              "fontFamily": "\\$halftone-font-body",
+              "fontSize": 22,
+              "fontWeight": "normal"
             },
             {
               "type": "text",
               "id": "kmiqd",
               "x": 1048,
               "y": 1098,
-              "fill": "#121210",
+              "fill": "#000000",
               "textGrowth": "fixed-width",
               "width": 150,
               "content": "Instagram",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "\\$halftone-font-body",
               "fontSize": 19,
               "fontWeight": "500"
-            },
-            {
-              "type": "frame",
-              "id": "X20gcB",
-              "x": 1194,
-              "y": 1000,
-              "name": "showreel video",
-              "width": 246,
-              "height": 158,
-              "fill": "#4e79a7",
-              "cornerRadius": 22,
-              "stroke": {
-                "thickness": 1,
-                "fill": "#d8d5cc"
-              },
-              "layout": "none",
-              "children": [
-                {
-                  "type": "text",
-                  "id": "w54wQR",
-                  "x": 0,
-                  "y": 61,
-                  "fill": "#999999",
-                  "textGrowth": "fixed-width",
-                  "width": 246,
-                  "content": "MIX\nDESIGN",
-                  "lineHeight": 1.08,
-                  "fontFamily": "Geist",
-                  "fontSize": 40,
-                  "fontWeight": "300"
-                },
-                {
-                  "type": "ellipse",
-                  "id": "bAacT",
-                  "x": 180,
-                  "y": 95,
-                  "fill": "#9e86ec",
-                  "width": 58,
-                  "height": 58
-                },
-                {
-                  "type": "text",
-                  "id": "szeFP",
-                  "x": 202,
-                  "y": 111,
-                  "fill": "#ffffff",
-                  "content": "▶",
-                  "lineHeight": 1.08,
-                  "fontFamily": "Geist",
-                  "fontSize": 22,
-                  "fontWeight": "700"
-                }
-              ]
             }
           ]
         },
@@ -468,7 +628,7 @@
           "name": "Divider image and manifest",
           "width": "fill_container",
           "height": 1466,
-          "fill": "#f7f5ef",
+          "fill": "$halftone-paper",
           "layout": "none",
           "children": [
             {
@@ -477,13 +637,28 @@
               "x": 60,
               "y": 0,
               "name": "divider large image",
+              "clip": true,
               "width": 1320,
               "height": 614,
-              "fill": "#5d5d5d",
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "next-app/public/img/tikii/getty-purple-background.jpg",
+                "mode": "fill"
+              },
               "cornerRadius": 50,
               "stroke": {
-                "thickness": 1,
-                "fill": "#d8d5cc"
+                "thickness": 3,
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 6,
+                  "y": 6
+                }
               },
               "layout": "none",
               "children": [
@@ -492,14 +667,29 @@
                   "id": "FgOR2",
                   "x": 0,
                   "y": 289,
-                  "fill": "#999999",
+                  "enabled": false,
+                  "fill": "\\$halftone-muted",
                   "textGrowth": "fixed-width",
                   "width": 1320,
                   "content": "1920 × 1200",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 40,
                   "fontWeight": "300"
+                },
+                {
+                  "type": "script",
+                  "id": "l8DZOG",
+                  "x": 0,
+                  "y": 0,
+                  "width": 1320,
+                  "height": 614,
+                  "scriptUri": "halftone-dots.js",
+                  "inputs": {
+                    "step": 28,
+                    "dot": 4,
+                    "opacity": "#00000022"
+                  }
                 }
               ]
             },
@@ -508,23 +698,24 @@
               "id": "loqPZ",
               "x": 60,
               "y": 780,
-              "fill": "#121210",
+              "fill": "\\$halftone-ink",
               "content": "✦",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
-              "fontSize": 22
+              "fontFamily": "\\$halftone-font-body",
+              "fontSize": 22,
+              "fontWeight": "normal"
             },
             {
               "type": "text",
               "id": "veNru",
               "x": 90,
               "y": 778,
-              "fill": "#121210",
+              "fill": "\\$halftone-ink",
               "textGrowth": "fixed-width",
               "width": 260,
               "content": "Who we are",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "\\$halftone-font-body",
               "fontSize": 20,
               "fontWeight": "500"
             },
@@ -533,14 +724,14 @@
               "id": "q6nLtJ",
               "x": 624,
               "y": 760,
-              "fill": "#121210",
+              "fill": "#000000",
               "textGrowth": "fixed-width",
               "width": 700,
               "content": "We are a creative digital agency\nspecializing in innovative design and\ncutting-edge development.",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "$halftone-font-display",
               "fontSize": 44,
-              "fontWeight": "500"
+              "fontWeight": "900"
             },
             {
               "type": "frame",
@@ -550,11 +741,20 @@
               "name": "button / Say Hello",
               "width": 170,
               "height": 56,
-              "fill": "#00000000",
+              "fill": "$halftone-paper",
               "cornerRadius": 28,
               "stroke": {
                 "thickness": 2,
-                "fill": "#121210"
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 4,
+                  "y": 4
+                }
               },
               "layout": "none",
               "children": [
@@ -563,12 +763,12 @@
                   "id": "rgFHd",
                   "x": 24,
                   "y": 17,
-                  "fill": "#121210",
+                  "fill": "\\$halftone-ink",
                   "textGrowth": "fixed-width",
                   "width": 112,
                   "content": "Say Hello",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 20,
                   "fontWeight": "700"
                 },
@@ -577,10 +777,10 @@
                   "id": "ZmnvH",
                   "x": 134,
                   "y": 15,
-                  "fill": "#121210",
+                  "fill": "\\$halftone-ink",
                   "content": "↗",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 22,
                   "fontWeight": "700"
                 }
@@ -594,7 +794,7 @@
           "name": "Stats cards",
           "width": "fill_container",
           "height": 1004,
-          "fill": "#f7f5ef",
+          "fill": "$halftone-paper-soft",
           "layout": "none",
           "children": [
             {
@@ -605,11 +805,20 @@
               "name": "stat card / 50+",
               "width": 533,
               "height": 420,
-              "fill": "#a58be8",
+              "fill": "$halftone-paper",
               "cornerRadius": 22,
               "stroke": {
-                "thickness": 1,
-                "fill": "#d8d5cc"
+                "thickness": 3,
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 6,
+                  "y": 6
+                }
               },
               "layout": "none",
               "children": [
@@ -619,13 +828,28 @@
                   "x": 0,
                   "y": 0,
                   "name": "card image",
+                  "clip": true,
                   "width": 292,
                   "height": 330,
-                  "fill": "#5d5d5d",
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "next-app/public/img/tikii/hero-orbit-token.png",
+                    "mode": "fill"
+                  },
                   "cornerRadius": 32,
                   "stroke": {
-                    "thickness": 1,
-                    "fill": "#d8d5cc"
+                    "thickness": 3,
+                    "fill": "$halftone-ink"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "$halftone-ink",
+                    "offset": {
+                      "x": 6,
+                      "y": 6
+                    }
                   },
                   "layout": "none",
                   "children": [
@@ -634,14 +858,29 @@
                       "id": "Nyi21",
                       "x": 0,
                       "y": 147,
-                      "fill": "#999999",
+                      "enabled": false,
+                      "fill": "\\$halftone-muted",
                       "textGrowth": "fixed-width",
                       "width": 292,
                       "content": "800 × 800",
                       "lineHeight": 1.08,
-                      "fontFamily": "Geist",
+                      "fontFamily": "\\$halftone-font-body",
                       "fontSize": 40,
                       "fontWeight": "300"
+                    },
+                    {
+                      "type": "script",
+                      "id": "D5RiZY",
+                      "x": 0,
+                      "y": 0,
+                      "width": 292,
+                      "height": 330,
+                      "scriptUri": "halftone-dots.js",
+                      "inputs": {
+                        "step": 28,
+                        "dot": 4,
+                        "opacity": "#00000022"
+                      }
                     }
                   ]
                 },
@@ -650,24 +889,24 @@
                   "id": "qM6uE",
                   "x": 442,
                   "y": 74,
-                  "fill": "#ffffff",
+                  "fill": "#000000",
                   "content": "0",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "Anybody",
                   "fontSize": 76,
-                  "fontWeight": "800"
+                  "fontWeight": "900"
                 },
                 {
                   "type": "text",
                   "id": "RzMYq",
                   "x": 335,
                   "y": 205,
-                  "fill": "#ffffff",
+                  "fill": "#000000",
                   "textGrowth": "fixed-width",
                   "width": 160,
                   "content": "Happy clients who\ntrust my work",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 19,
                   "fontWeight": "500"
                 },
@@ -679,11 +918,20 @@
                   "name": "button / Studio",
                   "width": 155,
                   "height": 56,
-                  "fill": "#00000000",
+                  "fill": "$halftone-paper",
                   "cornerRadius": 28,
                   "stroke": {
                     "thickness": 2,
-                    "fill": "#121210"
+                    "fill": "$halftone-ink"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "$halftone-ink",
+                    "offset": {
+                      "x": 4,
+                      "y": 4
+                    }
                   },
                   "layout": "none",
                   "children": [
@@ -692,12 +940,12 @@
                       "id": "U3L88",
                       "x": 24,
                       "y": 17,
-                      "fill": "#121210",
+                      "fill": "#000000",
                       "textGrowth": "fixed-width",
                       "width": 97,
                       "content": "Studio",
                       "lineHeight": 1.08,
-                      "fontFamily": "Geist",
+                      "fontFamily": "\\$halftone-font-body",
                       "fontSize": 20,
                       "fontWeight": "700"
                     },
@@ -706,10 +954,10 @@
                       "id": "AZNlR",
                       "x": 119,
                       "y": 15,
-                      "fill": "#121210",
+                      "fill": "#000000",
                       "content": "↗",
                       "lineHeight": 1.08,
-                      "fontFamily": "Geist",
+                      "fontFamily": "\\$halftone-font-body",
                       "fontSize": 22,
                       "fontWeight": "700"
                     }
@@ -725,11 +973,20 @@
               "name": "stat card / 80%",
               "width": 757,
               "height": 420,
-              "fill": "#fffdf8",
+              "fill": "$halftone-paper",
               "cornerRadius": 22,
               "stroke": {
-                "thickness": 1,
-                "fill": "#d8d5cc"
+                "thickness": 3,
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 6,
+                  "y": 6
+                }
               },
               "layout": "none",
               "children": [
@@ -739,13 +996,28 @@
                   "x": 0,
                   "y": 38,
                   "name": "card image",
+                  "clip": true,
                   "width": 420,
                   "height": 380,
-                  "fill": "#5d5d5d",
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "next-app/public/img/tikii/hero-engineering.png",
+                    "mode": "fill"
+                  },
                   "cornerRadius": 32,
                   "stroke": {
-                    "thickness": 1,
-                    "fill": "#d8d5cc"
+                    "thickness": 3,
+                    "fill": "$halftone-ink"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "$halftone-ink",
+                    "offset": {
+                      "x": 6,
+                      "y": 6
+                    }
                   },
                   "layout": "none",
                   "children": [
@@ -754,14 +1026,29 @@
                       "id": "F82wjM",
                       "x": 0,
                       "y": 172,
-                      "fill": "#999999",
+                      "enabled": false,
+                      "fill": "\\$halftone-muted",
                       "textGrowth": "fixed-width",
                       "width": 420,
                       "content": "800 × 800",
                       "lineHeight": 1.08,
-                      "fontFamily": "Geist",
+                      "fontFamily": "\\$halftone-font-body",
                       "fontSize": 40,
                       "fontWeight": "300"
+                    },
+                    {
+                      "type": "script",
+                      "id": "DVEdi",
+                      "x": 0,
+                      "y": 0,
+                      "width": 420,
+                      "height": 380,
+                      "scriptUri": "halftone-dots.js",
+                      "inputs": {
+                        "step": 28,
+                        "dot": 4,
+                        "opacity": "#00000022"
+                      }
                     }
                   ]
                 },
@@ -770,24 +1057,24 @@
                   "id": "HUo8j",
                   "x": 670,
                   "y": 235,
-                  "fill": "#121210",
+                  "fill": "#000000",
                   "content": "0",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "Anybody",
                   "fontSize": 76,
-                  "fontWeight": "800"
+                  "fontWeight": "900"
                 },
                 {
                   "type": "text",
                   "id": "sEvvE",
                   "x": 532,
                   "y": 335,
-                  "fill": "#121210",
+                  "fill": "#000000",
                   "textGrowth": "fixed-width",
                   "width": 190,
                   "content": "Clients come back for\na new projects",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 19,
                   "fontWeight": "500"
                 }
@@ -801,11 +1088,20 @@
               "name": "stat card / 5+",
               "width": 757,
               "height": 420,
-              "fill": "#fffdf8",
+              "fill": "$halftone-paper",
               "cornerRadius": 22,
               "stroke": {
-                "thickness": 1,
-                "fill": "#d8d5cc"
+                "thickness": 3,
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 6,
+                  "y": 6
+                }
               },
               "layout": "none",
               "children": [
@@ -814,24 +1110,24 @@
                   "id": "b2EJoX",
                   "x": 42,
                   "y": 42,
-                  "fill": "#121210",
+                  "fill": "#000000",
                   "content": "0",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "Anybody",
                   "fontSize": 76,
-                  "fontWeight": "800"
+                  "fontWeight": "900"
                 },
                 {
                   "type": "text",
                   "id": "X0jel",
                   "x": 42,
                   "y": 138,
-                  "fill": "#121210",
+                  "fill": "#000000",
                   "textGrowth": "fixed-width",
                   "width": 280,
                   "content": "Years of professional\nexperience in designing\ndigital products",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 19,
                   "fontWeight": "500"
                 },
@@ -843,11 +1139,20 @@
                   "name": "button / Start New Project",
                   "width": 272,
                   "height": 56,
-                  "fill": "#00000000",
+                  "fill": "$halftone-paper",
                   "cornerRadius": 28,
                   "stroke": {
                     "thickness": 2,
-                    "fill": "#121210"
+                    "fill": "$halftone-ink"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "$halftone-ink",
+                    "offset": {
+                      "x": 4,
+                      "y": 4
+                    }
                   },
                   "layout": "none",
                   "children": [
@@ -856,12 +1161,12 @@
                       "id": "hcN8h",
                       "x": 24,
                       "y": 17,
-                      "fill": "#121210",
+                      "fill": "#000000",
                       "textGrowth": "fixed-width",
                       "width": 214,
                       "content": "Start New Project",
                       "lineHeight": 1.08,
-                      "fontFamily": "Geist",
+                      "fontFamily": "\\$halftone-font-body",
                       "fontSize": 20,
                       "fontWeight": "700"
                     },
@@ -870,10 +1175,10 @@
                       "id": "e9tDi7",
                       "x": 236,
                       "y": 15,
-                      "fill": "#121210",
+                      "fill": "#000000",
                       "content": "↗",
                       "lineHeight": 1.08,
-                      "fontFamily": "Geist",
+                      "fontFamily": "\\$halftone-font-body",
                       "fontSize": 22,
                       "fontWeight": "700"
                     }
@@ -885,13 +1190,28 @@
                   "x": 347,
                   "y": 0,
                   "name": "card image",
+                  "clip": true,
                   "width": 410,
                   "height": 420,
-                  "fill": "#5d5d5d",
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "next-app/public/img/tikii/hero-product-strategy.png",
+                    "mode": "fill"
+                  },
                   "cornerRadius": 32,
                   "stroke": {
-                    "thickness": 1,
-                    "fill": "#d8d5cc"
+                    "thickness": 3,
+                    "fill": "$halftone-ink"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "$halftone-ink",
+                    "offset": {
+                      "x": 6,
+                      "y": 6
+                    }
                   },
                   "layout": "none",
                   "children": [
@@ -900,14 +1220,29 @@
                       "id": "NGsaP",
                       "x": 0,
                       "y": 192,
-                      "fill": "#999999",
+                      "enabled": false,
+                      "fill": "\\$halftone-muted",
                       "textGrowth": "fixed-width",
                       "width": 410,
                       "content": "800 × 800",
                       "lineHeight": 1.08,
-                      "fontFamily": "Geist",
+                      "fontFamily": "\\$halftone-font-body",
                       "fontSize": 40,
                       "fontWeight": "300"
+                    },
+                    {
+                      "type": "script",
+                      "id": "PgDjZ",
+                      "x": 0,
+                      "y": 0,
+                      "width": 410,
+                      "height": 420,
+                      "scriptUri": "halftone-dots.js",
+                      "inputs": {
+                        "step": 28,
+                        "dot": 4,
+                        "opacity": "#00000022"
+                      }
                     }
                   ]
                 }
@@ -921,11 +1256,20 @@
               "name": "stat card / 70+",
               "width": 533,
               "height": 420,
-              "fill": "#fffdf8",
+              "fill": "$halftone-paper",
               "cornerRadius": 22,
               "stroke": {
-                "thickness": 1,
-                "fill": "#d8d5cc"
+                "thickness": 3,
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 6,
+                  "y": 6
+                }
               },
               "layout": "none",
               "children": [
@@ -934,24 +1278,24 @@
                   "id": "a3lnkz",
                   "x": 42,
                   "y": 42,
-                  "fill": "#121210",
+                  "fill": "#000000",
                   "content": "0",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "Anybody",
                   "fontSize": 76,
-                  "fontWeight": "800"
+                  "fontWeight": "900"
                 },
                 {
                   "type": "text",
                   "id": "HJ8Dz",
                   "x": 42,
                   "y": 138,
-                  "fill": "#121210",
+                  "fill": "#000000",
                   "textGrowth": "fixed-width",
                   "width": 230,
                   "content": "Successfully\ncompleted projects",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 19,
                   "fontWeight": "500"
                 },
@@ -963,11 +1307,20 @@
                   "name": "button / Works",
                   "width": 150,
                   "height": 56,
-                  "fill": "#00000000",
+                  "fill": "$halftone-paper",
                   "cornerRadius": 28,
                   "stroke": {
                     "thickness": 2,
-                    "fill": "#121210"
+                    "fill": "$halftone-ink"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "$halftone-ink",
+                    "offset": {
+                      "x": 4,
+                      "y": 4
+                    }
                   },
                   "layout": "none",
                   "children": [
@@ -976,12 +1329,12 @@
                       "id": "rUIHV",
                       "x": 24,
                       "y": 17,
-                      "fill": "#121210",
+                      "fill": "#000000",
                       "textGrowth": "fixed-width",
                       "width": 92,
                       "content": "Works",
                       "lineHeight": 1.08,
-                      "fontFamily": "Geist",
+                      "fontFamily": "\\$halftone-font-body",
                       "fontSize": 20,
                       "fontWeight": "700"
                     },
@@ -990,10 +1343,10 @@
                       "id": "pasuv",
                       "x": 114,
                       "y": 15,
-                      "fill": "#121210",
+                      "fill": "#000000",
                       "content": "↗",
                       "lineHeight": 1.08,
-                      "fontFamily": "Geist",
+                      "fontFamily": "\\$halftone-font-body",
                       "fontSize": 22,
                       "fontWeight": "700"
                     }
@@ -1005,13 +1358,28 @@
                   "x": 310,
                   "y": 100,
                   "name": "card image",
+                  "clip": true,
                   "width": 223,
                   "height": 280,
-                  "fill": "#5d5d5d",
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "next-app/public/img/tikii/23.png",
+                    "mode": "fill"
+                  },
                   "cornerRadius": 32,
                   "stroke": {
-                    "thickness": 1,
-                    "fill": "#d8d5cc"
+                    "thickness": 3,
+                    "fill": "$halftone-ink"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "$halftone-ink",
+                    "offset": {
+                      "x": 6,
+                      "y": 6
+                    }
                   },
                   "layout": "none",
                   "children": [
@@ -1020,14 +1388,29 @@
                       "id": "vZeO7",
                       "x": 0,
                       "y": 122,
-                      "fill": "#999999",
+                      "enabled": false,
+                      "fill": "\\$halftone-muted",
                       "textGrowth": "fixed-width",
                       "width": 223,
                       "content": "800 × 800",
                       "lineHeight": 1.08,
-                      "fontFamily": "Geist",
+                      "fontFamily": "\\$halftone-font-body",
                       "fontSize": 40,
                       "fontWeight": "300"
+                    },
+                    {
+                      "type": "script",
+                      "id": "il6LM",
+                      "x": 0,
+                      "y": 0,
+                      "width": 223,
+                      "height": 280,
+                      "scriptUri": "halftone-dots.js",
+                      "inputs": {
+                        "step": 28,
+                        "dot": 4,
+                        "opacity": "#00000022"
+                      }
                     }
                   ]
                 }
@@ -1041,7 +1424,7 @@
           "name": "Large muted capability marquee",
           "width": "fill_container",
           "height": 220,
-          "fill": "#f7f5ef",
+          "fill": "$halftone-paper-warm",
           "layout": "none",
           "children": [
             {
@@ -1049,12 +1432,12 @@
               "id": "tjX02",
               "x": -20,
               "y": 32,
-              "fill": "#b8b5b2",
+              "fill": "\\$halftone-muted",
               "content": "Mobile Apps ✦ Branding ✦ Development",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "$halftone-font-display",
               "fontSize": 86,
-              "fontWeight": "300"
+              "fontWeight": "900"
             }
           ]
         },
@@ -1064,7 +1447,7 @@
           "name": "Featured projects pinned layout",
           "width": "fill_container",
           "height": 4611,
-          "fill": "#f7f5ef",
+          "fill": "$halftone-paper",
           "layout": "none",
           "children": [
             {
@@ -1072,14 +1455,14 @@
               "id": "zcwyq",
               "x": 60,
               "y": 120,
-              "fill": "#121210",
+              "fill": "#000000",
               "textGrowth": "fixed-width",
               "width": 420,
               "content": "Featured\nprojects",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "Anybody",
               "fontSize": 62,
-              "fontWeight": "800"
+              "fontWeight": "900"
             },
             {
               "type": "text",
@@ -1091,7 +1474,7 @@
               "width": 370,
               "content": "Explore a selection of projects blending\ncreativity with practical design",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "\\$halftone-font-body",
               "fontSize": 19,
               "fontWeight": "500"
             },
@@ -1103,11 +1486,20 @@
               "name": "button / All Works",
               "width": 172,
               "height": 56,
-              "fill": "#00000000",
+              "fill": "$halftone-paper",
               "cornerRadius": 28,
               "stroke": {
                 "thickness": 2,
-                "fill": "#121210"
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 4,
+                  "y": 4
+                }
               },
               "layout": "none",
               "children": [
@@ -1116,12 +1508,12 @@
                   "id": "Bdnz3",
                   "x": 24,
                   "y": 17,
-                  "fill": "#121210",
+                  "fill": "#000000",
                   "textGrowth": "fixed-width",
                   "width": 114,
                   "content": "All Works",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "Hanken Grotesk",
                   "fontSize": 20,
                   "fontWeight": "700"
                 },
@@ -1130,10 +1522,10 @@
                   "id": "mD1Sx",
                   "x": 136,
                   "y": 15,
-                  "fill": "#121210",
+                  "fill": "#000000",
                   "content": "↗",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "Hanken Grotesk",
                   "fontSize": 22,
                   "fontWeight": "700"
                 }
@@ -1145,13 +1537,28 @@
               "x": 623,
               "y": 80,
               "name": "project preview / 1",
+              "clip": true,
               "width": 757,
               "height": 760,
-              "fill": "#5d5d5d",
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "next-app/public/img/tikii/hero-metal-bloom.png",
+                "mode": "fill"
+              },
               "cornerRadius": 48,
               "stroke": {
-                "thickness": 1,
-                "fill": "#d8d5cc"
+                "thickness": 3,
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 6,
+                  "y": 6
+                }
               },
               "layout": "none",
               "children": [
@@ -1160,14 +1567,29 @@
                   "id": "Brkx8",
                   "x": 0,
                   "y": 362,
-                  "fill": "#999999",
+                  "enabled": false,
+                  "fill": "\\$halftone-muted",
                   "textGrowth": "fixed-width",
                   "width": 757,
                   "content": "1400 × 1400",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 40,
                   "fontWeight": "300"
+                },
+                {
+                  "type": "script",
+                  "id": "aXAVs",
+                  "x": 0,
+                  "y": 0,
+                  "width": 757,
+                  "height": 760,
+                  "scriptUri": "halftone-dots.js",
+                  "inputs": {
+                    "step": 28,
+                    "dot": 4,
+                    "opacity": "#00000022"
+                  }
                 }
               ]
             },
@@ -1176,12 +1598,12 @@
               "id": "n8lj2",
               "x": 663,
               "y": 875,
-              "fill": "#121210",
+              "fill": "#000000",
               "textGrowth": "fixed-width",
               "width": 700,
               "content": "Creative studio template for modern agencies",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "\\$halftone-font-body",
               "fontSize": 28,
               "fontWeight": "500"
             },
@@ -1190,12 +1612,12 @@
               "id": "i8Rrr",
               "x": 663,
               "y": 790,
-              "fill": "#121210",
+              "fill": "#000000",
               "textGrowth": "fixed-width",
               "width": 500,
               "content": "UI/UX   Web design   Illustrations",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "\\$halftone-font-body",
               "fontSize": 13,
               "fontWeight": "500"
             },
@@ -1205,13 +1627,28 @@
               "x": 623,
               "y": 960,
               "name": "project preview / 2",
+              "clip": true,
               "width": 757,
               "height": 760,
-              "fill": "#5d5d5d",
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "next-app/public/img/tikii/hero-creative-systems.png",
+                "mode": "fill"
+              },
               "cornerRadius": 48,
               "stroke": {
-                "thickness": 1,
-                "fill": "#d8d5cc"
+                "thickness": 3,
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 6,
+                  "y": 6
+                }
               },
               "layout": "none",
               "children": [
@@ -1220,14 +1657,29 @@
                   "id": "Si4Kv",
                   "x": 0,
                   "y": 362,
-                  "fill": "#999999",
+                  "enabled": false,
+                  "fill": "\\$halftone-muted",
                   "textGrowth": "fixed-width",
                   "width": 757,
                   "content": "1400 × 1400",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 40,
                   "fontWeight": "300"
+                },
+                {
+                  "type": "script",
+                  "id": "v2PoKK",
+                  "x": 0,
+                  "y": 0,
+                  "width": 757,
+                  "height": 760,
+                  "scriptUri": "halftone-dots.js",
+                  "inputs": {
+                    "step": 28,
+                    "dot": 4,
+                    "opacity": "#00000022"
+                  }
                 }
               ]
             },
@@ -1236,12 +1688,12 @@
               "id": "CFFXY",
               "x": 663,
               "y": 1755,
-              "fill": "#121210",
+              "fill": "#000000",
               "textGrowth": "fixed-width",
               "width": 700,
               "content": "Interactive concept powered by AI",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "\\$halftone-font-body",
               "fontSize": 28,
               "fontWeight": "500"
             },
@@ -1250,12 +1702,12 @@
               "id": "ebRzE",
               "x": 663,
               "y": 1670,
-              "fill": "#121210",
+              "fill": "#000000",
               "textGrowth": "fixed-width",
               "width": 500,
               "content": "Sora   AI   Editorial",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "\\$halftone-font-body",
               "fontSize": 13,
               "fontWeight": "500"
             },
@@ -1265,13 +1717,28 @@
               "x": 623,
               "y": 1840,
               "name": "project preview / 3",
+              "clip": true,
               "width": 757,
               "height": 760,
-              "fill": "#5d5d5d",
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "next-app/public/img/tikii/hero-growth-systems.png",
+                "mode": "fill"
+              },
               "cornerRadius": 48,
               "stroke": {
-                "thickness": 1,
-                "fill": "#d8d5cc"
+                "thickness": 3,
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 6,
+                  "y": 6
+                }
               },
               "layout": "none",
               "children": [
@@ -1280,14 +1747,29 @@
                   "id": "ZZ89B",
                   "x": 0,
                   "y": 362,
-                  "fill": "#999999",
+                  "enabled": false,
+                  "fill": "\\$halftone-muted",
                   "textGrowth": "fixed-width",
                   "width": 757,
                   "content": "1400 × 1400",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 40,
                   "fontWeight": "300"
+                },
+                {
+                  "type": "script",
+                  "id": "eocws",
+                  "x": 0,
+                  "y": 0,
+                  "width": 757,
+                  "height": 760,
+                  "scriptUri": "halftone-dots.js",
+                  "inputs": {
+                    "step": 28,
+                    "dot": 4,
+                    "opacity": "#00000022"
+                  }
                 }
               ]
             },
@@ -1296,12 +1778,12 @@
               "id": "hBz4g",
               "x": 663,
               "y": 2635,
-              "fill": "#121210",
+              "fill": "#000000",
               "textGrowth": "fixed-width",
               "width": 700,
               "content": "Mobile app design for a cross-platform solution",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "\\$halftone-font-body",
               "fontSize": 28,
               "fontWeight": "500"
             },
@@ -1310,12 +1792,12 @@
               "id": "V7FTi",
               "x": 663,
               "y": 2550,
-              "fill": "#121210",
+              "fill": "#000000",
               "textGrowth": "fixed-width",
               "width": 500,
               "content": "UI/UX   Design   Android",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "\\$halftone-font-body",
               "fontSize": 13,
               "fontWeight": "500"
             },
@@ -1325,13 +1807,28 @@
               "x": 623,
               "y": 2720,
               "name": "project preview / 4",
+              "clip": true,
               "width": 757,
               "height": 760,
-              "fill": "#5d5d5d",
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "next-app/public/img/tikii/hero-engineering.png",
+                "mode": "fill"
+              },
               "cornerRadius": 48,
               "stroke": {
-                "thickness": 1,
-                "fill": "#d8d5cc"
+                "thickness": 3,
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 6,
+                  "y": 6
+                }
               },
               "layout": "none",
               "children": [
@@ -1340,14 +1837,29 @@
                   "id": "j9Tkn",
                   "x": 0,
                   "y": 362,
-                  "fill": "#999999",
+                  "enabled": false,
+                  "fill": "\\$halftone-muted",
                   "textGrowth": "fixed-width",
                   "width": 757,
                   "content": "1400 × 1400",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 40,
                   "fontWeight": "300"
+                },
+                {
+                  "type": "script",
+                  "id": "Z0IYf",
+                  "x": 0,
+                  "y": 0,
+                  "width": 757,
+                  "height": 760,
+                  "scriptUri": "halftone-dots.js",
+                  "inputs": {
+                    "step": 28,
+                    "dot": 4,
+                    "opacity": "#00000022"
+                  }
                 }
               ]
             },
@@ -1356,12 +1868,12 @@
               "id": "MQkFW",
               "x": 663,
               "y": 3515,
-              "fill": "#121210",
+              "fill": "#000000",
               "textGrowth": "fixed-width",
               "width": 700,
               "content": "NFT project branding",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "\\$halftone-font-body",
               "fontSize": 28,
               "fontWeight": "500"
             },
@@ -1370,12 +1882,12 @@
               "id": "ddpjM",
               "x": 663,
               "y": 3430,
-              "fill": "#121210",
+              "fill": "#000000",
               "textGrowth": "fixed-width",
               "width": 500,
               "content": "Brand identity   Style guides",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "\\$halftone-font-body",
               "fontSize": 13,
               "fontWeight": "500"
             },
@@ -1385,13 +1897,28 @@
               "x": 623,
               "y": 3600,
               "name": "project preview / 5",
+              "clip": true,
               "width": 757,
               "height": 760,
-              "fill": "#5d5d5d",
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "next-app/public/img/tikii/hero-product-strategy.png",
+                "mode": "fill"
+              },
               "cornerRadius": 48,
               "stroke": {
-                "thickness": 1,
-                "fill": "#d8d5cc"
+                "thickness": 3,
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 6,
+                  "y": 6
+                }
               },
               "layout": "none",
               "children": [
@@ -1400,14 +1927,29 @@
                   "id": "Mjgwh",
                   "x": 0,
                   "y": 362,
-                  "fill": "#999999",
+                  "enabled": false,
+                  "fill": "\\$halftone-muted",
                   "textGrowth": "fixed-width",
                   "width": 757,
                   "content": "1400 × 1400",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 40,
                   "fontWeight": "300"
+                },
+                {
+                  "type": "script",
+                  "id": "J9Utm",
+                  "x": 0,
+                  "y": 0,
+                  "width": 757,
+                  "height": 760,
+                  "scriptUri": "halftone-dots.js",
+                  "inputs": {
+                    "step": 28,
+                    "dot": 4,
+                    "opacity": "#00000022"
+                  }
                 }
               ]
             },
@@ -1416,12 +1958,12 @@
               "id": "G40lfF",
               "x": 663,
               "y": 4395,
-              "fill": "#121210",
+              "fill": "#000000",
               "textGrowth": "fixed-width",
               "width": 700,
               "content": "Illustrations set developed for digital and print use.",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "\\$halftone-font-body",
               "fontSize": 28,
               "fontWeight": "500"
             },
@@ -1430,12 +1972,12 @@
               "id": "icB0A",
               "x": 663,
               "y": 4310,
-              "fill": "#121210",
+              "fill": "#000000",
               "textGrowth": "fixed-width",
               "width": 500,
               "content": "Illustrations   Design   Packaging",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "\\$halftone-font-body",
               "fontSize": 13,
               "fontWeight": "500"
             }
@@ -1447,7 +1989,7 @@
           "name": "Stacked services",
           "width": "fill_container",
           "height": 849,
-          "fill": "#f7f5ef",
+          "fill": "$halftone-paper-soft",
           "layout": "none",
           "children": [
             {
@@ -1458,11 +2000,20 @@
               "name": "service stack card / Digital marketing solutions",
               "width": 1320,
               "height": 570,
-              "fill": "#151515",
+              "fill": "$halftone-ink",
               "cornerRadius": 42,
               "stroke": {
-                "thickness": 1,
-                "fill": "#d8d5cc"
+                "thickness": 3,
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 7,
+                  "y": 7
+                }
               },
               "layout": "none",
               "children": [
@@ -1476,9 +2027,9 @@
                   "width": 520,
                   "content": "Digital\nmarketing\nsolutions",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "Anybody",
                   "fontSize": 62,
-                  "fontWeight": "800"
+                  "fontWeight": "900"
                 },
                 {
                   "type": "frame",
@@ -1488,11 +2039,20 @@
                   "name": "pill / Strategy",
                   "width": 100,
                   "height": 34,
-                  "fill": "#ffffff",
+                  "fill": "$halftone-paper",
                   "cornerRadius": 18,
                   "stroke": {
-                    "thickness": 1,
-                    "fill": "#121210"
+                    "thickness": 2,
+                    "fill": "$halftone-ink"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "$halftone-ink",
+                    "offset": {
+                      "x": 4,
+                      "y": 4
+                    }
                   },
                   "layout": "none",
                   "children": [
@@ -1501,14 +2061,14 @@
                       "id": "I1jNL",
                       "x": 14,
                       "y": 8,
-                      "fill": "#121210",
+                      "fill": "#000000",
                       "textGrowth": "fixed-width",
                       "width": 72,
                       "content": "Strategy",
                       "lineHeight": 1.08,
-                      "fontFamily": "Geist",
+                      "fontFamily": "Hanken Grotesk",
                       "fontSize": 13,
-                      "fontWeight": "500"
+                      "fontWeight": "800"
                     }
                   ]
                 },
@@ -1520,11 +2080,20 @@
                   "name": "pill / Social media",
                   "width": 100,
                   "height": 34,
-                  "fill": "#ffffff",
+                  "fill": "$halftone-paper",
                   "cornerRadius": 18,
                   "stroke": {
-                    "thickness": 1,
-                    "fill": "#121210"
+                    "thickness": 2,
+                    "fill": "$halftone-ink"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "$halftone-ink",
+                    "offset": {
+                      "x": 4,
+                      "y": 4
+                    }
                   },
                   "layout": "none",
                   "children": [
@@ -1533,14 +2102,14 @@
                       "id": "eEPtR",
                       "x": 14,
                       "y": 8,
-                      "fill": "#121210",
+                      "fill": "#000000",
                       "textGrowth": "fixed-width",
                       "width": 72,
                       "content": "Social media",
                       "lineHeight": 1.08,
-                      "fontFamily": "Geist",
+                      "fontFamily": "Hanken Grotesk",
                       "fontSize": 13,
-                      "fontWeight": "500"
+                      "fontWeight": "800"
                     }
                   ]
                 },
@@ -1552,11 +2121,20 @@
                   "name": "pill / SEO",
                   "width": 100,
                   "height": 34,
-                  "fill": "#ffffff",
+                  "fill": "$halftone-paper",
                   "cornerRadius": 18,
                   "stroke": {
-                    "thickness": 1,
-                    "fill": "#121210"
+                    "thickness": 2,
+                    "fill": "$halftone-ink"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "$halftone-ink",
+                    "offset": {
+                      "x": 4,
+                      "y": 4
+                    }
                   },
                   "layout": "none",
                   "children": [
@@ -1565,14 +2143,14 @@
                       "id": "s5Sbx4",
                       "x": 14,
                       "y": 8,
-                      "fill": "#121210",
+                      "fill": "#000000",
                       "textGrowth": "fixed-width",
                       "width": 72,
                       "content": "SEO",
                       "lineHeight": 1.08,
-                      "fontFamily": "Geist",
+                      "fontFamily": "Hanken Grotesk",
                       "fontSize": 13,
-                      "fontWeight": "500"
+                      "fontWeight": "800"
                     }
                   ]
                 },
@@ -1584,11 +2162,20 @@
                   "name": "pill / Optimization",
                   "width": 100,
                   "height": 34,
-                  "fill": "#ffffff",
+                  "fill": "$halftone-paper",
                   "cornerRadius": 18,
                   "stroke": {
-                    "thickness": 1,
-                    "fill": "#121210"
+                    "thickness": 2,
+                    "fill": "$halftone-ink"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "$halftone-ink",
+                    "offset": {
+                      "x": 4,
+                      "y": 4
+                    }
                   },
                   "layout": "none",
                   "children": [
@@ -1597,14 +2184,14 @@
                       "id": "T8GgMf",
                       "x": 14,
                       "y": 8,
-                      "fill": "#121210",
+                      "fill": "#000000",
                       "textGrowth": "fixed-width",
                       "width": 72,
                       "content": "Optimization",
                       "lineHeight": 1.08,
-                      "fontFamily": "Geist",
+                      "fontFamily": "Hanken Grotesk",
                       "fontSize": 13,
-                      "fontWeight": "500"
+                      "fontWeight": "800"
                     }
                   ]
                 },
@@ -1616,11 +2203,20 @@
                   "name": "pill / Campaigns",
                   "width": 100,
                   "height": 34,
-                  "fill": "#ffffff",
+                  "fill": "$halftone-paper",
                   "cornerRadius": 18,
                   "stroke": {
-                    "thickness": 1,
-                    "fill": "#121210"
+                    "thickness": 2,
+                    "fill": "$halftone-ink"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "$halftone-ink",
+                    "offset": {
+                      "x": 4,
+                      "y": 4
+                    }
                   },
                   "layout": "none",
                   "children": [
@@ -1629,14 +2225,14 @@
                       "id": "sxVfc",
                       "x": 14,
                       "y": 8,
-                      "fill": "#121210",
+                      "fill": "#000000",
                       "textGrowth": "fixed-width",
                       "width": 72,
                       "content": "Campaigns",
                       "lineHeight": 1.08,
-                      "fontFamily": "Geist",
+                      "fontFamily": "Hanken Grotesk",
                       "fontSize": 13,
-                      "fontWeight": "500"
+                      "fontWeight": "800"
                     }
                   ]
                 },
@@ -1650,7 +2246,7 @@
                   "width": 480,
                   "content": "SEO and content marketing, social media management\nand paid campaigns - we help you reach and engage\nyour target audience effectively.",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 19,
                   "fontWeight": "500"
                 },
@@ -1660,13 +2256,28 @@
                   "x": 694,
                   "y": 0,
                   "name": "service image",
+                  "clip": true,
                   "width": 626,
                   "height": 570,
-                  "fill": "#5d5d5d",
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "next-app/public/img/tikii/23.png",
+                    "mode": "fill"
+                  },
                   "cornerRadius": 32,
                   "stroke": {
-                    "thickness": 1,
-                    "fill": "#d8d5cc"
+                    "thickness": 3,
+                    "fill": "$halftone-ink"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "$halftone-ink",
+                    "offset": {
+                      "x": 6,
+                      "y": 6
+                    }
                   },
                   "layout": "none",
                   "children": [
@@ -1675,14 +2286,29 @@
                       "id": "t96YX0",
                       "x": 0,
                       "y": 267,
-                      "fill": "#999999",
+                      "enabled": false,
+                      "fill": "\\$halftone-muted",
                       "textGrowth": "fixed-width",
                       "width": 626,
                       "content": "1000 × 1000",
                       "lineHeight": 1.08,
-                      "fontFamily": "Geist",
+                      "fontFamily": "\\$halftone-font-body",
                       "fontSize": 40,
                       "fontWeight": "300"
+                    },
+                    {
+                      "type": "script",
+                      "id": "n00eL",
+                      "x": 0,
+                      "y": 0,
+                      "width": 626,
+                      "height": 570,
+                      "scriptUri": "halftone-dots.js",
+                      "inputs": {
+                        "step": 28,
+                        "dot": 4,
+                        "opacity": "#00000022"
+                      }
                     }
                   ]
                 },
@@ -1691,19 +2317,32 @@
                   "id": "oJqLH",
                   "x": 1228,
                   "y": 20,
-                  "fill": "#ddf348",
+                  "fill": "$halftone-paper",
                   "width": 82,
-                  "height": 82
+                  "height": 82,
+                  "stroke": {
+                    "thickness": 2,
+                    "fill": "$halftone-ink"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "$halftone-ink",
+                    "offset": {
+                      "x": 4,
+                      "y": 4
+                    }
+                  }
                 },
                 {
                   "type": "text",
                   "id": "M15Wjd",
                   "x": 1254,
                   "y": 43,
-                  "fill": "#121210",
+                  "fill": "$halftone-ink",
                   "content": "↗",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 34,
                   "fontWeight": "600"
                 }
@@ -1717,7 +2356,7 @@
           "name": "Approach and philosophy",
           "width": "fill_container",
           "height": 1513,
-          "fill": "#f7f5ef",
+          "fill": "$halftone-paper-warm",
           "layout": "none",
           "children": [
             {
@@ -1725,26 +2364,26 @@
               "id": "L2miFW",
               "x": 60,
               "y": 60,
-              "fill": "#121210",
+              "fill": "#000000",
               "textGrowth": "fixed-width",
               "width": 560,
               "content": "Approach and\nphilosophy",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "Anybody",
               "fontSize": 68,
-              "fontWeight": "800"
+              "fontWeight": "900"
             },
             {
               "type": "text",
               "id": "QJRes",
               "x": 735,
               "y": 70,
-              "fill": "#383838",
+              "fill": "\\$halftone-muted",
               "textGrowth": "fixed-width",
               "width": 180,
               "content": "Design\nDevelopment\nMastership",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "\\$halftone-font-body",
               "fontSize": 19,
               "fontWeight": "500"
             },
@@ -1756,11 +2395,20 @@
               "name": "button / Let's Chat",
               "width": 190,
               "height": 56,
-              "fill": "#00000000",
+              "fill": "$halftone-paper",
               "cornerRadius": 28,
               "stroke": {
                 "thickness": 2,
-                "fill": "#121210"
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 4,
+                  "y": 4
+                }
               },
               "layout": "none",
               "children": [
@@ -1769,12 +2417,12 @@
                   "id": "V3GhZ",
                   "x": 24,
                   "y": 17,
-                  "fill": "#121210",
+                  "fill": "#000000",
                   "textGrowth": "fixed-width",
                   "width": 132,
                   "content": "Let's Chat",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "Hanken Grotesk",
                   "fontSize": 20,
                   "fontWeight": "700"
                 },
@@ -1783,10 +2431,10 @@
                   "id": "kmpjd",
                   "x": 154,
                   "y": 15,
-                  "fill": "#121210",
+                  "fill": "#000000",
                   "content": "↗",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "Hanken Grotesk",
                   "fontSize": 22,
                   "fontWeight": "700"
                 }
@@ -1797,7 +2445,7 @@
               "id": "OQBRQ",
               "x": 60,
               "y": 272,
-              "fill": "#151515",
+              "fill": "$halftone-ink",
               "width": 1320,
               "height": 2
             },
@@ -1807,13 +2455,28 @@
               "x": 60,
               "y": 310,
               "name": "approach icon",
+              "clip": true,
               "width": 96,
               "height": 96,
-              "fill": "#5d5d5d",
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "next-app/public/img/tikii/hero-orbit-token.png",
+                "mode": "fill"
+              },
               "cornerRadius": 16,
               "stroke": {
-                "thickness": 1,
-                "fill": "#d8d5cc"
+                "thickness": 3,
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 6,
+                  "y": 6
+                }
               },
               "layout": "none",
               "children": [
@@ -1822,14 +2485,29 @@
                   "id": "tYBot",
                   "x": 0,
                   "y": 30,
-                  "fill": "#999999",
+                  "enabled": false,
+                  "fill": "\\$halftone-muted",
                   "textGrowth": "fixed-width",
                   "width": 96,
                   "content": "200 × 200",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 40,
                   "fontWeight": "300"
+                },
+                {
+                  "type": "script",
+                  "id": "NwIpA",
+                  "x": 0,
+                  "y": 0,
+                  "width": 96,
+                  "height": 96,
+                  "scriptUri": "halftone-dots.js",
+                  "inputs": {
+                    "step": 28,
+                    "dot": 4,
+                    "opacity": "#00000022"
+                  }
                 }
               ]
             },
@@ -1838,12 +2516,12 @@
               "id": "ple9E",
               "x": 250,
               "y": 325,
-              "fill": "#121210",
+              "fill": "#000000",
               "textGrowth": "fixed-width",
               "width": 330,
               "content": "Perfection",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "\\$halftone-font-body",
               "fontSize": 34,
               "fontWeight": "700"
             },
@@ -1852,20 +2530,21 @@
               "id": "yqvvJ",
               "x": 624,
               "y": 325,
-              "fill": "#121210",
+              "fill": "#000000",
               "textGrowth": "fixed-width",
               "width": 680,
               "content": "From pixel-perfect designs to flawless code, every aspect is crafted with care.",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
-              "fontSize": 22
+              "fontFamily": "\\$halftone-font-body",
+              "fontSize": 22,
+              "fontWeight": "normal"
             },
             {
               "type": "rectangle",
               "id": "AKyNm",
               "x": 60,
               "y": 482,
-              "fill": "#151515",
+              "fill": "$halftone-ink",
               "width": 1320,
               "height": 2
             },
@@ -1875,13 +2554,28 @@
               "x": 60,
               "y": 520,
               "name": "approach icon",
+              "clip": true,
               "width": 96,
               "height": 96,
-              "fill": "#5d5d5d",
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "next-app/public/img/tikii/hero-engineering.png",
+                "mode": "fill"
+              },
               "cornerRadius": 16,
               "stroke": {
-                "thickness": 1,
-                "fill": "#d8d5cc"
+                "thickness": 3,
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 6,
+                  "y": 6
+                }
               },
               "layout": "none",
               "children": [
@@ -1890,14 +2584,29 @@
                   "id": "NhluY",
                   "x": 0,
                   "y": 30,
-                  "fill": "#999999",
+                  "enabled": false,
+                  "fill": "\\$halftone-muted",
                   "textGrowth": "fixed-width",
                   "width": 96,
                   "content": "200 × 200",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 40,
                   "fontWeight": "300"
+                },
+                {
+                  "type": "script",
+                  "id": "VKmqo",
+                  "x": 0,
+                  "y": 0,
+                  "width": 96,
+                  "height": 96,
+                  "scriptUri": "halftone-dots.js",
+                  "inputs": {
+                    "step": 28,
+                    "dot": 4,
+                    "opacity": "#00000022"
+                  }
                 }
               ]
             },
@@ -1906,12 +2615,12 @@
               "id": "OOgGO",
               "x": 250,
               "y": 535,
-              "fill": "#121210",
+              "fill": "#000000",
               "textGrowth": "fixed-width",
               "width": 330,
               "content": "Innovative",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "\\$halftone-font-body",
               "fontSize": 34,
               "fontWeight": "700"
             },
@@ -1920,20 +2629,21 @@
               "id": "dkSCC",
               "x": 624,
               "y": 535,
-              "fill": "#121210",
+              "fill": "#000000",
               "textGrowth": "fixed-width",
               "width": 680,
               "content": "We stay ahead of design trends with modern, visually impactful solutions.",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
-              "fontSize": 22
+              "fontFamily": "\\$halftone-font-body",
+              "fontSize": 22,
+              "fontWeight": "normal"
             },
             {
               "type": "rectangle",
               "id": "b2Z02R",
               "x": 60,
               "y": 692,
-              "fill": "#151515",
+              "fill": "$halftone-ink",
               "width": 1320,
               "height": 2
             },
@@ -1943,13 +2653,28 @@
               "x": 60,
               "y": 730,
               "name": "approach icon",
+              "clip": true,
               "width": 96,
               "height": 96,
-              "fill": "#5d5d5d",
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "next-app/public/img/tikii/hero-product-strategy.png",
+                "mode": "fill"
+              },
               "cornerRadius": 16,
               "stroke": {
-                "thickness": 1,
-                "fill": "#d8d5cc"
+                "thickness": 3,
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 6,
+                  "y": 6
+                }
               },
               "layout": "none",
               "children": [
@@ -1958,14 +2683,29 @@
                   "id": "mpPnE",
                   "x": 0,
                   "y": 30,
-                  "fill": "#999999",
+                  "enabled": false,
+                  "fill": "\\$halftone-muted",
                   "textGrowth": "fixed-width",
                   "width": 96,
                   "content": "200 × 200",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 40,
                   "fontWeight": "300"
+                },
+                {
+                  "type": "script",
+                  "id": "sgDFk",
+                  "x": 0,
+                  "y": 0,
+                  "width": 96,
+                  "height": 96,
+                  "scriptUri": "halftone-dots.js",
+                  "inputs": {
+                    "step": 28,
+                    "dot": 4,
+                    "opacity": "#00000022"
+                  }
                 }
               ]
             },
@@ -1974,12 +2714,12 @@
               "id": "juwU1",
               "x": 250,
               "y": 745,
-              "fill": "#121210",
+              "fill": "#000000",
               "textGrowth": "fixed-width",
               "width": 330,
               "content": "Expertise",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "\\$halftone-font-body",
               "fontSize": 34,
               "fontWeight": "700"
             },
@@ -1988,20 +2728,21 @@
               "id": "GpwoV",
               "x": 624,
               "y": 745,
-              "fill": "#121210",
+              "fill": "#000000",
               "textGrowth": "fixed-width",
               "width": 680,
               "content": "Latest technologies, interactive animations, and mobile-first strategies.",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
-              "fontSize": 22
+              "fontFamily": "\\$halftone-font-body",
+              "fontSize": 22,
+              "fontWeight": "normal"
             },
             {
               "type": "rectangle",
               "id": "WEcb1",
               "x": 60,
               "y": 902,
-              "fill": "#151515",
+              "fill": "$halftone-ink",
               "width": 1320,
               "height": 2
             },
@@ -2011,13 +2752,28 @@
               "x": 60,
               "y": 940,
               "name": "approach icon",
+              "clip": true,
               "width": 96,
               "height": 96,
-              "fill": "#5d5d5d",
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "next-app/public/img/tikii/hero-metal-bloom.png",
+                "mode": "fill"
+              },
               "cornerRadius": 16,
               "stroke": {
-                "thickness": 1,
-                "fill": "#d8d5cc"
+                "thickness": 3,
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 6,
+                  "y": 6
+                }
               },
               "layout": "none",
               "children": [
@@ -2026,14 +2782,29 @@
                   "id": "oFvMP",
                   "x": 0,
                   "y": 30,
-                  "fill": "#999999",
+                  "enabled": false,
+                  "fill": "\\$halftone-muted",
                   "textGrowth": "fixed-width",
                   "width": 96,
                   "content": "200 × 200",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 40,
                   "fontWeight": "300"
+                },
+                {
+                  "type": "script",
+                  "id": "R6bFE",
+                  "x": 0,
+                  "y": 0,
+                  "width": 96,
+                  "height": 96,
+                  "scriptUri": "halftone-dots.js",
+                  "inputs": {
+                    "step": 28,
+                    "dot": 4,
+                    "opacity": "#00000022"
+                  }
                 }
               ]
             },
@@ -2042,12 +2813,12 @@
               "id": "pmO5d",
               "x": 250,
               "y": 955,
-              "fill": "#121210",
+              "fill": "#000000",
               "textGrowth": "fixed-width",
               "width": 330,
               "content": "Full-Cycle services",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "\\$halftone-font-body",
               "fontSize": 34,
               "fontWeight": "700"
             },
@@ -2056,20 +2827,21 @@
               "id": "Jeml7",
               "x": 624,
               "y": 955,
-              "fill": "#121210",
+              "fill": "#000000",
               "textGrowth": "fixed-width",
               "width": 680,
               "content": "Web design, development, branding, SEO, and UX/UI in one workflow.",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
-              "fontSize": 22
+              "fontFamily": "\\$halftone-font-body",
+              "fontSize": 22,
+              "fontWeight": "normal"
             },
             {
               "type": "rectangle",
               "id": "nPXBb",
               "x": 60,
               "y": 1112,
-              "fill": "#151515",
+              "fill": "$halftone-ink",
               "width": 1320,
               "height": 2
             },
@@ -2079,13 +2851,28 @@
               "x": 60,
               "y": 1150,
               "name": "approach icon",
+              "clip": true,
               "width": 96,
               "height": 96,
-              "fill": "#5d5d5d",
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "next-app/public/img/tikii/hero-creative-systems.png",
+                "mode": "fill"
+              },
               "cornerRadius": 16,
               "stroke": {
-                "thickness": 1,
-                "fill": "#d8d5cc"
+                "thickness": 3,
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 6,
+                  "y": 6
+                }
               },
               "layout": "none",
               "children": [
@@ -2094,14 +2881,29 @@
                   "id": "JhoJg",
                   "x": 0,
                   "y": 30,
-                  "fill": "#999999",
+                  "enabled": false,
+                  "fill": "\\$halftone-muted",
                   "textGrowth": "fixed-width",
                   "width": 96,
                   "content": "200 × 200",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 40,
                   "fontWeight": "300"
+                },
+                {
+                  "type": "script",
+                  "id": "C2ReOG",
+                  "x": 0,
+                  "y": 0,
+                  "width": 96,
+                  "height": 96,
+                  "scriptUri": "halftone-dots.js",
+                  "inputs": {
+                    "step": 28,
+                    "dot": 4,
+                    "opacity": "#00000022"
+                  }
                 }
               ]
             },
@@ -2110,12 +2912,12 @@
               "id": "rlLQ1",
               "x": 250,
               "y": 1165,
-              "fill": "#121210",
+              "fill": "#000000",
               "textGrowth": "fixed-width",
               "width": 330,
               "content": "Client Success",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "\\$halftone-font-body",
               "fontSize": 34,
               "fontWeight": "700"
             },
@@ -2124,13 +2926,14 @@
               "id": "QQ3S8",
               "x": 624,
               "y": 1165,
-              "fill": "#121210",
+              "fill": "#000000",
               "textGrowth": "fixed-width",
               "width": 680,
               "content": "Improved engagement, conversion rates, and business growth.",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
-              "fontSize": 22
+              "fontFamily": "\\$halftone-font-body",
+              "fontSize": 22,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -2140,7 +2943,7 @@
           "name": "Horizontal creative image marquee",
           "width": "fill_container",
           "height": 1003,
-          "fill": "#f7f5ef",
+          "fill": "$halftone-paper-soft",
           "layout": "none",
           "children": [
             {
@@ -2149,13 +2952,28 @@
               "x": -100,
               "y": 80,
               "name": "marquee image",
+              "clip": true,
               "width": 320,
               "height": 320,
-              "fill": "#5d5d5d",
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "next-app/public/img/tikii/hero-metal-bloom.png",
+                "mode": "fill"
+              },
               "cornerRadius": 28,
               "stroke": {
-                "thickness": 1,
-                "fill": "#d8d5cc"
+                "thickness": 3,
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 6,
+                  "y": 6
+                }
               },
               "layout": "none",
               "children": [
@@ -2164,14 +2982,29 @@
                   "id": "dnSvw",
                   "x": 0,
                   "y": 142,
-                  "fill": "#999999",
+                  "enabled": false,
+                  "fill": "\\$halftone-muted",
                   "textGrowth": "fixed-width",
                   "width": 320,
                   "content": "1200 × 1200",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 40,
                   "fontWeight": "300"
+                },
+                {
+                  "type": "script",
+                  "id": "zTViq",
+                  "x": 0,
+                  "y": 0,
+                  "width": 320,
+                  "height": 320,
+                  "scriptUri": "halftone-dots.js",
+                  "inputs": {
+                    "step": 28,
+                    "dot": 4,
+                    "opacity": "#00000022"
+                  }
                 }
               ]
             },
@@ -2183,11 +3016,20 @@
               "name": "caption tile",
               "width": 320,
               "height": 320,
-              "fill": "#fffdf8",
+              "fill": "$halftone-paper-warm",
               "cornerRadius": 28,
               "stroke": {
-                "thickness": 1,
-                "fill": "#d8d5cc"
+                "thickness": 3,
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 4,
+                  "y": 4
+                }
               },
               "layout": "none"
             },
@@ -2196,14 +3038,14 @@
               "id": "da4AK",
               "x": 288,
               "y": 175,
-              "fill": "#121210",
+              "fill": "\\$halftone-ink",
               "textGrowth": "fixed-width",
               "width": 230,
               "content": "Inspiring\nideas",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "$halftone-font-display",
               "fontSize": 38,
-              "fontWeight": "700"
+              "fontWeight": "900"
             },
             {
               "type": "frame",
@@ -2211,13 +3053,28 @@
               "x": 600,
               "y": 80,
               "name": "marquee image",
+              "clip": true,
               "width": 320,
               "height": 320,
-              "fill": "#5d5d5d",
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "next-app/public/img/tikii/hero-creative-systems.png",
+                "mode": "fill"
+              },
               "cornerRadius": 28,
               "stroke": {
-                "thickness": 1,
-                "fill": "#d8d5cc"
+                "thickness": 3,
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 6,
+                  "y": 6
+                }
               },
               "layout": "none",
               "children": [
@@ -2226,14 +3083,29 @@
                   "id": "lGyzR",
                   "x": 0,
                   "y": 142,
-                  "fill": "#999999",
+                  "enabled": false,
+                  "fill": "\\$halftone-muted",
                   "textGrowth": "fixed-width",
                   "width": 320,
                   "content": "1200 × 1200",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 40,
                   "fontWeight": "300"
+                },
+                {
+                  "type": "script",
+                  "id": "OXIQp",
+                  "x": 0,
+                  "y": 0,
+                  "width": 320,
+                  "height": 320,
+                  "scriptUri": "halftone-dots.js",
+                  "inputs": {
+                    "step": 28,
+                    "dot": 4,
+                    "opacity": "#00000022"
+                  }
                 }
               ]
             },
@@ -2245,11 +3117,20 @@
               "name": "caption tile",
               "width": 320,
               "height": 320,
-              "fill": "#fffdf8",
+              "fill": "$halftone-paper-warm",
               "cornerRadius": 28,
               "stroke": {
-                "thickness": 1,
-                "fill": "#d8d5cc"
+                "thickness": 3,
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 4,
+                  "y": 4
+                }
               },
               "layout": "none"
             },
@@ -2258,14 +3139,14 @@
               "id": "nJ1vB",
               "x": 988,
               "y": 175,
-              "fill": "#121210",
+              "fill": "\\$halftone-ink",
               "textGrowth": "fixed-width",
               "width": 230,
               "content": "Creative\nminds",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "$halftone-font-display",
               "fontSize": 38,
-              "fontWeight": "700"
+              "fontWeight": "900"
             },
             {
               "type": "frame",
@@ -2273,13 +3154,28 @@
               "x": 1300,
               "y": 80,
               "name": "marquee image",
+              "clip": true,
               "width": 320,
               "height": 320,
-              "fill": "#5d5d5d",
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "next-app/public/img/tikii/hero-growth-systems.png",
+                "mode": "fill"
+              },
               "cornerRadius": 28,
               "stroke": {
-                "thickness": 1,
-                "fill": "#d8d5cc"
+                "thickness": 3,
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 6,
+                  "y": 6
+                }
               },
               "layout": "none",
               "children": [
@@ -2288,14 +3184,29 @@
                   "id": "HPJot",
                   "x": 0,
                   "y": 142,
-                  "fill": "#999999",
+                  "enabled": false,
+                  "fill": "\\$halftone-muted",
                   "textGrowth": "fixed-width",
                   "width": 320,
                   "content": "1200 × 1200",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 40,
                   "fontWeight": "300"
+                },
+                {
+                  "type": "script",
+                  "id": "RlkQt",
+                  "x": 0,
+                  "y": 0,
+                  "width": 320,
+                  "height": 320,
+                  "scriptUri": "halftone-dots.js",
+                  "inputs": {
+                    "step": 28,
+                    "dot": 4,
+                    "opacity": "#00000022"
+                  }
                 }
               ]
             },
@@ -2305,13 +3216,28 @@
               "x": -100,
               "y": 510,
               "name": "marquee image",
+              "clip": true,
               "width": 320,
               "height": 320,
-              "fill": "#5d5d5d",
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "next-app/public/img/tikii/hero-orbit-token.png",
+                "mode": "fill"
+              },
               "cornerRadius": 28,
               "stroke": {
-                "thickness": 1,
-                "fill": "#d8d5cc"
+                "thickness": 3,
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 6,
+                  "y": 6
+                }
               },
               "layout": "none",
               "children": [
@@ -2320,14 +3246,29 @@
                   "id": "ercvo",
                   "x": 0,
                   "y": 142,
-                  "fill": "#999999",
+                  "enabled": false,
+                  "fill": "\\$halftone-muted",
                   "textGrowth": "fixed-width",
                   "width": 320,
                   "content": "1200 × 1200",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 40,
                   "fontWeight": "300"
+                },
+                {
+                  "type": "script",
+                  "id": "J0vXh",
+                  "x": 0,
+                  "y": 0,
+                  "width": 320,
+                  "height": 320,
+                  "scriptUri": "halftone-dots.js",
+                  "inputs": {
+                    "step": 28,
+                    "dot": 4,
+                    "opacity": "#00000022"
+                  }
                 }
               ]
             },
@@ -2339,11 +3280,20 @@
               "name": "caption tile",
               "width": 320,
               "height": 320,
-              "fill": "#fffdf8",
+              "fill": "$halftone-paper-warm",
               "cornerRadius": 28,
               "stroke": {
-                "thickness": 1,
-                "fill": "#d8d5cc"
+                "thickness": 3,
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 4,
+                  "y": 4
+                }
               },
               "layout": "none"
             },
@@ -2352,14 +3302,14 @@
               "id": "RSysQ",
               "x": 288,
               "y": 605,
-              "fill": "#121210",
+              "fill": "\\$halftone-ink",
               "textGrowth": "fixed-width",
               "width": 230,
               "content": "Inspiring\nideas",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "$halftone-font-display",
               "fontSize": 38,
-              "fontWeight": "700"
+              "fontWeight": "900"
             },
             {
               "type": "frame",
@@ -2367,13 +3317,28 @@
               "x": 600,
               "y": 510,
               "name": "marquee image",
+              "clip": true,
               "width": 320,
               "height": 320,
-              "fill": "#5d5d5d",
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "next-app/public/img/tikii/hero-engineering.png",
+                "mode": "fill"
+              },
               "cornerRadius": 28,
               "stroke": {
-                "thickness": 1,
-                "fill": "#d8d5cc"
+                "thickness": 3,
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 6,
+                  "y": 6
+                }
               },
               "layout": "none",
               "children": [
@@ -2382,14 +3347,29 @@
                   "id": "qbbnS",
                   "x": 0,
                   "y": 142,
-                  "fill": "#999999",
+                  "enabled": false,
+                  "fill": "\\$halftone-muted",
                   "textGrowth": "fixed-width",
                   "width": 320,
                   "content": "1200 × 1200",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 40,
                   "fontWeight": "300"
+                },
+                {
+                  "type": "script",
+                  "id": "OL5X6",
+                  "x": 0,
+                  "y": 0,
+                  "width": 320,
+                  "height": 320,
+                  "scriptUri": "halftone-dots.js",
+                  "inputs": {
+                    "step": 28,
+                    "dot": 4,
+                    "opacity": "#00000022"
+                  }
                 }
               ]
             },
@@ -2401,11 +3381,20 @@
               "name": "caption tile",
               "width": 320,
               "height": 320,
-              "fill": "#fffdf8",
+              "fill": "$halftone-paper-warm",
               "cornerRadius": 28,
               "stroke": {
-                "thickness": 1,
-                "fill": "#d8d5cc"
+                "thickness": 3,
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 4,
+                  "y": 4
+                }
               },
               "layout": "none"
             },
@@ -2414,14 +3403,14 @@
               "id": "NtcgC",
               "x": 988,
               "y": 605,
-              "fill": "#121210",
+              "fill": "\\$halftone-ink",
               "textGrowth": "fixed-width",
               "width": 230,
               "content": "Creative\nminds",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "$halftone-font-display",
               "fontSize": 38,
-              "fontWeight": "700"
+              "fontWeight": "900"
             },
             {
               "type": "frame",
@@ -2429,13 +3418,28 @@
               "x": 1300,
               "y": 510,
               "name": "marquee image",
+              "clip": true,
               "width": 320,
               "height": 320,
-              "fill": "#5d5d5d",
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "next-app/public/img/tikii/hero-product-strategy.png",
+                "mode": "fill"
+              },
               "cornerRadius": 28,
               "stroke": {
-                "thickness": 1,
-                "fill": "#d8d5cc"
+                "thickness": 3,
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 6,
+                  "y": 6
+                }
               },
               "layout": "none",
               "children": [
@@ -2444,14 +3448,29 @@
                   "id": "w3MyV",
                   "x": 0,
                   "y": 142,
-                  "fill": "#999999",
+                  "enabled": false,
+                  "fill": "\\$halftone-muted",
                   "textGrowth": "fixed-width",
                   "width": 320,
                   "content": "1200 × 1200",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 40,
                   "fontWeight": "300"
+                },
+                {
+                  "type": "script",
+                  "id": "IL80u",
+                  "x": 0,
+                  "y": 0,
+                  "width": 320,
+                  "height": 320,
+                  "scriptUri": "halftone-dots.js",
+                  "inputs": {
+                    "step": 28,
+                    "dot": 4,
+                    "opacity": "#00000022"
+                  }
                 }
               ]
             }
@@ -2463,7 +3482,7 @@
           "name": "Awards and publications",
           "width": "fill_container",
           "height": 827,
-          "fill": "#f7f5ef",
+          "fill": "$halftone-paper",
           "layout": "none",
           "children": [
             {
@@ -2471,14 +3490,14 @@
               "id": "Q3FnDf",
               "x": 60,
               "y": 105,
-              "fill": "#121210",
+              "fill": "#000000",
               "textGrowth": "fixed-width",
               "width": 470,
               "content": "Awards &\npublications",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "Anybody",
               "fontSize": 62,
-              "fontWeight": "800"
+              "fontWeight": "900"
             },
             {
               "type": "frame",
@@ -2488,11 +3507,20 @@
               "name": "button / View More",
               "width": 198,
               "height": 56,
-              "fill": "#00000000",
+              "fill": "$halftone-paper",
               "cornerRadius": 28,
               "stroke": {
                 "thickness": 2,
-                "fill": "#121210"
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 4,
+                  "y": 4
+                }
               },
               "layout": "none",
               "children": [
@@ -2501,12 +3529,12 @@
                   "id": "CYyGg",
                   "x": 24,
                   "y": 17,
-                  "fill": "#121210",
+                  "fill": "#000000",
                   "textGrowth": "fixed-width",
                   "width": 140,
                   "content": "View More",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "Hanken Grotesk",
                   "fontSize": 20,
                   "fontWeight": "700"
                 },
@@ -2515,10 +3543,10 @@
                   "id": "qWXzu",
                   "x": 162,
                   "y": 15,
-                  "fill": "#121210",
+                  "fill": "#000000",
                   "content": "↗",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "Hanken Grotesk",
                   "fontSize": 22,
                   "fontWeight": "700"
                 }
@@ -2529,7 +3557,7 @@
               "id": "fcOh3",
               "x": 60,
               "y": 300,
-              "fill": "#151515",
+              "fill": "$halftone-ink",
               "width": 1320,
               "height": 2
             },
@@ -2538,26 +3566,26 @@
               "id": "pBqH5",
               "x": 60,
               "y": 342,
-              "fill": "#121210",
+              "fill": "#000000",
               "textGrowth": "fixed-width",
               "width": 760,
               "content": "Some article on Medium",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "$halftone-font-display",
               "fontSize": 38,
-              "fontWeight": "700"
+              "fontWeight": "900"
             },
             {
               "type": "text",
               "id": "tsP2V",
               "x": 960,
               "y": 342,
-              "fill": "#121210",
+              "fill": "#000000",
               "textGrowth": "fixed-width",
               "width": 200,
               "content": "UI/UX design\nDevelopment",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "\\$halftone-font-body",
               "fontSize": 16,
               "fontWeight": "500"
             },
@@ -2566,12 +3594,12 @@
               "id": "B0D67",
               "x": 1344,
               "y": 342,
-              "fill": "#121210",
+              "fill": "#000000",
               "textGrowth": "fixed-width",
               "width": 60,
               "content": "2025",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "\\$halftone-font-body",
               "fontSize": 16,
               "fontWeight": "500"
             },
@@ -2580,7 +3608,7 @@
               "id": "w16Kg",
               "x": 60,
               "y": 415,
-              "fill": "#151515",
+              "fill": "$halftone-ink",
               "width": 1320,
               "height": 2
             },
@@ -2589,26 +3617,26 @@
               "id": "lxHTB",
               "x": 60,
               "y": 457,
-              "fill": "#121210",
+              "fill": "#000000",
               "textGrowth": "fixed-width",
               "width": 760,
               "content": "Awwwards nomination",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "$halftone-font-display",
               "fontSize": 38,
-              "fontWeight": "700"
+              "fontWeight": "900"
             },
             {
               "type": "text",
               "id": "HdCo0",
               "x": 960,
               "y": 457,
-              "fill": "#121210",
+              "fill": "#000000",
               "textGrowth": "fixed-width",
               "width": 200,
               "content": "UI/UX\nFrontend",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "\\$halftone-font-body",
               "fontSize": 16,
               "fontWeight": "500"
             },
@@ -2617,12 +3645,12 @@
               "id": "fENOL",
               "x": 1344,
               "y": 457,
-              "fill": "#121210",
+              "fill": "#000000",
               "textGrowth": "fixed-width",
               "width": 60,
               "content": "2024",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "\\$halftone-font-body",
               "fontSize": 16,
               "fontWeight": "500"
             },
@@ -2631,7 +3659,7 @@
               "id": "JbwMW",
               "x": 60,
               "y": 530,
-              "fill": "#151515",
+              "fill": "$halftone-ink",
               "width": 1320,
               "height": 2
             },
@@ -2640,26 +3668,26 @@
               "id": "LQZZI",
               "x": 60,
               "y": 572,
-              "fill": "#121210",
+              "fill": "#000000",
               "textGrowth": "fixed-width",
               "width": 760,
               "content": "Behance curated work",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "$halftone-font-display",
               "fontSize": 38,
-              "fontWeight": "700"
+              "fontWeight": "900"
             },
             {
               "type": "text",
               "id": "xFIzs",
               "x": 960,
               "y": 572,
-              "fill": "#121210",
+              "fill": "#000000",
               "textGrowth": "fixed-width",
               "width": 200,
               "content": "Illustrations\nGraphic design",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "\\$halftone-font-body",
               "fontSize": 16,
               "fontWeight": "500"
             },
@@ -2668,12 +3696,12 @@
               "id": "lCree",
               "x": 1344,
               "y": 572,
-              "fill": "#121210",
+              "fill": "#000000",
               "textGrowth": "fixed-width",
               "width": 60,
               "content": "2024",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "\\$halftone-font-body",
               "fontSize": 16,
               "fontWeight": "500"
             },
@@ -2682,7 +3710,7 @@
               "id": "MdlJZ",
               "x": 60,
               "y": 645,
-              "fill": "#151515",
+              "fill": "$halftone-ink",
               "width": 1320,
               "height": 2
             },
@@ -2691,26 +3719,26 @@
               "id": "xAJwi",
               "x": 60,
               "y": 687,
-              "fill": "#121210",
+              "fill": "#000000",
               "textGrowth": "fixed-width",
               "width": 760,
               "content": "Article on Medium",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "$halftone-font-display",
               "fontSize": 38,
-              "fontWeight": "700"
+              "fontWeight": "900"
             },
             {
               "type": "text",
               "id": "UMXSZ",
               "x": 960,
               "y": 687,
-              "fill": "#121210",
+              "fill": "#000000",
               "textGrowth": "fixed-width",
               "width": 200,
               "content": "UI/UX\nFrontend",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "\\$halftone-font-body",
               "fontSize": 16,
               "fontWeight": "500"
             },
@@ -2719,12 +3747,12 @@
               "id": "DTYqw",
               "x": 1344,
               "y": 687,
-              "fill": "#121210",
+              "fill": "#000000",
               "textGrowth": "fixed-width",
               "width": 60,
               "content": "2024",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "\\$halftone-font-body",
               "fontSize": 16,
               "fontWeight": "500"
             },
@@ -2733,7 +3761,7 @@
               "id": "A2QR0",
               "x": 60,
               "y": 760,
-              "fill": "#151515",
+              "fill": "$halftone-ink",
               "width": 1320,
               "height": 2
             }
@@ -2745,7 +3773,7 @@
           "name": "Testimonials",
           "width": "fill_container",
           "height": 814,
-          "fill": "#f7f5ef",
+          "fill": "$halftone-paper-warm",
           "layout": "none",
           "children": [
             {
@@ -2753,26 +3781,26 @@
               "id": "o71V4G",
               "x": 60,
               "y": 130,
-              "fill": "#121210",
+              "fill": "#000000",
               "textGrowth": "fixed-width",
               "width": 420,
               "content": "What our\nclients say",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "Anybody",
               "fontSize": 62,
-              "fontWeight": "800"
+              "fontWeight": "900"
             },
             {
               "type": "text",
               "id": "P9gDop",
               "x": 60,
               "y": 310,
-              "fill": "#383838",
+              "fill": "\\$halftone-muted",
               "textGrowth": "fixed-width",
               "width": 430,
               "content": "We're more than just executors — we're your\ncreative partners. Don't just take our word for it,\nsee what clients have to say about working with\nus.",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "\\$halftone-font-body",
               "fontSize": 19,
               "fontWeight": "500"
             },
@@ -2781,22 +3809,22 @@
               "id": "FUevi",
               "x": 60,
               "y": 535,
-              "fill": "#121210",
+              "fill": "\\$halftone-ink",
               "content": "Clutch",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "$halftone-font-display",
               "fontSize": 46,
-              "fontWeight": "800"
+              "fontWeight": "900"
             },
             {
               "type": "text",
               "id": "kt7Ga",
               "x": 60,
               "y": 585,
-              "fill": "#d92525",
+              "fill": "\\$halftone-ink",
               "content": "4.9/5.0 ★★★★★",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "\\$halftone-font-body",
               "fontSize": 16,
               "fontWeight": "700"
             },
@@ -2808,11 +3836,20 @@
               "name": "testimonial card",
               "width": 495,
               "height": 640,
-              "fill": "#fffdf8",
+              "fill": "$halftone-paper",
               "cornerRadius": 18,
               "stroke": {
-                "thickness": 1,
-                "fill": "#d8d5cc"
+                "thickness": 3,
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 6,
+                  "y": 6
+                }
               },
               "layout": "none",
               "children": [
@@ -2822,27 +3859,58 @@
                   "x": 42,
                   "y": 42,
                   "name": "photo",
+                  "clip": true,
                   "width": 82,
                   "height": 82,
-                  "fill": "#5d5d5d",
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "next-app/public/img/tikii/hero-orbit-token.png",
+                    "mode": "fill"
+                  },
                   "cornerRadius": 41,
                   "stroke": {
-                    "thickness": 1,
-                    "fill": "#d8d5cc"
+                    "thickness": 3,
+                    "fill": "$halftone-ink"
                   },
-                  "layout": "none"
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "$halftone-ink",
+                    "offset": {
+                      "x": 6,
+                      "y": 6
+                    }
+                  },
+                  "layout": "none",
+                  "children": [
+                    {
+                      "type": "script",
+                      "id": "JcGUa",
+                      "x": 0,
+                      "y": 0,
+                      "width": 82,
+                      "height": 82,
+                      "scriptUri": "halftone-dots.js",
+                      "inputs": {
+                        "step": 28,
+                        "dot": 4,
+                        "opacity": "#00000022"
+                      }
+                    }
+                  ]
                 },
                 {
                   "type": "text",
                   "id": "TjlBw",
                   "x": 48,
                   "y": 225,
-                  "fill": "#333333",
+                  "fill": "#000000",
                   "textGrowth": "fixed-width",
                   "width": 360,
                   "content": "The Rayo team nailed it. They understood our vision and delivered a sleek, intuitive site.",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 22,
                   "fontWeight": "500"
                 },
@@ -2854,11 +3922,20 @@
                   "name": "button / Project Page",
                   "width": 160,
                   "height": 56,
-                  "fill": "#00000000",
+                  "fill": "$halftone-paper",
                   "cornerRadius": 28,
                   "stroke": {
                     "thickness": 2,
-                    "fill": "#121210"
+                    "fill": "$halftone-ink"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "$halftone-ink",
+                    "offset": {
+                      "x": 4,
+                      "y": 4
+                    }
                   },
                   "layout": "none",
                   "children": [
@@ -2867,12 +3944,12 @@
                       "id": "W5Ejg",
                       "x": 24,
                       "y": 17,
-                      "fill": "#121210",
+                      "fill": "#000000",
                       "textGrowth": "fixed-width",
                       "width": 102,
                       "content": "Project Page",
                       "lineHeight": 1.08,
-                      "fontFamily": "Geist",
+                      "fontFamily": "Hanken Grotesk",
                       "fontSize": 20,
                       "fontWeight": "700"
                     },
@@ -2881,10 +3958,10 @@
                       "id": "Of2rY",
                       "x": 124,
                       "y": 15,
-                      "fill": "#121210",
+                      "fill": "#000000",
                       "content": "↗",
                       "lineHeight": 1.08,
-                      "fontFamily": "Geist",
+                      "fontFamily": "Hanken Grotesk",
                       "fontSize": 22,
                       "fontWeight": "700"
                     }
@@ -2895,12 +3972,12 @@
                   "id": "V7MGej",
                   "x": 48,
                   "y": 535,
-                  "fill": "#121210",
+                  "fill": "\\$halftone-ink",
                   "textGrowth": "fixed-width",
                   "width": 260,
                   "content": "Lea Tomato",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 30,
                   "fontWeight": "800"
                 }
@@ -2914,11 +3991,20 @@
               "name": "testimonial card",
               "width": 495,
               "height": 640,
-              "fill": "#fffdf8",
+              "fill": "$halftone-paper",
               "cornerRadius": 18,
               "stroke": {
-                "thickness": 1,
-                "fill": "#d8d5cc"
+                "thickness": 3,
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 6,
+                  "y": 6
+                }
               },
               "layout": "none",
               "children": [
@@ -2928,27 +4014,58 @@
                   "x": 42,
                   "y": 42,
                   "name": "photo",
+                  "clip": true,
                   "width": 82,
                   "height": 82,
-                  "fill": "#5d5d5d",
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "next-app/public/img/tikii/hero-engineering.png",
+                    "mode": "fill"
+                  },
                   "cornerRadius": 41,
                   "stroke": {
-                    "thickness": 1,
-                    "fill": "#d8d5cc"
+                    "thickness": 3,
+                    "fill": "$halftone-ink"
                   },
-                  "layout": "none"
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "$halftone-ink",
+                    "offset": {
+                      "x": 6,
+                      "y": 6
+                    }
+                  },
+                  "layout": "none",
+                  "children": [
+                    {
+                      "type": "script",
+                      "id": "Zs4YK",
+                      "x": 0,
+                      "y": 0,
+                      "width": 82,
+                      "height": 82,
+                      "scriptUri": "halftone-dots.js",
+                      "inputs": {
+                        "step": 28,
+                        "dot": 4,
+                        "opacity": "#00000022"
+                      }
+                    }
+                  ]
                 },
                 {
                   "type": "text",
                   "id": "BYqmn",
                   "x": 48,
                   "y": 225,
-                  "fill": "#333333",
+                  "fill": "\\$halftone-muted",
                   "textGrowth": "fixed-width",
                   "width": 360,
                   "content": "The Rayo team nailed it. They understood our vision and delivered a sleek, intuitive site.",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 22,
                   "fontWeight": "500"
                 },
@@ -2960,11 +4077,20 @@
                   "name": "button / Project Page",
                   "width": 160,
                   "height": 56,
-                  "fill": "#00000000",
+                  "fill": "$halftone-paper",
                   "cornerRadius": 28,
                   "stroke": {
                     "thickness": 2,
-                    "fill": "#121210"
+                    "fill": "$halftone-ink"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "$halftone-ink",
+                    "offset": {
+                      "x": 4,
+                      "y": 4
+                    }
                   },
                   "layout": "none",
                   "children": [
@@ -2973,12 +4099,12 @@
                       "id": "m85tm",
                       "x": 24,
                       "y": 17,
-                      "fill": "#121210",
+                      "fill": "#000000",
                       "textGrowth": "fixed-width",
                       "width": 102,
                       "content": "Project Page",
                       "lineHeight": 1.08,
-                      "fontFamily": "Geist",
+                      "fontFamily": "Hanken Grotesk",
                       "fontSize": 20,
                       "fontWeight": "700"
                     },
@@ -2987,10 +4113,10 @@
                       "id": "w4Z1c3",
                       "x": 124,
                       "y": 15,
-                      "fill": "#121210",
+                      "fill": "#000000",
                       "content": "↗",
                       "lineHeight": 1.08,
-                      "fontFamily": "Geist",
+                      "fontFamily": "Hanken Grotesk",
                       "fontSize": 22,
                       "fontWeight": "700"
                     }
@@ -3001,12 +4127,12 @@
                   "id": "R1jpIg",
                   "x": 48,
                   "y": 535,
-                  "fill": "#121210",
+                  "fill": "\\$halftone-ink",
                   "textGrowth": "fixed-width",
                   "width": 260,
                   "content": "Ashley Cherry",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 30,
                   "fontWeight": "800"
                 }
@@ -3020,7 +4146,7 @@
           "name": "Partners marquee",
           "width": "fill_container",
           "height": 250,
-          "fill": "#f7f5ef",
+          "fill": "$halftone-paper-soft",
           "layout": "none",
           "children": [
             {
@@ -3028,12 +4154,12 @@
               "id": "Xq7BU",
               "x": -5,
               "y": 45,
-              "fill": "#b8b5b2",
+              "fill": "\\$halftone-muted",
               "content": "Our Partners ✦ Our Partners ✦",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "$halftone-font-display",
               "fontSize": 100,
-              "fontWeight": "300"
+              "fontWeight": "900"
             }
           ]
         },
@@ -3043,7 +4169,7 @@
           "name": "Partner logo grid",
           "width": "fill_container",
           "height": 703,
-          "fill": "#f7f5ef",
+          "fill": "$halftone-paper-warm",
           "layout": "none",
           "children": [
             {
@@ -3054,11 +4180,20 @@
               "name": "partner / mozilla",
               "width": 306,
               "height": 190,
-              "fill": "#fffdf8",
+              "fill": "$halftone-paper",
               "cornerRadius": 20,
               "stroke": {
-                "thickness": 1,
-                "fill": "#d8d5cc"
+                "thickness": 3,
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 6,
+                  "y": 6
+                }
               },
               "layout": "none",
               "children": [
@@ -3067,12 +4202,12 @@
                   "id": "J6fXaN",
                   "x": 0,
                   "y": 77,
-                  "fill": "#999999",
+                  "fill": "\\$halftone-muted",
                   "textGrowth": "fixed-width",
                   "width": 306,
                   "content": "mozilla",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 40,
                   "fontWeight": "300"
                 }
@@ -3086,11 +4221,20 @@
               "name": "partner / envato",
               "width": 306,
               "height": 190,
-              "fill": "#fffdf8",
+              "fill": "$halftone-paper",
               "cornerRadius": 20,
               "stroke": {
-                "thickness": 1,
-                "fill": "#d8d5cc"
+                "thickness": 3,
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 6,
+                  "y": 6
+                }
               },
               "layout": "none",
               "children": [
@@ -3099,12 +4243,12 @@
                   "id": "ak5j0",
                   "x": 0,
                   "y": 77,
-                  "fill": "#999999",
+                  "fill": "\\$halftone-muted",
                   "textGrowth": "fixed-width",
                   "width": 306,
                   "content": "envato",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 40,
                   "fontWeight": "300"
                 }
@@ -3118,11 +4262,20 @@
               "name": "partner / behance",
               "width": 306,
               "height": 190,
-              "fill": "#fffdf8",
+              "fill": "$halftone-paper",
               "cornerRadius": 20,
               "stroke": {
-                "thickness": 1,
-                "fill": "#d8d5cc"
+                "thickness": 3,
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 6,
+                  "y": 6
+                }
               },
               "layout": "none",
               "children": [
@@ -3131,12 +4284,12 @@
                   "id": "ymwY3",
                   "x": 0,
                   "y": 77,
-                  "fill": "#999999",
+                  "fill": "\\$halftone-muted",
                   "textGrowth": "fixed-width",
                   "width": 306,
                   "content": "behance",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 40,
                   "fontWeight": "300"
                 }
@@ -3150,11 +4303,20 @@
               "name": "partner / dribbble",
               "width": 306,
               "height": 190,
-              "fill": "#fffdf8",
+              "fill": "$halftone-paper",
               "cornerRadius": 20,
               "stroke": {
-                "thickness": 1,
-                "fill": "#d8d5cc"
+                "thickness": 3,
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 6,
+                  "y": 6
+                }
               },
               "layout": "none",
               "children": [
@@ -3163,12 +4325,12 @@
                   "id": "aZTvB",
                   "x": 0,
                   "y": 77,
-                  "fill": "#999999",
+                  "fill": "\\$halftone-muted",
                   "textGrowth": "fixed-width",
                   "width": 306,
                   "content": "dribbble",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 40,
                   "fontWeight": "300"
                 }
@@ -3182,11 +4344,20 @@
               "name": "partner / codeninja",
               "width": 306,
               "height": 190,
-              "fill": "#fffdf8",
+              "fill": "$halftone-paper",
               "cornerRadius": 20,
               "stroke": {
-                "thickness": 1,
-                "fill": "#d8d5cc"
+                "thickness": 3,
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 6,
+                  "y": 6
+                }
               },
               "layout": "none",
               "children": [
@@ -3195,12 +4366,12 @@
                   "id": "C2Abek",
                   "x": 0,
                   "y": 77,
-                  "fill": "#999999",
+                  "fill": "\\$halftone-muted",
                   "textGrowth": "fixed-width",
                   "width": 306,
                   "content": "codeninja",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 40,
                   "fontWeight": "300"
                 }
@@ -3214,11 +4385,20 @@
               "name": "partner / udemy",
               "width": 306,
               "height": 190,
-              "fill": "#fffdf8",
+              "fill": "$halftone-paper",
               "cornerRadius": 20,
               "stroke": {
-                "thickness": 1,
-                "fill": "#d8d5cc"
+                "thickness": 3,
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 6,
+                  "y": 6
+                }
               },
               "layout": "none",
               "children": [
@@ -3227,12 +4407,12 @@
                   "id": "IWURM",
                   "x": 0,
                   "y": 77,
-                  "fill": "#999999",
+                  "fill": "\\$halftone-muted",
                   "textGrowth": "fixed-width",
                   "width": 306,
                   "content": "udemy",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 40,
                   "fontWeight": "300"
                 }
@@ -3246,11 +4426,20 @@
               "name": "partner / angular",
               "width": 306,
               "height": 190,
-              "fill": "#fffdf8",
+              "fill": "$halftone-paper",
               "cornerRadius": 20,
               "stroke": {
-                "thickness": 1,
-                "fill": "#d8d5cc"
+                "thickness": 3,
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 6,
+                  "y": 6
+                }
               },
               "layout": "none",
               "children": [
@@ -3259,12 +4448,12 @@
                   "id": "UtkHr",
                   "x": 0,
                   "y": 77,
-                  "fill": "#999999",
+                  "fill": "\\$halftone-muted",
                   "textGrowth": "fixed-width",
                   "width": 306,
                   "content": "angular",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 40,
                   "fontWeight": "300"
                 }
@@ -3278,11 +4467,20 @@
               "name": "partner / ghostgaming",
               "width": 306,
               "height": 190,
-              "fill": "#fffdf8",
+              "fill": "$halftone-paper",
               "cornerRadius": 20,
               "stroke": {
-                "thickness": 1,
-                "fill": "#d8d5cc"
+                "thickness": 3,
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 6,
+                  "y": 6
+                }
               },
               "layout": "none",
               "children": [
@@ -3291,12 +4489,12 @@
                   "id": "u3NXh",
                   "x": 0,
                   "y": 77,
-                  "fill": "#999999",
+                  "fill": "\\$halftone-muted",
                   "textGrowth": "fixed-width",
                   "width": 306,
                   "content": "ghostgaming",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 40,
                   "fontWeight": "300"
                 }
@@ -3310,7 +4508,7 @@
           "name": "Recent insights",
           "width": "fill_container",
           "height": 929,
-          "fill": "#f7f5ef",
+          "fill": "$halftone-paper-soft",
           "layout": "none",
           "children": [
             {
@@ -3318,26 +4516,26 @@
               "id": "vTlka",
               "x": 60,
               "y": 80,
-              "fill": "#121210",
+              "fill": "#000000",
               "textGrowth": "fixed-width",
               "width": 430,
               "content": "Recent insights",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "Anybody",
               "fontSize": 58,
-              "fontWeight": "800"
+              "fontWeight": "900"
             },
             {
               "type": "text",
               "id": "H2XuWm",
               "x": 510,
               "y": 90,
-              "fill": "#383838",
+              "fill": "\\$halftone-muted",
               "textGrowth": "fixed-width",
               "width": 400,
               "content": "Inspiring ideas, creative insights, and the latest\nin design and tech. Fueling innovation for your\ndigital journey.",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "\\$halftone-font-body",
               "fontSize": 18,
               "fontWeight": "500"
             },
@@ -3349,11 +4547,20 @@
               "name": "button / All Articles",
               "width": 190,
               "height": 56,
-              "fill": "#00000000",
+              "fill": "$halftone-paper",
               "cornerRadius": 28,
               "stroke": {
                 "thickness": 2,
-                "fill": "#121210"
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 4,
+                  "y": 4
+                }
               },
               "layout": "none",
               "children": [
@@ -3362,12 +4569,12 @@
                   "id": "yhDxt",
                   "x": 24,
                   "y": 17,
-                  "fill": "#121210",
+                  "fill": "#000000",
                   "textGrowth": "fixed-width",
                   "width": 132,
                   "content": "All Articles",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "Hanken Grotesk",
                   "fontSize": 20,
                   "fontWeight": "700"
                 },
@@ -3376,10 +4583,10 @@
                   "id": "Q71Qco",
                   "x": 154,
                   "y": 15,
-                  "fill": "#121210",
+                  "fill": "#000000",
                   "content": "↗",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "Hanken Grotesk",
                   "fontSize": 22,
                   "fontWeight": "700"
                 }
@@ -3391,15 +4598,46 @@
               "x": 60,
               "y": 270,
               "name": "blog image",
+              "clip": true,
               "width": 410,
               "height": 430,
-              "fill": "#5d5d5d",
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "next-app/public/img/tikii/hero-metal-bloom.png",
+                "mode": "fill"
+              },
               "cornerRadius": 28,
               "stroke": {
-                "thickness": 1,
-                "fill": "#d8d5cc"
+                "thickness": 3,
+                "fill": "$halftone-ink"
               },
-              "layout": "none"
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 6,
+                  "y": 6
+                }
+              },
+              "layout": "none",
+              "children": [
+                {
+                  "type": "script",
+                  "id": "B61TlG",
+                  "x": 0,
+                  "y": 0,
+                  "width": 410,
+                  "height": 430,
+                  "scriptUri": "halftone-dots.js",
+                  "inputs": {
+                    "step": 28,
+                    "dot": 4,
+                    "opacity": "#00000022"
+                  }
+                }
+              ]
             },
             {
               "type": "frame",
@@ -3409,11 +4647,20 @@
               "name": "pill / Concept",
               "width": 95,
               "height": 34,
-              "fill": "#ffffff",
+              "fill": "$halftone-paper",
               "cornerRadius": 18,
               "stroke": {
-                "thickness": 1,
-                "fill": "#121210"
+                "thickness": 2,
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 4,
+                  "y": 4
+                }
               },
               "layout": "none",
               "children": [
@@ -3422,12 +4669,12 @@
                   "id": "tAtEt",
                   "x": 14,
                   "y": 8,
-                  "fill": "#121210",
+                  "fill": "\\$halftone-ink",
                   "textGrowth": "fixed-width",
                   "width": 67,
                   "content": "Concept",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 13,
                   "fontWeight": "500"
                 }
@@ -3441,11 +4688,20 @@
               "name": "pill / Development",
               "width": 130,
               "height": 34,
-              "fill": "#ffffff",
+              "fill": "$halftone-paper",
               "cornerRadius": 18,
               "stroke": {
-                "thickness": 1,
-                "fill": "#121210"
+                "thickness": 2,
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 4,
+                  "y": 4
+                }
               },
               "layout": "none",
               "children": [
@@ -3454,12 +4710,12 @@
                   "id": "Rtzjl",
                   "x": 14,
                   "y": 8,
-                  "fill": "#121210",
+                  "fill": "\\$halftone-ink",
                   "textGrowth": "fixed-width",
                   "width": 102,
                   "content": "Development",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 13,
                   "fontWeight": "500"
                 }
@@ -3470,12 +4726,12 @@
               "id": "FJ4A3",
               "x": 60,
               "y": 735,
-              "fill": "#121210",
+              "fill": "\\$halftone-ink",
               "textGrowth": "fixed-width",
               "width": 390,
               "content": "Frontend innovations\nand user journeys",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "\\$halftone-font-body",
               "fontSize": 28,
               "fontWeight": "700"
             },
@@ -3485,15 +4741,46 @@
               "x": 500,
               "y": 270,
               "name": "blog image",
+              "clip": true,
               "width": 410,
               "height": 430,
-              "fill": "#5d5d5d",
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "next-app/public/img/tikii/hero-creative-systems.png",
+                "mode": "fill"
+              },
               "cornerRadius": 28,
               "stroke": {
-                "thickness": 1,
-                "fill": "#d8d5cc"
+                "thickness": 3,
+                "fill": "$halftone-ink"
               },
-              "layout": "none"
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 6,
+                  "y": 6
+                }
+              },
+              "layout": "none",
+              "children": [
+                {
+                  "type": "script",
+                  "id": "A4jgJb",
+                  "x": 0,
+                  "y": 0,
+                  "width": 410,
+                  "height": 430,
+                  "scriptUri": "halftone-dots.js",
+                  "inputs": {
+                    "step": 28,
+                    "dot": 4,
+                    "opacity": "#00000022"
+                  }
+                }
+              ]
             },
             {
               "type": "frame",
@@ -3503,11 +4790,20 @@
               "name": "pill / UI/UX",
               "width": 95,
               "height": 34,
-              "fill": "#ffffff",
+              "fill": "$halftone-paper",
               "cornerRadius": 18,
               "stroke": {
-                "thickness": 1,
-                "fill": "#121210"
+                "thickness": 2,
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 4,
+                  "y": 4
+                }
               },
               "layout": "none",
               "children": [
@@ -3516,12 +4812,12 @@
                   "id": "K7PMql",
                   "x": 14,
                   "y": 8,
-                  "fill": "#121210",
+                  "fill": "\\$halftone-ink",
                   "textGrowth": "fixed-width",
                   "width": 67,
                   "content": "UI/UX",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 13,
                   "fontWeight": "500"
                 }
@@ -3535,11 +4831,20 @@
               "name": "pill / Development",
               "width": 130,
               "height": 34,
-              "fill": "#ffffff",
+              "fill": "$halftone-paper",
               "cornerRadius": 18,
               "stroke": {
-                "thickness": 1,
-                "fill": "#121210"
+                "thickness": 2,
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 4,
+                  "y": 4
+                }
               },
               "layout": "none",
               "children": [
@@ -3548,12 +4853,12 @@
                   "id": "SDgpN",
                   "x": 14,
                   "y": 8,
-                  "fill": "#121210",
+                  "fill": "\\$halftone-ink",
                   "textGrowth": "fixed-width",
                   "width": 102,
                   "content": "Development",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 13,
                   "fontWeight": "500"
                 }
@@ -3564,12 +4869,12 @@
               "id": "DyRWs",
               "x": 500,
               "y": 735,
-              "fill": "#121210",
+              "fill": "\\$halftone-ink",
               "textGrowth": "fixed-width",
               "width": 390,
               "content": "Branding in creating\ndigital experiences",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "\\$halftone-font-body",
               "fontSize": 28,
               "fontWeight": "700"
             },
@@ -3579,15 +4884,46 @@
               "x": 940,
               "y": 270,
               "name": "blog image",
+              "clip": true,
               "width": 410,
               "height": 430,
-              "fill": "#5d5d5d",
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "next-app/public/img/tikii/hero-growth-systems.png",
+                "mode": "fill"
+              },
               "cornerRadius": 28,
               "stroke": {
-                "thickness": 1,
-                "fill": "#d8d5cc"
+                "thickness": 3,
+                "fill": "$halftone-ink"
               },
-              "layout": "none"
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 6,
+                  "y": 6
+                }
+              },
+              "layout": "none",
+              "children": [
+                {
+                  "type": "script",
+                  "id": "uGhB2",
+                  "x": 0,
+                  "y": 0,
+                  "width": 410,
+                  "height": 430,
+                  "scriptUri": "halftone-dots.js",
+                  "inputs": {
+                    "step": 28,
+                    "dot": 4,
+                    "opacity": "#00000022"
+                  }
+                }
+              ]
             },
             {
               "type": "frame",
@@ -3597,11 +4933,20 @@
               "name": "pill / UI/UX",
               "width": 95,
               "height": 34,
-              "fill": "#ffffff",
+              "fill": "$halftone-paper",
               "cornerRadius": 18,
               "stroke": {
-                "thickness": 1,
-                "fill": "#121210"
+                "thickness": 2,
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 4,
+                  "y": 4
+                }
               },
               "layout": "none",
               "children": [
@@ -3610,12 +4955,12 @@
                   "id": "S0KKRM",
                   "x": 14,
                   "y": 8,
-                  "fill": "#121210",
+                  "fill": "\\$halftone-ink",
                   "textGrowth": "fixed-width",
                   "width": 67,
                   "content": "UI/UX",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 13,
                   "fontWeight": "500"
                 }
@@ -3629,11 +4974,20 @@
               "name": "pill / AI",
               "width": 130,
               "height": 34,
-              "fill": "#ffffff",
+              "fill": "$halftone-paper",
               "cornerRadius": 18,
               "stroke": {
-                "thickness": 1,
-                "fill": "#121210"
+                "thickness": 2,
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 4,
+                  "y": 4
+                }
               },
               "layout": "none",
               "children": [
@@ -3642,12 +4996,12 @@
                   "id": "Gswil",
                   "x": 14,
                   "y": 8,
-                  "fill": "#121210",
+                  "fill": "\\$halftone-ink",
                   "textGrowth": "fixed-width",
                   "width": 102,
                   "content": "AI",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 13,
                   "fontWeight": "500"
                 }
@@ -3658,12 +5012,12 @@
               "id": "UQZdP",
               "x": 940,
               "y": 735,
-              "fill": "#121210",
+              "fill": "\\$halftone-ink",
               "textGrowth": "fixed-width",
               "width": 390,
               "content": "Elevating digital workshops\nwith engaging design",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "\\$halftone-font-body",
               "fontSize": 28,
               "fontWeight": "700"
             }
@@ -3675,7 +5029,7 @@
           "name": "Project CTA",
           "width": "fill_container",
           "height": 664,
-          "fill": "#f7f5ef",
+          "fill": "$halftone-paper",
           "layout": "none",
           "children": [
             {
@@ -3686,11 +5040,20 @@
               "name": "promo / let's talk",
               "width": 1320,
               "height": 500,
-              "fill": "#151515",
+              "fill": "$halftone-ink",
               "cornerRadius": 42,
               "stroke": {
-                "thickness": 1,
-                "fill": "#d8d5cc"
+                "thickness": 3,
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 7,
+                  "y": 7
+                }
               },
               "layout": "none",
               "children": [
@@ -3704,9 +5067,9 @@
                   "width": 620,
                   "content": "Let's talk about\nyour project!",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "Anybody",
                   "fontSize": 72,
-                  "fontWeight": "800"
+                  "fontWeight": "900"
                 },
                 {
                   "type": "frame",
@@ -3716,11 +5079,20 @@
                   "name": "button / Contact Us",
                   "width": 190,
                   "height": 56,
-                  "fill": "#ddf348",
+                  "fill": "$halftone-paper",
                   "cornerRadius": 28,
                   "stroke": {
                     "thickness": 2,
-                    "fill": "#121210"
+                    "fill": "$halftone-ink"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "$halftone-ink",
+                    "offset": {
+                      "x": 4,
+                      "y": 4
+                    }
                   },
                   "layout": "none",
                   "children": [
@@ -3729,12 +5101,12 @@
                       "id": "GCVsQ",
                       "x": 24,
                       "y": 17,
-                      "fill": "#121210",
+                      "fill": "#000000",
                       "textGrowth": "fixed-width",
                       "width": 132,
                       "content": "Contact Us",
                       "lineHeight": 1.08,
-                      "fontFamily": "Geist",
+                      "fontFamily": "Hanken Grotesk",
                       "fontSize": 20,
                       "fontWeight": "700"
                     },
@@ -3743,10 +5115,10 @@
                       "id": "Mlvld",
                       "x": 154,
                       "y": 15,
-                      "fill": "#121210",
+                      "fill": "#000000",
                       "content": "↗",
                       "lineHeight": 1.08,
-                      "fontFamily": "Geist",
+                      "fontFamily": "Hanken Grotesk",
                       "fontSize": 22,
                       "fontWeight": "700"
                     }
@@ -3758,13 +5130,28 @@
                   "x": 760,
                   "y": 0,
                   "name": "promo imagery",
+                  "clip": true,
                   "width": 560,
                   "height": 500,
-                  "fill": "#5d5d5d",
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "next-app/public/img/tikii/23.png",
+                    "mode": "fill"
+                  },
                   "cornerRadius": 32,
                   "stroke": {
-                    "thickness": 1,
-                    "fill": "#d8d5cc"
+                    "thickness": 3,
+                    "fill": "$halftone-ink"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "$halftone-ink",
+                    "offset": {
+                      "x": 6,
+                      "y": 6
+                    }
                   },
                   "layout": "none",
                   "children": [
@@ -3773,14 +5160,29 @@
                       "id": "DEAxF",
                       "x": 0,
                       "y": 232,
-                      "fill": "#999999",
+                      "enabled": false,
+                      "fill": "\\$halftone-muted",
                       "textGrowth": "fixed-width",
                       "width": 560,
                       "content": "600 × 600",
                       "lineHeight": 1.08,
-                      "fontFamily": "Geist",
+                      "fontFamily": "\\$halftone-font-body",
                       "fontSize": 40,
                       "fontWeight": "300"
+                    },
+                    {
+                      "type": "script",
+                      "id": "s8J8c",
+                      "x": 0,
+                      "y": 0,
+                      "width": 560,
+                      "height": 500,
+                      "scriptUri": "halftone-dots.js",
+                      "inputs": {
+                        "step": 28,
+                        "dot": 4,
+                        "opacity": "#00000022"
+                      }
                     }
                   ]
                 }
@@ -3794,7 +5196,7 @@
           "name": "Footer",
           "width": "fill_container",
           "height": 1160,
-          "fill": "#f7f5ef",
+          "fill": "$halftone-paper-soft",
           "layout": "none",
           "children": [
             {
@@ -3802,12 +5204,12 @@
               "id": "ckgwn",
               "x": 55,
               "y": 55,
-              "fill": "#121210",
+              "fill": "#000000",
               "content": "rayostudio",
               "lineHeight": 1.08,
-              "fontFamily": "Geist",
+              "fontFamily": "Anybody",
               "fontSize": 170,
-              "fontWeight": "800"
+              "fontWeight": "900"
             },
             {
               "type": "frame",
@@ -3817,11 +5219,20 @@
               "name": "footer nav card",
               "width": 420,
               "height": 650,
-              "fill": "#fffdf8",
+              "fill": "$halftone-paper",
               "cornerRadius": 20,
               "stroke": {
-                "thickness": 1,
-                "fill": "#d8d5cc"
+                "thickness": 3,
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 6,
+                  "y": 6
+                }
               },
               "layout": "none",
               "children": [
@@ -3830,96 +5241,96 @@
                   "id": "SFPRe",
                   "x": 52,
                   "y": 55,
-                  "fill": "#121210",
+                  "fill": "#000000",
                   "textGrowth": "fixed-width",
                   "width": 270,
                   "content": "Home",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "Anybody",
                   "fontSize": 38,
-                  "fontWeight": "800"
+                  "fontWeight": "900"
                 },
                 {
                   "type": "text",
                   "id": "LVAxg",
                   "x": 52,
                   "y": 125,
-                  "fill": "#121210",
+                  "fill": "#000000",
                   "textGrowth": "fixed-width",
                   "width": 270,
                   "content": "About us",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "Anybody",
                   "fontSize": 38,
-                  "fontWeight": "800"
+                  "fontWeight": "900"
                 },
                 {
                   "type": "text",
                   "id": "Iu3tE",
                   "x": 52,
                   "y": 195,
-                  "fill": "#121210",
+                  "fill": "#000000",
                   "textGrowth": "fixed-width",
                   "width": 270,
                   "content": "Works  +10",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "Anybody",
                   "fontSize": 38,
-                  "fontWeight": "800"
+                  "fontWeight": "900"
                 },
                 {
                   "type": "text",
                   "id": "B6ZMl",
                   "x": 52,
                   "y": 265,
-                  "fill": "#121210",
+                  "fill": "#000000",
                   "textGrowth": "fixed-width",
                   "width": 270,
                   "content": "Services",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "Anybody",
                   "fontSize": 38,
-                  "fontWeight": "800"
+                  "fontWeight": "900"
                 },
                 {
                   "type": "text",
                   "id": "boc2X",
                   "x": 52,
                   "y": 335,
-                  "fill": "#121210",
+                  "fill": "#000000",
                   "textGrowth": "fixed-width",
                   "width": 270,
                   "content": "Insights",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "Anybody",
                   "fontSize": 38,
-                  "fontWeight": "800"
+                  "fontWeight": "900"
                 },
                 {
                   "type": "text",
                   "id": "v8hkJ",
                   "x": 52,
                   "y": 405,
-                  "fill": "#121210",
+                  "fill": "#000000",
                   "textGrowth": "fixed-width",
                   "width": 270,
                   "content": "Contact",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "Anybody",
                   "fontSize": 38,
-                  "fontWeight": "800"
+                  "fontWeight": "900"
                 },
                 {
                   "type": "text",
                   "id": "WjDxX",
                   "x": 52,
                   "y": 585,
-                  "fill": "#555555",
+                  "fill": "#000000",
                   "textGrowth": "fixed-width",
                   "width": 140,
                   "content": "Privacy Policy  →",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 14,
                   "fontWeight": "500"
                 },
@@ -3928,12 +5339,12 @@
                   "id": "VT6S2",
                   "x": 220,
                   "y": 585,
-                  "fill": "#555555",
+                  "fill": "#000000",
                   "textGrowth": "fixed-width",
                   "width": 170,
                   "content": "Terms & conditions  →",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 14,
                   "fontWeight": "500"
                 }
@@ -3957,11 +5368,20 @@
                   "name": "email card",
                   "width": 420,
                   "height": 130,
-                  "fill": "#fffdf8",
+                  "fill": "$halftone-paper",
                   "cornerRadius": 20,
                   "stroke": {
-                    "thickness": 1,
-                    "fill": "#d8d5cc"
+                    "thickness": 3,
+                    "fill": "$halftone-ink"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "$halftone-ink",
+                    "offset": {
+                      "x": 6,
+                      "y": 6
+                    }
                   },
                   "layout": "none",
                   "children": [
@@ -3970,14 +5390,14 @@
                       "id": "vlom2",
                       "x": 0,
                       "y": 47,
-                      "fill": "#999999",
+                      "fill": "#000000",
                       "textGrowth": "fixed-width",
-                      "width": 420,
+                      "width": 330,
                       "content": "✦  hello@rayostudio.com",
                       "lineHeight": 1.08,
-                      "fontFamily": "Geist",
-                      "fontSize": 40,
-                      "fontWeight": "300"
+                      "fontFamily": "Hanken Grotesk",
+                      "fontSize": 20,
+                      "fontWeight": "700"
                     }
                   ]
                 },
@@ -3989,11 +5409,20 @@
                   "name": "phone card",
                   "width": 420,
                   "height": 130,
-                  "fill": "#fffdf8",
+                  "fill": "$halftone-paper",
                   "cornerRadius": 20,
                   "stroke": {
-                    "thickness": 1,
-                    "fill": "#d8d5cc"
+                    "thickness": 3,
+                    "fill": "$halftone-ink"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "$halftone-ink",
+                    "offset": {
+                      "x": 6,
+                      "y": 6
+                    }
                   },
                   "layout": "none",
                   "children": [
@@ -4002,14 +5431,14 @@
                       "id": "y20lg",
                       "x": 0,
                       "y": 47,
-                      "fill": "#999999",
+                      "fill": "#000000",
                       "textGrowth": "fixed-width",
-                      "width": 420,
+                      "width": 330,
                       "content": "✦  +1 212-708-9400",
                       "lineHeight": 1.08,
-                      "fontFamily": "Geist",
-                      "fontSize": 40,
-                      "fontWeight": "300"
+                      "fontFamily": "Hanken Grotesk",
+                      "fontSize": 20,
+                      "fontWeight": "700"
                     }
                   ]
                 },
@@ -4021,11 +5450,20 @@
                   "name": "subscribe card",
                   "width": 420,
                   "height": 330,
-                  "fill": "#fffdf8",
+                  "fill": "$halftone-paper",
                   "cornerRadius": 20,
                   "stroke": {
-                    "thickness": 1,
-                    "fill": "#d8d5cc"
+                    "thickness": 3,
+                    "fill": "$halftone-ink"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "$halftone-ink",
+                    "offset": {
+                      "x": 6,
+                      "y": 6
+                    }
                   },
                   "layout": "none",
                   "children": [
@@ -4034,12 +5472,12 @@
                       "id": "mUcfe",
                       "x": 52,
                       "y": 60,
-                      "fill": "#121210",
+                      "fill": "\\$halftone-ink",
                       "textGrowth": "fixed-width",
                       "width": 300,
                       "content": "Subscribe to our\ninsights:",
                       "lineHeight": 1.08,
-                      "fontFamily": "Geist",
+                      "fontFamily": "\\$halftone-font-body",
                       "fontSize": 34,
                       "fontWeight": "800"
                     },
@@ -4048,20 +5486,21 @@
                       "id": "zPghv",
                       "x": 52,
                       "y": 240,
-                      "fill": "#555555",
+                      "fill": "#000000",
                       "textGrowth": "fixed-width",
                       "width": 250,
                       "content": "Your Email",
                       "lineHeight": 1.08,
-                      "fontFamily": "Geist",
-                      "fontSize": 22
+                      "fontFamily": "\\$halftone-font-body",
+                      "fontSize": 22,
+                      "fontWeight": "normal"
                     },
                     {
                       "type": "rectangle",
                       "id": "otPHJ",
                       "x": 52,
                       "y": 285,
-                      "fill": "#555555",
+                      "fill": "$halftone-ink",
                       "width": 318,
                       "height": 2
                     },
@@ -4070,10 +5509,10 @@
                       "id": "fQeoH",
                       "x": 346,
                       "y": 244,
-                      "fill": "#121210",
+                      "fill": "\\$halftone-ink",
                       "content": "↗",
                       "lineHeight": 1.08,
-                      "fontFamily": "Geist",
+                      "fontFamily": "\\$halftone-font-body",
                       "fontSize": 24,
                       "fontWeight": "600"
                     }
@@ -4089,11 +5528,20 @@
               "name": "ecosystem card",
               "width": 420,
               "height": 650,
-              "fill": "#fffdf8",
+              "fill": "$halftone-paper",
               "cornerRadius": 20,
               "stroke": {
-                "thickness": 1,
-                "fill": "#d8d5cc"
+                "thickness": 3,
+                "fill": "$halftone-ink"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "$halftone-ink",
+                "offset": {
+                  "x": 6,
+                  "y": 6
+                }
               },
               "layout": "none",
               "children": [
@@ -4102,26 +5550,26 @@
                   "id": "UKL0o",
                   "x": 52,
                   "y": 55,
-                  "fill": "#121210",
+                  "fill": "#000000",
                   "textGrowth": "fixed-width",
                   "width": 270,
                   "content": "Ecosystem",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "Anybody",
                   "fontSize": 38,
-                  "fontWeight": "800"
+                  "fontWeight": "900"
                 },
                 {
                   "type": "text",
                   "id": "d4Y0s",
                   "x": 52,
                   "y": 150,
-                  "fill": "#121210",
+                  "fill": "\\$halftone-ink",
                   "textGrowth": "fixed-width",
                   "width": 260,
                   "content": "Dribbble",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 22,
                   "fontWeight": "500"
                 },
@@ -4130,12 +5578,12 @@
                   "id": "Qsvfi",
                   "x": 52,
                   "y": 188,
-                  "fill": "#121210",
+                  "fill": "\\$halftone-ink",
                   "textGrowth": "fixed-width",
                   "width": 260,
                   "content": "Behance",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 22,
                   "fontWeight": "500"
                 },
@@ -4144,12 +5592,12 @@
                   "id": "oXylr",
                   "x": 52,
                   "y": 226,
-                  "fill": "#121210",
+                  "fill": "\\$halftone-ink",
                   "textGrowth": "fixed-width",
                   "width": 260,
                   "content": "Instagram",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 22,
                   "fontWeight": "500"
                 },
@@ -4158,12 +5606,12 @@
                   "id": "HOITJ",
                   "x": 52,
                   "y": 264,
-                  "fill": "#121210",
+                  "fill": "\\$halftone-ink",
                   "textGrowth": "fixed-width",
                   "width": 260,
                   "content": "Github",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 22,
                   "fontWeight": "500"
                 },
@@ -4172,12 +5620,12 @@
                   "id": "E1unM",
                   "x": 52,
                   "y": 302,
-                  "fill": "#121210",
+                  "fill": "\\$halftone-ink",
                   "textGrowth": "fixed-width",
                   "width": 260,
                   "content": "Codepen",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 22,
                   "fontWeight": "500"
                 },
@@ -4186,12 +5634,12 @@
                   "id": "Qk7rf",
                   "x": 52,
                   "y": 340,
-                  "fill": "#121210",
+                  "fill": "\\$halftone-ink",
                   "textGrowth": "fixed-width",
                   "width": 260,
                   "content": "Figma Community",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 22,
                   "fontWeight": "500"
                 },
@@ -4200,12 +5648,12 @@
                   "id": "RGZwF",
                   "x": 52,
                   "y": 585,
-                  "fill": "#555555",
+                  "fill": "#000000",
                   "textGrowth": "fixed-width",
                   "width": 220,
                   "content": "Mix_Design © 2025",
                   "lineHeight": 1.08,
-                  "fontFamily": "Geist",
+                  "fontFamily": "\\$halftone-font-body",
                   "fontSize": 14,
                   "fontWeight": "500"
                 }
@@ -4215,5 +5663,43 @@
         }
       ]
     }
-  ]
+  ],
+  "variables": {
+    "halftone-border-thick": {
+      "type": "number",
+      "value": 3
+    },
+    "halftone-border-thin": {
+      "type": "number",
+      "value": 2
+    },
+    "halftone-font-body": {
+      "type": "string",
+      "value": "Hanken Grotesk"
+    },
+    "halftone-font-display": {
+      "type": "string",
+      "value": "Anybody"
+    },
+    "halftone-ink": {
+      "type": "color",
+      "value": "#000000"
+    },
+    "halftone-muted": {
+      "type": "color",
+      "value": "#383838"
+    },
+    "halftone-paper": {
+      "type": "color",
+      "value": "#ffffff"
+    },
+    "halftone-paper-soft": {
+      "type": "color",
+      "value": "#f7f7f3"
+    },
+    "halftone-paper-warm": {
+      "type": "color",
+      "value": "#f0eee7"
+    }
+  }
 }

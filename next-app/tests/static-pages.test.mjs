@@ -96,6 +96,22 @@ test("generated SVG path data does not include escaped linebreaks", () => {
   }
 });
 
+test("home page footer wordmark is the full-width tikii SVG", () => {
+  const source = read("app/page.tsx");
+  const wordmarkMatch = source.match(/<svg className="mxd-footer__svg-v2"[\s\S]*?<\/svg>/);
+
+  assert.notEqual(wordmarkMatch, null, "expected home page footer wordmark SVG");
+
+  const wordmark = wordmarkMatch[0];
+  assert.equal(wordmark.includes('viewBox="0 0 400.26 72"'), true, "wordmark should keep the full-width footer viewBox");
+  assert.equal(wordmark.includes('fontSize="86"'), true, "tikii wordmark should use larger type");
+  assert.equal(wordmark.includes('letterSpacing="56"'), true, "tikii wordmark should use tracking instead of glyph stretching");
+  assert.equal(wordmark.includes("textLength="), false, "tikii wordmark should not horizontally stretch glyphs");
+  assert.equal(wordmark.includes("lengthAdjust="), false, "tikii wordmark should not use SVG glyph stretching");
+  assert.equal(wordmark.includes(">tikii<"), true, "wordmark should read tikii in lowercase");
+  assert.equal(wordmark.includes("rayostudio"), false, "wordmark should not use the old Rayo text");
+});
+
 test("blog and portfolio sections have child route scaffolding", () => {
   assert.equal(exists("lib/blogs.ts"), true, "expected lib/blogs.ts to exist");
   assert.equal(exists("lib/portfolio.ts"), true, "expected lib/portfolio.ts to exist");
