@@ -675,6 +675,265 @@ html[color-scheme="light"] .mxd-page-content::before {
   mix-blend-mode: normal !important;
 }
 
+/* =============================================================================
+   POP THEME — brutalist retro halftone, light bg, magenta + purple + lime
+   ============================================================================= */
+
+html[color-scheme="pop"],
+html[color-scheme="pop"] body {
+  background-color: #ffffff;
+}
+
+[color-scheme="pop"] {
+  /* Surfaces */
+  --base: #ffffff;
+  --base-tint: #f4f4f2;
+  --base-shade: #e0e0e0;
+  --base-opp: #0a0a0a;
+  --base-opp-tint: #1c1c1c;
+
+  /* Accent: red-magenta */
+  --accent: #cc003d;
+  --accent-rgb: 204, 0, 61;
+
+  /* Additional: lime (unchanged — used on dark panels) */
+  --additional: #ddf160;
+  --additional-rgb: 221, 241, 96;
+
+  /* Transparency overlay */
+  --neutral-transparent: rgba(255, 255, 255, 0.28);
+
+  /* Strokes */
+  --st-bright: #0a0a0a;
+  --st-medium: #4a4a4a;
+  --st-muted: #d0d0d0;
+  --st-opp-bright: #ffffff;
+  --st-opp-medium: rgba(255, 255, 255, 0.6);
+  --st-opp-muted: rgba(255, 255, 255, 0.24);
+
+  /* Type ramp */
+  --t-bright: #0a0a0a;
+  --t-medium: #2a2a2a;
+  --t-muted: #555555;
+  --t-muted-extra: #999999;
+  --t-opp-bright: #ffffff;
+  --t-opp-medium: #ececec;
+  --t-opp-muted: #c0c0c0;
+
+  /* Font weights — push display up one notch */
+  --fw-regular: 400;
+  --fw-medium: 600;
+  --fw-semibold: 700;
+  --fw-bold: 800;
+  --fw-regular-opp: 300;
+  --fw-medium-opp: 500;
+
+  /* Purple as a named spot token */
+  --pop-purple: #9f8be7;
+  --pop-purple-rgb: 159, 139, 231;
+}
+
+/* Noise overlay: multiply on white bg */
+html[color-scheme="pop"] .tikii-noise-layer {
+  opacity: 0.45;
+  mix-blend-mode: multiply;
+}
+
+/* Remove the purple bg wash (built for dark mode) */
+html[color-scheme="pop"] .mxd-page-content::before {
+  opacity: 0;
+}
+
+/* Hero artwork tint: multiply for light bg */
+html[color-scheme="pop"] .tikii-hero-artwork-noise {
+  opacity: 0.12;
+  mix-blend-mode: multiply;
+}
+
+/* --------------------------------------------------------------------------
+   HEADER
+   -------------------------------------------------------------------------- */
+
+html[color-scheme="pop"] #header {
+  background-color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   DISPLAY TYPOGRAPHY
+   -------------------------------------------------------------------------- */
+
+[color-scheme="pop"] h1,
+[color-scheme="pop"] h2 {
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+/* --------------------------------------------------------------------------
+   HERO SECTION — subtle halftone dot bg
+   -------------------------------------------------------------------------- */
+
+[color-scheme="pop"] .mxd-hero-01 {
+  background-image: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 0.055) 1px,
+    transparent 1px
+  );
+  background-size: 18px 18px;
+}
+
+/* --------------------------------------------------------------------------
+   CARD HARD SHADOWS — replaces BorderGlow diffuse glow
+   [color-scheme] + class selector beats .card module rule; !important
+   guarantees override regardless of stylesheet load order.
+   -------------------------------------------------------------------------- */
+
+[color-scheme="pop"] .mxd-stats-cards__inner,
+[color-scheme="pop"] .mxd-services-stack__inner,
+[color-scheme="pop"] .mxd-testimonials-card,
+[color-scheme="pop"] .mxd-partners-cards__glow,
+[color-scheme="pop"] .footer-blocks__card {
+  border: 2px solid #0a0a0a !important;
+  box-shadow: 5px 5px 0 0 #0a0a0a !important;
+  transition:
+    box-shadow 0.12s ease-out,
+    transform 0.12s ease-out !important;
+}
+
+[color-scheme="pop"] .mxd-stats-cards__inner:hover,
+[color-scheme="pop"] .mxd-services-stack__inner:hover,
+[color-scheme="pop"] .mxd-testimonials-card:hover,
+[color-scheme="pop"] .footer-blocks__card:hover {
+  box-shadow: 2px 2px 0 0 #0a0a0a !important;
+  transform: translate(3px, 3px);
+}
+
+/* Client logo cards: lighter border, purple on hover */
+[color-scheme="pop"] .mxd-partners-cards__glow {
+  border-color: #c8c8c8 !important;
+  box-shadow: none !important;
+}
+
+[color-scheme="pop"] .mxd-partners-cards__glow:hover {
+  border-color: var(--pop-purple) !important;
+  box-shadow: 4px 4px 0 0 var(--pop-purple) !important;
+  transform: translate(-2px, -2px);
+}
+
+/* Suppress inner glow gradients from BorderGlow — wrong on white bg */
+[color-scheme="pop"] .mxd-stats-cards__inner::before,
+[color-scheme="pop"] .mxd-stats-cards__inner::after,
+[color-scheme="pop"] .mxd-services-stack__inner::before,
+[color-scheme="pop"] .mxd-services-stack__inner::after {
+  opacity: 0 !important;
+}
+
+/* --------------------------------------------------------------------------
+   SERVICES STACK — third panel gets purple
+   -------------------------------------------------------------------------- */
+
+[color-scheme="pop"] .services-stack .stack-item:nth-child(3) .mxd-services-stack__inner {
+  background-color: var(--pop-purple) !important;
+}
+
+[color-scheme="pop"] .services-stack .stack-item:nth-child(3) .mxd-services-stack__inner .tag-outline {
+  border-color: rgba(255, 255, 255, 0.35) !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* --------------------------------------------------------------------------
+   TAGS — purple accent
+   -------------------------------------------------------------------------- */
+
+[color-scheme="pop"] .tag-permanent {
+  background-color: var(--pop-purple);
+  border-color: var(--pop-purple);
+  color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   TESTIMONIALS — purple name
+   -------------------------------------------------------------------------- */
+
+[color-scheme="pop"] .mxd-testimonials-card__name {
+  color: var(--pop-purple);
+}
+
+/* --------------------------------------------------------------------------
+   APPROACH / AWARDS — bolder ruling lines
+   -------------------------------------------------------------------------- */
+
+[color-scheme="pop"] .mxd-approach-list__border {
+  border-top-width: 2px;
+  border-top-color: #0a0a0a;
+}
+
+[color-scheme="pop"] .mxd-awards-list__border {
+  border-top-width: 2px;
+  border-top-color: #0a0a0a;
+}
+
+/* --------------------------------------------------------------------------
+   HALFTONE CLIPPING MASK — project previews, blog images, divider images
+   3 px grid. Dots at 44 % → soft edge to 52 % gives the browser enough
+   sub-pixel ramp to anti-alias clean circles (not squares). The gap
+   between dots is ~1.1 px — visible as white, reads as halftone screen.
+   -------------------------------------------------------------------------- */
+
+[color-scheme="pop"] .mxd-project-item__preview,
+[color-scheme="pop"] .mxd-blog-preview__image,
+[color-scheme="pop"] .mxd-divider__image {
+  -webkit-mask-image: radial-gradient(circle, #000 44%, transparent 52%);
+          mask-image: radial-gradient(circle, #000 44%, transparent 52%);
+  -webkit-mask-size: 3px 3px;
+          mask-size: 3px 3px;
+  -webkit-mask-repeat: repeat;
+          mask-repeat: repeat;
+  filter: grayscale(92%) contrast(1.2);
+}
+
+[color-scheme="pop"] .mxd-stats-cards__image img {
+  -webkit-mask-image: radial-gradient(circle, #000 44%, transparent 52%);
+          mask-image: radial-gradient(circle, #000 44%, transparent 52%);
+  -webkit-mask-size: 3px 3px;
+          mask-size: 3px 3px;
+  -webkit-mask-repeat: repeat;
+          mask-repeat: repeat;
+  filter: grayscale(92%) contrast(1.2);
+  display: block;
+  width: 100%;
+}
+
+[color-scheme="pop"] .footer-blocks__card.footer-image-card {
+  -webkit-mask-image: radial-gradient(circle, #000 44%, transparent 52%);
+          mask-image: radial-gradient(circle, #000 44%, transparent 52%);
+  -webkit-mask-size: 3px 3px;
+          mask-size: 3px 3px;
+  -webkit-mask-repeat: repeat;
+          mask-repeat: repeat;
+  filter: grayscale(88%) contrast(1.15);
+}
+
+/* --------------------------------------------------------------------------
+   TIKII INNER-PAGE CARDS
+   -------------------------------------------------------------------------- */
+
+[color-scheme="pop"] .tikii-card {
+  border: 2px solid #0a0a0a;
+  box-shadow: 4px 4px 0 0 #0a0a0a;
+}
+
+[color-scheme="pop"] .tikii-cta {
+  border: 2px solid #0a0a0a;
+}
+
+/* --------------------------------------------------------------------------
+   THEME TOGGLE BUTTON — magenta tint when pop is active
+   -------------------------------------------------------------------------- */
+
+html[color-scheme="pop"] #color-switcher {
+  color: var(--accent);
+}
+
 .mxd-hero-01__title-wrap,
 .hero-01-title {
   width: 100%;

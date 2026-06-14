@@ -833,7 +833,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuLayerVisible, setMenuLayerVisible] = useState(false);
   const [hidden, setHidden] = useState(false);
-  const [theme, setTheme] = useState<"light" | "dark">("dark");
+  const [theme, setTheme] = useState<"light" | "dark" | "pop">("dark");
   const [toTopVisible, setToTopVisible] = useState(false);
   const [routeTransitionLoading, setRouteTransitionLoading] = useState(false);
   const routeIntroPendingRef = useRef(false);
@@ -879,6 +879,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
     const stored = window.localStorage.getItem("template.theme") as
       | "light"
       | "dark"
+      | "pop"
       | null;
     const initial =
       stored ??
@@ -915,7 +916,8 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
   }, [menuOpen]);
 
   const toggleTheme = () => {
-    const nextTheme = theme === "dark" ? "light" : "dark";
+    const nextTheme =
+      theme === "dark" ? "pop" : theme === "pop" ? "light" : "dark";
     setTheme(nextTheme);
     window.localStorage.setItem("template.theme", nextTheme);
     document.documentElement.setAttribute("color-scheme", nextTheme);
@@ -966,7 +968,13 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
             className="mxd-color-switcher"
             type="button"
             role="switch"
-            aria-label="light/dark mode"
+            aria-label={
+              theme === "dark"
+                ? "Switch to pop theme"
+                : theme === "pop"
+                  ? "Switch to light theme"
+                  : "Switch to dark theme"
+            }
             aria-checked={theme === "dark"}
             onClick={toggleTheme}
           >
@@ -974,7 +982,9 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
               className={
                 theme === "dark"
                   ? "ph-bold ph-sun-horizon"
-                  : "ph-bold ph-moon-stars"
+                  : theme === "pop"
+                    ? "ph-bold ph-paint-brush"
+                    : "ph-bold ph-moon-stars"
               }
             />
           </button>
