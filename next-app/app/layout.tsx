@@ -26,7 +26,7 @@ const themeScript = `
 (() => {
   try {
     const stored = localStorage.getItem("template.theme");
-    const theme = stored || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    const theme = stored || "light";
     document.documentElement.setAttribute("color-scheme", theme);
   } catch (_) {}
 })();
@@ -40,7 +40,7 @@ export default function RootLayout({
   return (
     <html lang="en" dir="ltr" suppressHydrationWarning>
       <head>
-        <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FAF7F6" />
+        <meta name="theme-color" media="(prefers-color-scheme: light)" content="#F4F4F0" />
         <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000000" />
         <link rel="stylesheet" href="/css/loaders/loader.css" />
         <link rel="stylesheet" href="/css/plugins.css" />

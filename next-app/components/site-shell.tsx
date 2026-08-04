@@ -833,7 +833,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuLayerVisible, setMenuLayerVisible] = useState(false);
   const [hidden, setHidden] = useState(false);
-  const [theme, setTheme] = useState<"light" | "dark">("dark");
+  const [theme, setTheme] = useState<"light" | "dark">("light");
   const [toTopVisible, setToTopVisible] = useState(false);
   const [routeTransitionLoading, setRouteTransitionLoading] = useState(false);
   const routeIntroPendingRef = useRef(false);
@@ -880,11 +880,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
       | "light"
       | "dark"
       | null;
-    const initial =
-      stored ??
-      (window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light");
+    const initial = stored ?? "light";
     setTheme(initial);
     document.documentElement.setAttribute("color-scheme", initial);
   }, []);
